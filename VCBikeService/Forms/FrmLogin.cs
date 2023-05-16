@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace VCBikeService.Forms
 {
-    public partial class Login : Form
+    public partial class FrmLogin : Form
     {
-        public Login()
+        public FrmLogin()
         {
             InitializeComponent();
+        }
+
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void customButtons3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
