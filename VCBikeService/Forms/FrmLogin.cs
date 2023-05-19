@@ -22,9 +22,20 @@ namespace VCBikeService.Forms
 
         }
 
-        private void customButtons3_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void BtnCancel_Click(object sender, EventArgs e)
+        {
+            //to close the form
+            Application.Exit();
+        }
+
+        private void BtnLogin_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
