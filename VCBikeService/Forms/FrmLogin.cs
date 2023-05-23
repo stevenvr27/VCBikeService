@@ -35,7 +35,9 @@ namespace VCBikeService.Forms
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
-            
+            Globals.Principal.Show();
+
+            this.Hide();
         }
     }
 }
