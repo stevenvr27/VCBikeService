@@ -10,7 +10,7 @@ namespace Logic.Models
     public  class BuyType
     {
         public int BuyTypeID { get; set; }
-        public string BuyTypeDescription { get; set; }
+        public string Description { get; set; }
 
         public DataTable List()
         {

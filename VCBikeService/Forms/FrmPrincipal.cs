@@ -30,6 +30,69 @@ namespace VCBikeService.Forms
         private const int WM_NCHITTEST = 132;
         private const int HTBOTTOMRIGHT = 17;
         private Rectangle sizeGripRectangle;
+
+        
+        private void btnUsers_Click(object sender, EventArgs e)
+        {
+            if (!Globals.Users.Visible)
+            {
+                Globals.Users = new FrmUsers();
+                Globals.Users.Show();
+            }
+            
+            
+             
+    }
+
+        private void btnCustomer_Click(object sender, EventArgs e)
+        {
+            if (!Globals.Customer.Visible) { 
+                Globals.Customer = new FrmCustomer();
+             Globals.Customer.Show();
+            }
+        }
+
+        private void BtnProducts_Click(object sender, EventArgs e)
+        {
+            if (!Globals.Productos.Visible)
+            {
+                Globals.Productos = new FrmProducts();
+                Globals.Productos.Show();
+                 
+            }
+        }
+
+        private void BtnProveedores_Click(object sender, EventArgs e)
+        {
+            if (!Globals.supplier.Visible)
+            {
+                Globals.supplier = new Frmsupplier();
+                Globals.supplier.Show();
+
+            }
+        }
+
+        private void BtnReports_Click(object sender, EventArgs e)
+        {
+            if (!Globals.Reports.Visible)
+            {
+                Globals.Reports = new FrmReports();
+                Globals.Reports.Show();
+
+            }
+        }
+
+        private void BtnFacturas_Click(object sender, EventArgs e)
+        {
+            if (!Globals.Billing.Visible)
+            {
+                Globals.Billing = new FrmBilling();
+                Globals.Billing.Show();
+
+            }
+
+        }
+        #region Caracteristicas del formulario
         protected override void WndProc(ref Message m)
         {
             switch (m.Msg)
@@ -114,6 +177,7 @@ namespace VCBikeService.Forms
         {
             Application.Exit();
         }
+        #endregion
 
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);

@@ -10,9 +10,12 @@ namespace Logic.Models
     {
         public int ItemID { get; set; }
         public string ItemName { get; set; }
+
+        public string Description { get; set; }
         public string Barcode { get; set; }
         public decimal Stock { get; set; }
         public decimal UnitaryCost { get; set; }
+
         public decimal SellPrice { get; set; }
 
         public bool Active { get; set; }

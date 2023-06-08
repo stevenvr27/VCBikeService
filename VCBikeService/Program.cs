@@ -19,5 +19,22 @@ namespace VCBikeService
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmLogin());
         }
+        private static void MainForm_Closed(object sender, FormClosedEventArgs e)
+        {
+            ((Form)sender).FormClosed -= MainForm_Closed;
+
+            if (Application.OpenForms.Count == 0)
+            {
+                Application.ExitThread();
+            }
+            else
+            {
+                Application.OpenForms[0].FormClosed += MainForm_Closed;
+            }
+
+
+
+        }
     }
+
 }

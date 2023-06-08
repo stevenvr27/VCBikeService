@@ -10,7 +10,7 @@ namespace Logic.Models
     public  class ItemCategory
     {
         public int  ItemCategoryID { get; set; }
-        public string ItemCategoryDescription { get; set; }
+        public string Description { get; set; }
 
         public DataTable List()
         {

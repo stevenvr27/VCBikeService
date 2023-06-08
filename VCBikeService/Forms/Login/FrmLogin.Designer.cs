@@ -46,10 +46,10 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label1.Location = new System.Drawing.Point(211, 198);
+            this.label1.Location = new System.Drawing.Point(109, 127);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(227, 29);
+            this.label1.Size = new System.Drawing.Size(187, 24);
             this.label1.TabIndex = 2;
             this.label1.Text = "Nombre de Usuario ";
             // 
@@ -59,29 +59,29 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(265, 294);
+            this.label2.Location = new System.Drawing.Point(168, 212);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(133, 29);
+            this.label2.Size = new System.Drawing.Size(111, 24);
             this.label2.TabIndex = 3;
             this.label2.Text = "Contraseña";
             // 
             // TxtUserName
             // 
             this.TxtUserName.Font = new System.Drawing.Font("Tahoma", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtUserName.Location = new System.Drawing.Point(188, 243);
+            this.TxtUserName.Location = new System.Drawing.Point(76, 169);
             this.TxtUserName.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.TxtUserName.Name = "TxtUserName";
-            this.TxtUserName.Size = new System.Drawing.Size(302, 34);
+            this.TxtUserName.Size = new System.Drawing.Size(302, 30);
             this.TxtUserName.TabIndex = 4;
             // 
             // TxtPassword
             // 
             this.TxtPassword.Font = new System.Drawing.Font("Tahoma", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtPassword.Location = new System.Drawing.Point(188, 337);
+            this.TxtPassword.Location = new System.Drawing.Point(76, 239);
             this.TxtPassword.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.TxtPassword.Name = "TxtPassword";
-            this.TxtPassword.Size = new System.Drawing.Size(302, 34);
+            this.TxtPassword.Size = new System.Drawing.Size(302, 30);
             this.TxtPassword.TabIndex = 5;
             this.TxtPassword.UseSystemPasswordChar = true;
             // 
@@ -91,10 +91,10 @@
             this.Lblrecoverpassword.BackColor = System.Drawing.Color.Transparent;
             this.Lblrecoverpassword.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lblrecoverpassword.LinkColor = System.Drawing.Color.Red;
-            this.Lblrecoverpassword.Location = new System.Drawing.Point(326, 374);
+            this.Lblrecoverpassword.Location = new System.Drawing.Point(233, 272);
             this.Lblrecoverpassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Lblrecoverpassword.Name = "Lblrecoverpassword";
-            this.Lblrecoverpassword.Size = new System.Drawing.Size(164, 19);
+            this.Lblrecoverpassword.Size = new System.Drawing.Size(145, 17);
             this.Lblrecoverpassword.TabIndex = 8;
             this.Lblrecoverpassword.TabStop = true;
             this.Lblrecoverpassword.Text = "Recuperar Contraseña";
@@ -111,10 +111,10 @@
             this.BtnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnLogin.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnLogin.ForeColor = System.Drawing.Color.White;
-            this.BtnLogin.Location = new System.Drawing.Point(365, 411);
+            this.BtnLogin.Location = new System.Drawing.Point(293, 548);
             this.BtnLogin.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.BtnLogin.Name = "BtnLogin";
-            this.BtnLogin.Size = new System.Drawing.Size(185, 48);
+            this.BtnLogin.Size = new System.Drawing.Size(139, 41);
             this.BtnLogin.TabIndex = 7;
             this.BtnLogin.Text = "Ingresar";
             this.BtnLogin.Textcolor = System.Drawing.Color.White;
@@ -133,10 +133,10 @@
             this.BtnCancel.FlatAppearance.BorderSize = 0;
             this.BtnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancel.ForeColor = System.Drawing.Color.White;
-            this.BtnCancel.Location = new System.Drawing.Point(124, 413);
+            this.BtnCancel.Location = new System.Drawing.Point(21, 551);
             this.BtnCancel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.BtnCancel.Name = "BtnCancel";
-            this.BtnCancel.Size = new System.Drawing.Size(185, 48);
+            this.BtnCancel.Size = new System.Drawing.Size(161, 37);
             this.BtnCancel.TabIndex = 6;
             this.BtnCancel.Text = "Cancelar";
             this.BtnCancel.Textcolor = System.Drawing.Color.White;
@@ -188,12 +188,12 @@
             // 
             // FrmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(637, 915);
+            this.ClientSize = new System.Drawing.Size(478, 601);
             this.Controls.Add(this.Lblrecoverpassword);
             this.Controls.Add(this.BtnLogin);
             this.Controls.Add(this.BtnCancel);

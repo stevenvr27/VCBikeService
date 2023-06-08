@@ -58,68 +58,80 @@
     <Compile Include="Extras\CustomButtons.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Forms\FrmBilling.cs">
+    <Compile Include="Forms\Central.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmBilling.Designer.cs">
-      <DependentUpon>FrmBilling.cs</DependentUpon>
+    <Compile Include="Forms\Central.Designer.cs">
+      <DependentUpon>Central.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmCustomer.cs">
+    <Compile Include="Forms\Factura\FrmBillingSearch.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmCustomer.Designer.cs">
+    <Compile Include="Forms\Factura\FrmBillingSearch.Designer.cs">
+      <DependentUpon>FrmBillingSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Clientes\FrmCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Clientes\FrmCustomer.Designer.cs">
       <DependentUpon>FrmCustomer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmLogin.cs">
+    <Compile Include="Forms\Login\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmLogin.Designer.cs">
+    <Compile Include="Forms\Login\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmPrincipal.cs">
+    <Compile Include="Forms\Login\FrmRecoveryPassword.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmPrincipal.Designer.cs">
-      <DependentUpon>FrmPrincipal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Extras\FrmRecoveryPassword.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Extras\FrmRecoveryPassword.Designer.cs">
+    <Compile Include="Forms\Login\FrmRecoveryPassword.Designer.cs">
       <DependentUpon>FrmRecoveryPassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmProducts.cs">
+    <Compile Include="Forms\Productos\FrmProductsAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmProducts.Designer.cs">
-      <DependentUpon>FrmProducts.cs</DependentUpon>
+    <Compile Include="Forms\Productos\FrmProductsAdd.Designer.cs">
+      <DependentUpon>FrmProductsAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmReports.cs">
+    <Compile Include="Forms\Reportes\FrmReports.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmReports.Designer.cs">
+    <Compile Include="Forms\Reportes\FrmReports.Designer.cs">
       <DependentUpon>FrmReports.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Frmsupplier.cs">
+    <Compile Include="Forms\Proveedores\Frmsupplier.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Frmsupplier.Designer.cs">
+    <Compile Include="Forms\Proveedores\Frmsupplier.Designer.cs">
       <DependentUpon>Frmsupplier.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmUsers.cs">
+    <Compile Include="Forms\Usuario\FrmUsers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmUsers.Designer.cs">
+    <Compile Include="Forms\Usuario\FrmUsers.Designer.cs">
       <DependentUpon>FrmUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="Globals.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\FrmLogin.resx">
+    <EmbeddedResource Include="Forms\Central.resx">
+      <DependentUpon>Central.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Clientes\FrmCustomer.resx">
+      <DependentUpon>FrmCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Login\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmPrincipal.resx">
-      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Productos\FrmProductsAdd.resx">
+      <DependentUpon>FrmProductsAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Proveedores\Frmsupplier.resx">
+      <DependentUpon>Frmsupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Usuario\FrmUsers.resx">
+      <DependentUpon>FrmUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

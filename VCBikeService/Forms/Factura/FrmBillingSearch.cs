@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace VCBikeService.Forms
 {
-    public partial class FrmBilling : Form
+    public partial class FrmBillingSearch : Form
     {
-        public FrmBilling()
+        public FrmBillingSearch()
         {
             InitializeComponent();
         }

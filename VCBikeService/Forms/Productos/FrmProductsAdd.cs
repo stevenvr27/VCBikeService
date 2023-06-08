@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace VCBikeService.Forms
 {
-    public partial class FrmProducts : Form
+    public partial class FrmProductsAdd : Form
     {
-        public FrmProducts()
+        public FrmProductsAdd()
         {
             InitializeComponent();
         }

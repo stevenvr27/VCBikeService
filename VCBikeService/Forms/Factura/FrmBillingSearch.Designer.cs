@@ -1,6 +1,6 @@
 ﻿namespace VCBikeService.Forms
 {
-    partial class Frmsupplier
+    partial class FrmBillingSearch
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Frmsupplier";
+            this.Text = "FrmBilling";
         }
 
         #endregion
