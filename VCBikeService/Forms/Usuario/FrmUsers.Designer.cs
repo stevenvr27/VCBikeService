@@ -118,6 +118,7 @@
             this.DgListUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgListUsers.Size = new System.Drawing.Size(1274, 384);
             this.DgListUsers.TabIndex = 2;
+            this.DgListUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgListUsers_CellClick);
             // 
             // CUserID
             // 

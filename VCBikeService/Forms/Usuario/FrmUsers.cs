@@ -89,5 +89,45 @@ namespace VCBikeService.Forms
         {
 
         }
+
+        private void DgListUsers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //seleccionar un campo en dicha carga de usuarios para dibujar info en los controles graficos 
+            if (DgListUsers.SelectedRows.Count == 1)
+            {
+                // Limpiar el formulario 
+
+                // Seleccionar la fila indice 0 , osea la primera en la lista
+                DataGridViewRow Mifila = DgListUsers.SelectedRows[0];
+
+                //necesito el valor del id para realizar la consulta y traer los datos que le pertenecen 
+                int Idusuario = Convert.ToInt32(Mifila.Cells["CUserID"].Value); 
+                //re instanciar el usuario local 
+                Miusuario = new Logic.Models.User();    
+
+               // ahora le agregamos el alor obtenido por la fila 
+                Miusuario.UserID = Idusuario;
+
+                //Ahora puedo consultar el usuario y id para llenar el resto de atributos 
+
+                Miusuario = Miusuario.SearchCardIDReturnUser();
+
+                if(Miusuario != null && Miusuario.UserID >0)
+                {
+                    // si cargamos correctamente el usuario llenamos los controles 
+
+                    TxtUserID.Text = Convert.ToString(Miusuario.UserID);
+                    TxtUserName.Text = Miusuario.UserName;
+                    TxtCardID.Text = Miusuario.UserCardID;
+                    TxtPhone.Text = Miusuario.PhoneNumber;
+                    TxtAddress.Text = Miusuario.Address;
+
+                    //Combobox
+
+                    CbRol.SelectedValue = Miusuario.MyRol.UserRoleID;
+                }
+
+            }
+        }
     }
 }
