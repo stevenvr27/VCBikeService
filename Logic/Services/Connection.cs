@@ -80,6 +80,7 @@ namespace Logic.Services
                 MyAdaptador.Fill(Retorno);
                 if (CargarEsquema)
                 {
+                    
                     MyAdaptador.FillSchema(Retorno, SchemaType.Source);
                 }
             }

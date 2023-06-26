@@ -17,7 +17,7 @@ namespace Logic.Models
         {
             DataTable R = new DataTable();
             Services.Connection MiCnn = new Services.Connection();
-            R = MiCnn.EjecutarSELECT("SpUserRoleList");
+            R = MiCnn.EjecutarSELECT("SPUserList");
             return R;
         }
 

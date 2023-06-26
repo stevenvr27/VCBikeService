@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
+using Logic.Models;
 
 namespace VCBikeService.Forms
 {
@@ -36,8 +38,21 @@ namespace VCBikeService.Forms
         private void BtnLogin_Click(object sender, EventArgs e)
         {
             Globals.Principal.Show();
-
             this.Hide();
-        }
+            //try
+            //{
+              //  var username = TxtUserName.Text.Trim();
+                //var password = TxtPassword.Text;
+
+                
+                    
+                    }
+            //catch (Exception ex )
+            //{
+              //  MessageBox.Show("Algo salio mal ,vuelvelo a intentar");
+                
+            //}
+             
+       // }
     }
 }

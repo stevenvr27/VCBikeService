@@ -32,8 +32,10 @@ namespace VCBikeService.Forms
             // cargar la lista de usuarios mediante el evento load 
             LoadRoleUsers();
             LoadListUser();
-            
-            
+
+
+
+
         }
 
        //Metodo para cargar la lista de los usuarios
@@ -70,7 +72,7 @@ namespace VCBikeService.Forms
             if (dt != null && dt.Rows.Count>0)
             {
                 CbRol.ValueMember = "ID";
-                CbRol.DisplayMember = "Desc";
+                CbRol.DisplayMember = "Descrip";
                 CbRol.DataSource = dt;
                 CbRol.SelectedIndex = -1;
 

@@ -32,9 +32,9 @@ namespace Logic.Models
             
              Connection Micnn = new Connection();
 
-            Micnn.parameterlist.Add(new SqlParameter("@AVerActive", true));
+            Micnn.parameterlist.Add(new SqlParameter("@VerActivo", true));
 
-            R = Micnn.EjecutarSELECT("SPUserList");
+            R = Micnn.EjecutarSELECT("SPUsersList ");
 
             return R;
         }
