@@ -24,10 +24,7 @@ namespace VCBikeService.Forms
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void BtnCancel_Click(object sender, EventArgs e)
         {
@@ -47,12 +44,6 @@ namespace VCBikeService.Forms
                 
                     
                     }
-            //catch (Exception ex )
-            //{
-              //  MessageBox.Show("Algo salio mal ,vuelvelo a intentar");
-                
-            //}
              
-       // }
     }
 }
