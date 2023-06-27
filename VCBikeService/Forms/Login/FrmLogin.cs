@@ -34,16 +34,73 @@ namespace VCBikeService.Forms
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(TxtUserName.Text.Trim()) &&
+                !string.IsNullOrEmpty(TxtPassword.Text.Trim()))
+            {
+                string user = TxtUserName.Text.Trim();
+                string password = TxtPassword.Text.Trim();
+
+                Globals.MyGlobalUser = Globals.MyGlobalUser.ValidateUser(user, password);
+
+                if (Globals.MyGlobalUser.UserID > 0)
+                {
+                    Globals.Principal.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Usuario o Contraseña Incorrectas...", "Error de validación", MessageBoxButtons.OK);
+
+                    TxtPassword.Focus();
+                    TxtPassword.SelectAll();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Faltan datos requeridos!", "Error de validación", MessageBoxButtons.OK);
+
+            }
+
+
+
+        }
+        private void FrmLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Shift & e.Alt & e.KeyCode == Keys.A)
+            {
+                //si presionamos shift + tab + a
+                BtnIngresoDirecto.Visible = true;
+            }
+        }
+
+        private void BtnIngresoDirecto_Click(object sender, EventArgs e)
+        {
             Globals.Principal.Show();
             this.Hide();
-            //try
-            //{
-              //  var username = TxtUserName.Text.Trim();
-                //var password = TxtPassword.Text;
+        }
 
+        private void BtnVerContrasennia_Click(object sender, EventArgs e)
+        {
+            if ( !string.IsNullOrEmpty(TxtPassword.Text.Trim()))
+            { 
+                TxtPassword.UseSystemPasswordChar = false;
+                return;
                 
-                    
-                    }
-             
+            }
+            else
+            {
+                
+                TxtPassword.UseSystemPasswordChar = true;
+                MessageBox.Show("Debes Escribir una Contraseña!", "Error de validación", MessageBoxButtons.OK);
+            }
+            
+        }
+
+        private void FrmLogin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
+ 

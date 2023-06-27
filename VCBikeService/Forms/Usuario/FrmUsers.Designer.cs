@@ -479,6 +479,7 @@
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "FrmUsers";
             this.Text = "Gestion Usuarios";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmUsers_FormClosed);
             this.Load += new System.EventHandler(this.FrmUsers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgListUsers)).EndInit();
             this.userDetail.ResumeLayout(false);

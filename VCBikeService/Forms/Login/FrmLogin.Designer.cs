@@ -34,6 +34,8 @@
             this.TxtUserName = new System.Windows.Forms.TextBox();
             this.TxtPassword = new System.Windows.Forms.TextBox();
             this.Lblrecoverpassword = new System.Windows.Forms.LinkLabel();
+            this.BtnVerContrasennia = new System.Windows.Forms.Button();
+            this.BtnIngresoDirecto = new System.Windows.Forms.Button();
             this.BtnLogin = new VCBikeService.Extras.CustomButtons();
             this.BtnCancel = new VCBikeService.Extras.CustomButtons();
             this.customButtons2 = new VCBikeService.Extras.CustomButtons();
@@ -98,6 +100,28 @@
             this.Lblrecoverpassword.TabIndex = 8;
             this.Lblrecoverpassword.TabStop = true;
             this.Lblrecoverpassword.Text = "Recuperar Contraseña";
+            // 
+            // BtnVerContrasennia
+            // 
+            this.BtnVerContrasennia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnVerContrasennia.ForeColor = System.Drawing.Color.White;
+            this.BtnVerContrasennia.Location = new System.Drawing.Point(383, 239);
+            this.BtnVerContrasennia.Name = "BtnVerContrasennia";
+            this.BtnVerContrasennia.Size = new System.Drawing.Size(75, 30);
+            this.BtnVerContrasennia.TabIndex = 9;
+            this.BtnVerContrasennia.Text = "Ver";
+            this.BtnVerContrasennia.UseVisualStyleBackColor = true;
+            this.BtnVerContrasennia.Click += new System.EventHandler(this.BtnVerContrasennia_Click);
+            // 
+            // BtnIngresoDirecto
+            // 
+            this.BtnIngresoDirecto.Location = new System.Drawing.Point(54, 331);
+            this.BtnIngresoDirecto.Name = "BtnIngresoDirecto";
+            this.BtnIngresoDirecto.Size = new System.Drawing.Size(160, 38);
+            this.BtnIngresoDirecto.TabIndex = 10;
+            this.BtnIngresoDirecto.Text = "Ingreso Directo";
+            this.BtnIngresoDirecto.UseVisualStyleBackColor = true;
+            this.BtnIngresoDirecto.Click += new System.EventHandler(this.BtnIngresoDirecto_Click);
             // 
             // BtnLogin
             // 
@@ -194,6 +218,8 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(478, 601);
+            this.Controls.Add(this.BtnIngresoDirecto);
+            this.Controls.Add(this.BtnVerContrasennia);
             this.Controls.Add(this.Lblrecoverpassword);
             this.Controls.Add(this.BtnLogin);
             this.Controls.Add(this.BtnCancel);
@@ -210,7 +236,9 @@
             this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmLogin_FormClosed);
             this.Load += new System.EventHandler(this.FrmLogin_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmLogin_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -227,5 +255,7 @@
         private System.Windows.Forms.LinkLabel Lblrecoverpassword;
         private Extras.CustomButtons BtnLogin;
         private Extras.CustomButtons BtnCancel;
+        private System.Windows.Forms.Button BtnVerContrasennia;
+        private System.Windows.Forms.Button BtnIngresoDirecto;
     }
 }

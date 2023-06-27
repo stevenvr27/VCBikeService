@@ -101,6 +101,51 @@ namespace Logic.Models
         }
 
 
+        
+             public User ValidateUser (string pEmail, string pContrasennia)
+        {
+            User R = new User();
+
+            Connection MiCnn = new Connection();
+
+            Crypto crypto = new Crypto();
+            string ContrasenniaEncriptada = crypto.EncriptarEnUnSentido(pContrasennia);
+
+            MiCnn.parameterlist.Add(new SqlParameter("@usuario", pEmail));
+            MiCnn.parameterlist.Add(new SqlParameter("@password", ContrasenniaEncriptada));
+
+            //necesito un datatable para capturar la info del usuario 
+            DataTable dt = new DataTable();
+
+            dt = MiCnn.EjecutarSELECT("SPValidateUser");
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                //esta consulta debería tener solo un registro, 
+                //se crea un objeto de tipo datarow para capturar la info 
+                //contenida en index 0 del dt (datatable)
+                DataRow dr = dt.Rows[0];
+
+                R.UserID = Convert.ToInt32(dr["UserID"]);
+                R.PhoneNumber = Convert.ToString(dr["PhoneNumber"]);
+                R.UserCardID = Convert.ToString(dr["UserCardID"]);
+
+                R.UserName = Convert.ToString(dr["UserName"]);
+                R.Email = Convert.ToString(dr["Email"]);
+                R.Address = Convert.ToString(dr["Address"]);
+
+                R.UserPassword = string.Empty;
+
+                R.MyRol.UserRoleID = Convert.ToInt32(dr["UserRoleID"]);
+                R.MyRol.Description = Convert.ToString(dr["Description"]);
+
+
+            }
+
+            return R;
+
+        }
+
 
     }
 

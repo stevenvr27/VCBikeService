@@ -28,8 +28,9 @@ namespace VCBikeService.Forms
 
         private void FrmUsers_Load(object sender, EventArgs e)
         {
-            MdiParent = (Form)Globals.Principal.Parent;
-            // cargar la lista de usuarios mediante el evento load 
+            FrmUsers frmUsers = Globals.FrmUsers;
+             
+          
             LoadRoleUsers();
             LoadListUser();
 
@@ -128,6 +129,11 @@ namespace VCBikeService.Forms
                 }
 
             }
+        }
+
+        private void FrmUsers_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

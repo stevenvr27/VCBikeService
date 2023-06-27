@@ -10,12 +10,23 @@ namespace VCBikeService
     public static class Globals
     {
         public static Form Principal = new Forms.Central();
-        public static Form ProductosAgregar = new Forms.FrmProductsAdd();
-        public static Form Billing = new Forms.FrmBillingSearch();
-        public static Form Customer = new Forms.FrmCustomer();
-        public static Form Reports = new Forms.FrmReports();
-        public static Form supplier = new Forms.Frmsupplier();
-        public static Form Users = new Forms.FrmUsers();
+
+        public static Forms.Frmsupplier Frmsupplier = new Forms.Frmsupplier();
+        public static Forms.FrmReports FrmReports = new Forms.FrmReports();
+        public static Forms.FrmCustomer FrmCustomer = new Forms.FrmCustomer();
+        public static Forms.FrmBillingSearch FrmBillingSearch = new Forms.FrmBillingSearch();
+        public static Forms.FrmProductsAdd FrmProductsAdd = new Forms.FrmProductsAdd();
+
+        public static Forms.FrmUsers FrmUsers = new Forms.FrmUsers();
+
+        public static Logic.Models.User MyGlobalUser = new Logic.Models.User();
+
+
+
+
+      
+       
+       
         
 
 
