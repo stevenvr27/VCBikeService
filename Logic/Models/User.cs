@@ -26,16 +26,36 @@ namespace Logic.Models
         public UserRole MyRol { get; set; }
 
 
+        public bool Add()
+        {
+            bool R false; 
+
+            Connection connection = new Connection();
+
+            connection.parameterlist.Add(new SqlParameter("@Email",this.Email));
+
+            Crypto crypto = new Crypto();
+            string Passwordencrypted = crypto.EncriptarPassword(this.UserPassword);
+            connection.parameterlist.Add(new SqlParameter("@Password", Passwordencrypted));
+
+            connection.parameterlist.Add(new SqlParameter("Password",this.UserName));
+
+
+        }
 
 
 
-        public DataTable ListActive()
+
+
+        public DataTable ListActive(string psearchfilter)
         {
             DataTable R = new DataTable();
             
              Connection Micnn = new Connection();
 
             Micnn.parameterlist.Add(new SqlParameter("@VerActivo", true));
+
+            Micnn.parameterlist.Add(new SqlParameter("@searchfilter", psearchfilter));
 
             R = Micnn.EjecutarSELECT("SPUsersList ");
 

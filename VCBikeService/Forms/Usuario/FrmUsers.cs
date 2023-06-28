@@ -44,14 +44,21 @@ namespace VCBikeService.Forms
 
         {
             ListUser = new DataTable();
+            //Filtrar lista de busqueda si hay 3 o mas caracteres 
+            string searchfilter = "";
+            if (!string.IsNullOrEmpty(TxtSearch.Text.Trim()) && TxtSearch.Text.Count() >=3){
+
+                searchfilter = TxtSearch.Text.Trim();
+            }
+
 
             if (CheckUser.Checked) {
 
-                ListUser = Miusuario.ListActive();
+                ListUser = Miusuario.ListActive(searchfilter);
             }
             else
             {
-                ListUser = Miusuario.ListInactive();
+                ListUser = Miusuario.ListInactive(searchfilter);
             }
             DgListUsers.DataSource = ListUser;
         } 
