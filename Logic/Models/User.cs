@@ -26,16 +26,43 @@ namespace Logic.Models
         public UserRole MyRol { get; set; }
 
 
+        public User()
+        {
+            MyRol = new UserRole();
+        }
 
 
 
-        public DataTable ListActive()
+        //public bool Add()
+        //{
+        //    bool R false; 
+
+        //    Connection connection = new Connection();
+
+        //    connection.parameterlist.Add(new SqlParameter("@Email",this.Email));
+
+        //    Crypto crypto = new Crypto();
+        //    string Passwordencrypted = crypto.EncriptarPassword(this.UserPassword);
+        //    connection.parameterlist.Add(new SqlParameter("@Password", Passwordencrypted));
+
+        //    connection.parameterlist.Add(new SqlParameter("Password",this.UserName));
+
+
+        //}
+
+
+
+
+
+        public DataTable ListActive( )
         {
             DataTable R = new DataTable();
             
              Connection Micnn = new Connection();
 
             Micnn.parameterlist.Add(new SqlParameter("@VerActivo", true));
+
+            
 
             R = Micnn.EjecutarSELECT("SPUsersList ");
 
@@ -63,7 +90,7 @@ namespace Logic.Models
 
         public User SearchCardIDReturnUser()
         {
-            User R  = new User();
+            User R = new User();
 
             Connection Micnn = new Connection();
 
@@ -73,7 +100,7 @@ namespace Logic.Models
 
             dt = Micnn.EjecutarSELECT("SPUserSearchID");
 
-            if(dt!= null && dt.Rows.Count > 0)
+            if (dt != null && dt.Rows.Count > 0)
             {
                 DataRow dr = dt.Rows[0];
 
@@ -101,8 +128,8 @@ namespace Logic.Models
         }
 
 
-        
-             public User ValidateUser (string pEmail, string pContrasennia)
+
+        public User ValidateUser (string pEmail, string pContrasennia)
         {
             User R = new User();
 

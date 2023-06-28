@@ -39,7 +39,6 @@
             this.CPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userDetail = new System.Windows.Forms.GroupBox();
-            this.txtACtive = new System.Windows.Forms.TextBox();
             this.TxtPhone = new System.Windows.Forms.TextBox();
             this.CbRol = new System.Windows.Forms.ComboBox();
             this.TxtPassword = new System.Windows.Forms.TextBox();
@@ -176,7 +175,6 @@
             // 
             // userDetail
             // 
-            this.userDetail.Controls.Add(this.txtACtive);
             this.userDetail.Controls.Add(this.TxtPhone);
             this.userDetail.Controls.Add(this.CbRol);
             this.userDetail.Controls.Add(this.TxtPassword);
@@ -203,18 +201,9 @@
             this.userDetail.TabStop = false;
             this.userDetail.Text = "Detalle Usuario";
             // 
-            // txtACtive
-            // 
-            this.txtACtive.Location = new System.Drawing.Point(108, 87);
-            this.txtACtive.Name = "txtACtive";
-            this.txtACtive.ReadOnly = true;
-            this.txtACtive.Size = new System.Drawing.Size(482, 30);
-            this.txtACtive.TabIndex = 20;
-            this.txtACtive.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // TxtPhone
             // 
-            this.TxtPhone.Location = new System.Drawing.Point(108, 219);
+            this.TxtPhone.Location = new System.Drawing.Point(116, 191);
             this.TxtPhone.Name = "TxtPhone";
             this.TxtPhone.Size = new System.Drawing.Size(482, 30);
             this.TxtPhone.TabIndex = 19;
@@ -223,14 +212,14 @@
             // 
             this.CbRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CbRol.FormattingEnabled = true;
-            this.CbRol.Location = new System.Drawing.Point(700, 128);
+            this.CbRol.Location = new System.Drawing.Point(700, 96);
             this.CbRol.Name = "CbRol";
             this.CbRol.Size = new System.Drawing.Size(579, 33);
             this.CbRol.TabIndex = 18;
             // 
             // TxtPassword
             // 
-            this.TxtPassword.Location = new System.Drawing.Point(766, 55);
+            this.TxtPassword.Location = new System.Drawing.Point(146, 236);
             this.TxtPassword.Name = "TxtPassword";
             this.TxtPassword.Size = new System.Drawing.Size(513, 30);
             this.TxtPassword.TabIndex = 17;
@@ -239,7 +228,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(639, 53);
+            this.label11.Location = new System.Drawing.Point(8, 236);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(120, 25);
             this.label11.TabIndex = 16;
@@ -248,7 +237,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(639, 132);
+            this.label10.Location = new System.Drawing.Point(639, 96);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(46, 25);
             this.label10.TabIndex = 15;
@@ -256,30 +245,30 @@
             // 
             // TxtAddress
             // 
-            this.TxtAddress.Location = new System.Drawing.Point(745, 174);
+            this.TxtAddress.Location = new System.Drawing.Point(733, 161);
             this.TxtAddress.Multiline = true;
             this.TxtAddress.Name = "TxtAddress";
             this.TxtAddress.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.TxtAddress.Size = new System.Drawing.Size(533, 81);
+            this.TxtAddress.Size = new System.Drawing.Size(533, 100);
             this.TxtAddress.TabIndex = 12;
             // 
             // TxtEmail
             // 
-            this.TxtEmail.Location = new System.Drawing.Point(200, 169);
+            this.TxtEmail.Location = new System.Drawing.Point(200, 136);
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.Size = new System.Drawing.Size(390, 30);
             this.TxtEmail.TabIndex = 11;
             // 
             // TxtCardID
             // 
-            this.TxtCardID.Location = new System.Drawing.Point(108, 129);
+            this.TxtCardID.Location = new System.Drawing.Point(108, 89);
             this.TxtCardID.Name = "TxtCardID";
             this.TxtCardID.Size = new System.Drawing.Size(482, 30);
             this.TxtCardID.TabIndex = 10;
             // 
             // TxtUserName
             // 
-            this.TxtUserName.Location = new System.Drawing.Point(734, 92);
+            this.TxtUserName.Location = new System.Drawing.Point(735, 48);
             this.TxtUserName.Name = "TxtUserName";
             this.TxtUserName.Size = new System.Drawing.Size(544, 30);
             this.TxtUserName.TabIndex = 9;
@@ -299,14 +288,13 @@
             this.label8.Location = new System.Drawing.Point(13, 90);
             this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(79, 25);
+            this.label8.Size = new System.Drawing.Size(0, 31);
             this.label8.TabIndex = 6;
-            this.label8.Text = "Estado:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(639, 174);
+            this.label7.Location = new System.Drawing.Point(627, 161);
             this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(99, 25);
@@ -316,7 +304,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 169);
+            this.label6.Location = new System.Drawing.Point(13, 136);
             this.label6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(179, 25);
@@ -326,7 +314,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 208);
+            this.label5.Location = new System.Drawing.Point(13, 191);
             this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(95, 25);
@@ -336,7 +324,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 129);
+            this.label4.Location = new System.Drawing.Point(13, 90);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(81, 25);
@@ -346,7 +334,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(639, 92);
+            this.label3.Location = new System.Drawing.Point(639, 48);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 25);
@@ -528,6 +516,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CPhoneNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn CDescription;
         private System.Windows.Forms.CheckBox CheckUser;
-        private System.Windows.Forms.TextBox txtACtive;
     }
 }

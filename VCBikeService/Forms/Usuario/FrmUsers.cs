@@ -44,14 +44,21 @@ namespace VCBikeService.Forms
 
         {
             ListUser = new DataTable();
+            //Filtrar lista de busqueda si hay 3 o mas caracteres 
+           // string searchfilter = "";
+           // if (!string.IsNullOrEmpty(TxtSearch.Text.Trim()) && TxtSearch.Text.Count() >=3){
+
+           //     searchfilter = TxtSearch.Text.Trim();
+            //}
+
 
             if (CheckUser.Checked) {
 
-                ListUser = Miusuario.ListActive();
+                ListUser = Miusuario.ListActive( );
             }
             else
             {
-                ListUser = Miusuario.ListInactive();
+                ListUser = Miusuario.ListInactive( );
             }
             DgListUsers.DataSource = ListUser;
         } 
@@ -118,6 +125,8 @@ namespace VCBikeService.Forms
                     // si cargamos correctamente el usuario llenamos los controles 
 
                     TxtUserID.Text = Convert.ToString(Miusuario.UserID);
+                    
+                    TxtEmail.Text = Miusuario.Email;
                     TxtUserName.Text = Miusuario.UserName;
                     TxtCardID.Text = Miusuario.UserCardID;
                     TxtPhone.Text = Miusuario.PhoneNumber;
@@ -126,6 +135,7 @@ namespace VCBikeService.Forms
                     //Combobox
 
                     CbRol.SelectedValue = Miusuario.MyRol.UserRoleID;
+
                 }
 
             }
