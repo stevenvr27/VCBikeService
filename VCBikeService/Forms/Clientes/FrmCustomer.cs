@@ -22,11 +22,6 @@ namespace VCBikeService.Forms
             ListCusto = new DataTable();
         }
 
-        private void FrmCustomer_Load(object sender, EventArgs e)
-        {
-            MdiParent = (Form)Globals.Principal.Parent;
-            LoadCustomerType();
-        }
 
         private void loadlistCustomer()
         {
@@ -50,7 +45,6 @@ namespace VCBikeService.Forms
             }
 
         }
-
 
         private void BtnCancel_Click(object sender, EventArgs e)
         {

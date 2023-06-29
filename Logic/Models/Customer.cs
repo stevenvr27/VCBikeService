@@ -22,9 +22,6 @@ namespace Logic.Models
         public DataTable ListActive()
         {
             DataTable R = new DataTable();
-            Connection MiCnn = new Connection();
-            MiCnn.parameterlist.Add(new SqlParameter("@AverActivos", true));
-            R = MiCnn.EjecutarSELECT("SpCustomerList");
             return R;
         }
 
