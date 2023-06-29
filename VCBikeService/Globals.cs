@@ -12,7 +12,6 @@ namespace VCBikeService
         public static Form Principal = new Forms.Central();
 
         public static Forms.Frmsupplier Frmsupplier = new Forms.Frmsupplier();
-        public static Forms.FrmReports FrmReports = new Forms.FrmReports();
         public static Forms.FrmCustomer FrmCustomer = new Forms.FrmCustomer();
         public static Forms.FrmBillingSearch FrmBillingSearch = new Forms.FrmBillingSearch();
         public static Forms.FrmProductsAdd FrmProductsAdd = new Forms.FrmProductsAdd();
