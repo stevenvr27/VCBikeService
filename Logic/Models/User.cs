@@ -50,11 +50,40 @@ namespace Logic.Models
 
         //}
 
+        public bool Delete()
+        {
+            bool R = false;
+
+            return R;
+
+        }
+        public bool add()
+        {
+            bool R = false;
+
+            return R;
+
+        }
+        public bool ConsultCardID()
+        {
+            bool R = false;
+
+            return R;
+
+        }
+
+         
+    public bool ConsultEmail()
+    {
+        bool R = false;
+
+        return R;
+
+    }
 
 
 
-
-        public DataTable ListActive( )
+    public DataTable ListActive( )
         {
             DataTable R = new DataTable();
             
@@ -69,19 +98,15 @@ namespace Logic.Models
             return R;
         }
 
+
         public DataTable ListInactive()
         {
             DataTable R = new DataTable();
             return R;
         }
 
-        public bool Delete()
-        {
-            bool R = false;
 
-            return R;
-
-        }
+       
         public bool SearchID()
         {
             bool R = false;

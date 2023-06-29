@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace VCBikeService.Forms
+namespace VCBikeService.Forms.Factura
 {
-    public partial class FrmReports : Form
+    public partial class FrmNewBilling : Form
     {
-        public FrmReports()
+        public FrmNewBilling()
         {
             InitializeComponent();
         }

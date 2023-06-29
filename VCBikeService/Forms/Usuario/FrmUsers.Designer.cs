@@ -288,7 +288,7 @@
             this.label8.Location = new System.Drawing.Point(13, 90);
             this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(0, 31);
+            this.label8.Size = new System.Drawing.Size(0, 25);
             this.label8.TabIndex = 6;
             // 
             // label7
@@ -384,6 +384,7 @@
             this.BtnAdd.TabIndex = 7;
             this.BtnAdd.Text = "Agregar";
             this.BtnAdd.UseVisualStyleBackColor = false;
+            this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // BtnEdit
             // 
