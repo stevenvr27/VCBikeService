@@ -104,48 +104,7 @@ namespace VCBikeService.Forms
 
         }
 
-        private void DgListUsers_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //seleccionar un campo en dicha carga de usuarios para dibujar info en los controles graficos 
-            if (DgListUsers.SelectedRows.Count == 1)
-            {
-                // Limpiar el formulario 
-
-                // Seleccionar la fila indice 0 , osea la primera en la lista
-                DataGridViewRow Mifila = DgListUsers.SelectedRows[0];
-
-                //necesito el valor del id para realizar la consulta y traer los datos que le pertenecen 
-                int Idusuario = Convert.ToInt32(Mifila.Cells["CUserID"].Value); 
-                //re instanciar el usuario local 
-                MyUser = new Logic.Models.User();    
-
-               // ahora le agregamos el alor obtenido por la fila 
-                MyUser.UserID = Idusuario;
-
-                //Ahora puedo consultar el usuario y id para llenar el resto de atributos 
-
-                MyUser = MyUser.SearchCardIDReturnUser();
-
-                if(MyUser != null && MyUser.UserID >0)
-                {
-                    // si cargamos correctamente el usuario llenamos los controles 
-
-                    TxtUserID.Text = Convert.ToString(MyUser.UserID);
-                    
-                    TxtEmail.Text = MyUser.Email;
-                    TxtUserName.Text = MyUser.UserName;
-                    TxtCardID.Text = MyUser.UserCardID;
-                    TxtPhone.Text = MyUser.PhoneNumber;
-                    TxtAddress.Text = MyUser.Address;
-                        
-                    //Combobox
-
-                    CbRol.SelectedValue = MyUser.MyRol.UserRoleID;
-
-                }
-
-            }
-        }
+        
 
         private void FrmUsers_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -164,80 +123,247 @@ namespace VCBikeService.Forms
             CbRol.SelectedIndex = -1;
         }
 
-        private void BtnAdd_Click(object sender, EventArgs e)
+        private bool ValidateInsertDates(bool SkipPassword = false )
         {
-            bool CardIDok;
-            bool EmailOK;
+            //Validar datos ingresados}
+            bool R = false;
 
-
-
-          MyUser = new Logic.Models.User();
-
-           MyUser.UserName = TxtUserName.Text.Trim();
-            MyUser.UserCardID = TxtCardID.Text.Trim();
-            MyUser.PhoneNumber = TxtPhone.Text.Trim();
-            MyUser.Email = TxtEmail.Text.Trim();
-            MyUser.UserPassword= TxtPassword.Text.Trim();
-
-            MyUser.MyRol.UserRoleID = Convert.ToInt32(CbRol.SelectedValue);
-            MyUser.Address = TxtAddress.Text.Trim();
-
-            CardIDok = MyUser.ConsultCardID();
-            EmailOK = MyUser.ConsultEmail();
-            if (CardIDok == false && EmailOK == false)
+            if (!string.IsNullOrEmpty(TxtUserName.Text.Trim()) && !string.IsNullOrEmpty(TxtCardID.Text.Trim()) &&
+               !string.IsNullOrEmpty(TxtPhone.Text.Trim()) && !string.IsNullOrEmpty(TxtEmail.Text.Trim()) 
+                     && CbRol.SelectedIndex > -1)
             {
-                //se puede agregar el usuario ya que no existe un usuario con la cedula y correo
-                //digitados. 
 
-                //se solicita al usuario confirmación de si queire agregar o no al usuario 
-
-                string msg = string.Format("¿Está seguro que desea agregar al usuario {0}?", MyUser.UserName);
-
-                DialogResult respuesta = MessageBox.Show(msg, "???", MessageBoxButtons.YesNo);
-
-                if (respuesta == DialogResult.Yes)
-                {
-
-                    bool ok = MyUser.add();
-
-                    if (ok)
-                    {
-                        MessageBox.Show("Usuario guardado correctamente!", ":)", MessageBoxButtons.OK);
-
-                        CleanForm();
-
-                        LoadListUser();
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("El Usuario no se pudo guardar!", ":/", MessageBoxButtons.OK);
-                    }
-
-
-
-                }
-
+                if (SkipPassword)
+             {
+                R = true;
 
             }
             else
             {
-                //indicar al usuari si falla alguna consulta
-
-                if (CardIDok)
+                if (!string.IsNullOrEmpty(TxtPassword.Text.Trim()))
                 {
-                    MessageBox.Show("Ya existe un usuario con la cédula digitada", "Error de Validación", MessageBoxButtons.OK);
-                    return;
+                    R = true;
                 }
-
-                if (EmailOK)
+                else
                 {
-                    MessageBox.Show("Ya existe un usuario con el correo digitado", "Error de Validación", MessageBoxButtons.OK);
-                    return;
+                    MessageBox.Show("Debe digitar una contraseña para el usuario", "Error de validación", MessageBoxButtons.OK);
+                    TxtPassword.Focus();
+                    return false;
+                }
+            }
+        }
+        else
+            {
+
+                //Name
+                if (string.IsNullOrEmpty(TxtUserName.Text.Trim()))
+                {
+                    MessageBox.Show("Debes digitar un nombre para el usuario", "Error de Validacion ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    TxtUserName.Focus();
+                    return false;
+                }
+                //CardID
+                if (string.IsNullOrEmpty(TxtCardID.Text.Trim()))
+                {
+                    MessageBox.Show("Debes digitar una Cedula  para el usuario", "Error de Validacion ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    TxtCardID.Focus();
+                    return false;
+                }
+                //Phone
+                if (string.IsNullOrEmpty(TxtPhone.Text.Trim()))
+                {
+                    MessageBox.Show("Debes digitar un numero de telefono  para el usuario", "Error de Validacion ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    TxtPhone.Focus();
+                    return false;
+                }
+                //Email
+                if (string.IsNullOrEmpty(TxtAddress.Text.Trim()))
+                {
+                    MessageBox.Show("Debes digitar un Correo para el usuario", "Error de Validacion ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    TxtEmail.Focus();
+                    return false;
+                }
+                //password
+                if (string.IsNullOrEmpty(TxtPassword.Text.Trim()))
+                {
+                    MessageBox.Show("Debes digitar una contraseña para el usuario", "Error de Validacion ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    TxtPassword.Focus();
+                    return false;
+                }
+                //Email
+                if (CbRol.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Debes seleccion un rol para el usuario", "Error de Validacion ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    TxtEmail.Focus();
+                    return false;
+                }
+            }
+
+            
+
+
+            return R;
+        }
+
+
+        private void BtnAdd_Click(object sender, EventArgs e)
+        {
+            if (ValidateInsertDates())
+            {
+
+
+
+                bool CardIDok;
+                bool EmailOK;
+
+
+
+                MyUser = new Logic.Models.User();
+
+                MyUser.UserName = TxtUserName.Text.Trim();
+                MyUser.UserCardID = TxtCardID.Text.Trim();
+                MyUser.PhoneNumber = TxtPhone.Text.Trim();
+                MyUser.Email = TxtEmail.Text.Trim();
+                MyUser.UserPassword = TxtPassword.Text.Trim();
+
+
+                MyUser.MyRol.UserRoleID = Convert.ToInt32(CbRol.SelectedValue);
+                MyUser.Address = TxtAddress.Text.Trim();
+
+                CardIDok = MyUser.ConsultCardID();
+                EmailOK = MyUser.ConsultEmail();
+                if (CardIDok == false && EmailOK == false)
+                {
+                    //se puede agregar el usuario ya que no existe un usuario con la cedula y correo
+                    //digitados. 
+
+                    //se solicita al usuario confirmación de si queire agregar o no al usuario 
+
+                    string msg = string.Format("¿Está seguro que desea agregar al usuario {0}?", MyUser.UserName);
+
+                    DialogResult respuesta = MessageBox.Show(msg, "???", MessageBoxButtons.YesNo);
+
+                    if (respuesta == DialogResult.Yes)
+                    {
+
+                        bool ok = MyUser.AddUser();
+
+                        if (ok)
+                        {
+                            MessageBox.Show("Usuario guardado correctamente!", ":)", MessageBoxButtons.OK);
+
+                            CleanForm();
+
+                            LoadListUser();
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("El Usuario no se pudo guardar!", ":/", MessageBoxButtons.OK);
+                        }
+
+
+
+                    }
+
+
+                }
+                else
+                {
+                    //indicar al usuari si falla alguna consulta
+
+                    if (CardIDok)
+                    {
+                        MessageBox.Show("Ya existe un usuario con la cédula digitada", "Error de Validación", MessageBoxButtons.OK);
+                        return;
+                    }
+
+                    if (EmailOK)
+                    {
+                        MessageBox.Show("Ya existe un usuario con el correo digitado", "Error de Validación", MessageBoxButtons.OK);
+                        return;
+                    }
+
+                }
+            }
+
+        }
+
+        private void DgListUsers_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            //seleccionar un campo en dicha carga de usuarios para dibujar info en los controles graficos 
+            if (DgListUsers.SelectedRows.Count == 1)
+            {
+                // Limpiar el formulario 
+
+                // Seleccionar la fila indice 0 , osea la primera en la lista
+                DataGridViewRow Mifila = DgListUsers.SelectedRows[0];
+
+                //necesito el valor del id para realizar la consulta y traer los datos que le pertenecen 
+                int Idusuario = Convert.ToInt32(Mifila.Cells["CUserID"].Value);
+                //re instanciar el usuario local 
+                MyUser = new Logic.Models.User();
+
+                // ahora le agregamos el alor obtenido por la fila 
+                MyUser.UserID = Idusuario;
+
+                //Ahora puedo consultar el usuario y id para llenar el resto de atributos 
+
+                MyUser = MyUser.SearchCardIDReturnUser();
+
+                if (MyUser != null && MyUser.UserID > 0)
+                {
+                    // si cargamos correctamente el usuario llenamos los controles 
+
+                    TxtUserID.Text = Convert.ToString(MyUser.UserID);
+
+                    TxtEmail.Text = MyUser.Email;
+                    TxtUserName.Text = MyUser.UserName;
+                    TxtCardID.Text = MyUser.UserCardID;
+                    TxtPhone.Text = Convert.ToString(MyUser.PhoneNumber);
+
+                    TxtAddress.Text = MyUser.Address;
+
+                    //Combobox
+
+                    CbRol.SelectedValue = MyUser.MyRol.UserRoleID;
+
+                }
+            }
+
+        }
+
+
+        private void BtnEdit_Click(object sender, EventArgs e)
+        {
+            if (ValidateInsertDates(true))
+            {
+                MyUser.UserName= TxtUserName.Text.Trim();
+                MyUser.UserCardID = TxtCardID.Text.Trim();
+                MyUser.PhoneNumber = TxtPhone.Text.Trim();
+                MyUser.Email = TxtAddress.Text.Trim();
+                MyUser.Address = TxtAddress.Text.Trim();
+                MyUser.UserPassword = TxtPassword.Text.Trim();
+                MyUser.MyRol.UserRoleID = Convert.ToInt32(CbRol.SelectedValue);
+                if (MyUser.ConsultCardID())
+                {
+                    DialogResult Answer = MessageBox.Show("¿Está seguro de modificar el usuario?", "???",
+                                                             MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (Answer == DialogResult.Yes)
+                    {
+
+                        if (MyUser.Update())
+                        {
+                            MessageBox.Show("El Usuario ha sido modificado correctamente", ":)", MessageBoxButtons.OK);
+
+                            CleanForm();
+                            LoadListUser();
+                        }
+                    }
                 }
 
             }
-
         }
     }
 }

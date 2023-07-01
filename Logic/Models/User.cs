@@ -9,13 +9,13 @@ using System.Data.SqlClient;
 
 namespace Logic.Models
 {
-    public  class User
+    public class User
     {
         public int UserID { get; set; }
         public string UserName { get; set; }
         public string UserPassword { get; set; }
         public string Email { get; set; }
-        
+
         public string UserCardID { get; set; }
 
         public string PhoneNumber { get; set; }
@@ -33,22 +33,55 @@ namespace Logic.Models
 
 
 
-        //public bool Add()
-        //{
-        //    bool R false; 
+        public bool AddUser()
+        {
+            bool R = false;
 
-        //    Connection connection = new Connection();
+            Connection connection = new Connection();
 
-        //    connection.parameterlist.Add(new SqlParameter("@Email",this.Email));
+            //connection.parameterlist.Add(new SqlParameter("@Email", this.Email));
 
-        //    Crypto crypto = new Crypto();
-        //    string Passwordencrypted = crypto.EncriptarPassword(this.UserPassword);
-        //    connection.parameterlist.Add(new SqlParameter("@Password", Passwordencrypted));
+            //Crypto crypto = new Crypto();
+            //string Passwordencrypted = crypto.EncriptarPassword(this.UserPassword);
+           // connection.parameterlist.Add(new SqlParameter("@Password", Passwordencrypted));
 
-        //    connection.parameterlist.Add(new SqlParameter("Password",this.UserName));
+            connection.parameterlist.Add(new SqlParameter("@UserName", this.UserName));
+            connection.parameterlist.Add(new SqlParameter("@UserCardID", this.UserCardID));
+            connection.parameterlist.Add(new SqlParameter("@Email", this.Email));
+            connection.parameterlist.Add(new SqlParameter("@PhoneNumber", this.PhoneNumber));
+            connection.parameterlist.Add(new SqlParameter("@Address", this.Address));
+            connection.parameterlist.Add(new SqlParameter("@UserPassword", this.UserPassword));
+            connection.parameterlist.Add(new SqlParameter("@UserRoleID", this.MyRol.UserRoleID));
 
+            int result = connection.EjecutarInsertUpdateDelete("SPUserAdd");
 
-        //}
+            if (result > 0)
+            {
+                R = true;
+            }
+            return R;
+
+        }
+        public bool Update()
+        {
+            bool R = false;
+            Connection connection = new Connection();
+            connection.parameterlist.Add(new SqlParameter("@UserName", this.UserName));
+            connection.parameterlist.Add(new SqlParameter("@UserCardID", this.UserCardID));
+            connection.parameterlist.Add(new SqlParameter("@Email", this.Email));
+            connection.parameterlist.Add(new SqlParameter("@PhoneNumber", this.PhoneNumber));
+            connection.parameterlist.Add(new SqlParameter("@Address", this.Address));
+            connection.parameterlist.Add(new SqlParameter("@UserPassword", this.UserPassword));
+            connection.parameterlist.Add(new SqlParameter("@UserRoleID", this.MyRol.UserRoleID));
+
+            int result = connection.EjecutarInsertUpdateDelete("SPUserUpdate");
+
+            if (result > 0)
+            {
+                R = true;
+            }
+            return R;
+        }
 
         public bool Delete()
         {
@@ -57,43 +90,67 @@ namespace Logic.Models
             return R;
 
         }
-        public bool add()
-        {
-            bool R = false;
 
-            return R;
 
-        }
         public bool ConsultCardID()
         {
             bool R = false;
+            Connection MiCnn = new Connection();
 
-            return R;
+            //agregamos el parametro de cedula 
+            MiCnn.parameterlist.Add(new SqlParameter("@CardID ", this.UserCardID));
+
+            DataTable consulta = new DataTable();
+            //paso 1.3.3 y 1.3.4
+            consulta = MiCnn.EjecutarSELECT("SPUserSearchForID");
+
+            //paso 1.3.5
+            if (consulta != null && consulta.Rows.Count > 0)
+            {
+                R = true;
+            }
+
+            return R; ;
 
         }
 
-         
-    public bool ConsultEmail()
-    {
-        bool R = false;
 
-        return R;
+        public bool ConsultEmail()
+        {
+            bool R = false;
+            Connection MiCnn = new Connection();
 
-    }
+            //agregamos el parametro de correo 
+            MiCnn.parameterlist.Add(new SqlParameter("@Email", this.Email));
+
+            DataTable consulta = new DataTable();
+            //paso 1.4.3 y 1.4.4
+            consulta = MiCnn.EjecutarSELECT("SPUserSearchForEmail");
+
+            //paso 1.4.5
+            if (consulta != null && consulta.Rows.Count > 0)
+            {
+                R = true;
+            }
+
+            return R;
+
+
+        }
 
 
 
-    public DataTable ListActive( )
+        public DataTable ListActive()
         {
             DataTable R = new DataTable();
-            
-             Connection Micnn = new Connection();
+
+            Connection Micnn = new Connection();
 
             Micnn.parameterlist.Add(new SqlParameter("@VerActivo", true));
 
-            
 
-            R = Micnn.EjecutarSELECT("SPUsersList ");
+
+            R = Micnn.EjecutarSELECT("SPUserListActive");
 
             return R;
         }
@@ -102,11 +159,20 @@ namespace Logic.Models
         public DataTable ListInactive()
         {
             DataTable R = new DataTable();
+
+            Connection Micnn = new Connection();
+
+            Micnn.parameterlist.Add(new SqlParameter("@VerActivo", false));
+
+
+
+            R = Micnn.EjecutarSELECT("SPUserListActive");
+
             return R;
         }
 
 
-       
+
         public bool SearchID()
         {
             bool R = false;
@@ -154,7 +220,7 @@ namespace Logic.Models
 
 
 
-        public User ValidateUser (string pEmail, string pContrasennia)
+        public User ValidateUser(string pEmail, string pContrasennia)
         {
             User R = new User();
 
@@ -200,7 +266,8 @@ namespace Logic.Models
 
 
     }
+}
 
     
 
-}
+

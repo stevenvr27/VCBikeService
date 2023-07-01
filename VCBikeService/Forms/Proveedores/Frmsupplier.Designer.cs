@@ -29,6 +29,13 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.DgSupplier = new System.Windows.Forms.DataGridView();
+            this.CUserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CUserCardID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userDetail = new System.Windows.Forms.GroupBox();
             this.TxtSupplierActive = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -55,12 +62,12 @@
             this.BtnDelete = new System.Windows.Forms.Button();
             this.BtnEdit = new System.Windows.Forms.Button();
             this.BtnAdd = new System.Windows.Forms.Button();
-            this.DGSupplier = new System.Windows.Forms.DataGridView();
+            this.checkBSupplier = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgSupplier)).BeginInit();
             this.userDetail.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DGSupplier)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -68,6 +75,7 @@
             this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.DgSupplier, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.userDetail, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 3);
@@ -80,6 +88,87 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1318, 765);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // DgSupplier
+            // 
+            this.DgSupplier.AllowUserToAddRows = false;
+            this.DgSupplier.AllowUserToDeleteRows = false;
+            this.DgSupplier.AllowUserToOrderColumns = true;
+            this.DgSupplier.BackgroundColor = System.Drawing.Color.Moccasin;
+            this.DgSupplier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgSupplier.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CUserID,
+            this.CUserName,
+            this.CUserCardID,
+            this.CEmail,
+            this.CPhoneNumber,
+            this.CDescription});
+            this.DgSupplier.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DgSupplier.Location = new System.Drawing.Point(5, 75);
+            this.DgSupplier.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.DgSupplier.MultiSelect = false;
+            this.DgSupplier.Name = "DgSupplier";
+            this.DgSupplier.ReadOnly = true;
+            this.DgSupplier.RowHeadersVisible = false;
+            this.DgSupplier.RowHeadersWidth = 62;
+            this.DgSupplier.RowTemplate.Height = 28;
+            this.DgSupplier.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DgSupplier.Size = new System.Drawing.Size(1308, 333);
+            this.DgSupplier.TabIndex = 5;
+            // 
+            // CUserID
+            // 
+            this.CUserID.DataPropertyName = "UserID";
+            this.CUserID.HeaderText = "Cod.Usuario";
+            this.CUserID.MinimumWidth = 6;
+            this.CUserID.Name = "CUserID";
+            this.CUserID.ReadOnly = true;
+            this.CUserID.Width = 200;
+            // 
+            // CUserName
+            // 
+            this.CUserName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CUserName.DataPropertyName = "UserName";
+            this.CUserName.HeaderText = "Nombre";
+            this.CUserName.MinimumWidth = 6;
+            this.CUserName.Name = "CUserName";
+            this.CUserName.ReadOnly = true;
+            // 
+            // CUserCardID
+            // 
+            this.CUserCardID.DataPropertyName = "UserCardID";
+            this.CUserCardID.HeaderText = "Cedula";
+            this.CUserCardID.MinimumWidth = 6;
+            this.CUserCardID.Name = "CUserCardID";
+            this.CUserCardID.ReadOnly = true;
+            this.CUserCardID.Width = 200;
+            // 
+            // CEmail
+            // 
+            this.CEmail.DataPropertyName = "Email";
+            this.CEmail.HeaderText = "Correo";
+            this.CEmail.MinimumWidth = 6;
+            this.CEmail.Name = "CEmail";
+            this.CEmail.ReadOnly = true;
+            this.CEmail.Width = 210;
+            // 
+            // CPhoneNumber
+            // 
+            this.CPhoneNumber.DataPropertyName = "PhoneNumber";
+            this.CPhoneNumber.HeaderText = "Celular";
+            this.CPhoneNumber.MinimumWidth = 6;
+            this.CPhoneNumber.Name = "CPhoneNumber";
+            this.CPhoneNumber.ReadOnly = true;
+            this.CPhoneNumber.Width = 150;
+            // 
+            // CDescription
+            // 
+            this.CDescription.DataPropertyName = "Description";
+            this.CDescription.HeaderText = "Rol";
+            this.CDescription.MinimumWidth = 6;
+            this.CDescription.Name = "CDescription";
+            this.CDescription.ReadOnly = true;
+            this.CDescription.Width = 130;
             // 
             // userDetail
             // 
@@ -250,6 +339,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.checkBSupplier);
             this.panel1.Controls.Add(this.TxtSearchSupplier);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -303,6 +393,7 @@
             this.BtnCancel.TabIndex = 12;
             this.BtnCancel.Text = "Cancel";
             this.BtnCancel.UseVisualStyleBackColor = false;
+            this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
             // BtnClean
             // 
@@ -315,6 +406,7 @@
             this.BtnClean.TabIndex = 11;
             this.BtnClean.Text = "Limpiar";
             this.BtnClean.UseVisualStyleBackColor = false;
+            this.BtnClean.Click += new System.EventHandler(this.BtnClean_Click);
             // 
             // BtnDelete
             // 
@@ -352,37 +444,34 @@
             this.BtnAdd.Text = "Agregar";
             this.BtnAdd.UseVisualStyleBackColor = false;
             // 
-            // DGSupplier
+            // checkBSupplier
             // 
-            this.DGSupplier.AllowUserToAddRows = false;
-            this.DGSupplier.AllowUserToDeleteRows = false;
-            this.DGSupplier.AllowUserToOrderColumns = true;
-            this.DGSupplier.BackgroundColor = System.Drawing.Color.Moccasin;
-            this.DGSupplier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGSupplier.GridColor = System.Drawing.Color.Bisque;
-            this.DGSupplier.Location = new System.Drawing.Point(3, 74);
-            this.DGSupplier.Name = "DGSupplier";
-            this.DGSupplier.ReadOnly = true;
-            this.DGSupplier.RowHeadersWidth = 51;
-            this.DGSupplier.RowTemplate.Height = 24;
-            this.DGSupplier.Size = new System.Drawing.Size(1281, 335);
-            this.DGSupplier.TabIndex = 2;
+            this.checkBSupplier.AutoSize = true;
+            this.checkBSupplier.Checked = true;
+            this.checkBSupplier.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBSupplier.Location = new System.Drawing.Point(1035, 20);
+            this.checkBSupplier.Name = "checkBSupplier";
+            this.checkBSupplier.Size = new System.Drawing.Size(66, 20);
+            this.checkBSupplier.TabIndex = 3;
+            this.checkBSupplier.Text = "Activo";
+            this.checkBSupplier.UseVisualStyleBackColor = true;
             // 
             // Frmsupplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1303, 759);
+            this.ClientSize = new System.Drawing.Size(1295, 778);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Frmsupplier";
             this.Text = "Gestion Proveedor";
+            this.Load += new System.EventHandler(this.Frmsupplier_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DgSupplier)).EndInit();
             this.userDetail.ResumeLayout(false);
             this.userDetail.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DGSupplier)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -392,7 +481,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView DGSupplier;
         private System.Windows.Forms.GroupBox userDetail;
         private System.Windows.Forms.TextBox TxtSupplierPhone;
         private System.Windows.Forms.ComboBox CbSupplierType;
@@ -417,5 +505,13 @@
         private System.Windows.Forms.TextBox TxtSearchSupplier;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox TxtSupplierActive;
+        private System.Windows.Forms.DataGridView DgSupplier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CUserID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CUserName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CUserCardID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CEmail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CPhoneNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CDescription;
+        private System.Windows.Forms.CheckBox checkBSupplier;
     }
 }
