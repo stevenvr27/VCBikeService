@@ -71,7 +71,6 @@
             this.tableLayoutPanel1.Controls.Add(this.userDetail, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.DGSupplier, 0, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(-2, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
