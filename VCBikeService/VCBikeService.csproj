@@ -64,17 +64,17 @@
     <Compile Include="Forms\Central.Designer.cs">
       <DependentUpon>Central.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Clientes\FrmClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Clientes\FrmClientes.Designer.cs">
+      <DependentUpon>FrmClientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Factura\FrmBillingSearch.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Factura\FrmBillingSearch.Designer.cs">
       <DependentUpon>FrmBillingSearch.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Clientes\FrmCustomer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Clientes\FrmCustomer.Designer.cs">
-      <DependentUpon>FrmCustomer.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Factura\FrmEditBilling.cs">
       <SubType>Form</SubType>
@@ -130,6 +130,12 @@
     <Compile Include="Forms\Proveedores\Frmsupplier.Designer.cs">
       <DependentUpon>Frmsupplier.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Reportes\FrmSearchReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reportes\FrmSearchReport.Designer.cs">
+      <DependentUpon>FrmSearchReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Reportes\FrmWeek.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,8 +154,8 @@
     <EmbeddedResource Include="Forms\Central.resx">
       <DependentUpon>Central.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Clientes\FrmCustomer.resx">
-      <DependentUpon>FrmCustomer.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Clientes\FrmClientes.resx">
+      <DependentUpon>FrmClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Login\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>

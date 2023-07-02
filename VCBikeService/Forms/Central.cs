@@ -61,14 +61,7 @@ namespace VCBikeService.Forms
             Application.Exit();
         }
 
-        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!Globals.FrmCustomer.Visible)
-            {
-                Globals.FrmCustomer = new FrmCustomer();
-                Globals.FrmCustomer.Show();
-            }
-        }
+       
 
        
 
@@ -154,5 +147,66 @@ namespace VCBikeService.Forms
                 Globals.FrmEditBilling.Show();
             }
         }
+
+        
+
+        private void Central_Load(object sender, EventArgs e)
+        {
+            timer1.Enabled = true;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Hora.Text = DateTime.Now.ToString("hh:mm:ss");
+            Fecha.Text = DateTime.Now.ToLongDateString();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+             
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (!Globals.FrmNewBilling.Visible)
+            {
+                Globals.FrmNewBilling = new Factura.FrmNewBilling();
+                Globals.FrmNewBilling.Show();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (!Globals.FrmBillingSearch.Visible)
+            {
+                Globals.FrmBillingSearch = new FrmBillingSearch();
+                Globals.FrmBillingSearch.Show();
+            }
+        }
+
+        private void buscarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (!Globals.FrmSearchReport.Visible)
+            {
+                Globals.FrmSearchReport = new FrmSearchReport();
+                Globals.FrmSearchReport.Show();
+            }
+        }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+                if (!Globals.frmClientes.Visible)
+                {
+                    Globals.frmClientes = new Clientes.FrmClientes();
+                    Globals.frmClientes.Show();
+                }
+            }
+        }
     }
-}
+

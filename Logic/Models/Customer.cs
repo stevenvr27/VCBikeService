@@ -29,24 +29,34 @@ namespace Logic.Models
 
        
 
-        public DataTable ListCustomerActive()
+        public DataTable ListCustomerActive(string pFiltroBusqueda)
         {
             DataTable R = new DataTable();
 
             Connection Micnn = new Connection();
 
-            Micnn.parameterlist.Add(new SqlParameter("@VerActivo", true));
+            Micnn.parameterlist.Add(new SqlParameter("@VerActivo ", true));
+            Micnn.parameterlist.Add(new SqlParameter("@FiltroBusqueda", pFiltroBusqueda));
 
 
 
-            R = Micnn.EjecutarSELECT("SpCustomerList");
+            R = Micnn.EjecutarSELECT("SpCustomerListActive");
 
             return R;
         }
 
-        public DataTable ListCustomerInactive()
+        public DataTable ListCustomerInactive(string pFiltroBusqueda)
         {
             DataTable R = new DataTable();
+
+            Connection Micnn = new Connection();
+
+            Micnn.parameterlist.Add(new SqlParameter("@VerActivo", false));
+            Micnn.parameterlist.Add(new SqlParameter("@FiltroBusqueda", pFiltroBusqueda));
+
+
+            R = Micnn.EjecutarSELECT("SpCustomerListActive");
+
             return R;
         }
 

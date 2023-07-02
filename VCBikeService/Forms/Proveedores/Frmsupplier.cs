@@ -20,7 +20,7 @@ namespace VCBikeService.Forms
             InitializeComponent();
 
             //LoadListSupplier();
-            LoadSupplierListType();
+           // LoadSupplierListType();
 
             MySupplier = new Logic.Models.Supplier();
             listSupplier = new DataTable();
@@ -48,46 +48,46 @@ namespace VCBikeService.Forms
         //    }
         //    DgSupplier.DataSource = listSupplier;
         //}
-        private void LoadSupplierListType()
-        {
-            Logic.Models.SupplierType Type = new Logic.Models.SupplierType();
+    //    private void LoadSupplierListType()
+    //    {
+    //        Logic.Models.SupplierType Type = new Logic.Models.SupplierType();
 
-            DataTable dt = new DataTable();
-            dt = Type.list();
+    //        DataTable dt = new DataTable();
+    //        dt = Type.list();
 
-            if (dt != null && dt.Rows.Count > 0)
-            {
-                CbSupplierType.ValueMember = "ID";
-                CbSupplierType.DisplayMember = "Descrip";
-                CbSupplierType.DataSource = dt;
-                CbSupplierType.SelectedIndex = -1;
+    //        if (dt != null && dt.Rows.Count > 0)
+    //        {
+    //            CbSupplierType.ValueMember = "ID";
+    //            CbSupplierType.DisplayMember = "Descrip";
+    //            CbSupplierType.DataSource = dt;
+    //            CbSupplierType.SelectedIndex = -1;
 
-            }
-        }
+    //        }
+    //    }
 
-        private void BtnCancel_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-        }
+    //    private void BtnCancel_Click(object sender, EventArgs e)
+    //    {
+    //        this.Hide();
+    //    }
 
 
-        private void CleanForm()
-        {
-            TxtIDSupplier.Clear();
-            TxtSupplierAddress.Clear();
-            TxtSupplierName.Clear();
-            TxtSupplierPhone.Clear();
-            TxtSupplierEmail.Clear();
-            TxtSupplierCardID.Clear();
-            TxtSupplierActive.Clear();
+    //    private void CleanForm()
+    //    {
+    //        TxtIDSupplier.Clear();
+    //        TxtSupplierAddress.Clear();
+    //        TxtSupplierName.Clear();
+    //        TxtSupplierPhone.Clear();
+    //        TxtSupplierEmail.Clear();
+    //        TxtSupplierCardID.Clear();
+    //        TxtSupplierActive.Clear();
 
-            CbSupplierType.SelectedIndex = -1;
+    //        CbSupplierType.SelectedIndex = -1;
 
-        }
-        private void BtnClean_Click(object sender, EventArgs e)
-        {
-            CleanForm();
-            DgSupplier.ClearSelection();
-        }
+    //    }
+    //    private void BtnClean_Click(object sender, EventArgs e)
+    //    {
+    //        CleanForm();
+    //        DgSupplier.ClearSelection();
+    //    }
     }
 }

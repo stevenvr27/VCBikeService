@@ -73,6 +73,7 @@ namespace Logic.Models
             connection.parameterlist.Add(new SqlParameter("@Address", this.Address));
             connection.parameterlist.Add(new SqlParameter("@UserPassword", this.UserPassword));
             connection.parameterlist.Add(new SqlParameter("@UserRoleID", this.MyRol.UserRoleID));
+            connection.parameterlist.Add(new SqlParameter("@UserID", this.UserID));
 
             int result = connection.EjecutarInsertUpdateDelete("SPUserUpdate");
 
@@ -86,6 +87,14 @@ namespace Logic.Models
         public bool Delete()
         {
             bool R = false;
+            Connection connection = new Connection();
+            connection.parameterlist.Add(new SqlParameter("@ID", this.UserID));
+            int r = connection.EjecutarInsertUpdateDelete("SPUSerDesactive");
+
+            if (r > 0)
+            {
+                R = true;
+            }
 
             return R;
 
@@ -140,13 +149,14 @@ namespace Logic.Models
 
 
 
-        public DataTable ListActive()
+        public DataTable ListActive(string pFiltroBusqueda)
         {
             DataTable R = new DataTable();
 
             Connection Micnn = new Connection();
 
             Micnn.parameterlist.Add(new SqlParameter("@VerActivo", true));
+            Micnn.parameterlist.Add(new SqlParameter("@FiltroBusqueda", pFiltroBusqueda));
 
 
 
@@ -156,14 +166,14 @@ namespace Logic.Models
         }
 
 
-        public DataTable ListInactive()
+        public DataTable ListInactive(string pFiltroBusqueda)
         {
             DataTable R = new DataTable();
 
             Connection Micnn = new Connection();
 
             Micnn.parameterlist.Add(new SqlParameter("@VerActivo", false));
-
+            Micnn.parameterlist.Add(new SqlParameter("@FiltroBusqueda", pFiltroBusqueda));
 
 
             R = Micnn.EjecutarSELECT("SPUserListActive");

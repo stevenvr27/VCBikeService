@@ -48,21 +48,22 @@ namespace VCBikeService.Forms
 
         {
             ListUser = new DataTable();
-            //Filtrar lista de busqueda si hay 3 o mas caracteres 
-           // string searchfilter = "";
-           // if (!string.IsNullOrEmpty(TxtSearch.Text.Trim()) && TxtSearch.Text.Count() >=3){
+           
+            string searchfilter = "";
+            if (!string.IsNullOrEmpty(TxtSearch.Text.Trim()) && TxtSearch.Text.Count() >= 3)
+            {
 
-           //     searchfilter = TxtSearch.Text.Trim();
-            //}
+                searchfilter = TxtSearch.Text.Trim( );
+            }
 
 
             if (CheckUser.Checked) {
 
-                ListUser = MyUser.ListActive( );
+                ListUser = MyUser.ListActive(searchfilter);
             }
             else
             {
-                ListUser = MyUser.ListInactive( );
+                ListUser = MyUser.ListInactive(searchfilter);
             }
             DgListUsers.DataSource = ListUser;
         } 
@@ -345,6 +346,7 @@ namespace VCBikeService.Forms
                 MyUser.Address = TxtAddress.Text.Trim();
                 MyUser.UserPassword = TxtPassword.Text.Trim();
                 MyUser.MyRol.UserRoleID = Convert.ToInt32(CbRol.SelectedValue);
+              
                 if (MyUser.ConsultCardID())
                 {
                     DialogResult Answer = MessageBox.Show("¿Está seguro de modificar el usuario?", "???",
@@ -361,6 +363,42 @@ namespace VCBikeService.Forms
                             LoadListUser();
                         }
                     }
+                }
+
+            }
+        }
+
+        private void CheckUser_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadListUser();
+        }
+
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            if (MyUser.UserID > 0 && MyUser.ConsultCardID())
+            {
+                if (CheckUser.Checked)
+                {
+
+                    DialogResult r = MessageBox.Show("¿Está seguro de Eliminar al Usuario?",
+                                                     "???",
+                                                     MessageBoxButtons.YesNo,
+                                                     MessageBoxIcon.Question);
+
+                    if (r == DialogResult.Yes)
+                    {
+                        if (MyUser.Delete())
+                        {
+                            MessageBox.Show("El usuario ha sido eliminado correctamente.", "!!!", MessageBoxButtons.OK);
+                            CleanForm();
+                            LoadListUser();
+                        }
+
+                    }
+                }
+                else
+                {
+
                 }
 
             }
