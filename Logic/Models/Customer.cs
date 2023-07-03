@@ -79,8 +79,6 @@ namespace Logic.Models
                 R.CustomerAdress = Convert.ToString(dr["CustomerAdress"]);
                 R.MyTypeCustomer.Description = Convert.ToString(dr["Description"]);
 
-
-
             }
 
 
