@@ -25,21 +25,46 @@ namespace Logic.Models
 
         public UserRole MyRol { get; set; }
 
-
+ 
         public User()
         {
             MyRol = new UserRole();
         }
+        public bool Add()
+        {
+            bool R false; 
+
+            Connection connection = new Connection();
+
+            connection.parameterlist.Add(new SqlParameter("@Email",this.Email));
+
+            Crypto crypto = new Crypto();
+            string Passwordencrypted = crypto.EncriptarPassword(this.UserPassword);
+            connection.parameterlist.Add(new SqlParameter("@Password", Passwordencrypted));
+
+            connection.parameterlist.Add(new SqlParameter("Password",this.UserName));
+
+        }
 
 
-
+ 
         public bool AddUser()
+        {
+
+        public DataTable ListActive(string psearchfilter)
+ 
         {
             bool R = false;
 
             Connection connection = new Connection();
 
+ 
             //connection.parameterlist.Add(new SqlParameter("@Email", this.Email));
+ 
+            Micnn.parameterlist.Add(new SqlParameter("@searchfilter", psearchfilter));
+
+            R = Micnn.EjecutarSELECT("SPUsersList ");
+ 
 
             //Crypto crypto = new Crypto();
             //string Passwordencrypted = crypto.EncriptarPassword(this.UserPassword);
@@ -61,6 +86,7 @@ namespace Logic.Models
             }
             return R;
 
+        }
         }
         public bool Update()
         {
