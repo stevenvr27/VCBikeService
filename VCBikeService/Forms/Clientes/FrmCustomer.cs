@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logic.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,26 +13,33 @@ namespace VCBikeService.Forms
 {
     public partial class FrmCustomer : Form
     {
-        private Logic.Models.Customer customer { get;set; }
-        private DataTable ListCusto { get; set; }
+        private Logic.Models.Customer MyCustomer { get; set; }
+        private DataTable ListCustomer { get; set; }
 
         public FrmCustomer()
         {
             InitializeComponent();
-            customer = new Logic.Models.Customer();
-            ListCusto = new DataTable();
+            MyCustomer = new Logic.Models.Customer();
+            ListCustomer = new DataTable();
         }
 
-        private void FrmCustomer_Load(object sender, EventArgs e)
-        {
-            MdiParent = (Form)Globals.Principal.Parent;
-            LoadCustomerType();
-        }
+
 
         private void loadlistCustomer()
         {
-            ListCusto = new DataTable();
-            
+            ListCustomer = new DataTable();
+
+
+            if (checkCustomer.Checked)
+            {
+                ListCustomer = MyCustomer.ListCustomerActive();
+
+            }
+            else
+            {
+                ListCustomer = MyCustomer.ListCustomerInactive();
+            }
+            DgCustomer.DataSource = ListCustomer;
         }
 
 
@@ -41,22 +49,65 @@ namespace VCBikeService.Forms
             DataTable a = new DataTable();
             a = Tipo.ListCustomerType();
 
-            if (a != null && a.Rows.Count>0)
+            if (a != null && a.Rows.Count > 0)
             {
                 CbCustomerType.ValueMember = "ID";
-                CbCustomerType.DisplayMember = "Desc";
+                CbCustomerType.DisplayMember = "Descrip";
                 CbCustomerType.DataSource = a;
                 CbCustomerType.SelectedIndex = -1;
             }
 
         }
-
+        private void CleanForm()
+        {
+            TxtCustomerAddress.Clear();
+            TxtCustomerEmail.Clear();
+            TxtNameCustomer.Clear();
+            TxtCustomerPhoneNumber.Clear();
+            TxtCustomerID.Clear();
+            CbCustomerType.SelectedIndex = -1;
+        }
 
         private void BtnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
         }
 
-         
+        private void BtnClean_Click(object sender, EventArgs e)
+        {
+            CleanForm();
+            DgCustomer.ClearSelection();
+        }
+
+        private void FrmCustomer_Load(object sender, EventArgs e)
+        {
+
+            FrmCustomer frmCustomer = new FrmCustomer();
+            LoadCustomerType();
+            loadlistCustomer();
+        }
+
+
+
+        private void DgCustomer_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (DgCustomer.SelectedRows.Count == 1)
+            {
+                DataGridViewRow Fila = DgCustomer.SelectedRows[0];
+                int IDCustomer = Convert.ToInt32(Fila.Cells["CCustomerID"].Value);
+                MyCustomer = MyCustomer.SearchIDReturnCustumer();
+                if (MyCustomer != null && MyCustomer.CustomerID > 0)
+                {
+                    TxtCustomerID.Text = Convert.ToString(MyCustomer.CustomerID);
+                    TxtCustomerEmail.Text = MyCustomer.CustomerEmail;
+                    TxtCustomerAddress.Text = MyCustomer.CustomerAdress;
+                    TxtNameCustomer.Text = MyCustomer.CustomerName;
+                    TxtCustomerPhoneNumber.Text = Convert.ToString(MyCustomer.CustomerPhone);
+                    CbCustomerType.SelectedValue = MyCustomer.MyTypeCustomer;
+                }
+            }
+        }
     }
 }
+
+

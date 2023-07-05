@@ -16,10 +16,10 @@ namespace Logic.Models
         public DataTable ListCustomerType()
         {
 
-            DataTable dt = new DataTable();
+            DataTable a = new DataTable();
             Services.Connection Micnn = new Services.Connection();
-            dt = Micnn.EjecutarSELECT("SPCustomerTypeList");
-            return dt;
+            a = Micnn.EjecutarSELECT("SPCustomerTypeList");
+            return a;
         } 
 
     }

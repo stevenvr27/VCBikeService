@@ -9,13 +9,13 @@ using System.Data.SqlClient;
 
 namespace Logic.Models
 {
-    public  class User
+    public class User
     {
         public int UserID { get; set; }
         public string UserName { get; set; }
         public string UserPassword { get; set; }
         public string Email { get; set; }
-        
+
         public string UserCardID { get; set; }
 
         public string PhoneNumber { get; set; }
@@ -25,7 +25,11 @@ namespace Logic.Models
 
         public UserRole MyRol { get; set; }
 
-
+ 
+        public User()
+        {
+            MyRol = new UserRole();
+        }
         public bool Add()
         {
             bool R false; 
@@ -40,41 +44,171 @@ namespace Logic.Models
 
             connection.parameterlist.Add(new SqlParameter("Password",this.UserName));
 
-
         }
 
 
-
-
+ 
+        public bool AddUser()
+        {
 
         public DataTable ListActive(string psearchfilter)
+ 
         {
-            DataTable R = new DataTable();
-            
-             Connection Micnn = new Connection();
+            bool R = false;
 
-            Micnn.parameterlist.Add(new SqlParameter("@VerActivo", true));
+            Connection connection = new Connection();
 
+ 
+            //connection.parameterlist.Add(new SqlParameter("@Email", this.Email));
+ 
             Micnn.parameterlist.Add(new SqlParameter("@searchfilter", psearchfilter));
 
             R = Micnn.EjecutarSELECT("SPUsersList ");
+ 
 
+            //Crypto crypto = new Crypto();
+            //string Passwordencrypted = crypto.EncriptarPassword(this.UserPassword);
+           // connection.parameterlist.Add(new SqlParameter("@Password", Passwordencrypted));
+
+            connection.parameterlist.Add(new SqlParameter("@UserName", this.UserName));
+            connection.parameterlist.Add(new SqlParameter("@UserCardID", this.UserCardID));
+            connection.parameterlist.Add(new SqlParameter("@Email", this.Email));
+            connection.parameterlist.Add(new SqlParameter("@PhoneNumber", this.PhoneNumber));
+            connection.parameterlist.Add(new SqlParameter("@Address", this.Address));
+            connection.parameterlist.Add(new SqlParameter("@UserPassword", this.UserPassword));
+            connection.parameterlist.Add(new SqlParameter("@UserRoleID", this.MyRol.UserRoleID));
+
+            int result = connection.EjecutarInsertUpdateDelete("SPUserAdd");
+
+            if (result > 0)
+            {
+                R = true;
+            }
             return R;
-        }
 
-        public DataTable ListInactive()
+        }
+        }
+        public bool Update()
         {
-            DataTable R = new DataTable();
+            bool R = false;
+            Connection connection = new Connection();
+            connection.parameterlist.Add(new SqlParameter("@UserName", this.UserName));
+            connection.parameterlist.Add(new SqlParameter("@UserCardID", this.UserCardID));
+            connection.parameterlist.Add(new SqlParameter("@Email", this.Email));
+            connection.parameterlist.Add(new SqlParameter("@PhoneNumber", this.PhoneNumber));
+            connection.parameterlist.Add(new SqlParameter("@Address", this.Address));
+            connection.parameterlist.Add(new SqlParameter("@UserPassword", this.UserPassword));
+            connection.parameterlist.Add(new SqlParameter("@UserRoleID", this.MyRol.UserRoleID));
+            connection.parameterlist.Add(new SqlParameter("@UserID", this.UserID));
+
+            int result = connection.EjecutarInsertUpdateDelete("SPUserUpdate");
+
+            if (result > 0)
+            {
+                R = true;
+            }
             return R;
         }
 
         public bool Delete()
         {
             bool R = false;
+            Connection connection = new Connection();
+            connection.parameterlist.Add(new SqlParameter("@ID", this.UserID));
+            int r = connection.EjecutarInsertUpdateDelete("SPUSerDesactive");
+
+            if (r > 0)
+            {
+                R = true;
+            }
 
             return R;
 
         }
+
+
+        public bool ConsultCardID()
+        {
+            bool R = false;
+            Connection MiCnn = new Connection();
+
+            //agregamos el parametro de cedula 
+            MiCnn.parameterlist.Add(new SqlParameter("@CardID ", this.UserCardID));
+
+            DataTable consulta = new DataTable();
+            //paso 1.3.3 y 1.3.4
+            consulta = MiCnn.EjecutarSELECT("SPUserSearchForID");
+
+            //paso 1.3.5
+            if (consulta != null && consulta.Rows.Count > 0)
+            {
+                R = true;
+            }
+
+            return R; ;
+
+        }
+
+
+        public bool ConsultEmail()
+        {
+            bool R = false;
+            Connection MiCnn = new Connection();
+
+            //agregamos el parametro de correo 
+            MiCnn.parameterlist.Add(new SqlParameter("@Email", this.Email));
+
+            DataTable consulta = new DataTable();
+            //paso 1.4.3 y 1.4.4
+            consulta = MiCnn.EjecutarSELECT("SPUserSearchForEmail");
+
+            //paso 1.4.5
+            if (consulta != null && consulta.Rows.Count > 0)
+            {
+                R = true;
+            }
+
+            return R;
+
+
+        }
+
+
+
+        public DataTable ListActive(string pFiltroBusqueda)
+        {
+            DataTable R = new DataTable();
+
+            Connection Micnn = new Connection();
+
+            Micnn.parameterlist.Add(new SqlParameter("@VerActivo", true));
+            Micnn.parameterlist.Add(new SqlParameter("@FiltroBusqueda", pFiltroBusqueda));
+
+
+
+            R = Micnn.EjecutarSELECT("SPUserListActive");
+
+            return R;
+        }
+
+
+        public DataTable ListInactive(string pFiltroBusqueda)
+        {
+            DataTable R = new DataTable();
+
+            Connection Micnn = new Connection();
+
+            Micnn.parameterlist.Add(new SqlParameter("@VerActivo", false));
+            Micnn.parameterlist.Add(new SqlParameter("@FiltroBusqueda", pFiltroBusqueda));
+
+
+            R = Micnn.EjecutarSELECT("SPUserListActive");
+
+            return R;
+        }
+
+
+
         public bool SearchID()
         {
             bool R = false;
@@ -83,7 +217,7 @@ namespace Logic.Models
 
         public User SearchCardIDReturnUser()
         {
-            User R  = new User();
+            User R = new User();
 
             Connection Micnn = new Connection();
 
@@ -93,7 +227,7 @@ namespace Logic.Models
 
             dt = Micnn.EjecutarSELECT("SPUserSearchID");
 
-            if(dt!= null && dt.Rows.Count > 0)
+            if (dt != null && dt.Rows.Count > 0)
             {
                 DataRow dr = dt.Rows[0];
 
@@ -121,8 +255,8 @@ namespace Logic.Models
         }
 
 
-        
-             public User ValidateUser (string pEmail, string pContrasennia)
+
+        public User ValidateUser(string pEmail, string pContrasennia)
         {
             User R = new User();
 
@@ -168,7 +302,8 @@ namespace Logic.Models
 
 
     }
+}
 
     
 
-}
+

@@ -64,17 +64,29 @@
     <Compile Include="Forms\Central.Designer.cs">
       <DependentUpon>Central.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Clientes\FrmClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Clientes\FrmClientes.Designer.cs">
+      <DependentUpon>FrmClientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Factura\FrmBillingSearch.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Factura\FrmBillingSearch.Designer.cs">
       <DependentUpon>FrmBillingSearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Clientes\FrmCustomer.cs">
+    <Compile Include="Forms\Factura\FrmEditBilling.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Clientes\FrmCustomer.Designer.cs">
-      <DependentUpon>FrmCustomer.cs</DependentUpon>
+    <Compile Include="Forms\Factura\FrmEditBilling.Designer.cs">
+      <DependentUpon>FrmEditBilling.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Factura\FrmNewBilling.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Factura\FrmNewBilling.Designer.cs">
+      <DependentUpon>FrmNewBilling.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Login\FrmLogin.cs">
       <SubType>Form</SubType>
@@ -88,23 +100,47 @@
     <Compile Include="Forms\Login\FrmRecoveryPassword.Designer.cs">
       <DependentUpon>FrmRecoveryPassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Nosotros\FrmWe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Nosotros\FrmWe.Designer.cs">
+      <DependentUpon>FrmWe.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Productos\FrmProductsAdd.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Productos\FrmProductsAdd.Designer.cs">
       <DependentUpon>FrmProductsAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Reportes\FrmReports.cs">
+    <Compile Include="Forms\Productos\FrmSearchProduct.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Reportes\FrmReports.Designer.cs">
-      <DependentUpon>FrmReports.cs</DependentUpon>
+    <Compile Include="Forms\Productos\FrmSearchProduct.Designer.cs">
+      <DependentUpon>FrmSearchProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reportes\FrmMont.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reportes\FrmMont.Designer.cs">
+      <DependentUpon>FrmMont.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Proveedores\Frmsupplier.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Proveedores\Frmsupplier.Designer.cs">
       <DependentUpon>Frmsupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reportes\FrmSearchReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reportes\FrmSearchReport.Designer.cs">
+      <DependentUpon>FrmSearchReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reportes\FrmWeek.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reportes\FrmWeek.Designer.cs">
+      <DependentUpon>FrmWeek.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Usuario\FrmUsers.cs">
       <SubType>Form</SubType>
@@ -118,8 +154,8 @@
     <EmbeddedResource Include="Forms\Central.resx">
       <DependentUpon>Central.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Clientes\FrmCustomer.resx">
-      <DependentUpon>FrmCustomer.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Clientes\FrmClientes.resx">
+      <DependentUpon>FrmClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Login\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
@@ -142,6 +178,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
