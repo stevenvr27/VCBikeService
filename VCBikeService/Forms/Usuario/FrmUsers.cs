@@ -28,10 +28,6 @@ namespace VCBikeService.Forms
         }
 
             
-
-
-
-
         private void BtnAdd_Click(object sender, EventArgs e)
         {
             if (ValidateInsertDates())
@@ -60,11 +56,9 @@ namespace VCBikeService.Forms
                 ListUser = Miusuario.ListInactive(searchfilter);
             }
             DgListUsers.DataSource = ListUser;
-        } 
  
 
 
-                MyUser = new Logic.Models.User();
 
                 MyUser.UserName = TxtUserName.Text.Trim();
                 MyUser.UserCardID = TxtCardID.Text.Trim();
@@ -73,8 +67,6 @@ namespace VCBikeService.Forms
                 MyUser.UserPassword = TxtPassword.Text.Trim();
 
 
-                MyUser.MyRol.UserRoleID = Convert.ToInt32(CbRol.SelectedValue);
-                MyUser.Address = TxtAddress.Text.Trim();
 
                 CardIDok = MyUser.ConsultCardID();
                 EmailOK = MyUser.ConsultEmail();
@@ -108,12 +100,6 @@ namespace VCBikeService.Forms
                             MessageBox.Show("El Usuario no se pudo guardar!", ":/", MessageBoxButtons.OK);
                         }
 
-
-
-                    }
-
-
-                }
                 else
                 {
                     //indicar al usuari si falla alguna consulta
@@ -134,11 +120,6 @@ namespace VCBikeService.Forms
             }
         }
 
-        private void DgListUsers_CellClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-                            CleanForm();
-                            LoadListUser();
-                        }
 
             }
         }

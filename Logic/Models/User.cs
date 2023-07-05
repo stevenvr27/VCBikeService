@@ -36,15 +36,6 @@ namespace Logic.Models
 
             Connection connection = new Connection();
 
-            connection.parameterlist.Add(new SqlParameter("@Email",this.Email));
-
-            Crypto crypto = new Crypto();
-            string Passwordencrypted = crypto.EncriptarPassword(this.UserPassword);
-            connection.parameterlist.Add(new SqlParameter("@Password", Passwordencrypted));
-
-            connection.parameterlist.Add(new SqlParameter("Password",this.UserName));
-
-        }
 
 
  
@@ -61,33 +52,6 @@ namespace Logic.Models
  
             //connection.parameterlist.Add(new SqlParameter("@Email", this.Email));
  
-            Micnn.parameterlist.Add(new SqlParameter("@searchfilter", psearchfilter));
-
-            R = Micnn.EjecutarSELECT("SPUsersList ");
- 
-
-            //Crypto crypto = new Crypto();
-            //string Passwordencrypted = crypto.EncriptarPassword(this.UserPassword);
-           // connection.parameterlist.Add(new SqlParameter("@Password", Passwordencrypted));
-
-            connection.parameterlist.Add(new SqlParameter("@UserName", this.UserName));
-            connection.parameterlist.Add(new SqlParameter("@UserCardID", this.UserCardID));
-            connection.parameterlist.Add(new SqlParameter("@Email", this.Email));
-            connection.parameterlist.Add(new SqlParameter("@PhoneNumber", this.PhoneNumber));
-            connection.parameterlist.Add(new SqlParameter("@Address", this.Address));
-            connection.parameterlist.Add(new SqlParameter("@UserPassword", this.UserPassword));
-            connection.parameterlist.Add(new SqlParameter("@UserRoleID", this.MyRol.UserRoleID));
-
-            int result = connection.EjecutarInsertUpdateDelete("SPUserAdd");
-
-            if (result > 0)
-            {
-                R = true;
-            }
-            return R;
-
-        }
-        }
         public bool Update()
         {
             bool R = false;
