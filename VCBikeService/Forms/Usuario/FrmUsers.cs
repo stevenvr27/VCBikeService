@@ -30,42 +30,15 @@ namespace VCBikeService.Forms
             
         private void BtnAdd_Click(object sender, EventArgs e)
         {
-            if (ValidateInsertDates())
-            {
 
 
  
-            ListUser = new DataTable();
-            //Filtrar lista de busqueda si hay 3 o mas caracteres 
-            string searchfilter = "";
-            if (!string.IsNullOrEmpty(TxtSearch.Text.Trim()) && TxtSearch.Text.Count() >=3){
-
-                searchfilter = TxtSearch.Text.Trim();
-            }
-
- 
-                bool CardIDok;
-                bool EmailOK;
 
  
  
                 ListUser = Miusuario.ListActive(searchfilter);
             }
-            else
-            {
-                ListUser = Miusuario.ListInactive(searchfilter);
             }
-            DgListUsers.DataSource = ListUser;
- 
-
-
-
-                MyUser.UserName = TxtUserName.Text.Trim();
-                MyUser.UserCardID = TxtCardID.Text.Trim();
-                MyUser.PhoneNumber = TxtPhone.Text.Trim();
-                MyUser.Email = TxtEmail.Text.Trim();
-                MyUser.UserPassword = TxtPassword.Text.Trim();
-
 
 
                 CardIDok = MyUser.ConsultCardID();
@@ -75,9 +48,7 @@ namespace VCBikeService.Forms
                     //se puede agregar el usuario ya que no existe un usuario con la cedula y correo
                     //digitados. 
 
-                    //se solicita al usuario confirmación de si queire agregar o no al usuario 
 
-                    string msg = string.Format("¿Está seguro que desea agregar al usuario {0}?", MyUser.UserName);
 
                     DialogResult respuesta = MessageBox.Show(msg, "???", MessageBoxButtons.YesNo);
 
@@ -88,70 +59,12 @@ namespace VCBikeService.Forms
 
                         if (ok)
                         {
-                            MessageBox.Show("Usuario guardado correctamente!", ":)", MessageBoxButtons.OK);
 
-                            CleanForm();
-
-                            LoadListUser();
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("El Usuario no se pudo guardar!", ":/", MessageBoxButtons.OK);
-                        }
-
-                else
-                {
-                    //indicar al usuari si falla alguna consulta
-
-                    if (CardIDok)
-                    {
-                        MessageBox.Show("Ya existe un usuario con la cédula digitada", "Error de Validación", MessageBoxButtons.OK);
-                        return;
                     }
 
-                    if (EmailOK)
-                    {
-                        MessageBox.Show("Ya existe un usuario con el correo digitado", "Error de Validación", MessageBoxButtons.OK);
-                        return;
-                    }
-
-                }
-            }
-        }
 
 
             }
         }
 
-        private void CheckUser_CheckedChanged(object sender, EventArgs e)
-        {
-            LoadListUser();
-        }
 
-        private void BtnDelete_Click(object sender, EventArgs e)
-        {
-            if (MyUser.UserID > 0 && MyUser.ConsultCardID())
-            {
-                if (CheckUser.Checked)
-                {
-
-                    DialogResult r = MessageBox.Show("¿Está seguro de Eliminar al Usuario?",
-                                                     "???",
-                                                     MessageBoxButtons.YesNo,
-                                                     MessageBoxIcon.Question);
-
-                    if (r == DialogResult.Yes)
-                    {
-                        if (MyUser.Delete())
-                        {
-                            MessageBox.Show("El usuario ha sido eliminado correctamente.", "!!!", MessageBoxButtons.OK);
-                            CleanForm();
-                            LoadListUser();
-                        }
-                }
-
-            }
-        }
-    }
-}

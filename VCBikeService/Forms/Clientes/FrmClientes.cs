@@ -63,7 +63,6 @@ namespace VCBikeService.Forms.Clientes
         private void BtnEditC_Click(object sender, EventArgs e)
         {
             CleanForm();
-            DgCustList.ClearSelection();
         }
     }
 }
