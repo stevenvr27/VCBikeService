@@ -15,6 +15,8 @@ namespace Logic.Models
         public DataTable List()
         {
             DataTable R = new DataTable();
+            Services.Connection connection = new Services.Connection();
+            R = connection.EjecutarSELECT("SPItemTypeList");
             return R;
         }
 

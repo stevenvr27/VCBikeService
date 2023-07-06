@@ -66,6 +66,8 @@
             this.BtnCancel = new System.Windows.Forms.Button();
             this.CheckUser = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnActivate = new System.Windows.Forms.Button();
+            this.btnDeleteForever = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -93,6 +95,7 @@
             this.TxtSearch.Size = new System.Drawing.Size(883, 30);
             this.TxtSearch.TabIndex = 1;
             this.TxtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TxtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtSearch_KeyPress);
             // 
             // panel1
             // 
@@ -150,6 +153,7 @@
             this.TxtPhone.Name = "TxtPhone";
             this.TxtPhone.Size = new System.Drawing.Size(482, 30);
             this.TxtPhone.TabIndex = 19;
+            this.TxtPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtPhone_KeyPress);
             // 
             // CbRol
             // 
@@ -208,6 +212,7 @@
             this.TxtCardID.Name = "TxtCardID";
             this.TxtCardID.Size = new System.Drawing.Size(482, 30);
             this.TxtCardID.TabIndex = 10;
+            this.TxtCardID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCardID_KeyPress);
             // 
             // TxtUserName
             // 
@@ -215,6 +220,7 @@
             this.TxtUserName.Name = "TxtUserName";
             this.TxtUserName.Size = new System.Drawing.Size(544, 30);
             this.TxtUserName.TabIndex = 9;
+            this.TxtUserName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtUserName_KeyPress);
             // 
             // TxtUserID
             // 
@@ -320,7 +326,7 @@
             this.DgListUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgListUsers.Size = new System.Drawing.Size(1291, 380);
             this.DgListUsers.TabIndex = 3;
-            this.DgListUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgListUsers_CellClick_1);
+            this.DgListUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgListUsers_CellClick);
             // 
             // CUserID
             // 
@@ -416,7 +422,7 @@
             this.BtnDelete.BackColor = System.Drawing.Color.Red;
             this.BtnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BtnDelete.Location = new System.Drawing.Point(783, 22);
+            this.BtnDelete.Location = new System.Drawing.Point(786, 22);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(226, 66);
             this.BtnDelete.TabIndex = 9;
@@ -465,6 +471,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnActivate);
+            this.panel2.Controls.Add(this.btnDeleteForever);
             this.panel2.Controls.Add(this.BtnAdd);
             this.panel2.Controls.Add(this.BtnEdit);
             this.panel2.Controls.Add(this.BtnCancel);
@@ -474,6 +482,34 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1312, 100);
             this.panel2.TabIndex = 13;
+            // 
+            // btnActivate
+            // 
+            this.btnActivate.BackColor = System.Drawing.Color.OliveDrab;
+            this.btnActivate.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActivate.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnActivate.Location = new System.Drawing.Point(18, 22);
+            this.btnActivate.Name = "btnActivate";
+            this.btnActivate.Size = new System.Drawing.Size(226, 66);
+            this.btnActivate.TabIndex = 21;
+            this.btnActivate.Text = "Activar";
+            this.btnActivate.UseVisualStyleBackColor = false;
+            this.btnActivate.Visible = false;
+            this.btnActivate.Click += new System.EventHandler(this.Activate_Click);
+            // 
+            // btnDeleteForever
+            // 
+            this.btnDeleteForever.BackColor = System.Drawing.Color.Red;
+            this.btnDeleteForever.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteForever.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDeleteForever.Location = new System.Drawing.Point(777, 22);
+            this.btnDeleteForever.Name = "btnDeleteForever";
+            this.btnDeleteForever.Size = new System.Drawing.Size(247, 66);
+            this.btnDeleteForever.TabIndex = 20;
+            this.btnDeleteForever.Text = "Eliminar";
+            this.btnDeleteForever.UseVisualStyleBackColor = false;
+            this.btnDeleteForever.Visible = false;
+            this.btnDeleteForever.Click += new System.EventHandler(this.DeleteForever_Click);
             // 
             // FrmUsers
             // 
@@ -491,7 +527,6 @@
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "FrmUsers";
             this.Text = "Gestion Usuarios";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmUsers_FormClosed);
             this.Load += new System.EventHandler(this.FrmUsers_Load);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -543,5 +578,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CAddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn CDescription;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btnActivate;
+        private System.Windows.Forms.Button btnDeleteForever;
     }
 }

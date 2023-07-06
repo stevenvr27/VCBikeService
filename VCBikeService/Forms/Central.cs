@@ -204,6 +204,17 @@ namespace VCBikeService.Forms
                     Globals.frmClientes.Show();
                 }
             }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (!Globals.frmClientes.Visible)
+            {
+                Globals.frmClientes = new Clientes.FrmClientes();
+                Globals.frmClientes.Show();
+            }
         }
+
+      
+    }
     }
 

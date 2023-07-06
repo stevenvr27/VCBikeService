@@ -90,9 +90,9 @@
             this.nosotrosToolStripMenuItem1});
             this.MnPrincipal.Location = new System.Drawing.Point(0, 0);
             this.MnPrincipal.Name = "MnPrincipal";
-            this.MnPrincipal.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.MnPrincipal.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
             this.MnPrincipal.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.MnPrincipal.Size = new System.Drawing.Size(1371, 32);
+            this.MnPrincipal.Size = new System.Drawing.Size(1028, 32);
             this.MnPrincipal.TabIndex = 0;
             this.MnPrincipal.Text = "menuStrip1";
             // 
@@ -237,10 +237,9 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.LblUser});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 707);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 569);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(1371, 29);
+            this.statusStrip1.Size = new System.Drawing.Size(1028, 29);
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -263,21 +262,23 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 35);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 28);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 574F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1371, 669);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 466F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1028, 544);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Location = new System.Drawing.Point(2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1365, 89);
+            this.panel1.Size = new System.Drawing.Size(1024, 74);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -289,8 +290,9 @@
             this.panel2.Controls.Add(this.button1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1365, 89);
+            this.panel2.Size = new System.Drawing.Size(1024, 74);
             this.panel2.TabIndex = 0;
             // 
             // button4
@@ -299,9 +301,10 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button4.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.Location = new System.Drawing.Point(288, 3);
+            this.button4.Location = new System.Drawing.Point(216, 2);
+            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(90, 83);
+            this.button4.Size = new System.Drawing.Size(68, 67);
             this.button4.TabIndex = 1;
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
@@ -312,9 +315,10 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(192, 3);
+            this.button3.Location = new System.Drawing.Point(144, 2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(90, 83);
+            this.button3.Size = new System.Drawing.Size(68, 67);
             this.button3.TabIndex = 2;
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -325,9 +329,10 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(96, 3);
+            this.button2.Location = new System.Drawing.Point(72, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(90, 83);
+            this.button2.Size = new System.Drawing.Size(68, 67);
             this.button2.TabIndex = 1;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -338,9 +343,10 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(0, 3);
+            this.button1.Location = new System.Drawing.Point(0, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 83);
+            this.button1.Size = new System.Drawing.Size(68, 67);
             this.button1.TabIndex = 0;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -352,19 +358,21 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 79.34066F));
             this.tableLayoutPanel2.Controls.Add(this.panel3, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel4, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 98);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 80);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1365, 568);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1024, 462);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // panel3
             // 
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Location = new System.Drawing.Point(2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(275, 562);
+            this.panel3.Size = new System.Drawing.Size(207, 458);
             this.panel3.TabIndex = 0;
             // 
             // panel4
@@ -375,9 +383,10 @@
             this.panel4.Controls.Add(this.Fecha);
             this.panel4.Controls.Add(this.Hora);
             this.panel4.ForeColor = System.Drawing.Color.Transparent;
-            this.panel4.Location = new System.Drawing.Point(284, 3);
+            this.panel4.Location = new System.Drawing.Point(213, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1078, 562);
+            this.panel4.Size = new System.Drawing.Size(808, 457);
             this.panel4.TabIndex = 1;
             // 
             // Fecha
@@ -386,7 +395,8 @@
             this.Fecha.BackColor = System.Drawing.Color.Transparent;
             this.Fecha.Font = new System.Drawing.Font("Franklin Gothic Medium", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Fecha.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Fecha.Location = new System.Drawing.Point(751, 14);
+            this.Fecha.Location = new System.Drawing.Point(563, 11);
+            this.Fecha.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Fecha.Name = "Fecha";
             this.Fecha.Size = new System.Drawing.Size(71, 29);
             this.Fecha.TabIndex = 1;
@@ -399,7 +409,8 @@
             this.Hora.BackColor = System.Drawing.Color.Transparent;
             this.Hora.Font = new System.Drawing.Font("Franklin Gothic Medium", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Hora.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Hora.Location = new System.Drawing.Point(808, 80);
+            this.Hora.Location = new System.Drawing.Point(606, 65);
+            this.Hora.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Hora.Name = "Hora";
             this.Hora.Size = new System.Drawing.Size(64, 29);
             this.Hora.TabIndex = 0;
@@ -412,15 +423,15 @@
             // 
             // Central
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1371, 736);
+            this.ClientSize = new System.Drawing.Size(1028, 598);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.MnPrincipal);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.MnPrincipal;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Central";
             this.Text = "Menu Pricipal";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Central_FormClosed);
