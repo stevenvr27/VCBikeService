@@ -85,14 +85,6 @@ namespace VCBikeService.Forms
             }
         }
 
-        private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!Globals.FrmProductsAdd.Visible)
-            {
-                Globals.FrmProductsAdd = new FrmProductsAdd();
-                Globals.FrmProductsAdd.Show();
-            }
-        }
 
         private void listarToolStripMenuItem_Click(object sender, EventArgs e)
         {

@@ -390,9 +390,6 @@ namespace VCBikeService.Forms
                 }
                 else
                 {
-                    MessageBox.Show("Debes de seleccionar un Usuario", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                }
 
             }
         }

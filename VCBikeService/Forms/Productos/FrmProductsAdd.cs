@@ -149,7 +149,6 @@ namespace VCBikeService.Forms
                 &&  !string.IsNullOrEmpty(TxtUnitaryCost.Text.Trim()) && !string.IsNullOrEmpty(TxtSellPrice.Text.Trim()))
             {
                 bool IDOK;
-                bool BarcodeOk;
 
 
 
@@ -222,9 +221,7 @@ namespace VCBikeService.Forms
              
             else
             {
-                MessageBox.Show("Datos faltantes", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
         }
     }
-}
