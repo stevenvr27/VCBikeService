@@ -22,6 +22,7 @@ namespace VCBikeService.Forms
             InitializeComponent();
             Myitem = new Logic.Models.Item();
             ListItem = new DataTable();
+            Checker();
         }
 
         private void TxtProductName_KeyPress(object sender, KeyPressEventArgs e)
@@ -83,6 +84,7 @@ namespace VCBikeService.Forms
                 TxtProductName.Text = Myitem.ItemName;
                 TxtSellPrice.Text = Convert.ToString(Myitem.SellPrice);
                 TxtUnitaryCost.Text = Convert.ToString(Myitem.UnitaryCost);
+                TxtStock.Text = Convert.ToString(Myitem.Stock);
                 TxtDescription.Text = Myitem.Description;
 
 
@@ -138,6 +140,7 @@ namespace VCBikeService.Forms
             TxtDescription.Clear();
             TxtIDProduct.Clear();
             TxtProductName.Clear();
+            TxtStock.Clear();
             TxtSellPrice.Clear();
             TxtUnitaryCost.Clear();
             CbCategory.SelectedIndex = -1;
@@ -146,7 +149,7 @@ namespace VCBikeService.Forms
         private void BtnAddproduct_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(TxtProductName.Text.Trim()) && !string.IsNullOrEmpty(TxtBarcode.Text.Trim())
-                &&  !string.IsNullOrEmpty(TxtUnitaryCost.Text.Trim()) && !string.IsNullOrEmpty(TxtSellPrice.Text.Trim()))
+                && !string.IsNullOrEmpty(TxtUnitaryCost.Text.Trim()) && !string.IsNullOrEmpty(TxtSellPrice.Text.Trim()))
             {
                 bool IDOK;
 
@@ -154,11 +157,12 @@ namespace VCBikeService.Forms
 
                 Myitem = new Logic.Models.Item();
 
-                Myitem.ItemName= TxtProductName.Text.Trim();
-                Myitem.UnitaryCost= TxtUnitaryCost.Text.Length;
-                Myitem.SellPrice= TxtSellPrice.Text.Length;
-                Myitem.Description= TxtDescription.Text.Trim();
-                Myitem.Barcode= TxtBarcode.Text.Trim();
+                Myitem.ItemName = TxtProductName.Text.Trim();
+                Myitem.UnitaryCost = TxtUnitaryCost.Text.Length;
+                Myitem.SellPrice = TxtSellPrice.Text.Length;
+                Myitem.Description = TxtDescription.Text.Trim();
+                Myitem.Barcode = TxtBarcode.Text.Trim();
+                Myitem.Stock = TxtStock.Text.Length;
 
 
                 Myitem.MyType.ItemCategoryID = Convert.ToInt32(CbCategory.SelectedValue);
@@ -166,8 +170,7 @@ namespace VCBikeService.Forms
 
 
                 IDOK = Myitem.ConsultID();
-                BarcodeOk = Myitem.ConsultBarcode();
-                if (BarcodeOk == false && IDOK == false)
+                if (IDOK == false)
                 {
 
 
@@ -209,19 +212,157 @@ namespace VCBikeService.Forms
                         MessageBox.Show("Ya existe un producto con el Mismo ID", "Error de Validación", MessageBoxButtons.OK);
                         return;
                     }
-                    if (BarcodeOk)
+
+
+                }
+
+            }
+
+            else
+            {
+                MessageBox.Show("Datos faltantes", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
+        }
+
+        private void BtnCleanproduct_Click(object sender, EventArgs e)
+        {
+            CleanForm();
+        }
+
+        private void BtnCancelproduct_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+        private void Checker()
+        {
+            if (checkProduct.Checked)
+            {
+                BtnDeleteproduct.Visible = true;
+                btnactivate.Visible = false;
+                BtnDeleteForEver.Visible = false;
+                BtnAddproduct.Visible = true;
+                BtnEditproduct.Visible = true;
+                BtnCleanproduct.Visible = true;
+            }
+            else
+            {
+                btnactivate.Visible = true;
+                BtnDeleteForEver.Visible = true;
+                BtnAddproduct.Visible = false;
+                BtnEditproduct.Visible = false;
+                BtnCleanproduct.Visible = false;
+                BtnDeleteproduct.Visible = false;
+            }
+        }
+
+        private void BtnDeleteproduct_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TxtProductName.Text.Trim()) && !string.IsNullOrEmpty(TxtBarcode.Text.Trim())
+                && !string.IsNullOrEmpty(TxtUnitaryCost.Text.Trim()) && !string.IsNullOrEmpty(TxtSellPrice.Text.Trim()))
+            {
+                if (Myitem.ItemID > 0 && Myitem.ConsultID())
+                {
+                    if (checkProduct.Checked)
                     {
-                        MessageBox.Show("Ya existe un producto con el Mismo Codigo de barras", "Error de Validación", MessageBoxButtons.OK);
-                        return;
+
+                        DialogResult r = MessageBox.Show("¿Está seguro de Eliminar al Producto?",
+                                                         "???",
+                                                         MessageBoxButtons.YesNo,
+                                                         MessageBoxIcon.Question);
+
+                        if (r == DialogResult.Yes)
+                        {
+                            if (Myitem.Delete())
+                            {
+                                MessageBox.Show("El Producto ha sido eliminado correctamente.", "!!!", MessageBoxButtons.OK);
+                                CleanForm();
+                                loadlistproduct();
+                            }
+
+                        }
+                    }
+                }
+
+
+            }
+            else
+            {
+                MessageBox.Show("Debes de seleccionar un Producto", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+        }
+
+        private void BtnDeleteForEver_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TxtProductName.Text.Trim()) && !string.IsNullOrEmpty(TxtBarcode.Text.Trim())
+               && !string.IsNullOrEmpty(TxtUnitaryCost.Text.Trim()) && !string.IsNullOrEmpty(TxtSellPrice.Text.Trim()))
+            {
+              
+
+                        DialogResult r = MessageBox.Show("¿Está seguro de Eliminar al Producto?",
+                                                         "???",
+                                                         MessageBoxButtons.YesNo,
+                                                         MessageBoxIcon.Question);
+
+                        if (r == DialogResult.Yes)
+                        {
+                            if (Myitem.DeleteForEver())
+                            {
+                                MessageBox.Show("El Producto ha sido eliminado correctamente.", "!!!", MessageBoxButtons.OK);
+                                CleanForm();
+                                loadlistproduct();
+                            }
+
+                        }
+                    
+                
+
+
+            }
+            else
+            {
+                MessageBox.Show("Debes de seleccionar un Producto", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void checkProduct_CheckedChanged(object sender, EventArgs e)
+        {
+            loadlistproduct();
+            Checker();
+        }
+
+        private void btnactivate_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TxtProductName.Text.Trim()) && !string.IsNullOrEmpty(TxtBarcode.Text.Trim())
+              && !string.IsNullOrEmpty(TxtUnitaryCost.Text.Trim()) && !string.IsNullOrEmpty(TxtSellPrice.Text.Trim()))
+            {
+                DialogResult r = MessageBox.Show("¿Está seguro de Activar al Producto ?",
+                                                                   "???",
+                                                                   MessageBoxButtons.YesNo,
+                                                                   MessageBoxIcon.Question);
+
+                if (r == DialogResult.Yes)
+                {
+                    if (Myitem.Activate())
+                    {
+                        MessageBox.Show("El producto  ha sido activado correctamente.", "!!!", MessageBoxButtons.OK);
+                        CleanForm();
+                        loadlistproduct();
                     }
 
                 }
 
             }
-             
             else
             {
-
+                MessageBox.Show("Debes de seleccionar un Producto.", "!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void BtnEditproduct_Click(object sender, EventArgs e)
+        {
+
+        }
     }
+}

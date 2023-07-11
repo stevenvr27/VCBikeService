@@ -70,6 +70,24 @@
     <Compile Include="Forms\Clientes\FrmClientes.Designer.cs">
       <DependentUpon>FrmClientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Compra\FrmAddSearchProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Compra\FrmAddSearchProduct.Designer.cs">
+      <DependentUpon>FrmAddSearchProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Compra\FrmBuy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Compra\FrmBuy.Designer.cs">
+      <DependentUpon>FrmBuy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Compra\FrmSearchCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Compra\FrmSearchCustomer.Designer.cs">
+      <DependentUpon>FrmSearchCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Factura\FrmBillingSearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +174,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Clientes\FrmClientes.resx">
       <DependentUpon>FrmClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Compra\FrmAddSearchProduct.resx">
+      <DependentUpon>FrmAddSearchProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Compra\FrmBuy.resx">
+      <DependentUpon>FrmBuy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Compra\FrmSearchCustomer.resx">
+      <DependentUpon>FrmSearchCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Login\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>

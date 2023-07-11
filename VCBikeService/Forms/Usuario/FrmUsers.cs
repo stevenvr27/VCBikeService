@@ -30,7 +30,7 @@ namespace VCBikeService.Forms
 
         private void FrmUsers_Load(object sender, EventArgs e)
         {
-            FrmUsers frmUsers = Globals.FrmUsers;
+         
             Checker();
 
 
@@ -388,8 +388,12 @@ namespace VCBikeService.Forms
 
                     }
                 }
-                else
-                {
+                 
+
+            }
+            else
+            {
+                MessageBox.Show("Debes de seleccionar un Usuario", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             }
         }

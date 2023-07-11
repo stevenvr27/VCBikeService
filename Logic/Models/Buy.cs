@@ -18,5 +18,20 @@ namespace Logic.Models
         public bool Active { get; set; }
 
 
+        public User MyUser { get; set; }    
+        public Supplier Supplier { get; set; }
+        public BuyType BuyType { get; set; }
+
+        public List<BuyDetail> BuyDetail { get; set; }
+
+
+        public Buy()
+        {
+            MyUser = new User();
+           Supplier = new Supplier();
+            BuyDetail = new List<BuyDetail>();
+            BuyDetail = new List<BuyDetail>();
+        }
+
     }
 }

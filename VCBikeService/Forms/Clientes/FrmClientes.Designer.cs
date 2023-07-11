@@ -38,6 +38,12 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.DgCustList = new System.Windows.Forms.DataGridView();
+            this.CCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CCustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CCustomerEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CCustomerPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CCustomerAdress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -54,19 +60,13 @@
             this.label19 = new System.Windows.Forms.Label();
             this.TxtCustomerID = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnDeleteForever = new System.Windows.Forms.Button();
+            this.btnactivate = new System.Windows.Forms.Button();
             this.BtnCancelC = new System.Windows.Forms.Button();
             this.BtnDeleteC = new System.Windows.Forms.Button();
             this.BtnEditC = new System.Windows.Forms.Button();
             this.BtnCleanC = new System.Windows.Forms.Button();
             this.BtnAddCustomer = new System.Windows.Forms.Button();
-            this.btnactivate = new System.Windows.Forms.Button();
-            this.btnDeleteForever = new System.Windows.Forms.Button();
-            this.CCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CCustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CCustomerEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CCustomerPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CCustomerAdress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -203,6 +203,60 @@
             this.DgCustList.Size = new System.Drawing.Size(1007, 270);
             this.DgCustList.TabIndex = 4;
             this.DgCustList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgCustList_CellClick);
+            // 
+            // CCustomerID
+            // 
+            this.CCustomerID.DataPropertyName = "CustomerID";
+            this.CCustomerID.HeaderText = "Cod.Cliente";
+            this.CCustomerID.MinimumWidth = 6;
+            this.CCustomerID.Name = "CCustomerID";
+            this.CCustomerID.ReadOnly = true;
+            this.CCustomerID.Width = 200;
+            // 
+            // CCustomerName
+            // 
+            this.CCustomerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CCustomerName.DataPropertyName = "CustomerName";
+            this.CCustomerName.HeaderText = "Nombre";
+            this.CCustomerName.MinimumWidth = 6;
+            this.CCustomerName.Name = "CCustomerName";
+            this.CCustomerName.ReadOnly = true;
+            // 
+            // CCustomerEmail
+            // 
+            this.CCustomerEmail.DataPropertyName = "CustomerEmail";
+            this.CCustomerEmail.HeaderText = "Correo";
+            this.CCustomerEmail.MinimumWidth = 6;
+            this.CCustomerEmail.Name = "CCustomerEmail";
+            this.CCustomerEmail.ReadOnly = true;
+            this.CCustomerEmail.Width = 210;
+            // 
+            // CCustomerPhone
+            // 
+            this.CCustomerPhone.DataPropertyName = "CustomerPhone";
+            this.CCustomerPhone.HeaderText = "Celular";
+            this.CCustomerPhone.MinimumWidth = 6;
+            this.CCustomerPhone.Name = "CCustomerPhone";
+            this.CCustomerPhone.ReadOnly = true;
+            this.CCustomerPhone.Width = 150;
+            // 
+            // CCustomerAdress
+            // 
+            this.CCustomerAdress.DataPropertyName = "CustomerAdress";
+            this.CCustomerAdress.HeaderText = "Direccion";
+            this.CCustomerAdress.MinimumWidth = 6;
+            this.CCustomerAdress.Name = "CCustomerAdress";
+            this.CCustomerAdress.ReadOnly = true;
+            this.CCustomerAdress.Width = 125;
+            // 
+            // CDescription
+            // 
+            this.CDescription.DataPropertyName = "Description";
+            this.CDescription.HeaderText = "Rol";
+            this.CDescription.MinimumWidth = 6;
+            this.CDescription.Name = "CDescription";
+            this.CDescription.ReadOnly = true;
+            this.CDescription.Width = 130;
             // 
             // panel3
             // 
@@ -378,6 +432,36 @@
             this.panel4.Size = new System.Drawing.Size(1009, 62);
             this.panel4.TabIndex = 3;
             // 
+            // btnDeleteForever
+            // 
+            this.btnDeleteForever.BackColor = System.Drawing.Color.Red;
+            this.btnDeleteForever.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteForever.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDeleteForever.Location = new System.Drawing.Point(208, 2);
+            this.btnDeleteForever.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDeleteForever.Name = "btnDeleteForever";
+            this.btnDeleteForever.Size = new System.Drawing.Size(169, 54);
+            this.btnDeleteForever.TabIndex = 16;
+            this.btnDeleteForever.Text = "Eliminar";
+            this.btnDeleteForever.UseVisualStyleBackColor = false;
+            this.btnDeleteForever.Visible = false;
+            this.btnDeleteForever.Click += new System.EventHandler(this.btnDeleteForever_Click);
+            // 
+            // btnactivate
+            // 
+            this.btnactivate.BackColor = System.Drawing.Color.OliveDrab;
+            this.btnactivate.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnactivate.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnactivate.Location = new System.Drawing.Point(7, 0);
+            this.btnactivate.Margin = new System.Windows.Forms.Padding(2);
+            this.btnactivate.Name = "btnactivate";
+            this.btnactivate.Size = new System.Drawing.Size(169, 54);
+            this.btnactivate.TabIndex = 15;
+            this.btnactivate.Text = "Activar";
+            this.btnactivate.UseVisualStyleBackColor = false;
+            this.btnactivate.Visible = false;
+            this.btnactivate.Click += new System.EventHandler(this.btnactivate_Click);
+            // 
             // BtnCancelC
             // 
             this.BtnCancelC.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -447,90 +531,6 @@
             this.BtnAddCustomer.Text = "Agregar";
             this.BtnAddCustomer.UseVisualStyleBackColor = false;
             this.BtnAddCustomer.Click += new System.EventHandler(this.BtnAddCustomer_Click);
-            // 
-            // btnactivate
-            // 
-            this.btnactivate.BackColor = System.Drawing.Color.OliveDrab;
-            this.btnactivate.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnactivate.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnactivate.Location = new System.Drawing.Point(7, 2);
-            this.btnactivate.Margin = new System.Windows.Forms.Padding(2);
-            this.btnactivate.Name = "btnactivate";
-            this.btnactivate.Size = new System.Drawing.Size(169, 54);
-            this.btnactivate.TabIndex = 15;
-            this.btnactivate.Text = "Activar";
-            this.btnactivate.UseVisualStyleBackColor = false;
-            this.btnactivate.Visible = false;
-            this.btnactivate.Click += new System.EventHandler(this.btnactivate_Click);
-            // 
-            // btnDeleteForever
-            // 
-            this.btnDeleteForever.BackColor = System.Drawing.Color.Red;
-            this.btnDeleteForever.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteForever.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDeleteForever.Location = new System.Drawing.Point(208, 2);
-            this.btnDeleteForever.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDeleteForever.Name = "btnDeleteForever";
-            this.btnDeleteForever.Size = new System.Drawing.Size(169, 54);
-            this.btnDeleteForever.TabIndex = 16;
-            this.btnDeleteForever.Text = "Eliminar";
-            this.btnDeleteForever.UseVisualStyleBackColor = false;
-            this.btnDeleteForever.Visible = false;
-            this.btnDeleteForever.Click += new System.EventHandler(this.btnDeleteForever_Click);
-            // 
-            // CCustomerID
-            // 
-            this.CCustomerID.DataPropertyName = "CustomerID";
-            this.CCustomerID.HeaderText = "Cod.Cliente";
-            this.CCustomerID.MinimumWidth = 6;
-            this.CCustomerID.Name = "CCustomerID";
-            this.CCustomerID.ReadOnly = true;
-            this.CCustomerID.Width = 200;
-            // 
-            // CCustomerName
-            // 
-            this.CCustomerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CCustomerName.DataPropertyName = "CustomerName";
-            this.CCustomerName.HeaderText = "Nombre";
-            this.CCustomerName.MinimumWidth = 6;
-            this.CCustomerName.Name = "CCustomerName";
-            this.CCustomerName.ReadOnly = true;
-            // 
-            // CCustomerEmail
-            // 
-            this.CCustomerEmail.DataPropertyName = "CustomerEmail";
-            this.CCustomerEmail.HeaderText = "Correo";
-            this.CCustomerEmail.MinimumWidth = 6;
-            this.CCustomerEmail.Name = "CCustomerEmail";
-            this.CCustomerEmail.ReadOnly = true;
-            this.CCustomerEmail.Width = 210;
-            // 
-            // CCustomerPhone
-            // 
-            this.CCustomerPhone.DataPropertyName = "CustomerPhone";
-            this.CCustomerPhone.HeaderText = "Celular";
-            this.CCustomerPhone.MinimumWidth = 6;
-            this.CCustomerPhone.Name = "CCustomerPhone";
-            this.CCustomerPhone.ReadOnly = true;
-            this.CCustomerPhone.Width = 150;
-            // 
-            // CCustomerAdress
-            // 
-            this.CCustomerAdress.DataPropertyName = "CustomerAdress";
-            this.CCustomerAdress.HeaderText = "Direccion";
-            this.CCustomerAdress.MinimumWidth = 6;
-            this.CCustomerAdress.Name = "CCustomerAdress";
-            this.CCustomerAdress.ReadOnly = true;
-            this.CCustomerAdress.Width = 125;
-            // 
-            // CDescription
-            // 
-            this.CDescription.DataPropertyName = "Description";
-            this.CDescription.HeaderText = "Rol";
-            this.CDescription.MinimumWidth = 6;
-            this.CDescription.Name = "CDescription";
-            this.CDescription.ReadOnly = true;
-            this.CDescription.Width = 130;
             // 
             // FrmClientes
             // 

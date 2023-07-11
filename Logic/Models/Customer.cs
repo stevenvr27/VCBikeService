@@ -141,6 +141,34 @@ namespace Logic.Models
             return R; ;
 
         }
+        public Customer SearchID(int pIdCliente)
+        {
+           Customer R = new Customer();
+
+            Connection MyCnn = new Connection();
+
+            MyCnn.parameterlist.Add(new SqlParameter("@ID", pIdCliente));
+
+            DataTable DataCliente = new DataTable();
+            DataCliente = MyCnn.EjecutarSELECT("SPSearchCustomerID");
+
+            //Una vez tenemos un datatable con la data procedemos a llenar las
+            //propiedades del objeto de retono. 
+
+            if (DataCliente != null && DataCliente.Rows.Count > 0)
+            {
+                DataRow Fila = DataCliente.Rows[0];
+
+                R.CustomerID = Convert.ToInt32(Fila["CustomerID"]);
+                R.CustomerPhone = Convert.ToInt32(Fila["CustomerPhone"]);
+                R.CustomerName = Convert.ToString(Fila["CustomerName"]);
+                R.CustomerEmail = Convert.ToString(Fila["CustomerEmail"]);
+                
+                
+            }
+
+            return R;
+        }
 
 
         public bool ConsultEmail()
@@ -166,7 +194,7 @@ namespace Logic.Models
 
         }
 
-        public DataTable ListCustomerActive(string pFiltroBusqueda)
+        public DataTable ListCustomerActive(  string pFiltroBusqueda)
         {
             DataTable R = new DataTable();
 
@@ -178,6 +206,21 @@ namespace Logic.Models
 
 
             R = Micnn.EjecutarSELECT("SpCustomerListActive");
+
+            return R;
+        }
+        public DataTable ListCustomer(bool VerActivos = true, string pFiltroBusqueda = "")
+        {
+            DataTable R = new DataTable();
+
+            Connection Micnn = new Connection();
+
+            Micnn.parameterlist.Add(new SqlParameter("@VerActivo ", true));
+            Micnn.parameterlist.Add(new SqlParameter("@FiltroBusqueda", pFiltroBusqueda));
+
+
+
+            R = Micnn.EjecutarSELECT("SPNewBuyItem ");
 
             return R;
         }

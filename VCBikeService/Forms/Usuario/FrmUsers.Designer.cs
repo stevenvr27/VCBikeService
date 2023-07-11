@@ -502,7 +502,7 @@
             this.btnDeleteForever.BackColor = System.Drawing.Color.Red;
             this.btnDeleteForever.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteForever.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDeleteForever.Location = new System.Drawing.Point(777, 22);
+            this.btnDeleteForever.Location = new System.Drawing.Point(268, 22);
             this.btnDeleteForever.Name = "btnDeleteForever";
             this.btnDeleteForever.Size = new System.Drawing.Size(247, 66);
             this.btnDeleteForever.TabIndex = 20;

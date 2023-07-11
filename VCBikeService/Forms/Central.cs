@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logic.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -78,13 +79,14 @@ namespace VCBikeService.Forms
 
         private void nosotrosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (!Globals.FrmWe.Visible)
+            if (!Globals.FrmCompra.Visible)
             {
-                Globals.FrmWe = new FrmWe();
-                Globals.FrmWe.Show();
+                Globals.FrmCompra = new Compra.FrmBuy();
+                Globals.FrmCompra.Show();
             }
         }
 
+       
 
         private void listarToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -157,19 +159,20 @@ namespace VCBikeService.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (!Globals.FrmNewBilling.Visible)
+            if (!Globals.FrmCompra.Visible)
             {
-                Globals.FrmNewBilling = new Factura.FrmNewBilling();
-                Globals.FrmNewBilling.Show();
+                Globals.FrmCompra = new Compra.FrmBuy();
+                Globals.FrmCompra.Show();
             }
+
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (!Globals.FrmBillingSearch.Visible)
+             if (!Globals.FrmNewBilling.Visible)
             {
-                Globals.FrmBillingSearch = new FrmBillingSearch();
-                Globals.FrmBillingSearch.Show();
+                Globals.FrmNewBilling = new Factura.FrmNewBilling();
+                Globals.FrmNewBilling.Show();
             }
         }
 
@@ -206,7 +209,23 @@ namespace VCBikeService.Forms
             }
         }
 
-      
+        private void productosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!Globals.FrmProductsAdd.Visible)
+            {
+                Globals.FrmProductsAdd = new FrmProductsAdd();
+                Globals.FrmProductsAdd.Show();
+            }
+        }
+
+        private void nosotrosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!Globals.FrmWe.Visible)
+            {
+                Globals.FrmWe = new FrmWe();
+                Globals.FrmWe.Show();
+            }
+        }
     }
     }
 

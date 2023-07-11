@@ -114,7 +114,19 @@ namespace Logic.Models
             R = Micnn.EjecutarSELECT("SPListItemActive");
             return R;
         }
+        public DataTable ListActiveProduct(string pFiltroBusqueda)
+        {
+            DataTable R = new DataTable();
 
+            Connection Micnn = new Connection();
+
+            Micnn.parameterlist.Add(new SqlParameter("@VerActivo", true));
+            Micnn.parameterlist.Add(new SqlParameter("@FiltroBusqueda", pFiltroBusqueda));
+            R = Micnn.EjecutarSELECT("SPListActiveProduct");
+
+            return R;
+        }
+        
         public Item SearchIDReturnItem()
         {
             Item R = new Item();
@@ -142,6 +154,7 @@ namespace Logic.Models
 
 
                 R.MyType.ItemCategoryID = Convert.ToInt32(dr["ItemCategoryID"]);
+             
 
 
 
@@ -152,7 +165,16 @@ namespace Logic.Models
             return R;
 
         }
+        public DataTable newbuy()
+        {
+            DataTable R = new DataTable();
+             Connection connection = new Connection();
+        
+            R = connection.EjecutarSELECT("SPNewBuyItem");
 
+            return R;
+          
+        }
         public bool Activate()
         {
             bool R = false;

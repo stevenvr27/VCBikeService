@@ -137,6 +137,7 @@ namespace VCBikeService.Forms.Clientes
                 BtnCleanC.Visible = true;
                 BtnEditC.Visible = true;
                 btnactivate.Visible = false;
+                BtnDeleteC.Visible = true;
                 btnDeleteForever.Visible = false;
             }
             else
@@ -146,6 +147,7 @@ namespace VCBikeService.Forms.Clientes
                 BtnEditC.Visible = false;
                 btnactivate.Visible = true;
                 btnDeleteForever.Visible = true;
+                BtnDeleteC.Visible = false;
             }
         }
 
@@ -306,7 +308,7 @@ namespace VCBikeService.Forms.Clientes
 
                         if (r == DialogResult.Yes)
                         {
-                            if (newcustomer.DeleteForEver())
+                            if (newcustomer.Delete())
                             {
                                 MessageBox.Show("El Cliente ha sido eliminado correctamente.", "!!!", MessageBoxButtons.OK);
                                 CleanForm();
@@ -328,10 +330,7 @@ namespace VCBikeService.Forms.Clientes
             if (!string.IsNullOrEmpty(TxtCustomerAddress.Text.Trim()) && !string.IsNullOrEmpty(TxtCustomerEmail.Text.Trim()) && !string.IsNullOrEmpty(TxtPhonesCustomer.Text.Trim())
             && !string.IsNullOrEmpty(TxtCustomerName.Text.Trim()) && CbTypeCustomer.SelectedIndex > -1)
             {
-                if (newcustomer.CustomerID > 0 && newcustomer.ConsultEmail())
-                {
-                    if (CheckCustomer.Checked)
-                    {
+                
 
                         DialogResult r = MessageBox.Show("¿Está seguro de Eliminar al Cliente?",
                                                          "???",
@@ -348,8 +347,7 @@ namespace VCBikeService.Forms.Clientes
                             }
 
                         }
-                    }
-                }
+                    
             }
             else
             {
