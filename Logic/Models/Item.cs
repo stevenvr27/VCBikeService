@@ -142,7 +142,6 @@ namespace Logic.Models
 
 
                 R.MyType.ItemCategoryID = Convert.ToInt32(dr["ItemCategoryID"]);
-                R.MyType.Description = Convert.ToString(dr["des"]);
 
 
 

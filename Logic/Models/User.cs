@@ -45,7 +45,6 @@ namespace Logic.Models
             connection.parameterlist.Add(new SqlParameter("@Email", this.Email));
             connection.parameterlist.Add(new SqlParameter("@PhoneNumber", this.PhoneNumber));
             connection.parameterlist.Add(new SqlParameter("@Address", this.Address));
-            connection.parameterlist.Add(new SqlParameter("@UserPassword", this.UserPassword));
             connection.parameterlist.Add(new SqlParameter("@UserRoleID", this.MyRol.UserRoleID));
 
             int result = connection.EjecutarInsertUpdateDelete("SPUsuarioAgregar");
@@ -258,8 +257,6 @@ namespace Logic.Models
 
             Connection MiCnn = new Connection();
 
-            Crypto crypto = new Crypto();
-            string ContrasenniaEncriptada = crypto.EncriptarEnUnSentido(pContrasennia);
 
             MiCnn.parameterlist.Add(new SqlParameter("@usuario", pEmail));
             MiCnn.parameterlist.Add(new SqlParameter("@password", ContrasenniaEncriptada));
