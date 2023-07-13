@@ -215,11 +215,6 @@ namespace Logic.Models
 
             Connection Micnn = new Connection();
 
-            Micnn.parameterlist.Add(new SqlParameter("@VerActivo ", true));
-            Micnn.parameterlist.Add(new SqlParameter("@FiltroBusqueda", pFiltroBusqueda));
-
-
-
             R = Micnn.EjecutarSELECT("SPNewBuyItem ");
 
             return R;

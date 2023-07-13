@@ -19,18 +19,6 @@ namespace VCBikeService.Forms.Compra
 
         public DataTable ListaProductos { get; set; }
         
-        private bool itemSeleccionado = false;
-        public int CantidadItemSeleccionado = 0;
-        public int IDItem = 0;
-        public decimal SubTotal1 { get; set; }
-        public decimal TotalDescuento { get; set; }
-        public decimal SubTotal2 { get; set; }
-        public decimal TotalImpuesto { get; set; }
-        public decimal Total { get; set; }
-        public decimal PrecioUnitario { set; get; }
-        public decimal TasaImpuesto { get; set; }
-        public decimal PorcentajeDescuento { get; set; }
-        public decimal Cantidad { get; set; }
 
         public FrmBuy()
         {
@@ -56,6 +44,19 @@ namespace VCBikeService.Forms.Compra
 
             }
 
+        private void LoadMethodPayment()
+        {
+            Logic.Models.MethodPayment type = new Logic.Models.MethodPayment();
+
+            DataTable i = new DataTable();
+            i = type.List();
+
+            if (i != null && i.Rows.Count > 0)
+            {
+                CbBuyType.ValueMember = "ID";
+                CbBuyType.DisplayMember = "Descrip";
+                CbBuyType.DataSource = dt;
+                CbBuyType.SelectedIndex = -1;
             
         }
        

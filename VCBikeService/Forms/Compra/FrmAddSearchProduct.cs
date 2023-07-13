@@ -202,40 +202,10 @@ namespace VCBikeService.Forms.Compra
 
         private void btnadd_Click(object sender, EventArgs e)
         {
-            if (DgvLista.SelectedRows.Count == 1 &&
-                !string.IsNullOrEmpty(TxtTotal.Text.Trim()) &&
-                Convert.ToDecimal(TxtTotal.Text.Trim()) > 0)
-            {
-                DataGridViewRow r = DgvLista.SelectedRows[0];
-                int IdItem = Convert.ToInt32(r.Cells["CItemID"].Value);
-                string NombreItem = Convert.ToString(r.Cells["CItemName"].Value);
 
 
-                if (Duplicado(IdItem) == 0)
-                {
-                    DataRow NuevaFilaEnFacturacion = Globals.FrmCompra.ListaProductos.NewRow();
-
-                    NuevaFilaEnFacturacion["IDInventario"] = IdItem;
-                    NuevaFilaEnFacturacion["ItemName"] = NombreItem;
-                    NuevaFilaEnFacturacion["PrecioVenta"] = PrecioUnitario;
-                    NuevaFilaEnFacturacion["Cantidad"] = Cantidad;
-                    NuevaFilaEnFacturacion["TasaImpuesto"] = TasaImpuesto;
-                    NuevaFilaEnFacturacion["PorcentajeDescuento"] = PorcentajeDescuento;
-                    NuevaFilaEnFacturacion["SubTotal"] = SubTotal1;
-                    NuevaFilaEnFacturacion["SubTotal2"] = SubTotal2;
-                    NuevaFilaEnFacturacion["ImpuestosTotal"] = TotalImpuesto;
-                    NuevaFilaEnFacturacion["TotalLinea"] = Total;
-                    NuevaFilaEnFacturacion["DescuentoTotal"] = TotalDescuento;
-                    Globals.FrmCompra.ListaProductos.Rows.Add(NuevaFilaEnFacturacion);
-                    this.DialogResult = DialogResult.OK;
 
                 }
-                else
-                {
-                    MessageBox.Show("Ya existe ese Item en la lista de la Factura",
-                       " Error Item Duplicado!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
         }
         private int Duplicado(int valor)
         {
