@@ -75,7 +75,7 @@ namespace VCBikeService.Forms.Compra
 
             NudCantidad.Value = 1;
             TxtPrecioUnitario.Text = "0";
-            TxtDescuento.Text = "0";
+             
             TxtIVA.Text = "0";
             TxtTotal.Text = "0";
 
@@ -106,10 +106,10 @@ namespace VCBikeService.Forms.Compra
             //subtotal, descuento, impuesto y total para la línea 
             //en este caso particular se debe validar que el descuento
             //no supere el 100%
-            if (ValidarDescuento())
-            {
+            //if (ValidarDescuento())
+           // {
                 Cantidad = Convert.ToDecimal(NudCantidad.Value);
-                PorcentajeDescuento = Convert.ToDecimal(TxtDescuento.Text.Trim());
+                PorcentajeDescuento = Convert.ToDecimal(desc.Value);
 
                 PrecioUnitario = Convert.ToDecimal(TxtPrecioUnitario.Text.Trim());
                 TasaImpuesto = Convert.ToDecimal(TxtIVA.Text.Trim());
@@ -133,43 +133,43 @@ namespace VCBikeService.Forms.Compra
 
                 TxtTotal.Text = string.Format("{0:N2}", Total);
 
-            }
+           // }
 
         }
-        private bool ValidarDescuento()
-        {
-            bool R = false;
-            try
-            {
-                if (!string.IsNullOrEmpty(TxtDescuento.Text.Trim()) &&
-                Convert.ToDecimal(TxtDescuento.Text.Trim()) >= 0 &&
-                Convert.ToDecimal(TxtDescuento.Text.Trim()) <= 100)
-                {
-                    R = true;
-                }
-                else
-                {
-                    if (Convert.ToDecimal(TxtDescuento.Text.Trim()) > 100)
-                    {
-                        MessageBox.Show("Los descuentos no pueden ser superiores a 100", "Error de validación", MessageBoxButtons.OK);
-                        return false;
-                    }
-                    if (Convert.ToDecimal(TxtDescuento.Text.Trim()) < 0)
-                    {
-                        MessageBox.Show("Los descuentos no pueden ser números negativos", "Error de validación", MessageBoxButtons.OK);
-                        return false;
-                    }
+        //private bool ValidarDescuento()
+        //{
+        //    bool R = false;
+        //    try
+        //    {
+        //        if (!string.IsNullOrEmpty(TxtDescuento.Text.Trim()) &&
+        //        Convert.ToDecimal(TxtDescuento.Text.Trim()) >= 0 &&
+        //        Convert.ToDecimal(TxtDescuento.Text.Trim()) <= 100)
+        //        {
+        //            R = true;
+        //        }
+        //        else
+        //        {
+        //            if (Convert.ToDecimal(TxtDescuento.Text.Trim()) > 100)
+        //            {
+        //                MessageBox.Show("Los descuentos no pueden ser superiores a 100", "Error de validación", MessageBoxButtons.OK);
+        //                return false;
+        //            }
+        //            if (Convert.ToDecimal(TxtDescuento.Text.Trim()) < 0)
+        //            {
+        //                MessageBox.Show("Los descuentos no pueden ser números negativos", "Error de validación", MessageBoxButtons.OK);
+        //                return false;
+        //            }
 
-                }
-            }
-            catch (Exception)
-            {
-                TxtDescuento.Text = "0";
-                TxtDescuento.SelectAll();
-            }
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        TxtDescuento.Text = "0";
+        //        TxtDescuento.SelectAll();
+        //    }
 
-            return R;
-        }
+        //    return R;
+        //}
 
         private void TxtDescuento_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -181,14 +181,7 @@ namespace VCBikeService.Forms.Compra
             }
         }
 
-        private void TxtDescuento_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(TxtDescuento.Text.Trim()))
-            {
-                TxtDescuento.Text = "0";
-                TxtDescuento.SelectAll();
-            }
-        }
+        
 
         private void NudCantidad_Leave(object sender, EventArgs e)
         {
@@ -202,24 +195,28 @@ namespace VCBikeService.Forms.Compra
 
         private void btnadd_Click(object sender, EventArgs e)
         {
+            DataGridViewRow row = DgvLista.SelectedRows[0];
 
+            int IdProducto = Convert.ToInt32(row.Cells["CItemID"].Value);
+            string NombreProducto = Convert.ToString(row.Cells["CItemName"].Value);
+            string CodigoBarras = Convert.ToString(row.Cells["CBarcode"].Value);
+            decimal Precio = Convert.ToDecimal(row.Cells["CSellPrice"].Value);
+            decimal Cantidad = NudCantidad.Value;
 
+        
+            DataRow MiFila = Globals.FrmCompra.ListaProductos.NewRow();
+            MiFila["CItemID"] = IdProducto;
+            MiFila["Cantidad"] = Cantidad;
+            MiFila["PrecioVentaUnitario"] = Precio;
+            MiFila["ItemName"] = NombreProducto;
+            MiFila["ProductoCodigoBarras"] = CodigoBarras;
 
-                }
+            Globals.FrmCompra.ListaProductos.Rows.Add(MiFila);
+
+            DialogResult = DialogResult.OK;
+
         }
-        private int Duplicado(int valor)
-        {
-            int resultado = 0;
-            foreach (DataRow row in Globals.FrmCompra.ListaProductos.Rows)
-            {
-                int encontrar = Convert.ToInt32(row["IDInventario"]);
-                if (encontrar == valor)
-                {
-                    resultado = 1;
-                }
-            }
-            return resultado;
-        }
+
     }
     
 }

@@ -35,6 +35,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.DgvLista = new System.Windows.Forms.DataGridView();
+            this.CItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CTasaImpuesto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CBarcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CSellPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.TxtTotal = new System.Windows.Forms.TextBox();
@@ -43,20 +50,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.TxtIVA = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.TxtDescuento = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.TxtPrecioUnitario = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.BtnCancel = new System.Windows.Forms.Button();
             this.btnadd = new System.Windows.Forms.Button();
-            this.CItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CTasaImpuesto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CBarcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CSellPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.desc = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -65,6 +65,7 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NudCantidad)).BeginInit();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.desc)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -158,6 +159,63 @@
             this.DgvLista.TabIndex = 7;
             this.DgvLista.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgProduct_CellClick);
             // 
+            // CItemID
+            // 
+            this.CItemID.DataPropertyName = "ItemID";
+            this.CItemID.HeaderText = "Cod.Item";
+            this.CItemID.MinimumWidth = 6;
+            this.CItemID.Name = "CItemID";
+            this.CItemID.ReadOnly = true;
+            // 
+            // CTasaImpuesto
+            // 
+            this.CTasaImpuesto.DataPropertyName = "TasaImpuesto";
+            this.CTasaImpuesto.HeaderText = "% IVA";
+            this.CTasaImpuesto.MinimumWidth = 6;
+            this.CTasaImpuesto.Name = "CTasaImpuesto";
+            this.CTasaImpuesto.ReadOnly = true;
+            // 
+            // CItemName
+            // 
+            this.CItemName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CItemName.DataPropertyName = "ItemName";
+            this.CItemName.HeaderText = "Nombre";
+            this.CItemName.MinimumWidth = 200;
+            this.CItemName.Name = "CItemName";
+            this.CItemName.ReadOnly = true;
+            // 
+            // CBarcode
+            // 
+            this.CBarcode.DataPropertyName = "Barcode";
+            this.CBarcode.HeaderText = "Cod.Barras";
+            this.CBarcode.MinimumWidth = 120;
+            this.CBarcode.Name = "CBarcode";
+            this.CBarcode.ReadOnly = true;
+            // 
+            // CStock
+            // 
+            this.CStock.DataPropertyName = "Stock";
+            this.CStock.HeaderText = "Stock";
+            this.CStock.MinimumWidth = 6;
+            this.CStock.Name = "CStock";
+            this.CStock.ReadOnly = true;
+            // 
+            // CSellPrice
+            // 
+            this.CSellPrice.DataPropertyName = "SellPrice";
+            this.CSellPrice.HeaderText = "Precio Venta";
+            this.CSellPrice.MinimumWidth = 6;
+            this.CSellPrice.Name = "CSellPrice";
+            this.CSellPrice.ReadOnly = true;
+            // 
+            // CDescription
+            // 
+            this.CDescription.DataPropertyName = "Description";
+            this.CDescription.HeaderText = "Categoria";
+            this.CDescription.MinimumWidth = 6;
+            this.CDescription.Name = "CDescription";
+            this.CDescription.ReadOnly = true;
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.groupBox1);
@@ -170,13 +228,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.desc);
             this.groupBox1.Controls.Add(this.TxtTotal);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.NudCantidad);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.TxtIVA);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.TxtDescuento);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.TxtPrecioUnitario);
             this.groupBox1.Controls.Add(this.label4);
@@ -271,19 +329,6 @@
             this.label3.TabIndex = 22;
             this.label3.Text = "% IVA";
             // 
-            // TxtDescuento
-            // 
-            this.TxtDescuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtDescuento.ForeColor = System.Drawing.Color.ForestGreen;
-            this.TxtDescuento.Location = new System.Drawing.Point(194, 93);
-            this.TxtDescuento.Name = "TxtDescuento";
-            this.TxtDescuento.Size = new System.Drawing.Size(134, 30);
-            this.TxtDescuento.TabIndex = 21;
-            this.TxtDescuento.Text = "0";
-            this.TxtDescuento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TxtDescuento.TextChanged += new System.EventHandler(this.TxtDescuento_TextChanged);
-            this.TxtDescuento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtDescuento_KeyPress);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -357,69 +402,25 @@
             this.btnadd.UseVisualStyleBackColor = false;
             this.btnadd.Click += new System.EventHandler(this.btnadd_Click);
             // 
-            // CItemID
+            // desc
             // 
-            this.CItemID.DataPropertyName = "ItemID";
-            this.CItemID.HeaderText = "Cod.Item";
-            this.CItemID.MinimumWidth = 6;
-            this.CItemID.Name = "CItemID";
-            this.CItemID.ReadOnly = true;
-            // 
-            // CTasaImpuesto
-            // 
-            this.CTasaImpuesto.DataPropertyName = "TasaImpuesto";
-            this.CTasaImpuesto.HeaderText = "% IVA";
-            this.CTasaImpuesto.MinimumWidth = 6;
-            this.CTasaImpuesto.Name = "CTasaImpuesto";
-            this.CTasaImpuesto.ReadOnly = true;
-            // 
-            // CItemName
-            // 
-            this.CItemName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CItemName.DataPropertyName = "ItemName";
-            this.CItemName.HeaderText = "Nombre";
-            this.CItemName.MinimumWidth = 200;
-            this.CItemName.Name = "CItemName";
-            this.CItemName.ReadOnly = true;
-            // 
-            // CBarcode
-            // 
-            this.CBarcode.DataPropertyName = "Barcode";
-            this.CBarcode.HeaderText = "Cod.Barras";
-            this.CBarcode.MinimumWidth = 120;
-            this.CBarcode.Name = "CBarcode";
-            this.CBarcode.ReadOnly = true;
-            // 
-            // CStock
-            // 
-            this.CStock.DataPropertyName = "Stock";
-            this.CStock.HeaderText = "Stock";
-            this.CStock.MinimumWidth = 6;
-            this.CStock.Name = "CStock";
-            this.CStock.ReadOnly = true;
-            // 
-            // CSellPrice
-            // 
-            this.CSellPrice.DataPropertyName = "SellPrice";
-            this.CSellPrice.HeaderText = "Precio Venta";
-            this.CSellPrice.MinimumWidth = 6;
-            this.CSellPrice.Name = "CSellPrice";
-            this.CSellPrice.ReadOnly = true;
-            // 
-            // CDescription
-            // 
-            this.CDescription.DataPropertyName = "Description";
-            this.CDescription.HeaderText = "Categoria";
-            this.CDescription.MinimumWidth = 6;
-            this.CDescription.Name = "CDescription";
-            this.CDescription.ReadOnly = true;
+            this.desc.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.desc.Location = new System.Drawing.Point(214, 85);
+            this.desc.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.desc.Name = "desc";
+            this.desc.Size = new System.Drawing.Size(114, 38);
+            this.desc.TabIndex = 28;
             // 
             // FrmAddSearchProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Moccasin;
-            this.ClientSize = new System.Drawing.Size(991, 592);
+            this.ClientSize = new System.Drawing.Size(792, 473);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -436,6 +437,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NudCantidad)).EndInit();
             this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.desc)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -459,7 +461,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox TxtIVA;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox TxtDescuento;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox TxtPrecioUnitario;
         private System.Windows.Forms.Label label4;
@@ -470,5 +471,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CStock;
         private System.Windows.Forms.DataGridViewTextBoxColumn CSellPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn CDescription;
+        private System.Windows.Forms.NumericUpDown desc;
     }
 }

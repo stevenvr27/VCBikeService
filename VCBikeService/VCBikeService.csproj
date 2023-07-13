@@ -88,6 +88,24 @@
     <Compile Include="Forms\Compra\FrmSearchCustomer.Designer.cs">
       <DependentUpon>FrmSearchCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Compra\FrmSupplierBuy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Compra\FrmSupplierBuy.Designer.cs">
+      <DependentUpon>FrmSupplierBuy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Compra\FrmSupplyAddProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Compra\FrmSupplyAddProduct.Designer.cs">
+      <DependentUpon>FrmSupplyAddProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Compra\FrmSupplyerSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Compra\FrmSupplyerSearch.Designer.cs">
+      <DependentUpon>FrmSupplyerSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Factura\FrmBillingSearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,6 +178,12 @@
     <Compile Include="Forms\Reportes\FrmWeek.Designer.cs">
       <DependentUpon>FrmWeek.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Usuario\FrmMyUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Usuario\FrmMyUser.Designer.cs">
+      <DependentUpon>FrmMyUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Usuario\FrmUsers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,14 +208,29 @@
     <EmbeddedResource Include="Forms\Compra\FrmSearchCustomer.resx">
       <DependentUpon>FrmSearchCustomer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Compra\FrmSupplierBuy.resx">
+      <DependentUpon>FrmSupplierBuy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Compra\FrmSupplyAddProduct.resx">
+      <DependentUpon>FrmSupplyAddProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Compra\FrmSupplyerSearch.resx">
+      <DependentUpon>FrmSupplyerSearch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Login\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Productos\FrmProductsAdd.resx">
       <DependentUpon>FrmProductsAdd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Productos\FrmSearchProduct.resx">
+      <DependentUpon>FrmSearchProduct.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Proveedores\Frmsupplier.resx">
       <DependentUpon>Frmsupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Usuario\FrmMyUser.resx">
+      <DependentUpon>FrmMyUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Usuario\FrmUsers.resx">
       <DependentUpon>FrmUsers.cs</DependentUpon>

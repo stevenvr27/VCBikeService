@@ -10,5 +10,7 @@ namespace Logic.Models
     {
         public decimal Amount { get; set; }
         public decimal Price  { get; set; }
+
+        public  MethodPayment MethodPayment { get; set; }
     }
 }

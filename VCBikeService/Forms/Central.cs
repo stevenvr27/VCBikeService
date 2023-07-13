@@ -126,10 +126,10 @@ namespace VCBikeService.Forms
 
         private void nuevaFacturaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!Globals.FrmNewBilling.Visible)
+            if (!Globals.FrmCompra.Visible)
             {
-                Globals.FrmNewBilling = new Factura.FrmNewBilling();
-                Globals.FrmNewBilling.Show();
+                Globals.FrmCompra = new Compra.FrmBuy();
+                Globals.FrmCompra.Show();
             }
         }
 
@@ -224,6 +224,121 @@ namespace VCBikeService.Forms
             {
                 Globals.FrmWe = new FrmWe();
                 Globals.FrmWe.Show();
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (!Globals.frmClientes.Visible)
+            {
+                Globals.frmClientes = new Clientes.FrmClientes();
+                Globals.frmClientes.Show();
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (!Globals.FrmProductsAdd.Visible)
+            {
+                Globals.FrmProductsAdd = new FrmProductsAdd();
+                Globals.FrmProductsAdd.Show();
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (!Globals.FrmNewBilling.Visible)
+            {
+                Globals.FrmNewBilling = new Factura.FrmNewBilling();
+                Globals.FrmNewBilling.Show();
+            }
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (!Globals.FrmSearchReport.Visible)
+            {
+                Globals.FrmSearchReport = new FrmSearchReport();
+                Globals.FrmSearchReport.Show();
+            }
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            if (!Globals.MyUser.Visible)
+            {
+                Globals.MyUser = new Usuario.FrmMyUser();
+                Globals.MyUser.Show();  
+            }
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            if (!Globals.FrmCompra.Visible)
+            {
+                Globals.FrmCompra = new Compra.FrmBuy();
+                Globals.FrmCompra.Show();
+            }
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            if (!Globals.frmSupplierBuy.Visible)
+            {
+                Globals.frmSupplierBuy = new Compra.FrmSupplierBuy();
+                Globals.frmSupplierBuy.Show();
+            }
+
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            if (!Globals.FrmSearchProduct.Visible)
+            {
+                Globals.FrmSearchProduct = new Productos.FrmSearchProduct();
+                Globals.FrmSearchProduct.Show();
+            }
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            if (!Globals.FrmProductsAdd.Visible)
+            {
+                Globals.FrmProductsAdd = new FrmProductsAdd();
+                Globals.FrmProductsAdd.Show();
+            }
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            if (!Globals.MyUser.Visible)
+            {
+                Globals.MyUser = new Usuario.FrmMyUser();
+                Globals.MyUser.Show();
+            }
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            if (!Globals.Frmsupplier.Visible)
+            {
+                Globals.Frmsupplier = new Frmsupplier();
+                Globals.Frmsupplier.Show();
+            }
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            if (!Globals.frmSupplierBuy.Visible)
+            {
+                Globals.frmSupplierBuy = new Compra.FrmSupplierBuy();
+                Globals.frmSupplierBuy.Show();
             }
         }
     }

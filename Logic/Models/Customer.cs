@@ -209,7 +209,7 @@ namespace Logic.Models
 
             return R;
         }
-        public DataTable ListCustomer(bool VerActivos = true, string pFiltroBusqueda = "")
+        public DataTable ListCustomer(  )
         {
             DataTable R = new DataTable();
 

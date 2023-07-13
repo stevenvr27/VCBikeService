@@ -10,8 +10,12 @@ namespace VCBikeService
     public static class Globals
     {
         public static Form Principal = new Forms.Central();
-
+        public static Forms.Compra.FrmSupplyerSearch FrmSupplyerSearch = new Forms.Compra.FrmSupplyerSearch();
+        public static Forms.Compra.FrmSupplyAddProduct FrmSupplyAddProduct = new Forms.Compra.FrmSupplyAddProduct();
+        public static Forms.Compra.FrmSupplierBuy frmSupplierBuy = new Forms.Compra.FrmSupplierBuy();
+        public static Forms.Productos.FrmSearchProduct FrmSearchProduct = new Forms.Productos.FrmSearchProduct();
         public static Forms.Compra.FrmSearchCustomer CustomerSearch = new Forms.Compra.FrmSearchCustomer();
+        public static Forms.Usuario.FrmMyUser MyUser = new Forms.Usuario.FrmMyUser();
         public static Forms.Frmsupplier Frmsupplier = new Forms.Frmsupplier();
          public static Forms.Compra.FrmBuy FrmCompra = new Forms.Compra.FrmBuy();
         public static Forms.Compra.FrmAddSearchProduct FrmAddSearchProduct = new Forms.Compra.FrmAddSearchProduct();
@@ -24,7 +28,6 @@ namespace VCBikeService
         public static Forms.Reportes.FrmWeek FrmWeek = new Forms.Reportes.FrmWeek();
         public static Forms.Factura.FrmNewBilling FrmNewBilling = new Forms.Factura.FrmNewBilling();
         public static Forms.Factura.FrmEditBilling FrmEditBilling = new Forms.Factura.FrmEditBilling();
-        public static Forms.Productos.FrmSearchProduct FrmSearchProduct = new Forms.Productos.FrmSearchProduct();
         public static Forms.FrmUsers FrmUsers = new Forms.FrmUsers();
 
         public static Logic.Models.User MyGlobalUser = new Logic.Models.User();

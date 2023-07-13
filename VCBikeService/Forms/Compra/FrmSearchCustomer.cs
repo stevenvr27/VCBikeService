@@ -38,7 +38,7 @@ namespace VCBikeService.Forms.Compra
         {
             DtList = new DataTable();
 
-            DtList = MyCustomer.ListCustomer(true, TxtBuscar.Text.Trim());
+            DtList = MyCustomer.ListCustomer( );
 
             DgvLista.DataSource = DtList;
         }
@@ -67,5 +67,16 @@ namespace VCBikeService.Forms.Compra
 
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (!Globals.frmClientes.Visible)
+            {
+                Globals.frmClientes = new Clientes.FrmClientes();
+                Globals.frmClientes.Show();
+            }
+        }
+
+       
     }
 }

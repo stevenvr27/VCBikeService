@@ -45,6 +45,8 @@
             this.CDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.TxtStock = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.CbCategory = new System.Windows.Forms.ComboBox();
             this.TxtDescription = new System.Windows.Forms.TextBox();
             this.TxtSellPrice = new System.Windows.Forms.TextBox();
@@ -67,8 +69,6 @@
             this.BtnCleanproduct = new System.Windows.Forms.Button();
             this.BtnEditproduct = new System.Windows.Forms.Button();
             this.BtnDeleteproduct = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.TxtStock = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -89,11 +89,11 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.74419F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 83.25581F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.43984F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.56016F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 211F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 64F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1090, 632);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1192, 783);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
@@ -104,7 +104,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1084, 53);
+            this.panel1.Size = new System.Drawing.Size(1186, 52);
             this.panel1.TabIndex = 0;
             // 
             // checkProduct
@@ -113,7 +113,7 @@
             this.checkProduct.Checked = true;
             this.checkProduct.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkProduct.Location = new System.Drawing.Point(898, 15);
-            this.checkProduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkProduct.Margin = new System.Windows.Forms.Padding(2);
             this.checkProduct.Name = "checkProduct";
             this.checkProduct.Size = new System.Drawing.Size(60, 19);
             this.checkProduct.TabIndex = 4;
@@ -130,6 +130,7 @@
             this.TxtSearchItem.Size = new System.Drawing.Size(663, 20);
             this.TxtSearchItem.TabIndex = 3;
             this.TxtSearchItem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TxtSearchItem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtSearchItem_KeyPress);
             // 
             // label1
             // 
@@ -146,9 +147,9 @@
             // 
             this.panel2.Controls.Add(this.DgProduct);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 62);
+            this.panel2.Location = new System.Drawing.Point(3, 61);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1084, 291);
+            this.panel2.Size = new System.Drawing.Size(1186, 443);
             this.panel2.TabIndex = 1;
             // 
             // DgProduct
@@ -176,7 +177,7 @@
             this.DgProduct.RowHeadersWidth = 62;
             this.DgProduct.RowTemplate.Height = 28;
             this.DgProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgProduct.Size = new System.Drawing.Size(1084, 291);
+            this.DgProduct.Size = new System.Drawing.Size(1186, 443);
             this.DgProduct.TabIndex = 6;
             this.DgProduct.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgSupplier_CellClick);
             // 
@@ -247,9 +248,9 @@
             // 
             this.panel3.Controls.Add(this.groupBox1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 359);
+            this.panel3.Location = new System.Drawing.Point(3, 510);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1084, 205);
+            this.panel3.Size = new System.Drawing.Size(1186, 205);
             this.panel3.TabIndex = 2;
             // 
             // groupBox1
@@ -277,12 +278,30 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalle Productos";
             // 
+            // TxtStock
+            // 
+            this.TxtStock.Location = new System.Drawing.Point(663, 50);
+            this.TxtStock.Margin = new System.Windows.Forms.Padding(2);
+            this.TxtStock.Name = "TxtStock";
+            this.TxtStock.Size = new System.Drawing.Size(362, 20);
+            this.TxtStock.TabIndex = 21;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(551, 50);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(40, 15);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Stock:";
+            // 
             // CbCategory
             // 
             this.CbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CbCategory.FormattingEnabled = true;
             this.CbCategory.Location = new System.Drawing.Point(94, 168);
-            this.CbCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CbCategory.Margin = new System.Windows.Forms.Padding(2);
             this.CbCategory.Name = "CbCategory";
             this.CbCategory.Size = new System.Drawing.Size(435, 21);
             this.CbCategory.TabIndex = 19;
@@ -290,7 +309,7 @@
             // TxtDescription
             // 
             this.TxtDescription.Location = new System.Drawing.Point(651, 120);
-            this.TxtDescription.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TxtDescription.Margin = new System.Windows.Forms.Padding(2);
             this.TxtDescription.Multiline = true;
             this.TxtDescription.Name = "TxtDescription";
             this.TxtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -300,7 +319,7 @@
             // TxtSellPrice
             // 
             this.TxtSellPrice.Location = new System.Drawing.Point(663, 86);
-            this.TxtSellPrice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TxtSellPrice.Margin = new System.Windows.Forms.Padding(2);
             this.TxtSellPrice.Name = "TxtSellPrice";
             this.TxtSellPrice.Size = new System.Drawing.Size(362, 20);
             this.TxtSellPrice.TabIndex = 13;
@@ -309,7 +328,7 @@
             // TxtUnitaryCost
             // 
             this.TxtUnitaryCost.Location = new System.Drawing.Point(663, 15);
-            this.TxtUnitaryCost.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TxtUnitaryCost.Margin = new System.Windows.Forms.Padding(2);
             this.TxtUnitaryCost.Name = "TxtUnitaryCost";
             this.TxtUnitaryCost.Size = new System.Drawing.Size(362, 20);
             this.TxtUnitaryCost.TabIndex = 12;
@@ -318,7 +337,7 @@
             // TxtBarcode
             // 
             this.TxtBarcode.Location = new System.Drawing.Point(123, 129);
-            this.TxtBarcode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TxtBarcode.Margin = new System.Windows.Forms.Padding(2);
             this.TxtBarcode.Name = "TxtBarcode";
             this.TxtBarcode.Size = new System.Drawing.Size(362, 20);
             this.TxtBarcode.TabIndex = 11;
@@ -326,7 +345,7 @@
             // TxtProductName
             // 
             this.TxtProductName.Location = new System.Drawing.Point(94, 77);
-            this.TxtProductName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TxtProductName.Margin = new System.Windows.Forms.Padding(2);
             this.TxtProductName.Name = "TxtProductName";
             this.TxtProductName.Size = new System.Drawing.Size(362, 20);
             this.TxtProductName.TabIndex = 10;
@@ -335,7 +354,7 @@
             // TxtIDProduct
             // 
             this.TxtIDProduct.Location = new System.Drawing.Point(94, 36);
-            this.TxtIDProduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TxtIDProduct.Margin = new System.Windows.Forms.Padding(2);
             this.TxtIDProduct.Name = "TxtIDProduct";
             this.TxtIDProduct.ReadOnly = true;
             this.TxtIDProduct.Size = new System.Drawing.Size(235, 20);
@@ -422,9 +441,9 @@
             this.panel4.Controls.Add(this.BtnEditproduct);
             this.panel4.Controls.Add(this.BtnDeleteproduct);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(3, 570);
+            this.panel4.Location = new System.Drawing.Point(3, 721);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1084, 59);
+            this.panel4.Size = new System.Drawing.Size(1186, 59);
             this.panel4.TabIndex = 3;
             // 
             // btnactivate
@@ -433,7 +452,7 @@
             this.btnactivate.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnactivate.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnactivate.Location = new System.Drawing.Point(2, 2);
-            this.btnactivate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnactivate.Margin = new System.Windows.Forms.Padding(2);
             this.btnactivate.Name = "btnactivate";
             this.btnactivate.Size = new System.Drawing.Size(170, 54);
             this.btnactivate.TabIndex = 15;
@@ -448,7 +467,7 @@
             this.BtnDeleteForEver.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnDeleteForEver.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BtnDeleteForEver.Location = new System.Drawing.Point(244, 2);
-            this.BtnDeleteForEver.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BtnDeleteForEver.Margin = new System.Windows.Forms.Padding(2);
             this.BtnDeleteForEver.Name = "BtnDeleteForEver";
             this.BtnDeleteForEver.Size = new System.Drawing.Size(170, 54);
             this.BtnDeleteForEver.TabIndex = 14;
@@ -463,7 +482,7 @@
             this.BtnCancelproduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancelproduct.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BtnCancelproduct.Location = new System.Drawing.Point(858, 2);
-            this.BtnCancelproduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BtnCancelproduct.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancelproduct.Name = "BtnCancelproduct";
             this.BtnCancelproduct.Size = new System.Drawing.Size(170, 54);
             this.BtnCancelproduct.TabIndex = 13;
@@ -477,7 +496,7 @@
             this.BtnAddproduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnAddproduct.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.BtnAddproduct.Location = new System.Drawing.Point(2, 2);
-            this.BtnAddproduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BtnAddproduct.Margin = new System.Windows.Forms.Padding(2);
             this.BtnAddproduct.Name = "BtnAddproduct";
             this.BtnAddproduct.Size = new System.Drawing.Size(170, 54);
             this.BtnAddproduct.TabIndex = 9;
@@ -491,7 +510,7 @@
             this.BtnCleanproduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCleanproduct.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.BtnCleanproduct.Location = new System.Drawing.Point(636, 2);
-            this.BtnCleanproduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BtnCleanproduct.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCleanproduct.Name = "BtnCleanproduct";
             this.BtnCleanproduct.Size = new System.Drawing.Size(170, 54);
             this.BtnCleanproduct.TabIndex = 12;
@@ -505,7 +524,7 @@
             this.BtnEditproduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnEditproduct.ForeColor = System.Drawing.Color.SeaShell;
             this.BtnEditproduct.Location = new System.Drawing.Point(203, 2);
-            this.BtnEditproduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BtnEditproduct.Margin = new System.Windows.Forms.Padding(2);
             this.BtnEditproduct.Name = "BtnEditproduct";
             this.BtnEditproduct.Size = new System.Drawing.Size(170, 54);
             this.BtnEditproduct.TabIndex = 10;
@@ -519,7 +538,7 @@
             this.BtnDeleteproduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnDeleteproduct.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BtnDeleteproduct.Location = new System.Drawing.Point(418, 2);
-            this.BtnDeleteproduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BtnDeleteproduct.Margin = new System.Windows.Forms.Padding(2);
             this.BtnDeleteproduct.Name = "BtnDeleteproduct";
             this.BtnDeleteproduct.Size = new System.Drawing.Size(170, 54);
             this.BtnDeleteproduct.TabIndex = 11;
@@ -527,35 +546,17 @@
             this.BtnDeleteproduct.UseVisualStyleBackColor = false;
             this.BtnDeleteproduct.Click += new System.EventHandler(this.BtnDeleteproduct_Click);
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(551, 50);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(40, 15);
-            this.label9.TabIndex = 20;
-            this.label9.Text = "Stock:";
-            // 
-            // TxtStock
-            // 
-            this.TxtStock.Location = new System.Drawing.Point(663, 50);
-            this.TxtStock.Margin = new System.Windows.Forms.Padding(2);
-            this.TxtStock.Name = "TxtStock";
-            this.TxtStock.Size = new System.Drawing.Size(362, 20);
-            this.TxtStock.TabIndex = 21;
-            // 
             // FrmProductsAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1093, 634);
+            this.ClientSize = new System.Drawing.Size(1194, 797);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmProductsAdd";
-            this.Text = "FrmProducts";
+            this.Text = "Gestion Productos";
             this.Load += new System.EventHandler(this.FrmProductsAdd_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

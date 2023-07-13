@@ -32,20 +32,21 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSearchCustomer));
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnSeleccionar = new System.Windows.Forms.Button();
-            this.DgvLista = new System.Windows.Forms.DataGridView();
             this.TxtBuscar = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.DgvLista = new System.Windows.Forms.DataGridView();
             this.CCustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CCustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CCustomerEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CCustomerPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CCustomerAdress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvLista)).BeginInit();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvLista)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -56,7 +57,7 @@
             this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancelar.ForeColor = System.Drawing.Color.White;
-            this.BtnCancelar.Location = new System.Drawing.Point(183, 3);
+            this.BtnCancelar.Location = new System.Drawing.Point(32, 2);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(157, 59);
             this.BtnCancelar.TabIndex = 7;
@@ -77,33 +78,6 @@
             this.BtnSeleccionar.Text = "Seleccionar";
             this.BtnSeleccionar.UseVisualStyleBackColor = false;
             this.BtnSeleccionar.Click += new System.EventHandler(this.BtnSeleccionar_Click);
-            // 
-            // DgvLista
-            // 
-            this.DgvLista.AllowUserToAddRows = false;
-            this.DgvLista.AllowUserToDeleteRows = false;
-            this.DgvLista.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.DgvLista.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.DgvLista.BackgroundColor = System.Drawing.Color.Moccasin;
-            this.DgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvLista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CCustomerID,
-            this.CCustomerName,
-            this.CCustomerEmail,
-            this.CCustomerPhone,
-            this.CCustomerAdress});
-            this.DgvLista.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DgvLista.Location = new System.Drawing.Point(0, 0);
-            this.DgvLista.MultiSelect = false;
-            this.DgvLista.Name = "DgvLista";
-            this.DgvLista.ReadOnly = true;
-            this.DgvLista.RowHeadersVisible = false;
-            this.DgvLista.RowHeadersWidth = 51;
-            this.DgvLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvLista.Size = new System.Drawing.Size(1132, 596);
-            this.DgvLista.TabIndex = 5;
-            this.DgvLista.VirtualMode = true;
             // 
             // TxtBuscar
             // 
@@ -128,7 +102,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 602F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 71F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1138, 732);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1148, 732);
             this.tableLayoutPanel1.TabIndex = 8;
             // 
             // panel1
@@ -137,29 +111,35 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 62);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1132, 596);
+            this.panel1.Size = new System.Drawing.Size(1142, 596);
             this.panel1.TabIndex = 0;
             // 
-            // panel2
+            // DgvLista
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel2.Controls.Add(this.TxtBuscar);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1132, 53);
-            this.panel2.TabIndex = 1;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel3.Controls.Add(this.BtnCancelar);
-            this.panel3.Controls.Add(this.BtnSeleccionar);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 664);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1132, 65);
-            this.panel3.TabIndex = 2;
+            this.DgvLista.AllowUserToAddRows = false;
+            this.DgvLista.AllowUserToDeleteRows = false;
+            this.DgvLista.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.DgvLista.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.DgvLista.BackgroundColor = System.Drawing.Color.Moccasin;
+            this.DgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvLista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CCustomerID,
+            this.CCustomerName,
+            this.CCustomerEmail,
+            this.CCustomerPhone,
+            this.CCustomerAdress});
+            this.DgvLista.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DgvLista.Location = new System.Drawing.Point(0, 0);
+            this.DgvLista.MultiSelect = false;
+            this.DgvLista.Name = "DgvLista";
+            this.DgvLista.ReadOnly = true;
+            this.DgvLista.RowHeadersVisible = false;
+            this.DgvLista.RowHeadersWidth = 51;
+            this.DgvLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DgvLista.Size = new System.Drawing.Size(1142, 596);
+            this.DgvLista.TabIndex = 5;
+            this.DgvLista.VirtualMode = true;
             // 
             // CCustomerID
             // 
@@ -206,19 +186,56 @@
             this.CCustomerAdress.ReadOnly = true;
             this.CCustomerAdress.Width = 125;
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel2.Controls.Add(this.TxtBuscar);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1142, 53);
+            this.panel2.TabIndex = 1;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel3.Controls.Add(this.button1);
+            this.panel3.Controls.Add(this.BtnCancelar);
+            this.panel3.Controls.Add(this.BtnSeleccionar);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(3, 664);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1142, 65);
+            this.panel3.TabIndex = 2;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Ivory;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(445, 5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(268, 56);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Agregar nuevo cliente";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FrmSearchCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1143, 731);
+            this.ClientSize = new System.Drawing.Size(1148, 728);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmSearchCustomer";
             this.Text = "Buscador de Clientes";
             this.Load += new System.EventHandler(this.FrmSearchCustomer_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.DgvLista)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DgvLista)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -230,12 +247,13 @@
 
         private System.Windows.Forms.Button BtnCancelar;
         private System.Windows.Forms.Button BtnSeleccionar;
-        private System.Windows.Forms.DataGridView DgvLista;
         private System.Windows.Forms.TextBox TxtBuscar;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView DgvLista;
         private System.Windows.Forms.DataGridViewTextBoxColumn CCustomerID;
         private System.Windows.Forms.DataGridViewTextBoxColumn CCustomerName;
         private System.Windows.Forms.DataGridViewTextBoxColumn CCustomerEmail;

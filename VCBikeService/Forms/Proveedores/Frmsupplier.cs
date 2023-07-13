@@ -146,7 +146,7 @@ namespace VCBikeService.Forms
 
                     TxtSupplierEmail.Text = MySupplier.SupplierEmail;
                     TxtSupplierName.Text = MySupplier.SupplierName;
-                    TxtCardID.Text = MySupplier.SupplierCardID;
+                    TxtCardID.Text = Convert.ToString(MySupplier.SupplierCardID);
                     TxtSupplierPhone.Text = Convert.ToString(MySupplier.PhoneNumber);
 
                     TxtSupplierAddress.Text = MySupplier.Address;
@@ -237,7 +237,7 @@ namespace VCBikeService.Forms
                 MySupplier = new Logic.Models.Supplier();
 
                 MySupplier.SupplierName = TxtSupplierName.Text.Trim();
-                MySupplier.SupplierCardID = TxtCardID.Text.Trim();
+                MySupplier.SupplierCardID = TxtCardID.Text.Length;
                 MySupplier.PhoneNumber = TxtSupplierPhone.Text.Length;
                 MySupplier.SupplierEmail = TxtSupplierEmail.Text.Trim();
                 MySupplier.Address = TxtSupplierAddress.Text.Trim();
@@ -372,7 +372,7 @@ namespace VCBikeService.Forms
                 && !String.IsNullOrEmpty(TxtCardID.Text.Trim()) && CbSupplierType.SelectedIndex > -1)
             {
                 MySupplier.SupplierName = TxtSupplierName.Text.Trim();
-                MySupplier.SupplierCardID = TxtCardID.Text.Trim();
+                MySupplier.SupplierCardID = TxtCardID.Text.Length;
                 MySupplier.PhoneNumber = TxtSupplierPhone.Text.Length;
                 MySupplier.SupplierEmail = TxtSupplierEmail.Text.Trim();
                 MySupplier.Address = TxtSupplierAddress.Text.Trim();

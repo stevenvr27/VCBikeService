@@ -19,6 +19,7 @@ namespace VCBikeService.Forms.Compra
 
         public DataTable ListaProductos { get; set; }
         
+        
 
         public FrmBuy()
         {
@@ -38,11 +39,57 @@ namespace VCBikeService.Forms.Compra
             if (respuesta == DialogResult.OK)
             {
                 DgvLista.DataSource = ListaProductos;
-                DgvLista.ClearSelection();
-               
 
+                total();
+            }
+
+            
+        }
+        private void total()
+        {
+              
+            if (ListaProductos.Rows.Count > 0)
+            {
+                
+
+                decimal totalItems = 0;
+                decimal totalMonto = 0;
+
+                foreach (DataRow row in ListaProductos.Rows)
+                {
+                    totalItems += Convert.ToDecimal(row["Cantidad"]);
+                    //totalItems = totalItems + algo
+
+                    totalMonto += Convert.ToDecimal(row["PrecioVentaUnitario"]) * Convert.ToDecimal(row["Cantidad"]);
+
+                }
+
+                TxtTotalCantidad.Text = totalItems.ToString();
+
+                //este formato sirve para representar un valor monetario, 
+                //existen muchísimos más formatos personalizados, por favor investigar
+                //{0:N2}
+                TxtTotal.Text = string.Format("{0:C2}", totalMonto);
 
             }
+
+        }
+        private void LoadBuyType()
+        {
+            Logic.Models.BuyType type = new Logic.Models.BuyType();
+
+            DataTable dt = new DataTable();
+            dt = type.list();
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                CbBuyType.ValueMember = "ID";
+                CbBuyType.DisplayMember = "Descrip";
+                CbBuyType.DataSource = dt;
+                CbBuyType.SelectedIndex = -1;
+
+            }
+        }
 
         private void LoadMethodPayment()
         {
@@ -53,19 +100,23 @@ namespace VCBikeService.Forms.Compra
 
             if (i != null && i.Rows.Count > 0)
             {
-                CbBuyType.ValueMember = "ID";
-                CbBuyType.DisplayMember = "Descrip";
-                CbBuyType.DataSource = dt;
-                CbBuyType.SelectedIndex = -1;
-            
+                cvMethodp.ValueMember = "ID";
+                cvMethodp.DisplayMember = "Descrip";
+                cvMethodp.DataSource = i;
+                cvMethodp.SelectedIndex = -1;
+
+            }
         }
-       
+
 
         private void FrmBuy_Load(object sender, EventArgs e)
         {
-           // loadTypeBilling();
+            // loadTypeBilling();
 
-           // Clean();
+            // Clean();
+
+            LoadBuyType();
+            LoadMethodPayment();
         }
 
         private void BtnClienteBuscar_Click(object sender, EventArgs e)
@@ -86,6 +137,7 @@ namespace VCBikeService.Forms.Compra
                     if (true)
                     {
                         labelCliente.Visible = false;
+                        
                         MyBilling.MyCustomer = MyBilling.MyCustomer.SearchID(IdCliente);
 
                         LblClienteNombre.Text = MyBilling.MyCustomer.CustomerName;

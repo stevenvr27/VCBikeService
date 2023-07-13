@@ -364,5 +364,10 @@ namespace VCBikeService.Forms
         {
 
         }
+
+        private void TxtSearchItem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            loadlistproduct();
+        }
     }
 }

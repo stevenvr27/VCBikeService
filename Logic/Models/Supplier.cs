@@ -15,7 +15,7 @@ namespace Logic.Models
         public int PhoneNumber { get; set; }
         public string SupplierName { get; set; }
 
-        public string SupplierCardID { get; set; }
+        public int SupplierCardID { get; set; }
         public string SupplierEmail { get; set; }
 
         public string Address { get; set;}
@@ -129,7 +129,7 @@ namespace Logic.Models
 
                 R.SupplierID = Convert.ToInt32(dr["SupplierID"]);
                 R.PhoneNumber = Convert.ToInt32(dr["PhoneNumber"]);
-                R.SupplierCardID = Convert.ToString(dr["SupplierCardID"]);
+                R.SupplierCardID = Convert.ToInt32(dr["SupplierCardID"]);
 
                 R.SupplierName = Convert.ToString(dr["SupplierName"]);
                 R.SupplierEmail = Convert.ToString(dr["SupplierEmail"]);
@@ -202,6 +202,46 @@ namespace Logic.Models
 
         }
 
+
+         public Supplier SearchID(int pIdSupply)
+        {
+           Supplier R = new Supplier();
+
+            Connection MyCnn = new Connection();
+
+            MyCnn.parameterlist.Add(new SqlParameter("@ID", pIdSupply));
+
+            DataTable DataCliente = new DataTable();
+            DataCliente = MyCnn.EjecutarSELECT("SPSearchSupplierID");
+
+            //Una vez tenemos un datatable con la data procedemos a llenar las
+            //propiedades del objeto de retono. 
+
+            if (DataCliente != null && DataCliente.Rows.Count > 0)
+            {
+                DataRow Fila = DataCliente.Rows[0];
+
+                R.SupplierID = Convert.ToInt32(Fila["SupplierID"]);
+                R.PhoneNumber = Convert.ToInt32(Fila["PhoneNumber"]);
+                R.SupplierName = Convert.ToString(Fila["SupplierName"]);
+                R.SupplierEmail = Convert.ToString(Fila["SupplierEmail"]);
+                
+                
+            }
+
+            return R;
+        }
+
+        public DataTable ListSupplier()
+        {
+            DataTable R = new DataTable();
+
+            Connection Micnn = new Connection();
+
+            R = Micnn.EjecutarSELECT("SPListSupplier ");
+
+            return R;
+        }
 
     }
 }

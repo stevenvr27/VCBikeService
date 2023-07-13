@@ -126,7 +126,18 @@ namespace Logic.Models
 
             return R;
         }
-        
+        public DataTable ListarEnBusqueda()
+        {
+            DataTable R = new DataTable();
+
+            Connection MiCnn = new Connection();
+
+            R = MiCnn.EjecutarSELECT("SPProductoBusquedaListar");
+
+            return R;
+        }
+
+
         public Item SearchIDReturnItem()
         {
             Item R = new Item();
@@ -165,12 +176,22 @@ namespace Logic.Models
             return R;
 
         }
+        public DataTable SearchID()
+        {
+            DataTable R = new DataTable();
+            Connection connection = new Connection();
+
+            R = connection.EjecutarSELECT("SPSearchID");
+
+            return R;
+
+        }
         public DataTable newbuy()
         {
             DataTable R = new DataTable();
              Connection connection = new Connection();
         
-            R = connection.EjecutarSELECT("SPNewBuyItem");
+            R = connection.EjecutarSELECT("SPListItemToBuy");
 
             return R;
           

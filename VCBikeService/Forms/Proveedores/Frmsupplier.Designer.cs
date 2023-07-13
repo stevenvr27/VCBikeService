@@ -86,10 +86,10 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 277F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 387F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 222F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1023, 622);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1108, 730);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // DgSupplier
@@ -108,7 +108,7 @@
             this.CAddress,
             this.CDescription});
             this.DgSupplier.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DgSupplier.Location = new System.Drawing.Point(4, 61);
+            this.DgSupplier.Location = new System.Drawing.Point(4, 59);
             this.DgSupplier.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.DgSupplier.MultiSelect = false;
             this.DgSupplier.Name = "DgSupplier";
@@ -117,7 +117,7 @@
             this.DgSupplier.RowHeadersWidth = 62;
             this.DgSupplier.RowTemplate.Height = 28;
             this.DgSupplier.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgSupplier.Size = new System.Drawing.Size(1015, 271);
+            this.DgSupplier.Size = new System.Drawing.Size(1100, 381);
             this.DgSupplier.TabIndex = 5;
             this.DgSupplier.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgSupplier_CellClick);
             // 
@@ -200,28 +200,28 @@
             this.userDetail.Controls.Add(this.label5);
             this.userDetail.Controls.Add(this.label3);
             this.userDetail.Controls.Add(this.label2);
-            this.userDetail.Location = new System.Drawing.Point(4, 338);
+            this.userDetail.Location = new System.Drawing.Point(4, 446);
             this.userDetail.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.userDetail.Name = "userDetail";
             this.userDetail.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.userDetail.Size = new System.Drawing.Size(956, 215);
+            this.userDetail.Size = new System.Drawing.Size(1100, 215);
             this.userDetail.TabIndex = 4;
             this.userDetail.TabStop = false;
             this.userDetail.Text = "Detalle Proveedor";
             // 
             // TxtCardID
             // 
-            this.TxtCardID.Location = new System.Drawing.Point(571, 70);
+            this.TxtCardID.Location = new System.Drawing.Point(651, 67);
             this.TxtCardID.Margin = new System.Windows.Forms.Padding(2);
             this.TxtCardID.Name = "TxtCardID";
-            this.TxtCardID.Size = new System.Drawing.Size(362, 20);
+            this.TxtCardID.Size = new System.Drawing.Size(401, 20);
             this.TxtCardID.TabIndex = 22;
             this.TxtCardID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCardID_KeyPress);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(493, 70);
+            this.label4.Location = new System.Drawing.Point(571, 70);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 15);
@@ -231,7 +231,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(460, 39);
+            this.label8.Location = new System.Drawing.Point(550, 33);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(34, 15);
@@ -243,7 +243,7 @@
             this.TxtSupplierPhone.Location = new System.Drawing.Point(94, 153);
             this.TxtSupplierPhone.Margin = new System.Windows.Forms.Padding(2);
             this.TxtSupplierPhone.Name = "TxtSupplierPhone";
-            this.TxtSupplierPhone.Size = new System.Drawing.Size(362, 20);
+            this.TxtSupplierPhone.Size = new System.Drawing.Size(381, 20);
             this.TxtSupplierPhone.TabIndex = 19;
             this.TxtSupplierPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtSupplierPhone_KeyPress);
             // 
@@ -251,15 +251,15 @@
             // 
             this.CbSupplierType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CbSupplierType.FormattingEnabled = true;
-            this.CbSupplierType.Location = new System.Drawing.Point(498, 33);
+            this.CbSupplierType.Location = new System.Drawing.Point(600, 27);
             this.CbSupplierType.Margin = new System.Windows.Forms.Padding(2);
             this.CbSupplierType.Name = "CbSupplierType";
-            this.CbSupplierType.Size = new System.Drawing.Size(435, 21);
+            this.CbSupplierType.Size = new System.Drawing.Size(452, 21);
             this.CbSupplierType.TabIndex = 18;
             // 
             // TxtSupplierAddress
             // 
-            this.TxtSupplierAddress.Location = new System.Drawing.Point(547, 123);
+            this.TxtSupplierAddress.Location = new System.Drawing.Point(651, 123);
             this.TxtSupplierAddress.Margin = new System.Windows.Forms.Padding(2);
             this.TxtSupplierAddress.Multiline = true;
             this.TxtSupplierAddress.Name = "TxtSupplierAddress";
@@ -280,7 +280,7 @@
             this.TxtSupplierName.Location = new System.Drawing.Point(81, 70);
             this.TxtSupplierName.Margin = new System.Windows.Forms.Padding(2);
             this.TxtSupplierName.Name = "TxtSupplierName";
-            this.TxtSupplierName.Size = new System.Drawing.Size(362, 20);
+            this.TxtSupplierName.Size = new System.Drawing.Size(394, 20);
             this.TxtSupplierName.TabIndex = 9;
             this.TxtSupplierName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtSupplierName_KeyPress);
             // 
@@ -297,7 +297,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(495, 95);
+            this.label7.Location = new System.Drawing.Point(571, 123);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(62, 15);
@@ -353,7 +353,7 @@
             this.panel1.Location = new System.Drawing.Point(2, 2);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1019, 54);
+            this.panel1.Size = new System.Drawing.Size(1104, 52);
             this.panel1.TabIndex = 0;
             // 
             // checkBSupplier
@@ -402,10 +402,10 @@
             this.panel2.Controls.Add(this.BtnEdit);
             this.panel2.Controls.Add(this.BtnAdd);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(2, 559);
+            this.panel2.Location = new System.Drawing.Point(2, 667);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1019, 61);
+            this.panel2.Size = new System.Drawing.Size(1104, 61);
             this.panel2.TabIndex = 1;
             // 
             // btnDeleteForEver
@@ -413,7 +413,7 @@
             this.btnDeleteForEver.BackColor = System.Drawing.Color.Red;
             this.btnDeleteForEver.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteForEver.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDeleteForEver.Location = new System.Drawing.Point(386, 2);
+            this.btnDeleteForEver.Location = new System.Drawing.Point(436, 2);
             this.btnDeleteForEver.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeleteForEver.Name = "btnDeleteForEver";
             this.btnDeleteForEver.Size = new System.Drawing.Size(170, 54);
@@ -428,7 +428,7 @@
             this.btnactivate.BackColor = System.Drawing.Color.OliveDrab;
             this.btnactivate.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnactivate.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnactivate.Location = new System.Drawing.Point(14, -1);
+            this.btnactivate.Location = new System.Drawing.Point(11, 2);
             this.btnactivate.Margin = new System.Windows.Forms.Padding(2);
             this.btnactivate.Name = "btnactivate";
             this.btnactivate.Size = new System.Drawing.Size(170, 54);
@@ -443,7 +443,7 @@
             this.BtnCancel.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BtnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BtnCancel.Location = new System.Drawing.Point(765, 4);
+            this.BtnCancel.Location = new System.Drawing.Point(870, 5);
             this.BtnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.Size = new System.Drawing.Size(170, 54);
@@ -457,7 +457,7 @@
             this.BtnClean.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BtnClean.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnClean.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.BtnClean.Location = new System.Drawing.Point(576, 2);
+            this.BtnClean.Location = new System.Drawing.Point(639, 2);
             this.BtnClean.Margin = new System.Windows.Forms.Padding(2);
             this.BtnClean.Name = "BtnClean";
             this.BtnClean.Size = new System.Drawing.Size(170, 54);
@@ -471,7 +471,7 @@
             this.BtnDelete.BackColor = System.Drawing.Color.Red;
             this.BtnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BtnDelete.Location = new System.Drawing.Point(386, 2);
+            this.BtnDelete.Location = new System.Drawing.Point(436, 2);
             this.BtnDelete.Margin = new System.Windows.Forms.Padding(2);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(170, 54);
@@ -485,7 +485,7 @@
             this.BtnEdit.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BtnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnEdit.ForeColor = System.Drawing.Color.SeaShell;
-            this.BtnEdit.Location = new System.Drawing.Point(198, 2);
+            this.BtnEdit.Location = new System.Drawing.Point(228, 2);
             this.BtnEdit.Margin = new System.Windows.Forms.Padding(2);
             this.BtnEdit.Name = "BtnEdit";
             this.BtnEdit.Size = new System.Drawing.Size(170, 54);
@@ -512,7 +512,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1032, 618);
+            this.ClientSize = new System.Drawing.Size(1107, 730);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);

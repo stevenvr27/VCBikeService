@@ -32,6 +32,9 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cvMethodp = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.nombre = new System.Windows.Forms.Label();
             this.TxtClienteID = new System.Windows.Forms.TextBox();
             this.LblClienteNombre = new System.Windows.Forms.Label();
             this.BtnClienteBuscar = new System.Windows.Forms.Button();
@@ -43,10 +46,11 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.DgvLista = new System.Windows.Forms.DataGridView();
-            this.CIDInventario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CPrecioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CSellPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CBarcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CTasaImpuesto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CPorcentajeDescuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CSubTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,7 +70,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.BtnCrearCompra = new System.Windows.Forms.Button();
-            this.nombre = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -94,7 +97,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 61.49826F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 73F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1100, 748);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1136, 774);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
@@ -103,11 +106,14 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1094, 235);
+            this.panel1.Size = new System.Drawing.Size(1130, 245);
             this.panel1.TabIndex = 0;
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.cvMethodp);
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.nombre);
             this.groupBox1.Controls.Add(this.TxtClienteID);
             this.groupBox1.Controls.Add(this.LblClienteNombre);
@@ -119,13 +125,44 @@
             this.groupBox1.Controls.Add(this.labelCliente);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(2, 6);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Size = new System.Drawing.Size(1088, 215);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalle de Compra";
+            // 
+            // cvMethodp
+            // 
+            this.cvMethodp.BackColor = System.Drawing.Color.Moccasin;
+            this.cvMethodp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cvMethodp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cvMethodp.FormattingEnabled = true;
+            this.cvMethodp.Location = new System.Drawing.Point(547, 69);
+            this.cvMethodp.Name = "cvMethodp";
+            this.cvMethodp.Size = new System.Drawing.Size(346, 33);
+            this.cvMethodp.TabIndex = 13;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(368, 69);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(162, 25);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Metodo de Pago:";
+            // 
+            // nombre
+            // 
+            this.nombre.AutoSize = true;
+            this.nombre.Location = new System.Drawing.Point(9, 35);
+            this.nombre.Name = "nombre";
+            this.nombre.Size = new System.Drawing.Size(179, 25);
+            this.nombre.TabIndex = 11;
+            this.nombre.Text = "Nombre del cliente:";
+            this.nombre.Visible = false;
             // 
             // TxtClienteID
             // 
@@ -133,7 +170,7 @@
             this.TxtClienteID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtClienteID.Location = new System.Drawing.Point(510, 23);
             this.TxtClienteID.Name = "TxtClienteID";
-            this.TxtClienteID.Size = new System.Drawing.Size(332, 26);
+            this.TxtClienteID.Size = new System.Drawing.Size(410, 26);
             this.TxtClienteID.TabIndex = 10;
             this.TxtClienteID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -150,7 +187,7 @@
             // 
             // BtnClienteBuscar
             // 
-            this.BtnClienteBuscar.Location = new System.Drawing.Point(848, 17);
+            this.BtnClienteBuscar.Location = new System.Drawing.Point(964, 17);
             this.BtnClienteBuscar.Name = "BtnClienteBuscar";
             this.BtnClienteBuscar.Size = new System.Drawing.Size(95, 34);
             this.BtnClienteBuscar.TabIndex = 8;
@@ -203,7 +240,7 @@
             // 
             this.labelCliente.AutoSize = true;
             this.labelCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCliente.Location = new System.Drawing.Point(397, 23);
+            this.labelCliente.Location = new System.Drawing.Point(430, 24);
             this.labelCliente.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelCliente.Name = "labelCliente";
             this.labelCliente.Size = new System.Drawing.Size(79, 25);
@@ -214,9 +251,9 @@
             // 
             this.panel2.Controls.Add(this.groupBox2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 244);
+            this.panel2.Location = new System.Drawing.Point(3, 254);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1094, 378);
+            this.panel2.Size = new System.Drawing.Size(1130, 394);
             this.panel2.TabIndex = 1;
             // 
             // groupBox2
@@ -228,7 +265,7 @@
             this.groupBox2.Size = new System.Drawing.Size(1082, 366);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Detalle (Tabla CompraDetalle)";
+            this.groupBox2.Text = " ";
             // 
             // DgvLista
             // 
@@ -237,10 +274,11 @@
             this.DgvLista.BackgroundColor = System.Drawing.Color.Moccasin;
             this.DgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvLista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CIDInventario,
+            this.CItemID,
             this.CItemName,
-            this.CPrecioVenta,
+            this.CSellPrice,
             this.CCantidad,
+            this.CBarcode,
             this.CTasaImpuesto,
             this.CPorcentajeDescuento,
             this.CSubTotal,
@@ -259,15 +297,15 @@
             this.DgvLista.TabIndex = 2;
             this.DgvLista.VirtualMode = true;
             // 
-            // CIDInventario
+            // CItemID
             // 
-            this.CIDInventario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.CIDInventario.DataPropertyName = "IDInventario";
-            this.CIDInventario.HeaderText = "COD";
-            this.CIDInventario.MinimumWidth = 6;
-            this.CIDInventario.Name = "CIDInventario";
-            this.CIDInventario.ReadOnly = true;
-            this.CIDInventario.Width = 70;
+            this.CItemID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CItemID.DataPropertyName = "ItemID";
+            this.CItemID.HeaderText = "COD";
+            this.CItemID.MinimumWidth = 6;
+            this.CItemID.Name = "CItemID";
+            this.CItemID.ReadOnly = true;
+            this.CItemID.Width = 70;
             // 
             // CItemName
             // 
@@ -278,15 +316,15 @@
             this.CItemName.Name = "CItemName";
             this.CItemName.ReadOnly = true;
             // 
-            // CPrecioVenta
+            // CSellPrice
             // 
-            this.CPrecioVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.CPrecioVenta.DataPropertyName = "PrecioVenta";
-            this.CPrecioVenta.HeaderText = "PRECIO";
-            this.CPrecioVenta.MinimumWidth = 6;
-            this.CPrecioVenta.Name = "CPrecioVenta";
-            this.CPrecioVenta.ReadOnly = true;
-            this.CPrecioVenta.Width = 80;
+            this.CSellPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CSellPrice.DataPropertyName = "SellPrice";
+            this.CSellPrice.HeaderText = "PRECIO";
+            this.CSellPrice.MinimumWidth = 6;
+            this.CSellPrice.Name = "CSellPrice";
+            this.CSellPrice.ReadOnly = true;
+            this.CSellPrice.Width = 80;
             // 
             // CCantidad
             // 
@@ -297,6 +335,15 @@
             this.CCantidad.Name = "CCantidad";
             this.CCantidad.ReadOnly = true;
             this.CCantidad.Width = 75;
+            // 
+            // CBarcode
+            // 
+            this.CBarcode.DataPropertyName = "Barcode";
+            this.CBarcode.HeaderText = "Codigo barras";
+            this.CBarcode.MinimumWidth = 6;
+            this.CBarcode.Name = "CBarcode";
+            this.CBarcode.ReadOnly = true;
+            this.CBarcode.Width = 125;
             // 
             // CTasaImpuesto
             // 
@@ -412,9 +459,9 @@
             // 
             this.panel3.Controls.Add(this.groupBox3);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 628);
+            this.panel3.Location = new System.Drawing.Point(3, 654);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1094, 67);
+            this.panel3.Size = new System.Drawing.Size(1130, 67);
             this.panel3.TabIndex = 2;
             // 
             // groupBox3
@@ -480,10 +527,10 @@
             // 
             this.panel4.Controls.Add(this.BtnCrearCompra);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(2, 700);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2);
+            this.panel4.Location = new System.Drawing.Point(2, 726);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1096, 46);
+            this.panel4.Size = new System.Drawing.Size(1132, 46);
             this.panel4.TabIndex = 3;
             // 
             // BtnCrearCompra
@@ -499,25 +546,15 @@
             this.BtnCrearCompra.Text = "Crear Compra";
             this.BtnCrearCompra.UseVisualStyleBackColor = false;
             // 
-            // nombre
-            // 
-            this.nombre.AutoSize = true;
-            this.nombre.Location = new System.Drawing.Point(9, 35);
-            this.nombre.Name = "nombre";
-            this.nombre.Size = new System.Drawing.Size(179, 25);
-            this.nombre.TabIndex = 11;
-            this.nombre.Text = "Nombre del cliente:";
-            this.nombre.Visible = false;
-            // 
             // FrmBuy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1103, 742);
+            this.ClientSize = new System.Drawing.Size(1135, 784);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FrmBuy";
             this.Text = "Registro de Compras";
             this.Load += new System.EventHandler(this.FrmBuy_Load);
@@ -558,17 +595,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button BtnCrearCompra;
         private System.Windows.Forms.DataGridView DgvLista;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CIDInventario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CItemName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CPrecioVenta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CCantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CTasaImpuesto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CPorcentajeDescuento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CSubTotal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CDescuentoTotal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CSubTotal2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CImpuestosTotal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CTotalLinea;
         private System.Windows.Forms.GroupBox groupBox1;
         public System.Windows.Forms.TextBox TxtClienteID;
         private System.Windows.Forms.Label LblClienteNombre;
@@ -579,5 +605,19 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labelCliente;
         private System.Windows.Forms.Label nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CItemID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CItemName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CSellPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CCantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CBarcode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CTasaImpuesto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CPorcentajeDescuento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CSubTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CDescuentoTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CSubTotal2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CImpuestosTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CTotalLinea;
+        private System.Windows.Forms.ComboBox cvMethodp;
+        private System.Windows.Forms.Label label1;
     }
 }
