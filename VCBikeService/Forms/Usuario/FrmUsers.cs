@@ -227,10 +227,7 @@ namespace VCBikeService.Forms
                 EmailOK = MyUser.ConsultEmail();
                 if (CardIDok == false && EmailOK == false)
                 {
-                    //se puede agregar el usuario ya que no existe un usuario con la cedula y correo
-                    //digitados. 
 
-                    //se solicita al usuario confirmación de si queire agregar o no al usuario 
 
                     string msg = string.Format("¿Está seguro que desea agregar al usuario {0}?", MyUser.UserName);
 
@@ -263,7 +260,6 @@ namespace VCBikeService.Forms
                 }
                 else
                 {
-                    //indicar al usuari si falla alguna consulta
 
                     if (CardIDok)
                     {
@@ -287,9 +283,7 @@ namespace VCBikeService.Forms
             // seleccionar un campo en dicha carga de usuarios para dibujar info en los controles graficos
             if (DgListUsers.SelectedRows.Count == 1)
             {
-                // Limpiar el formulario 
 
-                // Seleccionar la fila indice 0 , osea la primera en la lista
                 DataGridViewRow Mifila = DgListUsers.SelectedRows[0];
 
                 //necesito el valor del id para realizar la consulta y traer los datos que le pertenecen 
@@ -300,13 +294,10 @@ namespace VCBikeService.Forms
                 // ahora le agregamos el alor obtenido por la fila 
                 MyUser.UserID = Idusuario;
 
-                //Ahora puedo consultar el usuario y id para llenar el resto de atributos 
-
                 MyUser = MyUser.SearchCardIDReturnUser();
 
                 if (MyUser != null && MyUser.UserID > 0)
                 {
-                    // si cargamos correctamente el usuario llenamos los controles 
 
                     TxtUserID.Text = Convert.ToString(MyUser.UserID);
 
@@ -492,7 +483,6 @@ namespace VCBikeService.Forms
                         MessageBox.Show("El usuario ha sido eliminado correctamente.", "!!!", MessageBoxButtons.OK);
                         CleanForm();
                         LoadListUser();
-                    }
 
                 }
             }

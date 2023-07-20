@@ -344,7 +344,6 @@ namespace VCBikeService.Forms.Clientes
                                 MessageBox.Show("El Cliente ha sido eliminado correctamente.", "!!!", MessageBoxButtons.OK);
                                 CleanForm();
                                 LoadListCustomer();
-                            }
 
                         }
                     

@@ -15,7 +15,6 @@ namespace VCBikeService.Forms.Compra
     public partial class FrmSupplierBuy : Form
     {
         public Buy MiCompraLocal { get; set; }
-        public Billing MyBilling { get; set; }
 
         public DataTable ListaProductos { get; set; }
 
@@ -24,7 +23,6 @@ namespace VCBikeService.Forms.Compra
         {
             InitializeComponent();
             MiCompraLocal = new Buy();
-            MyBilling = new Billing();
 
             ListaProductos = new DataTable();
         }
@@ -106,12 +104,7 @@ namespace VCBikeService.Forms.Compra
             }
         }
 
-        private void FrmSupplierBuy_Load(object sender, EventArgs e)
-        {
-            LoadMethodPayment();
-            LoadBuyType();
              
-        }
          
 
         private void BtnProductoAgregar_Click(object sender, EventArgs e)

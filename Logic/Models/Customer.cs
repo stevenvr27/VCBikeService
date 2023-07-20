@@ -33,11 +33,7 @@ namespace Logic.Models
 
             Connection connection = new Connection();
 
-            //connection.parameterlist.Add(new SqlParameter("@Email", this.Email));
 
-            //Crypto crypto = new Crypto();
-            //string Passwordencrypted = crypto.EncriptarPassword(this.UserPassword);
-            // connection.parameterlist.Add(new SqlParameter("@Password", Passwordencrypted));
 
             connection.parameterlist.Add(new SqlParameter("@CustomerName", this.CustomerName));
             connection.parameterlist.Add(new SqlParameter("@CustomerEmail", this.CustomerEmail)); 

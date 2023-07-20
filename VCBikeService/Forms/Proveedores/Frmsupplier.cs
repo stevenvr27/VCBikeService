@@ -207,7 +207,6 @@ namespace VCBikeService.Forms
                         MessageBox.Show("El proveedor ha sido elimnado correctamente.", "!!!", MessageBoxButtons.OK);
                         CleanForm();
                         LoadListsupply();
-                    }
 
                 }
 
