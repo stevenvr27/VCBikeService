@@ -67,16 +67,5 @@ namespace VCBikeService.Forms.Compra
 
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (!Globals.frmClientes.Visible)
-            {
-                Globals.frmClientes = new Clientes.FrmClientes();
-                Globals.frmClientes.Show();
-            }
-        }
-
-       
     }
 }

@@ -15,7 +15,6 @@ namespace VCBikeService
         public static Forms.Compra.FrmSupplierBuy frmSupplierBuy = new Forms.Compra.FrmSupplierBuy();
         public static Forms.Productos.FrmSearchProduct FrmSearchProduct = new Forms.Productos.FrmSearchProduct();
         public static Forms.Compra.FrmSearchCustomer CustomerSearch = new Forms.Compra.FrmSearchCustomer();
-        public static Forms.Usuario.FrmMyUser MyUser = new Forms.Usuario.FrmMyUser();
         public static Forms.Frmsupplier Frmsupplier = new Forms.Frmsupplier();
          public static Forms.Compra.FrmBuy FrmCompra = new Forms.Compra.FrmBuy();
         public static Forms.Compra.FrmAddSearchProduct FrmAddSearchProduct = new Forms.Compra.FrmAddSearchProduct();
