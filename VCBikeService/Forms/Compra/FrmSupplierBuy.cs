@@ -106,7 +106,6 @@ namespace VCBikeService.Forms.Compra
 
              
          
-
         private void BtnProductoAgregar_Click(object sender, EventArgs e)
         {
             Form MiFormBusqueda = new FrmSupplyAddProduct();

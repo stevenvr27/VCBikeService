@@ -400,7 +400,6 @@
             this.btnadd.TabIndex = 22;
             this.btnadd.Text = "Agregar";
             this.btnadd.UseVisualStyleBackColor = false;
-            this.btnadd.Click += new System.EventHandler(this.btnadd_Click);
             // 
             // desc
             // 

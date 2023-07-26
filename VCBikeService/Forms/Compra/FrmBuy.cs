@@ -14,8 +14,6 @@ namespace VCBikeService.Forms.Compra
 {
     public partial class FrmBuy : Form
     {
-        public Buy MiCompraLocal { get; set; }
-        public Billing MyBilling { get; set; }
 
         public DataTable ListaProductos { get; set; }
         
@@ -29,51 +27,6 @@ namespace VCBikeService.Forms.Compra
             ListaProductos = new DataTable();
         }
      
-
-     
-        private void BtnProductoAgregar_Click(object sender, EventArgs e)
-        {
-            Form miform = new FrmAddSearchProduct();
-
-            DialogResult respuesta = miform.ShowDialog();
-            if (respuesta == DialogResult.OK)
-            {
-                DgvLista.DataSource = ListaProductos;
-
-                total();
-            }
-
-            
-        }
-        private void total()
-        {
-              
-            if (ListaProductos.Rows.Count > 0)
-            {
-                
-
-                decimal totalItems = 0;
-                decimal totalMonto = 0;
-
-                foreach (DataRow row in ListaProductos.Rows)
-                {
-                    totalItems += Convert.ToDecimal(row["Cantidad"]);
-                    //totalItems = totalItems + algo
-
-                    totalMonto += Convert.ToDecimal(row["PrecioVentaUnitario"]) * Convert.ToDecimal(row["Cantidad"]);
-
-                }
-
-                TxtTotalCantidad.Text = totalItems.ToString();
-
-                //este formato sirve para representar un valor monetario, 
-                //existen muchísimos más formatos personalizados, por favor investigar
-                //{0:N2}
-                TxtTotal.Text = string.Format("{0:C2}", totalMonto);
-
-            }
-
-        }
         private void LoadBuyType()
         {
             Logic.Models.BuyType type = new Logic.Models.BuyType();
@@ -113,7 +66,6 @@ namespace VCBikeService.Forms.Compra
         {
             // loadTypeBilling();
 
-            // Clean();
 
             LoadBuyType();
             LoadMethodPayment();
@@ -126,8 +78,6 @@ namespace VCBikeService.Forms.Compra
 
             if (resp == DialogResult.OK)
             {
-                //cargar la info del usuario en la composición de MiFacturaLocal 
-                //y además mostrar el nombre del usuario en el Label 
 
                 if (!string.IsNullOrEmpty(TxtClienteID.Text.Trim()))
                 {
@@ -138,11 +88,7 @@ namespace VCBikeService.Forms.Compra
                     {
                         labelCliente.Visible = false;
                         
-                        MyBilling.MyCustomer = MyBilling.MyCustomer.SearchID(IdCliente);
 
-                        LblClienteNombre.Text = MyBilling.MyCustomer.CustomerName;
-                        LblClienteNombre.Visible = true;
-                        nombre.Visible = true;
 
                     }
                     
@@ -151,9 +97,5 @@ namespace VCBikeService.Forms.Compra
                 }
 
             }
-
         }
-
-        
     }
-}

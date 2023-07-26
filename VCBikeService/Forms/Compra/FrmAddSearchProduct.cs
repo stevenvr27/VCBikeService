@@ -19,16 +19,6 @@ namespace VCBikeService.Forms.Compra
 
         public Logic.Models.Item  MiProductoLocal { get; set; }
 
-        public decimal SubTotal1 { get; set; }
-        public decimal TotalDescuento { get; set; }
-        public decimal SubTotal2 { get; set; }
-        public decimal TotalImpuesto { get; set; }
-        public decimal Total { get; set; }
-        public decimal PrecioUnitario { set; get; }
-        public decimal TasaImpuesto { get; set; }
-        public decimal PorcentajeDescuento { get; set; }
-        public decimal Cantidad { get; set; }
-
         public FrmAddSearchProduct()
         {
             InitializeComponent();
@@ -73,8 +63,6 @@ namespace VCBikeService.Forms.Compra
             PorcentajeDescuento = 0;
             Cantidad = 0;
 
-            NudCantidad.Value = 1;
-            TxtPrecioUnitario.Text = "0";
              
             TxtIVA.Text = "0";
             TxtTotal.Text = "0";
@@ -124,49 +112,15 @@ namespace VCBikeService.Forms.Compra
 
                 SubTotal2 = SubTotal1 - TotalDescuento;
 
-                if (TasaImpuesto > 0)
-                {
-                    TotalImpuesto = (SubTotal2 * TasaImpuesto) / 100;
                 }
 
                 Total = SubTotal2 + TotalImpuesto;
 
                 TxtTotal.Text = string.Format("{0:N2}", Total);
 
-           // }
 
         }
-        //private bool ValidarDescuento()
-        //{
-        //    bool R = false;
-        //    try
-        //    {
-        //        if (!string.IsNullOrEmpty(TxtDescuento.Text.Trim()) &&
-        //        Convert.ToDecimal(TxtDescuento.Text.Trim()) >= 0 &&
-        //        Convert.ToDecimal(TxtDescuento.Text.Trim()) <= 100)
-        //        {
-        //            R = true;
-        //        }
-        //        else
-        //        {
-        //            if (Convert.ToDecimal(TxtDescuento.Text.Trim()) > 100)
-        //            {
-        //                MessageBox.Show("Los descuentos no pueden ser superiores a 100", "Error de validación", MessageBoxButtons.OK);
-        //                return false;
-        //            }
-        //            if (Convert.ToDecimal(TxtDescuento.Text.Trim()) < 0)
-        //            {
-        //                MessageBox.Show("Los descuentos no pueden ser números negativos", "Error de validación", MessageBoxButtons.OK);
-        //                return false;
-        //            }
 
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
-        //        TxtDescuento.Text = "0";
-        //        TxtDescuento.SelectAll();
-        //    }
 
         //    return R;
         //}
@@ -178,8 +132,6 @@ namespace VCBikeService.Forms.Compra
                 e.Handled = true;
                 MessageBox.Show("Debes Digitar unicamente numeros.", "!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
 
-            }
-        }
 
         
 
@@ -188,32 +140,11 @@ namespace VCBikeService.Forms.Compra
             Calcular();
         }
 
-        private void NudCantidad_ValueChanged(object sender, EventArgs e)
-        {
-            Calcular();
-        }
 
-        private void btnadd_Click(object sender, EventArgs e)
-        {
-            DataGridViewRow row = DgvLista.SelectedRows[0];
-
-            int IdProducto = Convert.ToInt32(row.Cells["CItemID"].Value);
-            string NombreProducto = Convert.ToString(row.Cells["CItemName"].Value);
-            string CodigoBarras = Convert.ToString(row.Cells["CBarcode"].Value);
-            decimal Precio = Convert.ToDecimal(row.Cells["CSellPrice"].Value);
-            decimal Cantidad = NudCantidad.Value;
 
         
-            DataRow MiFila = Globals.FrmCompra.ListaProductos.NewRow();
-            MiFila["CItemID"] = IdProducto;
-            MiFila["Cantidad"] = Cantidad;
-            MiFila["PrecioVentaUnitario"] = Precio;
-            MiFila["ItemName"] = NombreProducto;
-            MiFila["ProductoCodigoBarras"] = CodigoBarras;
 
-            Globals.FrmCompra.ListaProductos.Rows.Add(MiFila);
 
-            DialogResult = DialogResult.OK;
 
         }
 

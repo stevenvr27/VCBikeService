@@ -25,9 +25,6 @@ namespace Logic.Models
         {
             MyCustomer = new Customer();
             MyUser = new User();
-            MySupplier = new Supplier();
-            MyBillingDetail = new BillingDetail();  
-            Details = new List<BuyDetail>();
             Date = DateTime.Now;
             myitem = new Item();
 
