@@ -20,11 +20,11 @@ namespace VCBikeService.Forms.Compra
     {
 
         public Billing MyBilling { get; set; }
-       
+
         public DataTable Localdetailist { get; set; }
         public DataTable Listitems { get; set; }
 
-        
+
 
 
         public FrmBuy()
@@ -33,7 +33,7 @@ namespace VCBikeService.Forms.Compra
 
             MyBilling = new Billing();
             Localdetailist = new DataTable();
-            
+
             Listitems = new DataTable();
         }
 
@@ -105,13 +105,14 @@ namespace VCBikeService.Forms.Compra
 
         private void LoadUSer()
         {
-      
+
 
             TxtUSer.Text = Globals.MyGlobalUser.UserName.Trim();
 
-            
 
-           
+
+
+
         }
 
 
@@ -120,7 +121,7 @@ namespace VCBikeService.Forms.Compra
             LoadUSer();
 
 
-           LoadBillingType();
+            LoadBillingType();
             LoadMethodPayment();
             clean();
         }
@@ -129,7 +130,7 @@ namespace VCBikeService.Forms.Compra
             CbBuyType.SelectedIndex = -1;
             cvMethodp.SelectedIndex = -1;
 
-            
+
             DtpFechaFactura.Value = DateTime.Now.Date;
 
             DtpFechaFactura.Value = DateTime.Now.Date;
@@ -146,13 +147,14 @@ namespace VCBikeService.Forms.Compra
             Localdetailist = new DataTable();
             Localdetailist = MyBilling.Detailsummary();
 
+
             DgvListaItems.DataSource = Localdetailist;
 
 
             Localdetailist.Clear(); // Clear the Localdetailist DataTable
             DgvListaItems.DataSource = Localdetailist; // Update the DataGridView with the cleared data
 
-
+            LblNombreCliente.Text = "0";
 
 
             TxtCustomerID.Clear();
@@ -167,7 +169,7 @@ namespace VCBikeService.Forms.Compra
             {
                 Logic.Models.BillingDetail detail = new Logic.Models.BillingDetail();
 
-                detail.Amount = Convert.ToDecimal(item["Amount"]); 
+                detail.Amount = Convert.ToDecimal(item["Amount"]);
                 detail.ImpuestoLine = Convert.ToDecimal(item["ImpuestoLine"]);
                 detail.MyItem.ItemID = Convert.ToInt32(item["ItemItemID"]);
                 detail.PercentageDiscount = Convert.ToDecimal(item["PercentageDiscount"]);
@@ -200,7 +202,7 @@ namespace VCBikeService.Forms.Compra
                     if (true)
                     {
                         TxtCustomerID.Visible = true;
-                        BtnClienteBuscar.Visible = false;
+
                         MyBilling.MyCustomer = MyBilling.MyCustomer.SearchID(IdCliente);
                         LblNombreCliente.Text = MyBilling.MyCustomer.CustomerName;
                         LblNombreCliente.Visible = true;
@@ -219,7 +221,7 @@ namespace VCBikeService.Forms.Compra
 
         private void Cancel_Click(object sender, EventArgs e)
         {
-            
+
             Close();
         }
 
@@ -239,32 +241,7 @@ namespace VCBikeService.Forms.Compra
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
 
-            if (DgvListaItems.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Debe seleccionar un item de la lista", "Error de validación", MessageBoxButtons.OK);
-                return;
-            }
-
-            DialogResult r = MessageBox.Show("¿Está seguro de eliminar este producto?",
-                                             "Confirmar Eliminación",
-                                             MessageBoxButtons.YesNo,
-                                             MessageBoxIcon.Question);
-
-            if (r == DialogResult.Yes)
-            {
-                // Obtener el índice de la fila seleccionada en el DataGridView
-                int rowIndex = DgvListaItems.SelectedRows[0].Index;
-
-                // Eliminar la fila correspondiente del DataTable
-                Globals.Frmfactura.Localdetailist.Rows.RemoveAt(rowIndex);
-
-                // Recalcular el valor total de la factura y actualizar los controles correspondientes
-                RecalcularValorTotalFactura();
-            }
-        }
 
         private void RecalcularValorTotalFactura()
         {
@@ -322,20 +299,20 @@ namespace VCBikeService.Forms.Compra
                 Forms.Compra.FrmEditBuyItem frmEditItem = Globals.GetFrmEditBuyItem(Localdetailist, cantidadActual);
 
                 // Mostrar el formulario de edición como un cuadro de diálogo
-                 
+
                 DialogResult result = frmEditItem.ShowDialog();
 
                 // Si el usuario hizo clic en el botón "Aceptar" en el formulario de edición, actualizar la cantidad
                 if (result == DialogResult.OK)
                 {
-                   
+
                     int nuevaCantidad = frmEditItem.CantidadEditada;
-                    
+
 
                     // Actualizar la cantidad en el DataGridView
                     DgvListaItems.SelectedRows[0].Cells["CAmount"].Value = nuevaCantidad;
 
-                     if (cantidadActual > nuevaCantidad)
+                    if (cantidadActual > nuevaCantidad)
                     {
                         RecalcularLineas(DgvListaItems.SelectedRows[0]);
 
@@ -344,11 +321,11 @@ namespace VCBikeService.Forms.Compra
                     {
                         RecalcularLinea(DgvListaItems.SelectedRows[0]);
 
-                        
-                       
+
+
                     }
 
-                      RecalcularValorTotalFactura();
+                    RecalcularValorTotalFactura();
                 }
             }
         }
@@ -427,17 +404,17 @@ namespace VCBikeService.Forms.Compra
         }
 
         private void Facturar_Click(object sender, EventArgs e)
-         
+
         {
-            if (!string.IsNullOrEmpty(TxtCustomerID.Text.Trim()) && Localdetailist != null && Localdetailist.Rows.Count > 0 && CbBuyType.SelectedIndex > -1 && cvMethodp.SelectedIndex > -1  )
+            if (!string.IsNullOrEmpty(TxtCustomerID.Text.Trim()) && Localdetailist != null && Localdetailist.Rows.Count > 0 && CbBuyType.SelectedIndex > -1 && cvMethodp.SelectedIndex > -1)
             {
                 //TO DO: efectuar las validaciones correpondientes ej, que la fecha no sea mayor a la actual y que
                 //se haya seleccionado datos mínimos como cliente, usuario, etc.
 
                 // Obtener los IDs de usuario y cliente antes de entrar al ciclo foreach
-                
+
                 int customerId = MyBilling.MyCustomer.CustomerID;
-                
+
                 TxtCustomerID.Text = Convert.ToString(customerId);
                 MyBilling.MyUser.UserID = Globals.MyGlobalUser.UserID;
                 MyBilling.MYMethodPayment.MethodPaymentID = Convert.ToInt32(cvMethodp.SelectedValue);
@@ -456,17 +433,51 @@ namespace VCBikeService.Forms.Compra
                     newdetail.ImpuestoLine = Convert.ToDecimal(item["ImpuestoLine"]);
                     newdetail.TotalLine = Convert.ToDecimal(item["TotalLine"]);
 
-                     MyBilling.DetailItems.Add(newdetail);
+                    MyBilling.DetailItems.Add(newdetail);
                 }
 
-                
+                List<Item> productosFacturados = new List<Item>();
+
+                foreach (DataRow item in Localdetailist.Rows)
+                {
+                    // Obtener los datos del detalle de factura
+                    int itemId = Convert.ToInt32(item["ItemItemID"]);
+                    int cantidadFacturar = Convert.ToInt32(item["Amount"]);
+
+                    // Obtener el producto desde la base de datos
+                    Item producto = new Item();
+                    producto.ItemID = itemId;
+                    producto = producto.ConsultarPorID(itemId);
+
+                    // Validar que la cantidad a facturar no exceda el stock disponible
+                    if (producto.Stock < cantidadFacturar)
+                    {
+                        MessageBox.Show($"La cantidad a facturar del producto '{producto.ItemName}' excede el stock disponible.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // Actualizar el stock en la base de datos restando la cantidad facturada
+                    producto.Stock -= cantidadFacturar;
+                    producto.Update(); // Este método debe actualizar el stock en la base de datos
+
+                    // Agregar el producto a la lista de productos facturados
+                    productosFacturados.Add(producto);
+                }
+
+
+
+
+
 
                 // Once all sales and stock updates are done, proceed to add the billing record
+
+
+
                 if (MyBilling.Add())
                 {
                     MessageBox.Show("Factura guardada correctamente", ":)", MessageBoxButtons.OK);
                     // TO DO: llamado a reporte
-                   MyBilling.UpdateProductStock();
+                    MyBilling.UpdateProductStock();
                     Localdetailist.Clear();
                     clean();
                 }
@@ -477,35 +488,32 @@ namespace VCBikeService.Forms.Compra
             }
         }
 
-
-        private bool HandleSaleAndUpdateStock(int idfactura, int idproducto, string descripcion, decimal cantidad,
-                                      decimal precio, decimal porcentajedescuento, decimal subtotallinea,
-                                      decimal impuestoslinea, decimal total)
+        private void button4_Click(object sender, EventArgs e)
         {
-            try
+            if (DgvListaItems.SelectedRows.Count == 0)
             {
-                Connection MyCnn = new Connection();
-                MyCnn.parameterlist.Add(new SqlParameter("@idfactura", idfactura));
-                MyCnn.parameterlist.Add(new SqlParameter("@idproducto", idproducto));
-                MyCnn.parameterlist.Add(new SqlParameter("@descripcion", descripcion));
-                MyCnn.parameterlist.Add(new SqlParameter("@cantidad", cantidad));
-                MyCnn.parameterlist.Add(new SqlParameter("@precio", precio));
-                MyCnn.parameterlist.Add(new SqlParameter("@porcentajedescuento", porcentajedescuento));
-                MyCnn.parameterlist.Add(new SqlParameter("@subtotallinea", subtotallinea));
-                MyCnn.parameterlist.Add(new SqlParameter("@impuestoslinea", impuestoslinea));
-                MyCnn.parameterlist.Add(new SqlParameter("@total", total));
-                MyCnn.EjecutarInsertUpdateDelete("SpSaleAndUpdateStock");
-                return true;
+                MessageBox.Show("Debe seleccionar un item de la lista", "Error de validación", MessageBoxButtons.OK);
+                return;
             }
-            catch (Exception ex)
+
+            DialogResult r = MessageBox.Show("¿Está seguro de eliminar este producto?",
+                                             "Confirmar Eliminación",
+                                             MessageBoxButtons.YesNo,
+                                             MessageBoxIcon.Question);
+
+            if (r == DialogResult.Yes)
             {
-                // Handle the exception if needed
-                // For example, show an error message or log the error
-                MessageBox.Show("Error occurred while handling the sale and updating stock: " + ex.Message,
-                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                // Obtener el índice de la fila seleccionada en el DataGridView
+                int rowIndex = DgvListaItems.SelectedRows[0].Index;
+
+                // Eliminar la fila correspondiente del DataTable
+                Globals.Frmfactura.Localdetailist.Rows.RemoveAt(rowIndex);
+
+                // Recalcular el valor total de la factura y actualizar los controles correspondientes
+                RecalcularValorTotalFactura();
             }
         }
+
 
     }
 }

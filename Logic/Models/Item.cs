@@ -67,14 +67,13 @@ namespace Logic.Models
         {
             bool R = false;
             Connection connection = new Connection();
-            connection.parameterlist.Add(new SqlParameter("@ITemID", this.ItemID));
-            connection.parameterlist.Add(new SqlParameter("@Description", this.Description));
+            connection.parameterlist.Add(new SqlParameter("@ItemCategoryID", this.MyType.ItemCategoryID));
             connection.parameterlist.Add(new SqlParameter("@ItemName", this.ItemName));
             connection.parameterlist.Add(new SqlParameter("@Barcode", this.Barcode));
             connection.parameterlist.Add(new SqlParameter("@Stock", this.Stock));
             connection.parameterlist.Add(new SqlParameter("@UnitaryCost", this.UnitaryCost));
             connection.parameterlist.Add(new SqlParameter("@SellPrice", this.SellPrice));
-            connection.parameterlist.Add(new SqlParameter("@ItemCategoryID", this.MyType.ItemCategoryID));
+            connection.parameterlist.Add(new SqlParameter("@ITemID", this.ItemID)); // Correct the parameter name
             connection.parameterlist.Add(new SqlParameter("@Tax", this.Tax.TaxID));
             connection.parameterlist.Add(new SqlParameter("@Unit", this.Unit.IDUnit));
             int result = connection.EjecutarInsertUpdateDelete("SPItemUpdate");
@@ -85,6 +84,8 @@ namespace Logic.Models
             }
             return R;
         }
+
+        
 
         public bool Delete()
         {

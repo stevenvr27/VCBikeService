@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -25,15 +26,7 @@ namespace VCBikeService.Forms
             Checker();
         }
 
-        private void TxtProductName_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
-            {
-                e.Handled = true;
-                MessageBox.Show("Debes Digitar unicamente letras.", "!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-
-            }
-        }
+       
 
         private void TxtUnitaryCost_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -51,6 +44,7 @@ namespace VCBikeService.Forms
             {
                 e.Handled = true;
                 MessageBox.Show("Debes Digitar unicamente numeros.", "!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                
 
             }
         }
@@ -66,6 +60,7 @@ namespace VCBikeService.Forms
 
         private void DgSupplier_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+           
             DataGridViewRow Mifila = DgProduct.SelectedRows[0];
 
 
@@ -78,7 +73,7 @@ namespace VCBikeService.Forms
             Myitem = Myitem.SearchIDReturnItem();
             if (Myitem != null && Myitem.ItemID > 0)
             {
-
+               
 
                 TxtIDProduct.Text = Convert.ToString(Myitem.ItemID);
 
@@ -89,6 +84,7 @@ namespace VCBikeService.Forms
                 TxtStock.Text = Convert.ToString(Myitem.Stock);
                 TxtDescription.Text = Myitem.Description;
 
+                Calculate();
 
 
 
@@ -167,7 +163,6 @@ namespace VCBikeService.Forms
                 cbtax.DisplayMember = "Descrip";
                 cbtax.DataSource = dt;
                 cbtax.SelectedIndex = -1;
-
             }
         }
         private void CleanForm()
@@ -179,8 +174,22 @@ namespace VCBikeService.Forms
             TxtStock.Clear();
             TxtSellPrice.Clear();
             TxtUnitaryCost.Clear();
+            cbtax.SelectedIndex = -1;
             CbCategory.SelectedIndex = -1;
+            cbUnit.SelectedIndex = -1;
+            txtFinalPrice.Clear();
+            txt20.Checked = false;
+            txt40.Checked = false;
+            txt60.Checked = false;
+            txt80.Checked = false;
+            txt100.Checked = false;
+            txt120.Checked = false;
+            txt140.Checked = false;
+            
+            
         }
+
+
 
         private void BtnAddproduct_Click(object sender, EventArgs e)
         {
@@ -195,7 +204,7 @@ namespace VCBikeService.Forms
                 Myitem = new Logic.Models.Item();
 
                 Myitem.ItemName = TxtProductName.Text.Trim();
-                Myitem.UnitaryCost = Convert.ToDecimal(TxtUnitaryCost.Text.Trim()); 
+                Myitem.UnitaryCost = Convert.ToDecimal(TxtUnitaryCost.Text.Trim());
                 Myitem.SellPrice = Convert.ToDecimal(TxtSellPrice.Text.Trim());
                 Myitem.Description = TxtDescription.Text.Trim();
                 Myitem.Barcode = TxtBarcode.Text.Trim();
@@ -209,7 +218,7 @@ namespace VCBikeService.Forms
 
 
                 IDOK = Myitem.ConsultID();
-                BarcodeOk= Myitem.ConsultBarcode();
+                BarcodeOk = Myitem.ConsultBarcode();
                 if (IDOK == false && BarcodeOk == false)
                 {
 
@@ -343,26 +352,26 @@ namespace VCBikeService.Forms
             if (!string.IsNullOrEmpty(TxtProductName.Text.Trim()) && !string.IsNullOrEmpty(TxtBarcode.Text.Trim())
                && !string.IsNullOrEmpty(TxtUnitaryCost.Text.Trim()) && !string.IsNullOrEmpty(TxtSellPrice.Text.Trim()))
             {
-              
 
-                        DialogResult r = MessageBox.Show("¿Está seguro de Eliminar al Producto?",
-                                                         "???",
-                                                         MessageBoxButtons.YesNo,
-                                                         MessageBoxIcon.Question);
 
-                        if (r == DialogResult.Yes)
-                        {
-                            if (Myitem.DeleteForEver())
-                            {
-                                MessageBox.Show("El Producto ha sido eliminado correctamente.", "!!!", MessageBoxButtons.OK);
-                                
-                            }
-                                 CleanForm();
-                                loadlistproduct();
+                DialogResult r = MessageBox.Show("¿Está seguro de Eliminar al Producto?",
+                                                 "???",
+                                                 MessageBoxButtons.YesNo,
+                                                 MessageBoxIcon.Question);
 
-                        }
-                    
-                
+                if (r == DialogResult.Yes)
+                {
+                    if (Myitem.DeleteForEver())
+                    {
+                        MessageBox.Show("El Producto ha sido eliminado correctamente.", "!!!", MessageBoxButtons.OK);
+
+                    }
+                    CleanForm();
+                    loadlistproduct();
+
+                }
+
+
 
 
             }
@@ -482,5 +491,118 @@ namespace VCBikeService.Forms
         {
             loadlistproduct();
         }
+
+        private void CalculatePercentage(decimal porcentaje)
+        {
+            if (!string.IsNullOrEmpty(TxtUnitaryCost.Text.Trim()))
+            {
+                decimal costo = Convert.ToDecimal(TxtUnitaryCost.Text.Trim());
+                decimal total = costo + (costo * porcentaje);
+
+                 
+                total = Math.Round(total, 2);
+                TxtSellPrice.Text = total.ToString();
+                Calculate();
+            }
+            else
+            {
+                MessageBox.Show("Primero debes agregar un costo unitario", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                CleanForm();
+            }
+        }
+
+        private void txt20_CheckedChanged(object sender, EventArgs e)
+        {
+            CalculatePercentage(0.20m);
+        }
+
+        private void txt40_CheckedChanged(object sender, EventArgs e)
+        {
+            CalculatePercentage(0.40m);
+        }
+
+        private void txt60_CheckedChanged(object sender, EventArgs e)
+        {
+            CalculatePercentage(0.60m);
+        }
+
+        private void txt80_CheckedChanged(object sender, EventArgs e)
+        {
+            CalculatePercentage(0.80m);
+        }
+
+        private void txt100_CheckedChanged(object sender, EventArgs e)
+        {
+            CalculatePercentage(1.0m);
+        }
+
+        private void txt120_CheckedChanged(object sender, EventArgs e)
+        {
+            CalculatePercentage(1.20m);
+        }
+
+        private void txt140_CheckedChanged(object sender, EventArgs e)
+        {
+            CalculatePercentage(1.40m);
+        }
+        private void Calculate()
+        {
+            if (!string.IsNullOrEmpty(TxtSellPrice.Text.Trim()) && cbtax.SelectedIndex >-1)
+            {
+                decimal impuesto = (0.13m);
+                decimal TotalEntero = Convert.ToDecimal(TxtSellPrice.Text.Trim());
+                decimal total = TotalEntero + (TotalEntero*impuesto);
+                total = Math.Round(total, 2);
+                txtFinalPrice.Text = total.ToString();
+
+            }
+             
+        }
+
+        private void cbtax_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbtax.SelectedIndex > -1)
+            {
+                // Get the selected DataRowView
+                DataRowView selectedRow = (DataRowView)cbtax.SelectedItem;
+
+                // Get the value of the 'AmountTax' column
+                if (selectedRow.Row["value"] is decimal impuestoValor)
+                {
+                    textBox1.Text = impuestoValor.ToString("F2"); // Format the value as "18.2" decimal
+                }
+                else
+                {
+                    // Handle the case when the value cannot be converted to decimal
+                    textBox1.Text = "0";
+                }
+            }
+            else
+            {
+                // If no item is selected, you can set the default value for textBox1
+                textBox1.Text = "0";
+            }
+
+            // Recalculate the price with the new tax value
+            Calculate();
+        }
     }
-}
+    }
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        

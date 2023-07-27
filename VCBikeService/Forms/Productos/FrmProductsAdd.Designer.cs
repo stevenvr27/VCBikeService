@@ -36,16 +36,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.DgProduct = new System.Windows.Forms.DataGridView();
-            this.CItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CBarcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CUnitaryCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CSellPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cdes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtFinalPrice = new System.Windows.Forms.TextBox();
+            this.txt140 = new System.Windows.Forms.RadioButton();
+            this.txt120 = new System.Windows.Forms.RadioButton();
+            this.txt100 = new System.Windows.Forms.RadioButton();
+            this.txt80 = new System.Windows.Forms.RadioButton();
+            this.txt60 = new System.Windows.Forms.RadioButton();
+            this.txt40 = new System.Windows.Forms.RadioButton();
+            this.txt20 = new System.Windows.Forms.RadioButton();
             this.label10 = new System.Windows.Forms.Label();
             this.cbUnit = new System.Windows.Forms.ComboBox();
             this.label = new System.Windows.Forms.Label();
@@ -74,6 +76,14 @@
             this.BtnCleanproduct = new System.Windows.Forms.Button();
             this.BtnEditproduct = new System.Windows.Forms.Button();
             this.BtnDeleteproduct = new System.Windows.Forms.Button();
+            this.CItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CBarcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CUnitaryCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CSellPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cdes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -96,7 +106,7 @@
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.43984F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.56016F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 211F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 288F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 64F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1192, 783);
             this.tableLayoutPanel1.TabIndex = 0;
@@ -109,7 +119,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1186, 52);
+            this.panel1.Size = new System.Drawing.Size(1186, 43);
             this.panel1.TabIndex = 0;
             // 
             // checkProduct
@@ -152,9 +162,9 @@
             // 
             this.panel2.Controls.Add(this.DgProduct);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 61);
+            this.panel2.Location = new System.Drawing.Point(3, 52);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1186, 443);
+            this.panel2.Size = new System.Drawing.Size(1186, 375);
             this.panel2.TabIndex = 1;
             // 
             // DgProduct
@@ -183,93 +193,31 @@
             this.DgProduct.RowHeadersWidth = 62;
             this.DgProduct.RowTemplate.Height = 28;
             this.DgProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgProduct.Size = new System.Drawing.Size(1186, 443);
+            this.DgProduct.Size = new System.Drawing.Size(1186, 375);
             this.DgProduct.TabIndex = 6;
             this.DgProduct.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgSupplier_CellClick);
-            // 
-            // CItemID
-            // 
-            this.CItemID.DataPropertyName = "ItemID";
-            this.CItemID.HeaderText = "Cod.Item";
-            this.CItemID.MinimumWidth = 6;
-            this.CItemID.Name = "CItemID";
-            this.CItemID.ReadOnly = true;
-            this.CItemID.Width = 200;
-            // 
-            // CItemName
-            // 
-            this.CItemName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CItemName.DataPropertyName = "ItemName";
-            this.CItemName.HeaderText = "Nombre";
-            this.CItemName.MinimumWidth = 200;
-            this.CItemName.Name = "CItemName";
-            this.CItemName.ReadOnly = true;
-            // 
-            // CBarcode
-            // 
-            this.CBarcode.DataPropertyName = "Barcode";
-            this.CBarcode.HeaderText = "Cod.Barras";
-            this.CBarcode.MinimumWidth = 120;
-            this.CBarcode.Name = "CBarcode";
-            this.CBarcode.ReadOnly = true;
-            this.CBarcode.Width = 120;
-            // 
-            // CStock
-            // 
-            this.CStock.DataPropertyName = "Stock";
-            this.CStock.HeaderText = "Stock";
-            this.CStock.MinimumWidth = 6;
-            this.CStock.Name = "CStock";
-            this.CStock.ReadOnly = true;
-            this.CStock.Width = 210;
-            // 
-            // CUnitaryCost
-            // 
-            this.CUnitaryCost.DataPropertyName = "UnitaryCost";
-            this.CUnitaryCost.HeaderText = "Costo";
-            this.CUnitaryCost.MinimumWidth = 6;
-            this.CUnitaryCost.Name = "CUnitaryCost";
-            this.CUnitaryCost.ReadOnly = true;
-            this.CUnitaryCost.Width = 150;
-            // 
-            // CSellPrice
-            // 
-            this.CSellPrice.DataPropertyName = "SellPrice";
-            this.CSellPrice.HeaderText = "Precio Venta";
-            this.CSellPrice.MinimumWidth = 6;
-            this.CSellPrice.Name = "CSellPrice";
-            this.CSellPrice.ReadOnly = true;
-            this.CSellPrice.Width = 125;
-            // 
-            // Cdes
-            // 
-            this.Cdes.DataPropertyName = "des";
-            this.Cdes.HeaderText = "Ubicacion";
-            this.Cdes.MinimumWidth = 6;
-            this.Cdes.Name = "Cdes";
-            this.Cdes.ReadOnly = true;
-            this.Cdes.Width = 130;
-            // 
-            // CDescription
-            // 
-            this.CDescription.DataPropertyName = "Description";
-            this.CDescription.HeaderText = "Descripcion";
-            this.CDescription.MinimumWidth = 6;
-            this.CDescription.Name = "CDescription";
-            this.CDescription.ReadOnly = true;
-            this.CDescription.Width = 125;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.groupBox1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 510);
+            this.panel3.Location = new System.Drawing.Point(3, 433);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1186, 205);
+            this.panel3.Size = new System.Drawing.Size(1186, 282);
             this.panel3.TabIndex = 2;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.txtFinalPrice);
+            this.groupBox1.Controls.Add(this.txt140);
+            this.groupBox1.Controls.Add(this.txt120);
+            this.groupBox1.Controls.Add(this.txt100);
+            this.groupBox1.Controls.Add(this.txt80);
+            this.groupBox1.Controls.Add(this.txt60);
+            this.groupBox1.Controls.Add(this.txt40);
+            this.groupBox1.Controls.Add(this.txt20);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.cbUnit);
             this.groupBox1.Controls.Add(this.label);
@@ -292,10 +240,124 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(-3, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1087, 203);
+            this.groupBox1.Size = new System.Drawing.Size(1087, 286);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalle Productos";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(888, 169);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(122, 20);
+            this.textBox1.TabIndex = 35;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(529, 229);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(190, 29);
+            this.label11.TabIndex = 34;
+            this.label11.Text = "Precio de Venta:";
+            // 
+            // txtFinalPrice
+            // 
+            this.txtFinalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFinalPrice.Location = new System.Drawing.Point(754, 229);
+            this.txtFinalPrice.Margin = new System.Windows.Forms.Padding(2);
+            this.txtFinalPrice.Name = "txtFinalPrice";
+            this.txtFinalPrice.Size = new System.Drawing.Size(277, 45);
+            this.txtFinalPrice.TabIndex = 33;
+            // 
+            // txt140
+            // 
+            this.txt140.AutoSize = true;
+            this.txt140.Location = new System.Drawing.Point(992, 67);
+            this.txt140.Name = "txt140";
+            this.txt140.Size = new System.Drawing.Size(60, 19);
+            this.txt140.TabIndex = 32;
+            this.txt140.TabStop = true;
+            this.txt140.Text = "140%";
+            this.txt140.UseVisualStyleBackColor = true;
+            this.txt140.CheckedChanged += new System.EventHandler(this.txt140_CheckedChanged);
+            // 
+            // txt120
+            // 
+            this.txt120.AutoSize = true;
+            this.txt120.Location = new System.Drawing.Point(915, 67);
+            this.txt120.Name = "txt120";
+            this.txt120.Size = new System.Drawing.Size(60, 19);
+            this.txt120.TabIndex = 31;
+            this.txt120.TabStop = true;
+            this.txt120.Text = "120%";
+            this.txt120.UseVisualStyleBackColor = true;
+            this.txt120.CheckedChanged += new System.EventHandler(this.txt120_CheckedChanged);
+            // 
+            // txt100
+            // 
+            this.txt100.AutoSize = true;
+            this.txt100.Location = new System.Drawing.Point(849, 67);
+            this.txt100.Name = "txt100";
+            this.txt100.Size = new System.Drawing.Size(60, 19);
+            this.txt100.TabIndex = 30;
+            this.txt100.TabStop = true;
+            this.txt100.Text = "100%";
+            this.txt100.UseVisualStyleBackColor = true;
+            this.txt100.CheckedChanged += new System.EventHandler(this.txt100_CheckedChanged);
+            // 
+            // txt80
+            // 
+            this.txt80.AutoSize = true;
+            this.txt80.Location = new System.Drawing.Point(763, 67);
+            this.txt80.Name = "txt80";
+            this.txt80.Size = new System.Drawing.Size(53, 19);
+            this.txt80.TabIndex = 29;
+            this.txt80.TabStop = true;
+            this.txt80.Text = "80%";
+            this.txt80.UseVisualStyleBackColor = true;
+            this.txt80.CheckedChanged += new System.EventHandler(this.txt80_CheckedChanged);
+            // 
+            // txt60
+            // 
+            this.txt60.AutoSize = true;
+            this.txt60.Location = new System.Drawing.Point(687, 67);
+            this.txt60.Name = "txt60";
+            this.txt60.Size = new System.Drawing.Size(53, 19);
+            this.txt60.TabIndex = 28;
+            this.txt60.TabStop = true;
+            this.txt60.Text = "60%";
+            this.txt60.UseVisualStyleBackColor = true;
+            this.txt60.CheckedChanged += new System.EventHandler(this.txt60_CheckedChanged);
+            // 
+            // txt40
+            // 
+            this.txt40.AutoSize = true;
+            this.txt40.Location = new System.Drawing.Point(616, 67);
+            this.txt40.Name = "txt40";
+            this.txt40.Size = new System.Drawing.Size(53, 19);
+            this.txt40.TabIndex = 27;
+            this.txt40.TabStop = true;
+            this.txt40.Text = "40%";
+            this.txt40.UseVisualStyleBackColor = true;
+            this.txt40.CheckedChanged += new System.EventHandler(this.txt40_CheckedChanged);
+            // 
+            // txt20
+            // 
+            this.txt20.AutoSize = true;
+            this.txt20.Location = new System.Drawing.Point(547, 67);
+            this.txt20.Name = "txt20";
+            this.txt20.Size = new System.Drawing.Size(53, 19);
+            this.txt20.TabIndex = 26;
+            this.txt20.TabStop = true;
+            this.txt20.Text = "20%";
+            this.txt20.UseVisualStyleBackColor = true;
+            this.txt20.CheckedChanged += new System.EventHandler(this.txt20_CheckedChanged);
             // 
             // label10
             // 
@@ -331,15 +393,16 @@
             // 
             this.cbtax.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbtax.FormattingEnabled = true;
-            this.cbtax.Location = new System.Drawing.Point(647, 165);
+            this.cbtax.Location = new System.Drawing.Point(647, 171);
             this.cbtax.Margin = new System.Windows.Forms.Padding(2);
             this.cbtax.Name = "cbtax";
-            this.cbtax.Size = new System.Drawing.Size(405, 21);
+            this.cbtax.Size = new System.Drawing.Size(217, 21);
             this.cbtax.TabIndex = 22;
+            this.cbtax.SelectedIndexChanged += new System.EventHandler(this.cbtax_SelectedIndexChanged);
             // 
             // TxtStock
             // 
-            this.TxtStock.Location = new System.Drawing.Point(651, 50);
+            this.TxtStock.Location = new System.Drawing.Point(84, 254);
             this.TxtStock.Margin = new System.Windows.Forms.Padding(2);
             this.TxtStock.Name = "TxtStock";
             this.TxtStock.Size = new System.Drawing.Size(401, 20);
@@ -348,7 +411,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(551, 55);
+            this.label9.Location = new System.Drawing.Point(15, 254);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(40, 15);
@@ -377,7 +440,7 @@
             // 
             // TxtSellPrice
             // 
-            this.TxtSellPrice.Location = new System.Drawing.Point(651, 86);
+            this.TxtSellPrice.Location = new System.Drawing.Point(666, 26);
             this.TxtSellPrice.Margin = new System.Windows.Forms.Padding(2);
             this.TxtSellPrice.Name = "TxtSellPrice";
             this.TxtSellPrice.Size = new System.Drawing.Size(401, 20);
@@ -386,7 +449,7 @@
             // 
             // TxtUnitaryCost
             // 
-            this.TxtUnitaryCost.Location = new System.Drawing.Point(651, 15);
+            this.TxtUnitaryCost.Location = new System.Drawing.Point(110, 213);
             this.TxtUnitaryCost.Margin = new System.Windows.Forms.Padding(2);
             this.TxtUnitaryCost.Name = "TxtUnitaryCost";
             this.TxtUnitaryCost.Size = new System.Drawing.Size(401, 20);
@@ -408,7 +471,6 @@
             this.TxtProductName.Name = "TxtProductName";
             this.TxtProductName.Size = new System.Drawing.Size(362, 20);
             this.TxtProductName.TabIndex = 10;
-            this.TxtProductName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtProductName_KeyPress);
             // 
             // TxtIDProduct
             // 
@@ -433,7 +495,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(551, 130);
+            this.label7.Location = new System.Drawing.Point(551, 123);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(75, 15);
@@ -443,17 +505,17 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(551, 89);
+            this.label6.Location = new System.Drawing.Point(478, 26);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(94, 15);
+            this.label6.Size = new System.Drawing.Size(167, 15);
             this.label6.TabIndex = 5;
-            this.label6.Text = "Precio de venta:";
+            this.label6.Text = "Precio de venta sin impuesto:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(551, 16);
+            this.label5.Location = new System.Drawing.Point(15, 213);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(85, 15);
@@ -605,6 +667,78 @@
             this.BtnDeleteproduct.UseVisualStyleBackColor = false;
             this.BtnDeleteproduct.Click += new System.EventHandler(this.BtnDeleteproduct_Click);
             // 
+            // CItemID
+            // 
+            this.CItemID.DataPropertyName = "ItemID";
+            this.CItemID.HeaderText = "Cod.Item";
+            this.CItemID.MinimumWidth = 6;
+            this.CItemID.Name = "CItemID";
+            this.CItemID.ReadOnly = true;
+            this.CItemID.Width = 200;
+            // 
+            // CItemName
+            // 
+            this.CItemName.DataPropertyName = "ItemName";
+            this.CItemName.HeaderText = "Nombre";
+            this.CItemName.MinimumWidth = 200;
+            this.CItemName.Name = "CItemName";
+            this.CItemName.ReadOnly = true;
+            this.CItemName.Width = 200;
+            // 
+            // CBarcode
+            // 
+            this.CBarcode.DataPropertyName = "Barcode";
+            this.CBarcode.HeaderText = "Cod.Barras";
+            this.CBarcode.MinimumWidth = 120;
+            this.CBarcode.Name = "CBarcode";
+            this.CBarcode.ReadOnly = true;
+            this.CBarcode.Width = 120;
+            // 
+            // CStock
+            // 
+            this.CStock.DataPropertyName = "Stock";
+            this.CStock.HeaderText = "Stock";
+            this.CStock.MinimumWidth = 6;
+            this.CStock.Name = "CStock";
+            this.CStock.ReadOnly = true;
+            this.CStock.Width = 210;
+            // 
+            // CUnitaryCost
+            // 
+            this.CUnitaryCost.DataPropertyName = "UnitaryCost";
+            this.CUnitaryCost.HeaderText = "Precio Costo";
+            this.CUnitaryCost.MinimumWidth = 6;
+            this.CUnitaryCost.Name = "CUnitaryCost";
+            this.CUnitaryCost.ReadOnly = true;
+            this.CUnitaryCost.Width = 150;
+            // 
+            // CSellPrice
+            // 
+            this.CSellPrice.DataPropertyName = "SellPrice";
+            this.CSellPrice.HeaderText = "Precio Sin impuesto";
+            this.CSellPrice.MinimumWidth = 6;
+            this.CSellPrice.Name = "CSellPrice";
+            this.CSellPrice.ReadOnly = true;
+            this.CSellPrice.Width = 125;
+            // 
+            // Cdes
+            // 
+            this.Cdes.DataPropertyName = "des";
+            this.Cdes.HeaderText = "Ubicacion";
+            this.Cdes.MinimumWidth = 6;
+            this.Cdes.Name = "Cdes";
+            this.Cdes.ReadOnly = true;
+            this.Cdes.Width = 130;
+            // 
+            // CDescription
+            // 
+            this.CDescription.DataPropertyName = "Description";
+            this.CDescription.HeaderText = "Descripcion";
+            this.CDescription.MinimumWidth = 6;
+            this.CDescription.Name = "CDescription";
+            this.CDescription.ReadOnly = true;
+            this.CDescription.Width = 125;
+            // 
             // FrmProductsAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -665,6 +799,20 @@
         private System.Windows.Forms.Button BtnDeleteForEver;
         private System.Windows.Forms.TextBox TxtStock;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label;
+        private System.Windows.Forms.ComboBox cbtax;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox cbUnit;
+        private System.Windows.Forms.RadioButton txt100;
+        private System.Windows.Forms.RadioButton txt80;
+        private System.Windows.Forms.RadioButton txt60;
+        private System.Windows.Forms.RadioButton txt40;
+        private System.Windows.Forms.RadioButton txt20;
+        private System.Windows.Forms.RadioButton txt140;
+        private System.Windows.Forms.RadioButton txt120;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtFinalPrice;
+        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn CItemID;
         private System.Windows.Forms.DataGridViewTextBoxColumn CItemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn CBarcode;
@@ -673,9 +821,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CSellPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cdes;
         private System.Windows.Forms.DataGridViewTextBoxColumn CDescription;
-        private System.Windows.Forms.Label label;
-        private System.Windows.Forms.ComboBox cbtax;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox cbUnit;
     }
 }
