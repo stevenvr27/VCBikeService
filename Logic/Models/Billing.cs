@@ -49,8 +49,8 @@ namespace Logic.Models
             bool R = false;
              
             Connection MyCnnEncabezado = new Connection();
- 
 
+            Totalizar();
           
             MyCnnEncabezado.parameterlist.Add(new SqlParameter("@date", this.Date));
             MyCnnEncabezado.parameterlist.Add(new SqlParameter("@subtotal", this.SubTotal));
@@ -63,7 +63,7 @@ namespace Logic.Models
             MyCnnEncabezado.parameterlist.Add(new SqlParameter("@idusuario", this.MyUser.UserID));
             MyCnnEncabezado.parameterlist.Add(new SqlParameter("@MethodPayment", this.MYMethodPayment.MethodPaymentID));
             MyCnnEncabezado.parameterlist.Add(new SqlParameter("@billingTypeID", this.billingType.BillingTypeID));
-            Object Retorno = MyCnnEncabezado.EjecutarInsertUpdateDelete ("SpBillingAddHeader");
+            Object Retorno = MyCnnEncabezado.EjecutarSELECTEscalar ("SpBillingAddHeader");
 
             int IdFacturaRecienCreada = 0;
 
@@ -72,14 +72,15 @@ namespace Logic.Models
                 IdFacturaRecienCreada = Convert.ToInt32(Retorno.ToString());
 
                 // Una vez que se tiene el ID de la factura, se pueden agregar los detalles
+                this.BillingID = IdFacturaRecienCreada;
+
                 foreach (BillingDetail item in this.DetailItems)
                 {
                     // Se hace un insert por cada iteración en detalles
                     Connection MyCnnDetalle = new Connection();
 
                     MyCnnDetalle.parameterlist.Add(new SqlParameter("@idfactura", IdFacturaRecienCreada));
-                    MyCnnDetalle.parameterlist.Add(new SqlParameter("@idproducto", item.MyItem.ItemID));
-                    MyCnnDetalle.parameterlist.Add(new SqlParameter("@descripcion", item.DescripcionItem));
+                    MyCnnDetalle.parameterlist.Add(new SqlParameter("@idproducto", item.MyItem.ItemID)); 
                     MyCnnDetalle.parameterlist.Add(new SqlParameter("@cantidad", item.Amount));
                     MyCnnDetalle.parameterlist.Add(new SqlParameter("@precio", item.UnitaryPrice));
                     MyCnnDetalle.parameterlist.Add(new SqlParameter("@porcentajedescuento", item.PercentageDiscount));

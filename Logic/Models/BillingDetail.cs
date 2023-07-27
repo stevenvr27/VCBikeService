@@ -11,7 +11,7 @@ namespace Logic.Models
 {
     public  class BillingDetail
     {
-        public string DescripcionItem { get; set; }
+        
         public decimal Amount { get; set; }
         public decimal TotalLine { get; set; }
         public decimal UnitaryPrice { get; set; }
@@ -22,7 +22,7 @@ namespace Logic.Models
         public Item MyItem { get; set; }
         public BillingDetail()
         {
-                MyItem = new Item();
+            MyItem = new Item();
         }
 
         public DataTable ListBillingActive(string pFiltroBusqueda)

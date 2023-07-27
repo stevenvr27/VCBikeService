@@ -167,8 +167,7 @@ namespace VCBikeService.Forms.Compra
             {
                 Logic.Models.BillingDetail detail = new Logic.Models.BillingDetail();
 
-                detail.Amount = Convert.ToDecimal(item["Amount"]);
-                detail.DescripcionItem = Convert.ToString(item["DescripcionItem"]);
+                detail.Amount = Convert.ToDecimal(item["Amount"]); 
                 detail.ImpuestoLine = Convert.ToDecimal(item["ImpuestoLine"]);
                 detail.MyItem.ItemID = Convert.ToInt32(item["ItemItemID"]);
                 detail.PercentageDiscount = Convert.ToDecimal(item["PercentageDiscount"]);
@@ -446,16 +445,18 @@ namespace VCBikeService.Forms.Compra
 
                 foreach (DataRow item in Localdetailist.Rows)
                 {
-                    int idproducto = Convert.ToInt32(item["ItemItemID"]);
-                    string descripcion = Convert.ToString(item["DescripcionItem"]);
-                    decimal cantidad = Convert.ToDecimal(item["Amount"]);
-                    decimal precio = Convert.ToDecimal(item["UnitaryPrice"]);
-                    decimal porcentajedescuento = Convert.ToDecimal(item["PercentageDiscount"]);
-                    decimal subtotallinea = Convert.ToDecimal(item["SubTotalLine"]);
-                    decimal impuestoslinea = Convert.ToDecimal(item["ImpuestoLine"]);
-                    decimal total = Convert.ToDecimal(item["TotalLine"]);
+                    BillingDetail newdetail = new BillingDetail();
 
-                     
+                    newdetail.MyItem.ItemID = Convert.ToInt32(item["ItemItemID"]);
+                    newdetail.MyItem.Description = Convert.ToString(item["DescripcionItem"]);
+                    newdetail.Amount = Convert.ToDecimal(item["Amount"]);
+                    newdetail.UnitaryPrice = Convert.ToDecimal(item["UnitaryPrice"]);
+                    newdetail.PercentageDiscount = Convert.ToDecimal(item["PercentageDiscount"]);
+                    newdetail.SubTotalLine = Convert.ToDecimal(item["SubTotalLine"]);
+                    newdetail.ImpuestoLine = Convert.ToDecimal(item["ImpuestoLine"]);
+                    newdetail.TotalLine = Convert.ToDecimal(item["TotalLine"]);
+
+                     MyBilling.DetailItems.Add(newdetail);
                 }
 
                 

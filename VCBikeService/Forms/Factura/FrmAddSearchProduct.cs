@@ -97,7 +97,7 @@ namespace VCBikeService.Forms.Compra
 
 
 
-                    NuevaLineaDetalleEnFacturacion["DescripcionItem"] = MyItem.Description;
+                     
 
                     NuevaLineaDetalleEnFacturacion["Amount"] = TxtCantidad.Value;
 
