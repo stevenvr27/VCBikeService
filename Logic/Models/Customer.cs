@@ -33,7 +33,7 @@ namespace Logic.Models
 
             Connection connection = new Connection();
 
-
+             
 
             connection.parameterlist.Add(new SqlParameter("@CustomerName", this.CustomerName));
             connection.parameterlist.Add(new SqlParameter("@CustomerEmail", this.CustomerEmail)); 
@@ -121,14 +121,14 @@ namespace Logic.Models
             bool R = false;
             Connection MiCnn = new Connection();
 
-            //agregamos el parametro de cedula 
+              
             MiCnn.parameterlist.Add(new SqlParameter("@ID", this.CustomerID));
 
             DataTable consulta = new DataTable();
-            //paso 1.3.3 y 1.3.4
+            
             consulta = MiCnn.EjecutarSELECT("SPCustomerSearchID");
 
-            //paso 1.3.5
+             
             if (consulta != null && consulta.Rows.Count > 0)
             {
                 R = true;
@@ -148,8 +148,7 @@ namespace Logic.Models
             DataTable DataCliente = new DataTable();
             DataCliente = MyCnn.EjecutarSELECT("SPSearchCustomerID");
 
-            //Una vez tenemos un datatable con la data procedemos a llenar las
-            //propiedades del objeto de retono. 
+            
 
             if (DataCliente != null && DataCliente.Rows.Count > 0)
             {
@@ -172,14 +171,35 @@ namespace Logic.Models
             bool R = false;
             Connection MiCnn = new Connection();
 
-            //agregamos el parametro de correo 
+           
             MiCnn.parameterlist.Add(new SqlParameter("@Email", this.CustomerEmail));
 
             DataTable consulta = new DataTable();
-            //paso 1.4.3 y 1.4.4
+             
             consulta = MiCnn.EjecutarSELECT("SPCustomerEmail");
+             
+            if (consulta != null && consulta.Rows.Count > 0)
+            {
+                R = true;
+            }
 
-            //paso 1.4.5
+            return R;
+
+
+        }
+        public bool ConsultPhone()
+        {
+            bool R = false;
+            Connection MiCnn = new Connection();
+
+             
+            MiCnn.parameterlist.Add(new SqlParameter("@Phone", this.CustomerPhone));
+
+            DataTable consulta = new DataTable();
+           
+            consulta = MiCnn.EjecutarSELECT("SPCustomerPhone");
+
+             
             if (consulta != null && consulta.Rows.Count > 0)
             {
                 R = true;

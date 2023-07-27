@@ -16,9 +16,9 @@ namespace Logic.Models
         public string UserPassword { get; set; }
         public string Email { get; set; }
 
-        public string UserCardID { get; set; }
+        public int UserCardID { get; set; }
 
-        public string PhoneNumber { get; set; }
+        public int PhoneNumber { get; set; }
         public string Address { get; set; }
 
         public bool Active { get; set; }
@@ -30,6 +30,15 @@ namespace Logic.Models
         {
             MyRol = new UserRole();
         }
+
+        public DataTable List()
+        {
+            DataTable R = new DataTable();
+            Services.Connection MiCnn = new Services.Connection();
+            R = MiCnn.EjecutarSELECT("SPListUSers");
+            return R;
+        }
+
         public bool AddUser()
         {
             bool R = false;
@@ -37,7 +46,7 @@ namespace Logic.Models
             Connection connection = new Connection();
 
            Crypto crypto = new Crypto();
-            string Passwordencrypted = crypto.EncriptarPassword(this.UserPassword);
+            string Passwordencrypted = crypto.EncriptarEnUnSentido(this.UserPassword);
             connection.parameterlist.Add(new SqlParameter("@UserPassword", Passwordencrypted));
 
             connection.parameterlist.Add(new SqlParameter("@UserName", this.UserName));
@@ -60,12 +69,15 @@ namespace Logic.Models
         {
             bool R = false;
             Connection connection = new Connection();
+            Crypto crypto = new Crypto();
+            string Passwordencrypted = crypto.EncriptarEnUnSentido(this.UserPassword);
+            connection.parameterlist.Add(new SqlParameter("@UserPassword", Passwordencrypted));
             connection.parameterlist.Add(new SqlParameter("@UserName", this.UserName));
             connection.parameterlist.Add(new SqlParameter("@UserCardID", this.UserCardID));
             connection.parameterlist.Add(new SqlParameter("@Email", this.Email));
             connection.parameterlist.Add(new SqlParameter("@PhoneNumber", this.PhoneNumber));
             connection.parameterlist.Add(new SqlParameter("@Address", this.Address));
-            connection.parameterlist.Add(new SqlParameter("@UserPassword", this.UserPassword));
+         
             connection.parameterlist.Add(new SqlParameter("@UserRoleID", this.MyRol.UserRoleID));
             connection.parameterlist.Add(new SqlParameter("@UserID", this.UserID));
 
@@ -127,11 +139,11 @@ namespace Logic.Models
             bool R = false;
             Connection MiCnn = new Connection();
 
-            //agregamos el parametro de cedula 
-            MiCnn.parameterlist.Add(new SqlParameter("@CardID ", this.UserCardID));
+            
+            MiCnn.parameterlist.Add(new SqlParameter("@CardID", this.UserCardID));
 
             DataTable consulta = new DataTable();
-            //paso 1.3.3 y 1.3.4
+             
             consulta = MiCnn.EjecutarSELECT("SPUserSearchForID");
 
             //paso 1.3.5
@@ -227,8 +239,8 @@ namespace Logic.Models
                 DataRow dr = dt.Rows[0];
 
                 R.UserID = Convert.ToInt32(dr["UserID"]);
-                R.PhoneNumber = Convert.ToString(dr["PhoneNumber"]);
-                R.UserCardID = Convert.ToString(dr["UserCardID"]);
+                R.PhoneNumber = Convert.ToInt32(dr["PhoneNumber"]);
+                R.UserCardID = Convert.ToInt32(dr["UserCardID"]);
 
                 R.UserName = Convert.ToString(dr["UserName"]);
                 R.Email = Convert.ToString(dr["Email"]);
@@ -276,8 +288,8 @@ namespace Logic.Models
                 DataRow dr = dt.Rows[0];
 
                 R.UserID = Convert.ToInt32(dr["UserID"]);
-                R.PhoneNumber = Convert.ToString(dr["PhoneNumber"]);
-                R.UserCardID = Convert.ToString(dr["UserCardID"]);
+                R.PhoneNumber = Convert.ToInt32(dr["PhoneNumber"]);
+                R.UserCardID = Convert. ToInt32(dr["UserCardID"]);
 
                 R.UserName = Convert.ToString(dr["UserName"]);
                 R.Email = Convert.ToString(dr["Email"]);

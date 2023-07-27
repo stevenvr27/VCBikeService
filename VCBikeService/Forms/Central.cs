@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using VCBikeService.Forms.Nosotros;
 using VCBikeService.Forms.Productos;
-using VCBikeService.Forms.Reportes;
+using VCBikeService.Forms.Reportes; 
 
 namespace VCBikeService.Forms
 {
@@ -30,17 +30,11 @@ namespace VCBikeService.Forms
             }
         }
 
-        //private void Central_Load(object sender, EventArgs e)
-        //{
-        //    string InfoUsuario = string.Format("{0}-{1}({2})",
-        //                                        Globals.MyGlobalUser.UserName,
-        //                                        Globals.MyGlobalUser.Email,
-        //                                        Globals.MyGlobalUser.MyRol.Description);
+
+        
 
 
-                     
-
-        private void Central_FormClosed(object sender, FormClosedEventArgs e)
+private void Central_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
@@ -58,14 +52,23 @@ namespace VCBikeService.Forms
             }
         }
 
-        
+        public void name()
+        {
+            if (Globals.Principal.Visible) { 
+            
+               NameToolstrip.Visible = true;
+               NameToolstrip.Text = Globals.MyGlobalUser.UserName;
+               labelnameuser.Text = Globals.MyGlobalUser.UserName;
+            
+            }
+        }
 
         private void nosotrosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (!Globals.FrmCompra.Visible)
+            if (!Globals.Frmfactura.Visible)
             {
-                Globals.FrmCompra = new Compra.FrmBuy();
-                Globals.FrmCompra.Show();
+                Globals.Frmfactura = new Compra.FrmBuy();
+                Globals.Frmfactura.Show();
             }
         }
 
@@ -91,10 +94,10 @@ namespace VCBikeService.Forms
 
         private void mensualToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!Globals.FrmMont.Visible)
+            if (!Globals.FrmReportBilling.Visible)
             {
-                Globals.FrmMont = new FrmMont();
-                Globals.FrmMont.Show();
+                Globals.FrmReportBilling = new FrmReportBilling();
+                Globals.FrmReportBilling.Show();
             }
         }
 
@@ -109,10 +112,10 @@ namespace VCBikeService.Forms
 
         private void nuevaFacturaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!Globals.FrmCompra.Visible)
+            if (!Globals.Frmfactura.Visible)
             {
-                Globals.FrmCompra = new Compra.FrmBuy();
-                Globals.FrmCompra.Show();
+                Globals.Frmfactura = new Compra.FrmBuy();
+                Globals.Frmfactura.Show();
             }
         }
 
@@ -130,6 +133,30 @@ namespace VCBikeService.Forms
         private void Central_Load(object sender, EventArgs e)
         {
             timer1.Enabled = true;
+            name();
+
+            string InfoUsuario = string.Format("{0}-{1}({2})",
+                                            Globals.MyGlobalUser.UserName,
+                                            Globals.MyGlobalUser.Email,
+                                            Globals.MyGlobalUser.MyRol.Description);
+
+             
+
+            switch (Globals.MyGlobalUser.MyRol.UserRoleID)
+            {
+                case 1:
+                    //sería admin, no se oculta nada
+                    break;
+                case 2:
+                    //sería usuario normal, se deben ocultar algunas opciones de menú 
+                    usuariosToolStripMenuItem.Visible = false;
+                    productosToolStripMenuItem.Visible = false;
+                    facturasToolStripMenuItem.Visible = false;
+                    cajaToolStripMenuItem.Visible = false;
+                    ReportesToolStripMenuItem.Visible = false;
+
+                    break;
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -142,10 +169,10 @@ namespace VCBikeService.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (!Globals.FrmCompra.Visible)
+            if (!Globals.Frmfactura.Visible)
             {
-                Globals.FrmCompra = new Compra.FrmBuy();
-                Globals.FrmCompra.Show();
+                Globals.Frmfactura = new Compra.FrmBuy();
+                Globals.Frmfactura.Show();
             }
 
         }
@@ -252,21 +279,15 @@ namespace VCBikeService.Forms
             }
         }
 
-        private void button13_Click(object sender, EventArgs e)
-        {
-            if (!Globals.MyUser.Visible)
-            {
-                Globals.MyUser = new Usuario.FrmMyUser();
-                Globals.MyUser.Show();  
-            }
-        }
+         
 
         private void button10_Click(object sender, EventArgs e)
         {
-            if (!Globals.FrmCompra.Visible)
+            if (!Globals.Frmfactura.Visible)
             {
-                Globals.FrmCompra = new Compra.FrmBuy();
-                Globals.FrmCompra.Show();
+                Globals.Frmfactura = new Compra.FrmBuy();
+
+                Globals.Frmfactura.Show();
             }
         }
 
@@ -298,14 +319,7 @@ namespace VCBikeService.Forms
             }
         }
 
-        private void button18_Click(object sender, EventArgs e)
-        {
-            if (!Globals.MyUser.Visible)
-            {
-                Globals.MyUser = new Usuario.FrmMyUser();
-                Globals.MyUser.Show();
-            }
-        }
+        
 
         private void button15_Click(object sender, EventArgs e)
         {
@@ -322,6 +336,15 @@ namespace VCBikeService.Forms
             {
                 Globals.frmSupplierBuy = new Compra.FrmSupplierBuy();
                 Globals.frmSupplierBuy.Show();
+            }
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            if (!Globals.FrmNewBilling.Visible)
+            {
+                Globals.FrmNewBilling = new Factura.FrmNewBilling();
+                Globals.FrmNewBilling.Show();
             }
         }
     }

@@ -42,9 +42,14 @@
             this.CStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CUnitaryCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CSellPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cdes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cbUnit = new System.Windows.Forms.ComboBox();
+            this.label = new System.Windows.Forms.Label();
+            this.cbtax = new System.Windows.Forms.ComboBox();
             this.TxtStock = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.CbCategory = new System.Windows.Forms.ComboBox();
@@ -166,6 +171,7 @@
             this.CStock,
             this.CUnitaryCost,
             this.CSellPrice,
+            this.Cdes,
             this.CDescription});
             this.DgProduct.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DgProduct.Location = new System.Drawing.Point(0, 0);
@@ -235,14 +241,23 @@
             this.CSellPrice.ReadOnly = true;
             this.CSellPrice.Width = 125;
             // 
+            // Cdes
+            // 
+            this.Cdes.DataPropertyName = "des";
+            this.Cdes.HeaderText = "Ubicacion";
+            this.Cdes.MinimumWidth = 6;
+            this.Cdes.Name = "Cdes";
+            this.Cdes.ReadOnly = true;
+            this.Cdes.Width = 130;
+            // 
             // CDescription
             // 
             this.CDescription.DataPropertyName = "Description";
-            this.CDescription.HeaderText = "Categoria";
+            this.CDescription.HeaderText = "Descripcion";
             this.CDescription.MinimumWidth = 6;
             this.CDescription.Name = "CDescription";
             this.CDescription.ReadOnly = true;
-            this.CDescription.Width = 130;
+            this.CDescription.Width = 125;
             // 
             // panel3
             // 
@@ -255,6 +270,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.cbUnit);
+            this.groupBox1.Controls.Add(this.label);
+            this.groupBox1.Controls.Add(this.cbtax);
             this.groupBox1.Controls.Add(this.TxtStock);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.CbCategory);
@@ -278,18 +297,58 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalle Productos";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(7, 171);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(95, 15);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "Unidad.Medida:";
+            // 
+            // cbUnit
+            // 
+            this.cbUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbUnit.FormattingEnabled = true;
+            this.cbUnit.Location = new System.Drawing.Point(110, 168);
+            this.cbUnit.Margin = new System.Windows.Forms.Padding(2);
+            this.cbUnit.Name = "cbUnit";
+            this.cbUnit.Size = new System.Drawing.Size(435, 21);
+            this.cbUnit.TabIndex = 24;
+            // 
+            // label
+            // 
+            this.label.AutoSize = true;
+            this.label.Location = new System.Drawing.Point(551, 168);
+            this.label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(61, 15);
+            this.label.TabIndex = 23;
+            this.label.Text = "Impuesto:";
+            // 
+            // cbtax
+            // 
+            this.cbtax.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbtax.FormattingEnabled = true;
+            this.cbtax.Location = new System.Drawing.Point(647, 165);
+            this.cbtax.Margin = new System.Windows.Forms.Padding(2);
+            this.cbtax.Name = "cbtax";
+            this.cbtax.Size = new System.Drawing.Size(405, 21);
+            this.cbtax.TabIndex = 22;
+            // 
             // TxtStock
             // 
-            this.TxtStock.Location = new System.Drawing.Point(663, 50);
+            this.TxtStock.Location = new System.Drawing.Point(651, 50);
             this.TxtStock.Margin = new System.Windows.Forms.Padding(2);
             this.TxtStock.Name = "TxtStock";
-            this.TxtStock.Size = new System.Drawing.Size(362, 20);
+            this.TxtStock.Size = new System.Drawing.Size(401, 20);
             this.TxtStock.TabIndex = 21;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(551, 50);
+            this.label9.Location = new System.Drawing.Point(551, 55);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(40, 15);
@@ -300,7 +359,7 @@
             // 
             this.CbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CbCategory.FormattingEnabled = true;
-            this.CbCategory.Location = new System.Drawing.Point(94, 168);
+            this.CbCategory.Location = new System.Drawing.Point(94, 134);
             this.CbCategory.Margin = new System.Windows.Forms.Padding(2);
             this.CbCategory.Name = "CbCategory";
             this.CbCategory.Size = new System.Drawing.Size(435, 21);
@@ -313,30 +372,30 @@
             this.TxtDescription.Multiline = true;
             this.TxtDescription.Name = "TxtDescription";
             this.TxtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.TxtDescription.Size = new System.Drawing.Size(401, 67);
+            this.TxtDescription.Size = new System.Drawing.Size(401, 29);
             this.TxtDescription.TabIndex = 14;
             // 
             // TxtSellPrice
             // 
-            this.TxtSellPrice.Location = new System.Drawing.Point(663, 86);
+            this.TxtSellPrice.Location = new System.Drawing.Point(651, 86);
             this.TxtSellPrice.Margin = new System.Windows.Forms.Padding(2);
             this.TxtSellPrice.Name = "TxtSellPrice";
-            this.TxtSellPrice.Size = new System.Drawing.Size(362, 20);
+            this.TxtSellPrice.Size = new System.Drawing.Size(401, 20);
             this.TxtSellPrice.TabIndex = 13;
             this.TxtSellPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtSellPrice_KeyPress);
             // 
             // TxtUnitaryCost
             // 
-            this.TxtUnitaryCost.Location = new System.Drawing.Point(663, 15);
+            this.TxtUnitaryCost.Location = new System.Drawing.Point(651, 15);
             this.TxtUnitaryCost.Margin = new System.Windows.Forms.Padding(2);
             this.TxtUnitaryCost.Name = "TxtUnitaryCost";
-            this.TxtUnitaryCost.Size = new System.Drawing.Size(362, 20);
+            this.TxtUnitaryCost.Size = new System.Drawing.Size(401, 20);
             this.TxtUnitaryCost.TabIndex = 12;
             this.TxtUnitaryCost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtUnitaryCost_KeyPress);
             // 
             // TxtBarcode
             // 
-            this.TxtBarcode.Location = new System.Drawing.Point(123, 129);
+            this.TxtBarcode.Location = new System.Drawing.Point(123, 91);
             this.TxtBarcode.Margin = new System.Windows.Forms.Padding(2);
             this.TxtBarcode.Name = "TxtBarcode";
             this.TxtBarcode.Size = new System.Drawing.Size(362, 20);
@@ -344,7 +403,7 @@
             // 
             // TxtProductName
             // 
-            this.TxtProductName.Location = new System.Drawing.Point(94, 77);
+            this.TxtProductName.Location = new System.Drawing.Point(94, 55);
             this.TxtProductName.Margin = new System.Windows.Forms.Padding(2);
             this.TxtProductName.Name = "TxtProductName";
             this.TxtProductName.Size = new System.Drawing.Size(362, 20);
@@ -353,7 +412,7 @@
             // 
             // TxtIDProduct
             // 
-            this.TxtIDProduct.Location = new System.Drawing.Point(94, 36);
+            this.TxtIDProduct.Location = new System.Drawing.Point(94, 18);
             this.TxtIDProduct.Margin = new System.Windows.Forms.Padding(2);
             this.TxtIDProduct.Name = "TxtIDProduct";
             this.TxtIDProduct.ReadOnly = true;
@@ -364,7 +423,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(23, 168);
+            this.label8.Location = new System.Drawing.Point(15, 134);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(63, 15);
@@ -404,7 +463,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 130);
+            this.label4.Location = new System.Drawing.Point(13, 91);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(104, 15);
@@ -414,7 +473,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(23, 77);
+            this.label3.Location = new System.Drawing.Point(23, 55);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 15);
@@ -424,7 +483,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 36);
+            this.label2.Location = new System.Drawing.Point(23, 20);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 15);
@@ -466,7 +525,7 @@
             this.BtnDeleteForEver.BackColor = System.Drawing.Color.Red;
             this.BtnDeleteForEver.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnDeleteForEver.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BtnDeleteForEver.Location = new System.Drawing.Point(244, 2);
+            this.BtnDeleteForEver.Location = new System.Drawing.Point(203, 2);
             this.BtnDeleteForEver.Margin = new System.Windows.Forms.Padding(2);
             this.BtnDeleteForEver.Name = "BtnDeleteForEver";
             this.BtnDeleteForEver.Size = new System.Drawing.Size(170, 54);
@@ -509,7 +568,7 @@
             this.BtnCleanproduct.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BtnCleanproduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCleanproduct.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.BtnCleanproduct.Location = new System.Drawing.Point(636, 2);
+            this.BtnCleanproduct.Location = new System.Drawing.Point(427, 2);
             this.BtnCleanproduct.Margin = new System.Windows.Forms.Padding(2);
             this.BtnCleanproduct.Name = "BtnCleanproduct";
             this.BtnCleanproduct.Size = new System.Drawing.Size(170, 54);
@@ -537,7 +596,7 @@
             this.BtnDeleteproduct.BackColor = System.Drawing.Color.Red;
             this.BtnDeleteproduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnDeleteproduct.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BtnDeleteproduct.Location = new System.Drawing.Point(418, 2);
+            this.BtnDeleteproduct.Location = new System.Drawing.Point(625, 3);
             this.BtnDeleteproduct.Margin = new System.Windows.Forms.Padding(2);
             this.BtnDeleteproduct.Name = "BtnDeleteproduct";
             this.BtnDeleteproduct.Size = new System.Drawing.Size(170, 54);
@@ -602,16 +661,21 @@
         private System.Windows.Forms.TextBox TxtDescription;
         private System.Windows.Forms.ComboBox CbCategory;
         private System.Windows.Forms.DataGridView DgProduct;
+        private System.Windows.Forms.Button btnactivate;
+        private System.Windows.Forms.Button BtnDeleteForEver;
+        private System.Windows.Forms.TextBox TxtStock;
+        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridViewTextBoxColumn CItemID;
         private System.Windows.Forms.DataGridViewTextBoxColumn CItemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn CBarcode;
         private System.Windows.Forms.DataGridViewTextBoxColumn CStock;
         private System.Windows.Forms.DataGridViewTextBoxColumn CUnitaryCost;
         private System.Windows.Forms.DataGridViewTextBoxColumn CSellPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cdes;
         private System.Windows.Forms.DataGridViewTextBoxColumn CDescription;
-        private System.Windows.Forms.Button btnactivate;
-        private System.Windows.Forms.Button BtnDeleteForEver;
-        private System.Windows.Forms.TextBox TxtStock;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label;
+        private System.Windows.Forms.ComboBox cbtax;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox cbUnit;
     }
 }

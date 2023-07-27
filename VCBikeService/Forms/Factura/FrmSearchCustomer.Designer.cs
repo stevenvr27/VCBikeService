@@ -57,9 +57,10 @@
             this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancelar.ForeColor = System.Drawing.Color.White;
-            this.BtnCancelar.Location = new System.Drawing.Point(32, 2);
+            this.BtnCancelar.Location = new System.Drawing.Point(43, 2);
+            this.BtnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.BtnCancelar.Name = "BtnCancelar";
-            this.BtnCancelar.Size = new System.Drawing.Size(157, 59);
+            this.BtnCancelar.Size = new System.Drawing.Size(209, 73);
             this.BtnCancelar.TabIndex = 7;
             this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.UseVisualStyleBackColor = false;
@@ -71,9 +72,10 @@
             this.BtnSeleccionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSeleccionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSeleccionar.ForeColor = System.Drawing.Color.White;
-            this.BtnSeleccionar.Location = new System.Drawing.Point(807, 6);
+            this.BtnSeleccionar.Location = new System.Drawing.Point(1076, 7);
+            this.BtnSeleccionar.Margin = new System.Windows.Forms.Padding(4);
             this.BtnSeleccionar.Name = "BtnSeleccionar";
-            this.BtnSeleccionar.Size = new System.Drawing.Size(201, 56);
+            this.BtnSeleccionar.Size = new System.Drawing.Size(268, 69);
             this.BtnSeleccionar.TabIndex = 6;
             this.BtnSeleccionar.Text = "Seleccionar";
             this.BtnSeleccionar.UseVisualStyleBackColor = false;
@@ -82,9 +84,10 @@
             // TxtBuscar
             // 
             this.TxtBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtBuscar.Location = new System.Drawing.Point(254, 10);
+            this.TxtBuscar.Location = new System.Drawing.Point(339, 12);
+            this.TxtBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.TxtBuscar.Name = "TxtBuscar";
-            this.TxtBuscar.Size = new System.Drawing.Size(653, 30);
+            this.TxtBuscar.Size = new System.Drawing.Size(869, 30);
             this.TxtBuscar.TabIndex = 4;
             this.TxtBuscar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TxtBuscar.TextChanged += new System.EventHandler(this.TxtBuscar_TextChanged);
@@ -96,22 +99,24 @@
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 2);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, -1);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, -1);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 602F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 71F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1148, 732);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 466F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 362F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1531, 901);
             this.tableLayoutPanel1.TabIndex = 8;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.DgvLista);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 62);
+            this.panel1.Location = new System.Drawing.Point(4, 77);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1142, 596);
+            this.panel1.Size = new System.Drawing.Size(1523, 458);
             this.panel1.TabIndex = 0;
             // 
             // DgvLista
@@ -131,13 +136,14 @@
             this.CCustomerAdress});
             this.DgvLista.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DgvLista.Location = new System.Drawing.Point(0, 0);
+            this.DgvLista.Margin = new System.Windows.Forms.Padding(4);
             this.DgvLista.MultiSelect = false;
             this.DgvLista.Name = "DgvLista";
             this.DgvLista.ReadOnly = true;
             this.DgvLista.RowHeadersVisible = false;
             this.DgvLista.RowHeadersWidth = 51;
             this.DgvLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvLista.Size = new System.Drawing.Size(1142, 596);
+            this.DgvLista.Size = new System.Drawing.Size(1523, 458);
             this.DgvLista.TabIndex = 5;
             this.DgvLista.VirtualMode = true;
             // 
@@ -191,9 +197,10 @@
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel2.Controls.Add(this.TxtBuscar);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Location = new System.Drawing.Point(4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1142, 53);
+            this.panel2.Size = new System.Drawing.Size(1523, 65);
             this.panel2.TabIndex = 1;
             // 
             // panel3
@@ -203,9 +210,10 @@
             this.panel3.Controls.Add(this.BtnCancelar);
             this.panel3.Controls.Add(this.BtnSeleccionar);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 664);
+            this.panel3.Location = new System.Drawing.Point(4, 543);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1142, 65);
+            this.panel3.Size = new System.Drawing.Size(1523, 354);
             this.panel3.TabIndex = 2;
             // 
             // button1
@@ -214,9 +222,10 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(445, 5);
+            this.button1.Location = new System.Drawing.Point(534, 7);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(268, 56);
+            this.button1.Size = new System.Drawing.Size(357, 69);
             this.button1.TabIndex = 8;
             this.button1.Text = "Agregar nuevo cliente";
             this.button1.UseVisualStyleBackColor = false;
@@ -224,12 +233,13 @@
             // 
             // FrmSearchCustomer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1148, 728);
+            this.ClientSize = new System.Drawing.Size(1400, 623);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmSearchCustomer";
             this.Text = "Buscador de Clientes";
             this.Load += new System.EventHandler(this.FrmSearchCustomer_Load);

@@ -65,13 +65,13 @@ namespace VCBikeService.Forms.Compra
                 string NombreProducto = Convert.ToString(row.Cells["CItemName"].Value);
                 string CodigoBarras = Convert.ToString(row.Cells["CBarcode"].Value);
                 decimal Precio = Convert.ToDecimal(row.Cells["CUnitaryCost"].Value);
-                decimal Cantidad = NumUDCantidad.Value;
+               
 
                 //Se crea una nueva fila del datatable de detalle del formulario
                 //de registro de compra y además se asigna los valores recolectados
                 DataRow MiFila = Globals.frmSupplierBuy.ListaProductos.NewRow();
                 MiFila["CItemID"] = IdProducto;
-                MiFila["CCantidad"] = Cantidad;
+            
                 MiFila["CUnitaryCost"] = Precio;
                 MiFila["CItemNAme"] = NombreProducto;
                 MiFila["CBarcode"] = CodigoBarras;

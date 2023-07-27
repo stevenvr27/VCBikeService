@@ -7,20 +7,18 @@ using System.Threading.Tasks;
 
 namespace Logic.Models
 {
-    public  class MethodPayment
+    public  class Unit
     {
-      public   int MethodPaymentID { get; set; }
-      public string Description { get; set; }
+        public int IDUnit { get; set; }
+        public string UnitMeasurement { get; set; }
 
 
         public DataTable List()
         {
             DataTable R = new DataTable();
-            Services.Connection connection = new Services.Connection();
-            R = connection.EjecutarSELECT("SPMethodPageList");
+            Services.Connection MiCnn = new Services.Connection();
+            R = MiCnn.EjecutarSELECT("SPUnitItemList");
             return R;
         }
-
-
     }
 }

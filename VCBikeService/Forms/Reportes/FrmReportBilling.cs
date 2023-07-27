@@ -8,18 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace VCBikeService.Forms.Usuario
+namespace VCBikeService.Forms.Reportes
 {
-    public partial class FrmMyUser : Form
+    public partial class FrmReportBilling : Form
     {
-        public FrmMyUser()
+        
+
+        public FrmReportBilling()
         {
             InitializeComponent();
         }
 
-        private void button9_Click(object sender, EventArgs e)
+        private void FrmReportBilling_Load(object sender, EventArgs e)
         {
-            this.Hide();
+
+
+            this.reportViewer1.RefreshReport();
         }
     }
 }

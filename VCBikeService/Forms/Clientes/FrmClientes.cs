@@ -84,6 +84,7 @@ namespace VCBikeService.Forms.Clientes
             TxtCustomerID.Clear();
             TxtCustomerName.Clear();
             TxtPhonesCustomer.Clear();
+            TxtSearchCustomer.Clear();
             CbTypeCustomer.SelectedIndex = -1;
         }
 
@@ -164,7 +165,7 @@ namespace VCBikeService.Forms.Clientes
 
         private void btnactivate_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(TxtCustomerAddress.Text.Trim()) && !string.IsNullOrEmpty(TxtCustomerEmail.Text.Trim()) && !string.IsNullOrEmpty(TxtPhonesCustomer.Text.Trim())
+            if (!string.IsNullOrEmpty(TxtPhonesCustomer.Text.Trim())
                && !string.IsNullOrEmpty(TxtCustomerName.Text.Trim()) && CbTypeCustomer.SelectedIndex > -1)
             {
                 DialogResult r = MessageBox.Show("¿Está seguro de Activar al Cliente ?",
@@ -190,23 +191,52 @@ namespace VCBikeService.Forms.Clientes
         }
 
         private void BtnEditC_Click(object sender, EventArgs e)
-        {
+        {      
+           
+               
+            bool phoneok;
 
-            if (!string.IsNullOrEmpty(TxtCustomerAddress.Text.Trim()) && !string.IsNullOrEmpty(TxtCustomerEmail.Text.Trim()) && !string.IsNullOrEmpty(TxtPhonesCustomer.Text.Trim())
+            if ( !string.IsNullOrEmpty(TxtPhonesCustomer.Text.Trim())
               && !string.IsNullOrEmpty(TxtCustomerName.Text.Trim()) && CbTypeCustomer.SelectedIndex > -1)
             {
                 newcustomer.CustomerName = TxtCustomerName.Text.Trim();
-                newcustomer.CustomerPhone = TxtPhonesCustomer.Text.Length;
+                newcustomer.CustomerPhone = Convert.ToInt32(TxtPhonesCustomer.Text.Trim());
                 newcustomer.CustomerEmail = TxtCustomerEmail.Text.Trim();
                 newcustomer.CustomerAdress = TxtCustomerAddress.Text.Trim();
-                 
 
+
+              
+                phoneok = newcustomer.ConsultPhone();
 
                 newcustomer.MyTypeCustomer.CustomerTypeID = Convert.ToInt32(CbTypeCustomer.SelectedValue);
 
-                if (newcustomer.ConsultEmail())
+                if ( phoneok == true)
                 {
-                    DialogResult Answer = MessageBox.Show("¿Está seguro de modificar el Cliente?", "???",
+                    DialogResult Answer = MessageBox.Show("¿Este u otro usuario tiene registrado este numero, aun deseas modificarlo?", "???",
+                                                             MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (Answer == DialogResult.Yes)
+                    {
+
+                        if (newcustomer.Update())
+                        {
+                            MessageBox.Show("El Cliente ha sido modificado correctamente", ":)", MessageBoxButtons.OK);
+
+                            CleanForm();
+                            LoadListCustomer();
+                        }
+                        else
+                        {
+                            MessageBox.Show("El Cliente no ha sido modificado correctamente", ":C", MessageBoxButtons.OK);
+                            CleanForm();
+                            LoadListCustomer();
+                        }
+                    }
+
+                }
+            
+                else
+                { DialogResult Answer = MessageBox.Show("¿Está seguro de modificar el Cliente?", "???",
                                                              MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                     if (Answer == DialogResult.Yes)
@@ -220,6 +250,7 @@ namespace VCBikeService.Forms.Clientes
                             LoadListCustomer();
                         }
                     }
+
                 }
             }
             else
@@ -232,17 +263,17 @@ namespace VCBikeService.Forms.Clientes
 
         private void BtnAddCustomer_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(TxtCustomerAddress.Text.Trim()) && !string.IsNullOrEmpty(TxtCustomerEmail.Text.Trim()) && !string.IsNullOrEmpty(TxtPhonesCustomer.Text.Trim())
-             && !string.IsNullOrEmpty(TxtCustomerName.Text.Trim()) && CbTypeCustomer.SelectedIndex > -1)
+            if (valedateinsertdates())
             {
                 bool EmailOK;
+                bool phoneok;
 
 
 
                 newcustomer = new Logic.Models.Customer();
 
                 newcustomer.CustomerName = TxtCustomerName.Text.Trim();
-                newcustomer.CustomerPhone = TxtPhonesCustomer.Text.Length;
+                newcustomer.CustomerPhone = Convert.ToInt32(TxtPhonesCustomer.Text.Trim()) ;
                 newcustomer.CustomerEmail = TxtCustomerEmail.Text.Trim();
                 newcustomer.CustomerAdress = TxtCustomerAddress.Text.Trim();
 
@@ -252,7 +283,8 @@ namespace VCBikeService.Forms.Clientes
 
 
                 EmailOK = newcustomer.ConsultEmail();
-                if (EmailOK == false)
+                phoneok= newcustomer.ConsultPhone();
+                if (EmailOK == false && phoneok == false )
                 {
 
 
@@ -285,18 +317,24 @@ namespace VCBikeService.Forms.Clientes
                 }
                 else
                 {
-                    MessageBox.Show("Datos faltantes", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Correo o  telefono ya existente", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
+                }
+            }
+            else
+            {
+                {
+                    MessageBox.Show("Faltan Datos para Ingresar el Cliente", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
 
         private void BtnDeleteC_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(TxtCustomerAddress.Text.Trim()) && !string.IsNullOrEmpty(TxtCustomerEmail.Text.Trim()) && !string.IsNullOrEmpty(TxtPhonesCustomer.Text.Trim())
+            if (!string.IsNullOrEmpty(TxtPhonesCustomer.Text.Trim())
              && !string.IsNullOrEmpty(TxtCustomerName.Text.Trim()) && CbTypeCustomer.SelectedIndex > -1)
             {
-                if (newcustomer.CustomerID > 0 && newcustomer.ConsultEmail())
+                if (newcustomer.CustomerID > 0 && newcustomer.ConsultPhone())
                 {
                     if (CheckCustomer.Checked)
                     {
@@ -327,7 +365,7 @@ namespace VCBikeService.Forms.Clientes
 
         private void btnDeleteForever_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(TxtCustomerAddress.Text.Trim()) && !string.IsNullOrEmpty(TxtCustomerEmail.Text.Trim()) && !string.IsNullOrEmpty(TxtPhonesCustomer.Text.Trim())
+            if ( !string.IsNullOrEmpty(TxtPhonesCustomer.Text.Trim())
             && !string.IsNullOrEmpty(TxtCustomerName.Text.Trim()) && CbTypeCustomer.SelectedIndex > -1)
             {
                 
@@ -342,6 +380,8 @@ namespace VCBikeService.Forms.Clientes
                             if (newcustomer.DeleteForEver())
                             {
                                 MessageBox.Show("El Cliente ha sido eliminado correctamente.", "!!!", MessageBoxButtons.OK);
+                                
+                            }
                                 CleanForm();
                                 LoadListCustomer();
 
@@ -373,5 +413,22 @@ namespace VCBikeService.Forms.Clientes
 
             }
         }
+
+        private bool valedateinsertdates()
+        {
+             bool R = false;
+            if (!string.IsNullOrEmpty(TxtCustomerName.Text.Trim())    && 
+                !string.IsNullOrEmpty(TxtPhonesCustomer.Text.Trim())  && CbTypeCustomer.SelectedIndex>-1)
+            {
+                R = true;
+               
+
+
+            }
+             
+             
+             return R;
+        }
+
     }
 }

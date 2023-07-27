@@ -53,6 +53,17 @@ namespace VCBikeService.Forms.Compra
             this.DialogResult = DialogResult.Cancel;
         }
 
+         
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (!Globals.frmClientes.Visible)
+            {
+                Globals.frmClientes = new Clientes.FrmClientes();
+                Globals.frmClientes.Show();
+            }
+        }
+
         private void BtnSeleccionar_Click(object sender, EventArgs e)
         {
             if (DgvLista.SelectedRows.Count == 1)
@@ -61,7 +72,7 @@ namespace VCBikeService.Forms.Compra
                 int IDCLIENTE;
                 IDCLIENTE = Convert.ToInt32(FilaSeleccionada.Cells["CCustomerID"].Value);
 
-                Globals.FrmCompra.TxtClienteID.Text = Convert.ToString(IDCLIENTE);
+                Globals.Frmfactura.TxtCustomerID.Text = Convert.ToString(IDCLIENTE);
 
                 this.DialogResult = DialogResult.OK;
 

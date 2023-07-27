@@ -201,9 +201,31 @@ namespace Logic.Models
 
 
         }
+        
+       public bool consultcardid()
+        {
+            bool R = false;
+            Connection MiCnn = new Connection();
+
+            //agregamos el parametro de correo 
+            MiCnn.parameterlist.Add(new SqlParameter("@CardID", this.SupplierCardID));
+
+            DataTable consulta = new DataTable();
+            //paso 1.4.3 y 1.4.4
+            consulta = MiCnn.EjecutarSELECT("SPSupplySearchForCardID");
+
+            //paso 1.4.5
+            if (consulta != null && consulta.Rows.Count > 0)
+            {
+                R = true;
+            }
+
+            return R;
 
 
-         public Supplier SearchID(int pIdSupply)
+        }
+
+        public Supplier SearchID(int pIdSupply)
         {
            Supplier R = new Supplier();
 

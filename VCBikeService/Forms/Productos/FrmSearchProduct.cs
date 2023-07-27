@@ -38,10 +38,10 @@ namespace VCBikeService.Forms.Productos
 
         private void btnfacturacliente_Click(object sender, EventArgs e)
         {
-            if (!Globals.FrmCompra.Visible)
+            if (!Globals.Frmfactura.Visible)
             {
-                Globals.FrmCompra = new Compra.FrmBuy();
-                Globals.FrmCompra.Show();
+                Globals.Frmfactura = new Compra.FrmBuy();
+                Globals.Frmfactura.Show();
             }
         }
 

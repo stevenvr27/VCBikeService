@@ -22,13 +22,19 @@ namespace Logic.Models
         public decimal SellPrice { get; set; }
 
         public bool Active { get; set; }
-        public ItemCategory MyType { get; set; }    
+
+        public ItemCategory MyType { get; set; }   
+        public Tax Tax { get; set; }
+        public Unit Unit { get; set; }
+
 
 
 
         public Item()
         {
             MyType = new ItemCategory();
+            Tax = new Tax();
+            Unit = new Unit();
         }
         public bool Add()
         {
@@ -45,6 +51,8 @@ namespace Logic.Models
             connection.parameterlist.Add(new SqlParameter("@UnitaryCost", this.UnitaryCost));
             connection.parameterlist.Add(new SqlParameter("@SellPrice", this.SellPrice));
             connection.parameterlist.Add(new SqlParameter("@ItemCategoryID", this.MyType.ItemCategoryID));
+            connection.parameterlist.Add(new SqlParameter("@Tax", this.Tax.TaxID));
+            connection.parameterlist.Add(new SqlParameter("@Unit", this.Unit.IDUnit));
 
             int result = connection.EjecutarInsertUpdateDelete("SPAddItem");
 
@@ -67,6 +75,8 @@ namespace Logic.Models
             connection.parameterlist.Add(new SqlParameter("@UnitaryCost", this.UnitaryCost));
             connection.parameterlist.Add(new SqlParameter("@SellPrice", this.SellPrice));
             connection.parameterlist.Add(new SqlParameter("@ItemCategoryID", this.MyType.ItemCategoryID));
+            connection.parameterlist.Add(new SqlParameter("@Tax", this.Tax.TaxID));
+            connection.parameterlist.Add(new SqlParameter("@Unit", this.Unit.IDUnit));
             int result = connection.EjecutarInsertUpdateDelete("SPItemUpdate");
 
             if (result > 0)
@@ -147,7 +157,7 @@ namespace Logic.Models
 
             DataTable dt = new DataTable();
 
-            dt = Micnn.EjecutarSELECT("SearchIDReturnItem");
+            dt = Micnn.EjecutarSELECT("SPConsultITemID ");
 
             if (dt != null && dt.Rows.Count > 0)
             {
@@ -163,7 +173,8 @@ namespace Logic.Models
                 R.SellPrice = Convert.ToDecimal(dr["SellPrice"]);
                 R.Description = Convert.ToString(dr["Description"]);
 
-
+                R.Tax.TaxID = Convert.ToInt32(dr["TaxID"]);
+                R.Unit.IDUnit = Convert.ToInt32(dr["IDUnit"]);
                 R.MyType.ItemCategoryID = Convert.ToInt32(dr["ItemCategoryID"]);
              
 
@@ -176,6 +187,42 @@ namespace Logic.Models
             return R;
 
         }
+
+         
+
+        public Item ConsultarPorID(int pIdProducto)
+        {
+            Item R = new Item();
+            Connection Micnn = new Connection();
+
+            Micnn.parameterlist.Add(new SqlParameter("@ID", pIdProducto));
+
+            DataTable dt = new DataTable();
+
+            dt = Micnn.EjecutarSELECT("SPTemIDConsultI");
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+
+                DataRow MisDatos = dt.Rows[0];
+                R.ItemID = Convert.ToInt32(MisDatos["ItemID"]);
+                R.ItemName = Convert.ToString(MisDatos["ItemName"]);
+                R.Stock = Convert.ToInt32(MisDatos["Stock"]);
+                R.SellPrice = Convert.ToDecimal(MisDatos["SellPrice"]);
+                R.Tax.TaxID = Convert.ToInt32(MisDatos["TaxID"]);
+                R.MyType.ItemCategoryID = Convert.ToInt32(MisDatos["ItemCategoryID"]);
+                R.MyType.Description = Convert.ToString(MisDatos["Description"]);
+                R.Unit.IDUnit = Convert.ToInt32(MisDatos["IDUnit"]);
+                R.Barcode = Convert.ToString(MisDatos["Barcode"]);
+                R.Unit.UnitMeasurement = Convert.ToString(MisDatos["UnitMeasurement"]);
+                R.Tax.TaxID = Convert.ToInt32(MisDatos["TaxID"]);
+                R.Tax.TaxName = Convert.ToString(MisDatos["TaxName"]);
+                R.Tax.AmountTax = Convert.ToDecimal(MisDatos["AmountTax"]);
+            }
+
+            return R;
+        }
+
         public DataTable SearchID()
         {
             DataTable R = new DataTable();
@@ -185,7 +232,7 @@ namespace Logic.Models
 
             return R;
 
-        }
+        } 
         public DataTable newbuy()
         {
             DataTable R = new DataTable();
@@ -231,11 +278,11 @@ namespace Logic.Models
             bool R = false;
             Connection MiCnn = new Connection();
 
-            //agregamos el parametro de correo 
-            MiCnn.parameterlist.Add(new SqlParameter("@Email", this.Barcode));
+     
+            MiCnn.parameterlist.Add(new SqlParameter("@Barcode", this.Barcode));
 
             DataTable consulta = new DataTable();
-            //paso 1.4.3 y 1.4.4
+            
             consulta = MiCnn.EjecutarSELECT("SPItemSearchForBarcode");
 
             //paso 1.4.5

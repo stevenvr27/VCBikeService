@@ -45,6 +45,7 @@
     <Compile Include="Crypto.cs" />
     <Compile Include="Models\Billing.cs" />
     <Compile Include="Models\BillingDetail.cs" />
+    <Compile Include="Models\BillingType.cs" />
     <Compile Include="Models\Buy.cs" />
     <Compile Include="Models\BuyDetail.cs" />
     <Compile Include="Models\BuyType.cs" />
@@ -55,6 +56,8 @@
     <Compile Include="Models\MethodPayment.cs" />
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Models\SupplierType.cs" />
+    <Compile Include="Models\Tax.cs" />
+    <Compile Include="Models\Unit.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

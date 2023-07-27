@@ -60,6 +60,8 @@ namespace VCBikeService.Forms
             FrmProductsAdd frmProductsAdd = new FrmProductsAdd();
             loadlistproduct();
             LoadItemtype();
+            LoadTaxes();
+            loadunit();
         }
 
         private void DgSupplier_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -89,8 +91,10 @@ namespace VCBikeService.Forms
 
 
 
-                //Combobox
 
+                //Combobox
+                cbtax.SelectedValue = Myitem.Tax.TaxID;
+                cbUnit.SelectedValue = Myitem.Unit.IDUnit;
                 CbCategory.SelectedValue = Myitem.MyType.ItemCategoryID;
             }
         }
@@ -134,6 +138,38 @@ namespace VCBikeService.Forms
 
             }
         }
+        private void loadunit()
+        {
+            Logic.Models.Unit unit = new Logic.Models.Unit();
+
+            DataTable dt = new DataTable();
+            dt = unit.List();
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                cbUnit.ValueMember = "ID";
+                cbUnit.DisplayMember = "Descrip";
+                cbUnit.DataSource = dt;
+                cbUnit.SelectedIndex = -1;
+
+            }
+        }
+        private void LoadTaxes()
+        {
+            Logic.Models.Tax tax = new Logic.Models.Tax();
+
+            DataTable dt = new DataTable();
+            dt = tax.List();
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                cbtax.ValueMember = "ID";
+                cbtax.DisplayMember = "Descrip";
+                cbtax.DataSource = dt;
+                cbtax.SelectedIndex = -1;
+
+            }
+        }
         private void CleanForm()
         {
             TxtBarcode.Clear();
@@ -152,17 +188,20 @@ namespace VCBikeService.Forms
                 && !string.IsNullOrEmpty(TxtUnitaryCost.Text.Trim()) && !string.IsNullOrEmpty(TxtSellPrice.Text.Trim()))
             {
                 bool IDOK;
+                bool BarcodeOk;
 
 
 
                 Myitem = new Logic.Models.Item();
 
                 Myitem.ItemName = TxtProductName.Text.Trim();
-                Myitem.UnitaryCost = TxtUnitaryCost.Text.Length;
-                Myitem.SellPrice = TxtSellPrice.Text.Length;
+                Myitem.UnitaryCost = Convert.ToDecimal(TxtUnitaryCost.Text.Trim()); 
+                Myitem.SellPrice = Convert.ToDecimal(TxtSellPrice.Text.Trim());
                 Myitem.Description = TxtDescription.Text.Trim();
                 Myitem.Barcode = TxtBarcode.Text.Trim();
-                Myitem.Stock = TxtStock.Text.Length;
+                Myitem.Stock = Convert.ToInt32(TxtStock.Text.Trim());
+                Myitem.Tax.TaxID = Convert.ToInt32(cbtax.SelectedValue);
+                Myitem.Unit.IDUnit = Convert.ToInt32(cbUnit.SelectedValue);
 
 
                 Myitem.MyType.ItemCategoryID = Convert.ToInt32(CbCategory.SelectedValue);
@@ -170,7 +209,8 @@ namespace VCBikeService.Forms
 
 
                 IDOK = Myitem.ConsultID();
-                if (IDOK == false)
+                BarcodeOk= Myitem.ConsultBarcode();
+                if (IDOK == false && BarcodeOk == false)
                 {
 
 
@@ -210,6 +250,11 @@ namespace VCBikeService.Forms
                     if (IDOK)
                     {
                         MessageBox.Show("Ya existe un producto con el Mismo ID", "Error de Validación", MessageBoxButtons.OK);
+                        return;
+                    }
+                    if (BarcodeOk)
+                    {
+                        MessageBox.Show("Ya existe un producto con el Mismo Codigo de Barras", "Error de Validación", MessageBoxButtons.OK);
                         return;
                     }
 
@@ -310,9 +355,10 @@ namespace VCBikeService.Forms
                             if (Myitem.DeleteForEver())
                             {
                                 MessageBox.Show("El Producto ha sido eliminado correctamente.", "!!!", MessageBoxButtons.OK);
-                                CleanForm();
-                                loadlistproduct();
+                                
                             }
+                                 CleanForm();
+                                loadlistproduct();
 
                         }
                     
@@ -362,7 +408,74 @@ namespace VCBikeService.Forms
 
         private void BtnEditproduct_Click(object sender, EventArgs e)
         {
+            bool IDOK;
+            bool BarcodeOk;
+            if (!string.IsNullOrEmpty(TxtProductName.Text.Trim()) && !string.IsNullOrEmpty(TxtBarcode.Text.Trim())
+              && !string.IsNullOrEmpty(TxtUnitaryCost.Text.Trim()) && !string.IsNullOrEmpty(TxtSellPrice.Text.Trim()) &&
+              CbCategory.SelectedIndex > -1)
+            {
+                Myitem.ItemName = TxtProductName.Text.Trim();
+                Myitem.Barcode = TxtBarcode.Text.Trim();
+                Myitem.UnitaryCost = Convert.ToDecimal(TxtUnitaryCost.Text.Trim());
+                Myitem.SellPrice = Convert.ToDecimal(TxtSellPrice.Text.Trim());
+                Myitem.Stock = Convert.ToInt32(TxtStock.Text.Trim());
+                Myitem.Description = TxtDescription.Text.Trim();
 
+
+
+                Myitem.MyType.ItemCategoryID = Convert.ToInt32(CbCategory.SelectedValue);
+                IDOK = Myitem.ConsultID();
+                BarcodeOk = Myitem.ConsultBarcode();
+                if (IDOK == true && BarcodeOk == true)
+                {
+                    DialogResult Answer = MessageBox.Show("¿Este u otro Producto Contiene el mismo codigo de barras, aun deseas modificarlo?", "???",
+                                                             MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (Answer == DialogResult.Yes)
+                    {
+
+                        if (Myitem.Update())
+                        {
+                            MessageBox.Show("El producto ha sido modificado correctamente", ":)", MessageBoxButtons.OK);
+
+                            CleanForm();
+                            loadlistproduct();
+                        }
+                        else
+                        {
+                            MessageBox.Show("El producto no ha sido modificado correctamente", ":C", MessageBoxButtons.OK);
+                            CleanForm();
+                            loadlistproduct();
+                        }
+                    }
+
+
+                }
+                else
+                {
+                    DialogResult Answer = MessageBox.Show("¿Está seguro de modificar el Producto Seleccionado?", "???",
+                                                                                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (Answer == DialogResult.Yes)
+                    {
+
+                        if (Myitem.Update())
+                        {
+                            MessageBox.Show("El Producto ha sido modificado correctamente", ":)", MessageBoxButtons.OK);
+
+                        }
+
+                        CleanForm();
+                        loadlistproduct();
+
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debes de seleccionar un Cliente", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
         }
 
         private void TxtSearchItem_KeyPress(object sender, KeyPressEventArgs e)

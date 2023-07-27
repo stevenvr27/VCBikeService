@@ -31,13 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frmsupplier));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.DgSupplier = new System.Windows.Forms.DataGridView();
-            this.CSupplierID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CSupplierName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CSupplierCardID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CSupplierEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.userDetail = new System.Windows.Forms.GroupBox();
             this.TxtCardID = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -65,6 +58,13 @@
             this.BtnDelete = new System.Windows.Forms.Button();
             this.BtnEdit = new System.Windows.Forms.Button();
             this.BtnAdd = new System.Windows.Forms.Button();
+            this.CSupplierID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CSupplierName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CSupplierEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CSupplierCardID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgSupplier)).BeginInit();
             this.userDetail.SuspendLayout();
@@ -102,11 +102,11 @@
             this.DgSupplier.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CSupplierID,
             this.CSupplierName,
-            this.CSupplierCardID,
-            this.CSupplierEmail,
             this.CPhoneNumber,
-            this.CAddress,
-            this.CDescription});
+            this.CSupplierEmail,
+            this.CSupplierCardID,
+            this.CDescription,
+            this.CAddress});
             this.DgSupplier.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DgSupplier.Location = new System.Drawing.Point(4, 59);
             this.DgSupplier.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -120,69 +120,6 @@
             this.DgSupplier.Size = new System.Drawing.Size(1100, 381);
             this.DgSupplier.TabIndex = 5;
             this.DgSupplier.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgSupplier_CellClick);
-            // 
-            // CSupplierID
-            // 
-            this.CSupplierID.DataPropertyName = "SupplierID";
-            this.CSupplierID.HeaderText = "Cod.Proveedor";
-            this.CSupplierID.MinimumWidth = 6;
-            this.CSupplierID.Name = "CSupplierID";
-            this.CSupplierID.ReadOnly = true;
-            this.CSupplierID.Width = 200;
-            // 
-            // CSupplierName
-            // 
-            this.CSupplierName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CSupplierName.DataPropertyName = "SupplierName";
-            this.CSupplierName.HeaderText = "Nombre";
-            this.CSupplierName.MinimumWidth = 200;
-            this.CSupplierName.Name = "CSupplierName";
-            this.CSupplierName.ReadOnly = true;
-            // 
-            // CSupplierCardID
-            // 
-            this.CSupplierCardID.DataPropertyName = "SupplierCardID";
-            this.CSupplierCardID.HeaderText = "Cedula";
-            this.CSupplierCardID.MinimumWidth = 120;
-            this.CSupplierCardID.Name = "CSupplierCardID";
-            this.CSupplierCardID.ReadOnly = true;
-            this.CSupplierCardID.Width = 120;
-            // 
-            // CSupplierEmail
-            // 
-            this.CSupplierEmail.DataPropertyName = "SupplierEmail";
-            this.CSupplierEmail.HeaderText = "Correo";
-            this.CSupplierEmail.MinimumWidth = 6;
-            this.CSupplierEmail.Name = "CSupplierEmail";
-            this.CSupplierEmail.ReadOnly = true;
-            this.CSupplierEmail.Width = 210;
-            // 
-            // CPhoneNumber
-            // 
-            this.CPhoneNumber.DataPropertyName = "PhoneNumber";
-            this.CPhoneNumber.HeaderText = "Celular";
-            this.CPhoneNumber.MinimumWidth = 6;
-            this.CPhoneNumber.Name = "CPhoneNumber";
-            this.CPhoneNumber.ReadOnly = true;
-            this.CPhoneNumber.Width = 150;
-            // 
-            // CAddress
-            // 
-            this.CAddress.DataPropertyName = "Address";
-            this.CAddress.HeaderText = "Direccion";
-            this.CAddress.MinimumWidth = 6;
-            this.CAddress.Name = "CAddress";
-            this.CAddress.ReadOnly = true;
-            this.CAddress.Width = 125;
-            // 
-            // CDescription
-            // 
-            this.CDescription.DataPropertyName = "Description";
-            this.CDescription.HeaderText = "Rol";
-            this.CDescription.MinimumWidth = 6;
-            this.CDescription.Name = "CDescription";
-            this.CDescription.ReadOnly = true;
-            this.CDescription.Width = 130;
             // 
             // userDetail
             // 
@@ -508,6 +445,69 @@
             this.BtnAdd.UseVisualStyleBackColor = false;
             this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
+            // CSupplierID
+            // 
+            this.CSupplierID.DataPropertyName = "SupplierID";
+            this.CSupplierID.HeaderText = "Cod.Proveedor";
+            this.CSupplierID.MinimumWidth = 6;
+            this.CSupplierID.Name = "CSupplierID";
+            this.CSupplierID.ReadOnly = true;
+            this.CSupplierID.Width = 125;
+            // 
+            // CSupplierName
+            // 
+            this.CSupplierName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CSupplierName.DataPropertyName = "SupplierName";
+            this.CSupplierName.HeaderText = "Nombre";
+            this.CSupplierName.MinimumWidth = 6;
+            this.CSupplierName.Name = "CSupplierName";
+            this.CSupplierName.ReadOnly = true;
+            // 
+            // CPhoneNumber
+            // 
+            this.CPhoneNumber.DataPropertyName = "PhoneNumber";
+            this.CPhoneNumber.HeaderText = "Numero";
+            this.CPhoneNumber.MinimumWidth = 6;
+            this.CPhoneNumber.Name = "CPhoneNumber";
+            this.CPhoneNumber.ReadOnly = true;
+            this.CPhoneNumber.Width = 125;
+            // 
+            // CSupplierEmail
+            // 
+            this.CSupplierEmail.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CSupplierEmail.DataPropertyName = "SupplierEmail";
+            this.CSupplierEmail.HeaderText = "Correo";
+            this.CSupplierEmail.MinimumWidth = 6;
+            this.CSupplierEmail.Name = "CSupplierEmail";
+            this.CSupplierEmail.ReadOnly = true;
+            // 
+            // CSupplierCardID
+            // 
+            this.CSupplierCardID.DataPropertyName = "SupplierCardID";
+            this.CSupplierCardID.HeaderText = "Cedula";
+            this.CSupplierCardID.MinimumWidth = 6;
+            this.CSupplierCardID.Name = "CSupplierCardID";
+            this.CSupplierCardID.ReadOnly = true;
+            this.CSupplierCardID.Width = 125;
+            // 
+            // CDescription
+            // 
+            this.CDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CDescription.DataPropertyName = "Description";
+            this.CDescription.HeaderText = "Tipo";
+            this.CDescription.MinimumWidth = 6;
+            this.CDescription.Name = "CDescription";
+            this.CDescription.ReadOnly = true;
+            // 
+            // CAddress
+            // 
+            this.CAddress.DataPropertyName = "Address";
+            this.CAddress.HeaderText = "Direccion";
+            this.CAddress.MinimumWidth = 6;
+            this.CAddress.Name = "CAddress";
+            this.CAddress.ReadOnly = true;
+            this.CAddress.Width = 125;
+            // 
             // Frmsupplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -563,10 +563,10 @@
         private System.Windows.Forms.Button btnactivate;
         private System.Windows.Forms.DataGridViewTextBoxColumn CSupplierID;
         private System.Windows.Forms.DataGridViewTextBoxColumn CSupplierName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CSupplierCardID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CSupplierEmail;
         private System.Windows.Forms.DataGridViewTextBoxColumn CPhoneNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CAddress;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CSupplierEmail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CSupplierCardID;
         private System.Windows.Forms.DataGridViewTextBoxColumn CDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CAddress;
     }
 }

@@ -32,6 +32,11 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.TxtSupplyName = new System.Windows.Forms.TextBox();
+            this.textUserName = new System.Windows.Forms.TextBox();
+            this.lblNameUser = new System.Windows.Forms.Label();
+            this.lblNameSupply = new System.Windows.Forms.Label();
+            this.LabelCodigo = new System.Windows.Forms.Label();
             this.TxtNotes = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cvMethodp = new System.Windows.Forms.ComboBox();
@@ -43,6 +48,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.DgvLista = new System.Windows.Forms.DataGridView();
+            this.CItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CBarcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CUnitaryCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.BtnProductoAgregar = new System.Windows.Forms.ToolStripButton();
             this.BtnProductoEditar = new System.Windows.Forms.ToolStripButton();
@@ -54,16 +64,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.TxtTotalCantidad = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.LabelCodigo = new System.Windows.Forms.Label();
-            this.lblNameSupply = new System.Windows.Forms.Label();
-            this.lblNameUser = new System.Windows.Forms.Label();
-            this.TxtSupplyName = new System.Windows.Forms.TextBox();
-            this.textUserName = new System.Windows.Forms.TextBox();
-            this.CItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CBarcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CUnitaryCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -82,7 +82,7 @@
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 2);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 43.45238F));
@@ -96,15 +96,15 @@
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(2, 2);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1032, 251);
             this.panel1.TabIndex = 0;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textUserName);
             this.groupBox1.Controls.Add(this.TxtSupplyName);
+            this.groupBox1.Controls.Add(this.textUserName);
             this.groupBox1.Controls.Add(this.lblNameUser);
             this.groupBox1.Controls.Add(this.lblNameSupply);
             this.groupBox1.Controls.Add(this.LabelCodigo);
@@ -118,13 +118,72 @@
             this.groupBox1.Controls.Add(this.CbBuyType);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(5, 0);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Size = new System.Drawing.Size(1029, 253);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalle compra";
+            // 
+            // TxtSupplyName
+            // 
+            this.TxtSupplyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtSupplyName.Location = new System.Drawing.Point(128, 84);
+            this.TxtSupplyName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TxtSupplyName.Name = "TxtSupplyName";
+            this.TxtSupplyName.Size = new System.Drawing.Size(238, 34);
+            this.TxtSupplyName.TabIndex = 22;
+            // 
+            // textUserName
+            // 
+            this.textUserName.BackColor = System.Drawing.Color.Moccasin;
+            this.textUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textUserName.Location = new System.Drawing.Point(128, 151);
+            this.textUserName.Name = "textUserName";
+            this.textUserName.Size = new System.Drawing.Size(293, 26);
+            this.textUserName.TabIndex = 21;
+            this.textUserName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textUserName.Visible = false;
+            // 
+            // lblNameUser
+            // 
+            this.lblNameUser.AutoSize = true;
+            this.lblNameUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNameUser.Location = new System.Drawing.Point(15, 150);
+            this.lblNameUser.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblNameUser.Name = "lblNameUser";
+            this.lblNameUser.Size = new System.Drawing.Size(90, 25);
+            this.lblNameUser.TabIndex = 19;
+            this.lblNameUser.Text = " Usuario:";
+            this.lblNameUser.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblNameUser.Visible = false;
+            // 
+            // lblNameSupply
+            // 
+            this.lblNameSupply.AutoSize = true;
+            this.lblNameSupply.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNameSupply.Location = new System.Drawing.Point(15, 87);
+            this.lblNameSupply.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblNameSupply.Name = "lblNameSupply";
+            this.lblNameSupply.Size = new System.Drawing.Size(87, 25);
+            this.lblNameSupply.TabIndex = 18;
+            this.lblNameSupply.Text = "Nombre:";
+            this.lblNameSupply.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblNameSupply.Visible = false;
+            // 
+            // LabelCodigo
+            // 
+            this.LabelCodigo.AutoSize = true;
+            this.LabelCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelCodigo.Location = new System.Drawing.Point(38, 29);
+            this.LabelCodigo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.LabelCodigo.Name = "LabelCodigo";
+            this.LabelCodigo.Size = new System.Drawing.Size(81, 25);
+            this.LabelCodigo.TabIndex = 17;
+            this.LabelCodigo.Text = "Codigo:";
+            this.LabelCodigo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.LabelCodigo.Visible = false;
             // 
             // TxtNotes
             // 
@@ -225,7 +284,7 @@
             this.panel2.Controls.Add(this.toolStrip1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(2, 257);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1032, 327);
             this.panel2.TabIndex = 1;
@@ -252,6 +311,51 @@
             this.DgvLista.Size = new System.Drawing.Size(1032, 300);
             this.DgvLista.TabIndex = 3;
             this.DgvLista.VirtualMode = true;
+            // 
+            // CItemID
+            // 
+            this.CItemID.DataPropertyName = "ItemID";
+            this.CItemID.HeaderText = "Cod.Producto";
+            this.CItemID.MinimumWidth = 6;
+            this.CItemID.Name = "CItemID";
+            this.CItemID.ReadOnly = true;
+            this.CItemID.Width = 125;
+            // 
+            // CItemName
+            // 
+            this.CItemName.DataPropertyName = "ItemName";
+            this.CItemName.HeaderText = "Nombre";
+            this.CItemName.MinimumWidth = 6;
+            this.CItemName.Name = "CItemName";
+            this.CItemName.ReadOnly = true;
+            this.CItemName.Width = 125;
+            // 
+            // CBarcode
+            // 
+            this.CBarcode.DataPropertyName = "Barcode";
+            this.CBarcode.HeaderText = "Codigo de Barras";
+            this.CBarcode.MinimumWidth = 6;
+            this.CBarcode.Name = "CBarcode";
+            this.CBarcode.ReadOnly = true;
+            this.CBarcode.Width = 125;
+            // 
+            // CUnitaryCost
+            // 
+            this.CUnitaryCost.DataPropertyName = "UnitaryCost";
+            this.CUnitaryCost.HeaderText = "Precio";
+            this.CUnitaryCost.MinimumWidth = 6;
+            this.CUnitaryCost.Name = "CUnitaryCost";
+            this.CUnitaryCost.ReadOnly = true;
+            this.CUnitaryCost.Width = 125;
+            // 
+            // CCantidad
+            // 
+            this.CCantidad.DataPropertyName = "Cantidad";
+            this.CCantidad.HeaderText = "Cantidad";
+            this.CCantidad.MinimumWidth = 6;
+            this.CCantidad.Name = "CCantidad";
+            this.CCantidad.ReadOnly = true;
+            this.CCantidad.Width = 125;
             // 
             // toolStrip1
             // 
@@ -298,7 +402,7 @@
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(2, 588);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1032, 116);
             this.panel3.TabIndex = 2;
@@ -312,7 +416,7 @@
             this.panel4.Controls.Add(this.label4);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1032, 116);
             this.panel4.TabIndex = 0;
@@ -376,112 +480,6 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "CANTIDAD ITEMS";
             // 
-            // LabelCodigo
-            // 
-            this.LabelCodigo.AutoSize = true;
-            this.LabelCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelCodigo.Location = new System.Drawing.Point(29, 32);
-            this.LabelCodigo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.LabelCodigo.Name = "LabelCodigo";
-            this.LabelCodigo.Size = new System.Drawing.Size(81, 25);
-            this.LabelCodigo.TabIndex = 17;
-            this.LabelCodigo.Text = "Codigo:";
-            this.LabelCodigo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.LabelCodigo.Visible = false;
-            // 
-            // lblNameSupply
-            // 
-            this.lblNameSupply.AutoSize = true;
-            this.lblNameSupply.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameSupply.Location = new System.Drawing.Point(29, 105);
-            this.lblNameSupply.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblNameSupply.Name = "lblNameSupply";
-            this.lblNameSupply.Size = new System.Drawing.Size(87, 25);
-            this.lblNameSupply.TabIndex = 18;
-            this.lblNameSupply.Text = "Nombre:";
-            this.lblNameSupply.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lblNameSupply.Visible = false;
-            // 
-            // lblNameUser
-            // 
-            this.lblNameUser.AutoSize = true;
-            this.lblNameUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNameUser.Location = new System.Drawing.Point(29, 187);
-            this.lblNameUser.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblNameUser.Name = "lblNameUser";
-            this.lblNameUser.Size = new System.Drawing.Size(90, 25);
-            this.lblNameUser.TabIndex = 19;
-            this.lblNameUser.Text = " Usuario:";
-            this.lblNameUser.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lblNameUser.Visible = false;
-            // 
-            // TxtSupplyName
-            // 
-            this.TxtSupplyName.BackColor = System.Drawing.Color.Moccasin;
-            this.TxtSupplyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtSupplyName.Location = new System.Drawing.Point(137, 106);
-            this.TxtSupplyName.Name = "TxtSupplyName";
-            this.TxtSupplyName.Size = new System.Drawing.Size(293, 26);
-            this.TxtSupplyName.TabIndex = 20;
-            this.TxtSupplyName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TxtSupplyName.Visible = false;
-            // 
-            // textUserName
-            // 
-            this.textUserName.BackColor = System.Drawing.Color.Moccasin;
-            this.textUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textUserName.Location = new System.Drawing.Point(137, 186);
-            this.textUserName.Name = "textUserName";
-            this.textUserName.Size = new System.Drawing.Size(293, 26);
-            this.textUserName.TabIndex = 21;
-            this.textUserName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textUserName.Visible = false;
-            // 
-            // CItemID
-            // 
-            this.CItemID.DataPropertyName = "ItemID";
-            this.CItemID.HeaderText = "Cod.Producto";
-            this.CItemID.MinimumWidth = 6;
-            this.CItemID.Name = "CItemID";
-            this.CItemID.ReadOnly = true;
-            this.CItemID.Width = 125;
-            // 
-            // CItemName
-            // 
-            this.CItemName.DataPropertyName = "ItemName";
-            this.CItemName.HeaderText = "Nombre";
-            this.CItemName.MinimumWidth = 6;
-            this.CItemName.Name = "CItemName";
-            this.CItemName.ReadOnly = true;
-            this.CItemName.Width = 125;
-            // 
-            // CBarcode
-            // 
-            this.CBarcode.DataPropertyName = "Barcode";
-            this.CBarcode.HeaderText = "Codigo de Barras";
-            this.CBarcode.MinimumWidth = 6;
-            this.CBarcode.Name = "CBarcode";
-            this.CBarcode.ReadOnly = true;
-            this.CBarcode.Width = 125;
-            // 
-            // CUnitaryCost
-            // 
-            this.CUnitaryCost.DataPropertyName = "UnitaryCost";
-            this.CUnitaryCost.HeaderText = "Precio";
-            this.CUnitaryCost.MinimumWidth = 6;
-            this.CUnitaryCost.Name = "CUnitaryCost";
-            this.CUnitaryCost.ReadOnly = true;
-            this.CUnitaryCost.Width = 125;
-            // 
-            // CCantidad
-            // 
-            this.CCantidad.DataPropertyName = "Cantidad";
-            this.CCantidad.HeaderText = "Cantidad";
-            this.CCantidad.MinimumWidth = 6;
-            this.CCantidad.Name = "CCantidad";
-            this.CCantidad.ReadOnly = true;
-            this.CCantidad.Width = 125;
-            // 
             // FrmSupplierBuy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -489,7 +487,7 @@
             this.ClientSize = new System.Drawing.Size(1038, 703);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FrmSupplierBuy";
             this.Text = "Registro Compra Proveedor";
             this.Load += new System.EventHandler(this.FrmSupplierBuy_Load);
@@ -539,12 +537,12 @@
         private System.Windows.Forms.Label LabelCodigo;
         private System.Windows.Forms.Label lblNameSupply;
         public System.Windows.Forms.TextBox textUserName;
-        public System.Windows.Forms.TextBox TxtSupplyName;
         private System.Windows.Forms.Label lblNameUser;
         private System.Windows.Forms.DataGridViewTextBoxColumn CItemID;
         private System.Windows.Forms.DataGridViewTextBoxColumn CItemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn CBarcode;
         private System.Windows.Forms.DataGridViewTextBoxColumn CUnitaryCost;
         private System.Windows.Forms.DataGridViewTextBoxColumn CCantidad;
+        private System.Windows.Forms.TextBox TxtSupplyName;
     }
 }

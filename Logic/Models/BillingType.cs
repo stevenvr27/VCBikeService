@@ -7,20 +7,18 @@ using System.Threading.Tasks;
 
 namespace Logic.Models
 {
-    public  class MethodPayment
+   public  class BillingType
     {
-      public   int MethodPaymentID { get; set; }
-      public string Description { get; set; }
 
+        public int BillingTypeID { get; set; }
+        public string Description { get; set; }
 
         public DataTable List()
         {
             DataTable R = new DataTable();
-            Services.Connection connection = new Services.Connection();
-            R = connection.EjecutarSELECT("SPMethodPageList");
+            Services.Connection MiCnn = new Services.Connection();
+            R = MiCnn.EjecutarSELECT("SPBillingTypeList");
             return R;
         }
-
-
     }
 }

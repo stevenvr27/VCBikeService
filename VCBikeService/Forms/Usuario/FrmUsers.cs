@@ -30,7 +30,7 @@ namespace VCBikeService.Forms
 
         private void FrmUsers_Load(object sender, EventArgs e)
         {
-         
+            CleanForm();
             Checker();
 
 
@@ -214,8 +214,8 @@ namespace VCBikeService.Forms
                 MyUser = new Logic.Models.User();
 
                 MyUser.UserName = TxtUserName.Text.Trim();
-                MyUser.UserCardID = TxtCardID.Text.Trim();
-                MyUser.PhoneNumber = TxtPhone.Text.Trim();
+                MyUser.UserCardID =  Convert.ToInt32(TxtCardID.Text.Trim());
+                MyUser.PhoneNumber = Convert.ToInt32(TxtPhone.Text.Trim());
                 MyUser.Email = TxtEmail.Text.Trim();
                 MyUser.UserPassword = TxtPassword.Text.Trim();
 
@@ -227,7 +227,7 @@ namespace VCBikeService.Forms
                 EmailOK = MyUser.ConsultEmail();
                 if (CardIDok == false && EmailOK == false)
                 {
-
+                    
 
                     string msg = string.Format("¿Está seguro que desea agregar al usuario {0}?", MyUser.UserName);
 
@@ -260,6 +260,7 @@ namespace VCBikeService.Forms
                 }
                 else
                 {
+               
 
                     if (CardIDok)
                     {
@@ -280,30 +281,31 @@ namespace VCBikeService.Forms
 
         private void DgListUsers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // seleccionar un campo en dicha carga de usuarios para dibujar info en los controles graficos
+   
             if (DgListUsers.SelectedRows.Count == 1)
             {
-
+                
                 DataGridViewRow Mifila = DgListUsers.SelectedRows[0];
 
-                //necesito el valor del id para realizar la consulta y traer los datos que le pertenecen 
+            
                 int Idusuario = Convert.ToInt32(Mifila.Cells["CUserID"].Value);
-                //re instanciar el usuario local 
+               
                 MyUser = new Logic.Models.User();
 
-                // ahora le agregamos el alor obtenido por la fila 
+                 
                 MyUser.UserID = Idusuario;
-
+                 
                 MyUser = MyUser.SearchCardIDReturnUser();
 
                 if (MyUser != null && MyUser.UserID > 0)
                 {
+                   
 
                     TxtUserID.Text = Convert.ToString(MyUser.UserID);
 
                     TxtEmail.Text = MyUser.Email;
                     TxtUserName.Text = MyUser.UserName;
-                    TxtCardID.Text = MyUser.UserCardID;
+                    TxtCardID.Text = Convert.ToString(MyUser.UserCardID);
                     TxtPhone.Text = Convert.ToString(MyUser.PhoneNumber);
 
                     TxtAddress.Text = MyUser.Address;
@@ -319,20 +321,34 @@ namespace VCBikeService.Forms
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
-            if (ValidateInsertDates(true))
+            
+           bool CardIDok;
+                bool EmailOK;
+
+
+                if (!string.IsNullOrEmpty(TxtUserName.Text.Trim()) && !string.IsNullOrEmpty(TxtCardID.Text.Trim()) &&
+               !string.IsNullOrEmpty(TxtPhone.Text.Trim()) && !string.IsNullOrEmpty(TxtEmail.Text.Trim())
+                     && CbRol.SelectedIndex > -1)
             {
+                
+
                 MyUser.UserName = TxtUserName.Text.Trim();
-                MyUser.UserCardID = TxtCardID.Text.Trim();
-                MyUser.PhoneNumber = TxtPhone.Text.Trim();
-                MyUser.Email = TxtAddress.Text.Trim();
+                MyUser.UserCardID =  Convert.ToInt32(TxtCardID.Text.Trim());
+                MyUser.PhoneNumber = Convert.ToInt32(TxtPhone.Text.Trim());
+                MyUser.Email = TxtEmail.Text.Trim();
                 MyUser.Address = TxtAddress.Text.Trim();
                 MyUser.UserPassword = TxtPassword.Text.Trim();
                 MyUser.MyRol.UserRoleID = Convert.ToInt32(CbRol.SelectedValue);
 
-                if (MyUser.ConsultCardID())
+                 CardIDok = MyUser.ConsultCardID();
+
+                 EmailOK = MyUser.ConsultEmail();
+                if (CardIDok == true && EmailOK == true)
                 {
-                    DialogResult Answer = MessageBox.Show("¿Está seguro de modificar el usuario?", "???",
-                                                             MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+
+                    DialogResult Answer = MessageBox.Show("¿Este u otro usuario tienen la misma cedula , aun deseas modificarlo?", "???",
+                                                              MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                     if (Answer == DialogResult.Yes)
                     {
@@ -346,7 +362,29 @@ namespace VCBikeService.Forms
                         }
                     }
                 }
+                else
+                {
+                    DialogResult Answer = MessageBox.Show("¿Está seguro de modificar el usuario?", "???",
+                                                              MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
+                    if (Answer == DialogResult.Yes)
+                    {
+
+                        if (MyUser.Update())
+                        {
+                            MessageBox.Show("El Usuario ha sido modificado correctamente", ":)", MessageBoxButtons.OK);
+
+                            CleanForm();
+                            LoadListUser();
+                        }
+                    }
+                   
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Debes de seleccionar un usuario", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -480,9 +518,10 @@ namespace VCBikeService.Forms
                 {
                     if (MyUser.DeleteForEver())
                     {
-                        MessageBox.Show("El usuario ha sido eliminado correctamente.", "!!!", MessageBoxButtons.OK);
-                        CleanForm();
-                        LoadListUser();
+                        MessageBox.Show("El usuario ha sido eliminado correctamente.", "!!!", MessageBoxButtons.OK);                      
+                    }
+                    CleanForm();
+                    LoadListUser();
 
                 }
             }

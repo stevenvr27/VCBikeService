@@ -16,6 +16,9 @@ namespace VCBikeService.Forms.Compra
     {
         public Buy MiCompraLocal { get; set; }
 
+        public Supplier Supplier { get; set; }
+        
+
         public DataTable ListaProductos { get; set; }
 
 
@@ -23,8 +26,17 @@ namespace VCBikeService.Forms.Compra
         {
             InitializeComponent();
             MiCompraLocal = new Buy();
+           Supplier = new Supplier();
 
             ListaProductos = new DataTable();
+        }
+
+        private void FrmSupplierBuy_Load(object sender, EventArgs e)
+        {
+            textUserName.Text = Globals.MyGlobalUser.UserName;
+            LoadMethodPayment();
+            LoadBuyType();
+
         }
 
         private void BtnClienteBuscar_Click(object sender, EventArgs e)
@@ -39,8 +51,8 @@ namespace VCBikeService.Forms.Compra
                 if (!string.IsNullOrEmpty(TxtSupplierD.Text.Trim()))
                 {
                     int IdSupply = Convert.ToInt32(TxtSupplierD.Text.Trim());
+                    
 
- 
                     if (true)
                     {
                         TxtSupplyName.Visible = false;
@@ -49,9 +61,12 @@ namespace VCBikeService.Forms.Compra
                         textUserName.Visible = false;
                         lblNameUser.Visible = false;
                         lblNameSupply.Visible = false;
-                        MyBilling.MySupplier = MyBilling.MySupplier.SearchID(IdSupply);
+
+                       MiCompraLocal.Supplier = MiCompraLocal.Supplier.SearchID(IdSupply);
+                        TxtSupplyName.Text = MiCompraLocal.Supplier.SupplierName;
                         textUserName.Text = Globals.MyGlobalUser.UserName;
-                        TxtSupplyName.Text = MyBilling.MySupplier.SupplierName;
+                       
+
                         TxtSupplyName.Visible = true;
                         labelProveedor.Visible = false;
                         lblNameSupply.Visible= true;
@@ -69,6 +84,7 @@ namespace VCBikeService.Forms.Compra
             }
 
         }
+
 
 
         private void LoadMethodPayment()
@@ -103,9 +119,15 @@ namespace VCBikeService.Forms.Compra
 
             }
         }
-
-             
+        private void CleanForm()
+        {
+            TxtSupplierD.Clear();
+            TxtNotes.Clear();
+            TxtSupplierD.Clear();
+        }
+      
          
+
         private void BtnProductoAgregar_Click(object sender, EventArgs e)
         {
             Form MiFormBusqueda = new FrmSupplyAddProduct();

@@ -33,6 +33,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1586.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1586.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1586.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1586.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1586.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -70,22 +88,28 @@
     <Compile Include="Forms\Clientes\FrmClientes.Designer.cs">
       <DependentUpon>FrmClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Compra\FrmAddSearchProduct.cs">
+    <Compile Include="Forms\Factura\FrmAddSearchProduct.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Compra\FrmAddSearchProduct.Designer.cs">
+    <Compile Include="Forms\Factura\FrmAddSearchProduct.Designer.cs">
       <DependentUpon>FrmAddSearchProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Compra\FrmBuy.cs">
+    <Compile Include="Forms\Factura\FrmBuy.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Compra\FrmBuy.Designer.cs">
+    <Compile Include="Forms\Factura\FrmBuy.Designer.cs">
       <DependentUpon>FrmBuy.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Compra\FrmSearchCustomer.cs">
+    <Compile Include="Forms\Factura\FrmEditBuyItem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Compra\FrmSearchCustomer.Designer.cs">
+    <Compile Include="Forms\Factura\FrmEditBuyItem.Designer.cs">
+      <DependentUpon>FrmEditBuyItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Factura\FrmSearchCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Factura\FrmSearchCustomer.Designer.cs">
       <DependentUpon>FrmSearchCustomer.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Compra\FrmSupplierBuy.cs">
@@ -154,11 +178,11 @@
     <Compile Include="Forms\Productos\FrmSearchProduct.Designer.cs">
       <DependentUpon>FrmSearchProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Reportes\FrmMont.cs">
+    <Compile Include="Forms\Reportes\FrmReportBilling.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Reportes\FrmMont.Designer.cs">
-      <DependentUpon>FrmMont.cs</DependentUpon>
+    <Compile Include="Forms\Reportes\FrmReportBilling.Designer.cs">
+      <DependentUpon>FrmReportBilling.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Proveedores\Frmsupplier.cs">
       <SubType>Form</SubType>
@@ -178,12 +202,6 @@
     <Compile Include="Forms\Reportes\FrmWeek.Designer.cs">
       <DependentUpon>FrmWeek.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Usuario\FrmMyUser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Usuario\FrmMyUser.Designer.cs">
-      <DependentUpon>FrmMyUser.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Usuario\FrmUsers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,19 +211,26 @@
     <Compile Include="Globals.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="Forms\Central.resx">
       <DependentUpon>Central.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Clientes\FrmClientes.resx">
       <DependentUpon>FrmClientes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Compra\FrmAddSearchProduct.resx">
+    <EmbeddedResource Include="Forms\Factura\FrmAddSearchProduct.resx">
       <DependentUpon>FrmAddSearchProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Compra\FrmBuy.resx">
+    <EmbeddedResource Include="Forms\Factura\FrmBuy.resx">
       <DependentUpon>FrmBuy.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Compra\FrmSearchCustomer.resx">
+    <EmbeddedResource Include="Forms\Factura\FrmEditBuyItem.resx">
+      <DependentUpon>FrmEditBuyItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Factura\FrmNewBilling.resx">
+      <DependentUpon>FrmNewBilling.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Factura\FrmSearchCustomer.resx">
       <DependentUpon>FrmSearchCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Compra\FrmSupplierBuy.resx">
@@ -229,9 +254,10 @@
     <EmbeddedResource Include="Forms\Proveedores\Frmsupplier.resx">
       <DependentUpon>Frmsupplier.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Usuario\FrmMyUser.resx">
-      <DependentUpon>FrmMyUser.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Reportes\FrmReportBilling.resx">
+      <DependentUpon>FrmReportBilling.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reportes\Report1.rdlc" />
     <EmbeddedResource Include="Forms\Usuario\FrmUsers.resx">
       <DependentUpon>FrmUsers.cs</DependentUpon>
     </EmbeddedResource>
@@ -269,6 +295,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Reports\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

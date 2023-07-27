@@ -205,8 +205,10 @@ namespace VCBikeService.Forms
                     if (MySupplier.DeleteForEver())
                     {
                         MessageBox.Show("El proveedor ha sido elimnado correctamente.", "!!!", MessageBoxButtons.OK);
-                        CleanForm();
-                        LoadListsupply();
+                        
+                    }
+                    CleanForm();
+                    LoadListsupply();
 
                 }
 
@@ -236,8 +238,8 @@ namespace VCBikeService.Forms
                 MySupplier = new Logic.Models.Supplier();
 
                 MySupplier.SupplierName = TxtSupplierName.Text.Trim();
-                MySupplier.SupplierCardID = TxtCardID.Text.Length;
-                MySupplier.PhoneNumber = TxtSupplierPhone.Text.Length;
+                MySupplier.SupplierCardID = Convert.ToInt32(TxtCardID.Text.Trim());
+                MySupplier.PhoneNumber = Convert.ToInt32(TxtSupplierPhone.Text.Trim());
                 MySupplier.SupplierEmail = TxtSupplierEmail.Text.Trim();
                 MySupplier.Address = TxtSupplierAddress.Text.Trim();
 
@@ -365,22 +367,27 @@ namespace VCBikeService.Forms
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
-        { 
- 
+        {
+            bool emailok;
+            bool cardidok;
             if (!String.IsNullOrEmpty(TxtSupplierName.Text.Trim()) && !String.IsNullOrEmpty(TxtSupplierPhone.Text.Trim())
                 && !String.IsNullOrEmpty(TxtCardID.Text.Trim()) && CbSupplierType.SelectedIndex > -1)
             {
                 MySupplier.SupplierName = TxtSupplierName.Text.Trim();
-                MySupplier.SupplierCardID = TxtCardID.Text.Length;
-                MySupplier.PhoneNumber = TxtSupplierPhone.Text.Length;
+                MySupplier.SupplierCardID = Convert.ToInt32(TxtCardID.Text.Trim());
+                MySupplier.PhoneNumber = Convert.ToInt32(TxtSupplierPhone.Text.Trim());
                 MySupplier.SupplierEmail = TxtSupplierEmail.Text.Trim();
                 MySupplier.Address = TxtSupplierAddress.Text.Trim();
 
 
                 MySupplier.MyType.SupplierTypeID = Convert.ToInt32(CbSupplierType.SelectedValue);
-                if (MySupplier.ConsultEmail())
+
+                emailok = MySupplier.ConsultEmail();
+                cardidok = MySupplier.consultcardid();
+
+                if (emailok==true && cardidok ==true )
                 {
-                    DialogResult Answer = MessageBox.Show("¿Está seguro de modificar el proveedor?", "???",
+                    DialogResult Answer = MessageBox.Show("¿Este u otro  proveedor consta del mismo correo y cedula , aun deseas modificarlo?", "???",
                                                              MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                     if (Answer == DialogResult.Yes)
@@ -394,6 +401,24 @@ namespace VCBikeService.Forms
                             LoadListsupply();
                         }
                     }
+                }
+                else
+                {
+                    DialogResult Answer = MessageBox.Show("¿Deseas modificar al Proveedor?", "???",
+                                                             MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (Answer == DialogResult.Yes)
+                    {
+
+                        if (MySupplier.Update())
+                        {
+                            MessageBox.Show("El proovedor ha sido modificado correctamente", ":)", MessageBoxButtons.OK);
+
+                            CleanForm();
+                            LoadListsupply();
+                        }
+                    }
+
                 }
             }
             else

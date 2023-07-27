@@ -252,7 +252,7 @@
             // CDescription
             // 
             this.CDescription.DataPropertyName = "Description";
-            this.CDescription.HeaderText = "Rol";
+            this.CDescription.HeaderText = "Tipo";
             this.CDescription.MinimumWidth = 6;
             this.CDescription.Name = "CDescription";
             this.CDescription.ReadOnly = true;
@@ -437,7 +437,7 @@
             this.btnDeleteForever.BackColor = System.Drawing.Color.Red;
             this.btnDeleteForever.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteForever.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnDeleteForever.Location = new System.Drawing.Point(208, 2);
+            this.btnDeleteForever.Location = new System.Drawing.Point(208, 5);
             this.btnDeleteForever.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeleteForever.Name = "btnDeleteForever";
             this.btnDeleteForever.Size = new System.Drawing.Size(169, 54);
@@ -452,7 +452,7 @@
             this.btnactivate.BackColor = System.Drawing.Color.OliveDrab;
             this.btnactivate.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnactivate.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnactivate.Location = new System.Drawing.Point(7, 0);
+            this.btnactivate.Location = new System.Drawing.Point(8, 2);
             this.btnactivate.Margin = new System.Windows.Forms.Padding(2);
             this.btnactivate.Name = "btnactivate";
             this.btnactivate.Size = new System.Drawing.Size(169, 54);
