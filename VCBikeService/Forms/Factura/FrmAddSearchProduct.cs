@@ -217,11 +217,14 @@ namespace VCBikeService.Forms.Compra
             TxtPrecioFinal.Text = PrecioConImpuesto.ToString();
         }
 
-       
-
-
-
-
+        private void FrmAddSearchProduct_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                // Cierra el formulario
+                this.Close();
+            }
+        }
     }
 
 }

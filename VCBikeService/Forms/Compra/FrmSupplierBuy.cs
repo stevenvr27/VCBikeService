@@ -17,7 +17,8 @@ namespace VCBikeService.Forms.Compra
         public Buy MiCompraLocal { get; set; }
 
         public Supplier Supplier { get; set; }
-        
+        public User User { get; set; }
+
 
         public DataTable ListaProductos { get; set; }
 
@@ -26,66 +27,29 @@ namespace VCBikeService.Forms.Compra
         {
             InitializeComponent();
             MiCompraLocal = new Buy();
-           Supplier = new Supplier();
+            Supplier = new Supplier();
+            User = new User();
+
 
             ListaProductos = new DataTable();
         }
 
-        private void FrmSupplierBuy_Load(object sender, EventArgs e)
+        private void LoadBuytype()
         {
-            textUserName.Text = Globals.MyGlobalUser.UserName;
-            LoadMethodPayment();
-            LoadBuyType();
+            Logic.Models.BuyType type = new Logic.Models.BuyType();
 
-        }
+            DataTable dt = new DataTable();
+            dt = type.list();
 
-        private void BtnClienteBuscar_Click(object sender, EventArgs e)
-        {
-            Form FormSearchSupplier = new FrmSupplyerSearch();
-            DialogResult resp = FormSearchSupplier.ShowDialog();
-
-            if (resp == DialogResult.OK)
+            if (dt != null && dt.Rows.Count > 0)
             {
-                
-
-                if (!string.IsNullOrEmpty(TxtSupplierD.Text.Trim()))
-                {
-                    int IdSupply = Convert.ToInt32(TxtSupplierD.Text.Trim());
-                    
-
-                    if (true)
-                    {
-                        TxtSupplyName.Visible = false;
-                        lblNameSupply.Visible = false;
-                        LabelCodigo.Visible = false;
-                        textUserName.Visible = false;
-                        lblNameUser.Visible = false;
-                        lblNameSupply.Visible = false;
-
-                       MiCompraLocal.Supplier = MiCompraLocal.Supplier.SearchID(IdSupply);
-                        TxtSupplyName.Text = MiCompraLocal.Supplier.SupplierName;
-                        textUserName.Text = Globals.MyGlobalUser.UserName;
-                       
-
-                        TxtSupplyName.Visible = true;
-                        labelProveedor.Visible = false;
-                        lblNameSupply.Visible= true;
-                        LabelCodigo.Visible = true;
-                        lblNameUser.Visible = true;
-                        textUserName.Visible = true;
-                        lblNameSupply.Visible = true;
-
-                    }
-
-
-
-                }
+                txtbuytype.ValueMember = "ID";
+                txtbuytype.DisplayMember = "Descrip";
+                txtbuytype.DataSource = dt;
+                txtbuytype.SelectedIndex = -1;
 
             }
-
         }
-
-
 
         private void LoadMethodPayment()
         {
@@ -96,46 +60,45 @@ namespace VCBikeService.Forms.Compra
 
             if (i != null && i.Rows.Count > 0)
             {
-                cvMethodp.ValueMember = "ID";
-                cvMethodp.DisplayMember = "Descrip";
-                cvMethodp.DataSource = i;
-                cvMethodp.SelectedIndex = -1;
+                txtmetpag.ValueMember = "ID";
+                txtmetpag.DisplayMember = "Descrip";
+                txtmetpag.DataSource = i;
+                txtmetpag.SelectedIndex = -1;
 
             }
         }
-        private void LoadBuyType()
+        private void Date (){
+          TxtDate.Text = DateTime.Now.ToLongDateString();
+
+
+        }
+
+        private void user()
         {
-            Logic.Models.BuyType type = new Logic.Models.BuyType();
+            string Username = Globals.MyGlobalUser.UserName; ;
+            TxtUSer.Text = Username;
+        }
 
-            DataTable dt = new DataTable();
-            dt = type.list();
-
-            if (dt != null && dt.Rows.Count > 0)
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (!Globals.frmSupplierBuy.Visible)
             {
-                CbBuyType.ValueMember = "ID";
-                CbBuyType.DisplayMember = "Descrip";
-                CbBuyType.DataSource = dt;
-                CbBuyType.SelectedIndex = -1;
-
+                Globals.FrmSupplyAddProduct = new Compra.FrmSupplyAddProduct();
+                Globals.FrmSupplyAddProduct.Show();
             }
         }
-        private void CleanForm()
-        {
-            TxtSupplierD.Clear();
-            TxtNotes.Clear();
-            TxtSupplierD.Clear();
-        }
-      
-         
 
-        private void BtnProductoAgregar_Click(object sender, EventArgs e)
+        private void Cancel_Click(object sender, EventArgs e)
         {
-            Form MiFormBusqueda = new FrmSupplyAddProduct();
-            DialogResult respuesta = MiFormBusqueda.ShowDialog();
-            if (respuesta == DialogResult.OK)
-            {
-                DgvLista.DataSource = ListaProductos;
-            }
+            this.Close();
+        }
+
+        private void FrmSupplierBuy_Load(object sender, EventArgs e)
+        {
+            user();
+            LoadMethodPayment();
+            LoadBuytype();
+            Date();
         }
     }
 }

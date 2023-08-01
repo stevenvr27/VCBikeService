@@ -93,13 +93,14 @@
             this.Lblrecoverpassword.BackColor = System.Drawing.Color.Transparent;
             this.Lblrecoverpassword.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lblrecoverpassword.LinkColor = System.Drawing.Color.Red;
-            this.Lblrecoverpassword.Location = new System.Drawing.Point(233, 272);
+            this.Lblrecoverpassword.Location = new System.Drawing.Point(255, 306);
             this.Lblrecoverpassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Lblrecoverpassword.Name = "Lblrecoverpassword";
             this.Lblrecoverpassword.Size = new System.Drawing.Size(145, 17);
             this.Lblrecoverpassword.TabIndex = 8;
             this.Lblrecoverpassword.TabStop = true;
             this.Lblrecoverpassword.Text = "Recuperar Contraseña";
+            this.Lblrecoverpassword.Visible = false;
             // 
             // BtnVerContrasennia
             // 
@@ -121,7 +122,9 @@
             this.BtnIngresoDirecto.TabIndex = 10;
             this.BtnIngresoDirecto.Text = "Ingreso Directo";
             this.BtnIngresoDirecto.UseVisualStyleBackColor = true;
+            this.BtnIngresoDirecto.Visible = false;
             this.BtnIngresoDirecto.Click += new System.EventHandler(this.BtnIngresoDirecto_Click);
+            this.BtnIngresoDirecto.KeyUp += new System.Windows.Forms.KeyEventHandler(this.BtnIngresoDirecto_KeyUp);
             // 
             // BtnLogin
             // 
@@ -217,7 +220,7 @@
             this.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(478, 601);
+            this.ClientSize = new System.Drawing.Size(504, 613);
             this.Controls.Add(this.BtnIngresoDirecto);
             this.Controls.Add(this.BtnVerContrasennia);
             this.Controls.Add(this.Lblrecoverpassword);
@@ -230,7 +233,7 @@
             this.Controls.Add(this.customButtons2);
             this.Controls.Add(this.customButtons1);
             this.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "FrmLogin";
@@ -238,7 +241,7 @@
             this.Text = "Login";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmLogin_FormClosed);
             this.Load += new System.EventHandler(this.FrmLogin_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmLogin_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FrmLogin_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 

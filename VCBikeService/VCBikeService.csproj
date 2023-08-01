@@ -130,18 +130,6 @@
     <Compile Include="Forms\Compra\FrmSupplyerSearch.Designer.cs">
       <DependentUpon>FrmSupplyerSearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Factura\FrmBillingSearch.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Factura\FrmBillingSearch.Designer.cs">
-      <DependentUpon>FrmBillingSearch.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Factura\FrmEditBilling.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Factura\FrmEditBilling.Designer.cs">
-      <DependentUpon>FrmEditBilling.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Factura\FrmNewBilling.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -244,6 +232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Login\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Login\FrmRecoveryPassword.resx">
+      <DependentUpon>FrmRecoveryPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Productos\FrmProductsAdd.resx">
       <DependentUpon>FrmProductsAdd.cs</DependentUpon>

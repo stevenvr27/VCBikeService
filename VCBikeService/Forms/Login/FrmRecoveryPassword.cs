@@ -16,5 +16,10 @@ namespace VCBikeService.Forms.Origen
         {
             InitializeComponent();
         }
+
+        private void FrmRecoveryPassword_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

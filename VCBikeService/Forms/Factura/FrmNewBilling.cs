@@ -208,6 +208,15 @@ namespace VCBikeService.Forms.Factura
                 MessageBox.Show("Debes de seleccionar una Factura", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void FrmNewBilling_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                // Cierra el formulario
+                this.Close();
+            }
+        }
     }
     }
 

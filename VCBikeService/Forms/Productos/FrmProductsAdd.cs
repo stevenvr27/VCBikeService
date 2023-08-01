@@ -171,7 +171,7 @@ namespace VCBikeService.Forms
             TxtDescription.Clear();
             TxtIDProduct.Clear();
             TxtProductName.Clear();
-            TxtStock.Clear();
+            TxtStock.Value = 0;
             TxtSellPrice.Clear();
             TxtUnitaryCost.Clear();
             cbtax.SelectedIndex = -1;
@@ -585,6 +585,22 @@ namespace VCBikeService.Forms
 
             // Recalculate the price with the new tax value
             Calculate();
+        }
+
+        private void checkProduct_CheckedChanged_1(object sender, EventArgs e)
+        {
+            Checker();
+            loadlistproduct();
+            
+        }
+
+        private void FrmProductsAdd_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                // Cierra el formulario
+                this.Close();
+            }
         }
     }
     }

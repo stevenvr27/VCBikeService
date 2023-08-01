@@ -24,17 +24,27 @@ namespace VCBikeService.Forms.Compra
         public DataTable Localdetailist { get; set; }
         public DataTable Listitems { get; set; }
 
+   
+
 
 
 
         public FrmBuy()
         {
-            InitializeComponent();
+            InitializeComponent(); 
 
             MyBilling = new Billing();
             Localdetailist = new DataTable();
 
             Listitems = new DataTable();
+             
+        }
+
+
+        private void user()
+        {
+            string Username = Globals.MyGlobalUser.UserName; ;
+            TxtUSer.Text = Username;
         }
 
         private void Totalizar()
@@ -103,22 +113,12 @@ namespace VCBikeService.Forms.Compra
             }
         }
 
-        private void LoadUSer()
-        {
-
-
-            TxtUSer.Text = Globals.MyGlobalUser.UserName.Trim();
-
-
-
-
-
-        }
+         
 
 
         private void FrmBuy_Load(object sender, EventArgs e)
         {
-            LoadUSer();
+            user();
 
 
             LoadBillingType();
@@ -471,7 +471,7 @@ namespace VCBikeService.Forms.Compra
 
                 // Once all sales and stock updates are done, proceed to add the billing record
 
-
+ 
 
                 if (MyBilling.Add())
                 {
@@ -514,7 +514,20 @@ namespace VCBikeService.Forms.Compra
             }
         }
 
+        private void DtpFechaFactura_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime fechaSeleccionada = DtpFechaFactura.Value;
+            DateTime fechaActual = DateTime.Now;
 
+            if (fechaSeleccionada < fechaActual)
+            {
+                // Mostrar una alerta al usuario
+                MessageBox.Show("La fecha seleccionada es anterior al día de hoy. No se puede generar una factura con una fecha pasada.", "Fecha inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                // Puedes resetear la fecha seleccionada a la fecha actual si lo deseas
+                DtpFechaFactura.Value = fechaActual;
+            }
+        }
     }
 }
 

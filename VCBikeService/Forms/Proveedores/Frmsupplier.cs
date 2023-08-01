@@ -336,15 +336,7 @@ namespace VCBikeService.Forms
             }
         }
 
-        private void TxtSupplierName_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
-            {
-                e.Handled = true;
-                MessageBox.Show("Debes Digitar unicamente letras.", "!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-
-            }
-        }
+         
 
         private void TxtSupplierPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -441,6 +433,15 @@ namespace VCBikeService.Forms
         private void BtnCancel_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void Frmsupplier_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                // Cierra el formulario
+                this.Close();
+            }
         }
     }
 }

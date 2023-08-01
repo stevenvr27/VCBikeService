@@ -404,15 +404,7 @@ namespace VCBikeService.Forms.Clientes
             }
         }
 
-        private void TxtCustomerName_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
-            {
-                e.Handled = true;
-                MessageBox.Show("Debes Digitar unicamente letras.", "!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-
-            }
-        }
+        
 
         private bool valedateinsertdates()
         {
@@ -430,5 +422,13 @@ namespace VCBikeService.Forms.Clientes
              return R;
         }
 
+        private void FrmClientes_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                // Cierra el formulario
+                this.Close();
+            }
+        }
     }
 }

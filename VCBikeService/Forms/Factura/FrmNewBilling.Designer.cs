@@ -37,9 +37,20 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.DgCustList = new System.Windows.Forms.DataGridView();
+            this.CBillingID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CCustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CTotalLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CPercentageDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CExpr1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.TxtTypeBilling = new System.Windows.Forms.TextBox();
+            this.TxtMethodPague = new System.Windows.Forms.TextBox();
+            this.TxtTotal = new System.Windows.Forms.TextBox();
             this.TxtUser = new System.Windows.Forms.TextBox();
             this.TxtCustomer = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -58,17 +69,6 @@
             this.BtnDeleteC = new System.Windows.Forms.Button();
             this.BtnCleanC = new System.Windows.Forms.Button();
             this.BtnAddCustomer = new System.Windows.Forms.Button();
-            this.TxtTotal = new System.Windows.Forms.TextBox();
-            this.CBillingID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CCustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CTotalLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CPercentageDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CExpr1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TxtMethodPague = new System.Windows.Forms.TextBox();
-            this.TxtTypeBilling = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -209,6 +209,78 @@
             this.DgCustList.TabIndex = 4;
             this.DgCustList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgCustList_CellClick);
             // 
+            // CBillingID
+            // 
+            this.CBillingID.DataPropertyName = "BillingID";
+            this.CBillingID.HeaderText = "Cod.Factura";
+            this.CBillingID.MinimumWidth = 6;
+            this.CBillingID.Name = "CBillingID";
+            this.CBillingID.ReadOnly = true;
+            this.CBillingID.Width = 125;
+            // 
+            // CCustomerName
+            // 
+            this.CCustomerName.DataPropertyName = "CustomerName";
+            this.CCustomerName.HeaderText = "Nombre Cliente";
+            this.CCustomerName.MinimumWidth = 6;
+            this.CCustomerName.Name = "CCustomerName";
+            this.CCustomerName.ReadOnly = true;
+            this.CCustomerName.Width = 125;
+            // 
+            // CUserName
+            // 
+            this.CUserName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CUserName.DataPropertyName = "UserName";
+            this.CUserName.HeaderText = "Nombre Usuario";
+            this.CUserName.MinimumWidth = 6;
+            this.CUserName.Name = "CUserName";
+            this.CUserName.ReadOnly = true;
+            // 
+            // CDescription
+            // 
+            this.CDescription.DataPropertyName = "Description";
+            this.CDescription.HeaderText = "Tipo de Factura";
+            this.CDescription.MinimumWidth = 6;
+            this.CDescription.Name = "CDescription";
+            this.CDescription.ReadOnly = true;
+            this.CDescription.Width = 125;
+            // 
+            // CTotalLine
+            // 
+            this.CTotalLine.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CTotalLine.DataPropertyName = "TotalLine";
+            this.CTotalLine.HeaderText = "Total";
+            this.CTotalLine.MinimumWidth = 6;
+            this.CTotalLine.Name = "CTotalLine";
+            this.CTotalLine.ReadOnly = true;
+            // 
+            // CAmount
+            // 
+            this.CAmount.DataPropertyName = "Amount";
+            this.CAmount.HeaderText = "Cant.Productos";
+            this.CAmount.MinimumWidth = 6;
+            this.CAmount.Name = "CAmount";
+            this.CAmount.ReadOnly = true;
+            this.CAmount.Width = 125;
+            // 
+            // CPercentageDiscount
+            // 
+            this.CPercentageDiscount.DataPropertyName = "PercentageDiscount";
+            this.CPercentageDiscount.HeaderText = "Descuento";
+            this.CPercentageDiscount.MinimumWidth = 6;
+            this.CPercentageDiscount.Name = "CPercentageDiscount";
+            this.CPercentageDiscount.ReadOnly = true;
+            this.CPercentageDiscount.Width = 125;
+            // 
+            // CExpr1
+            // 
+            this.CExpr1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CExpr1.DataPropertyName = "Expr1";
+            this.CExpr1.HeaderText = "Metodo de Pago";
+            this.CExpr1.MinimumWidth = 6;
+            this.CExpr1.Name = "CExpr1";
+            this.CExpr1.ReadOnly = true;
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.panel6);
@@ -254,6 +326,37 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalle Factura";
+            // 
+            // TxtTypeBilling
+            // 
+            this.TxtTypeBilling.Location = new System.Drawing.Point(922, 82);
+            this.TxtTypeBilling.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TxtTypeBilling.Name = "TxtTypeBilling";
+            this.TxtTypeBilling.ReadOnly = true;
+            this.TxtTypeBilling.Size = new System.Drawing.Size(349, 30);
+            this.TxtTypeBilling.TabIndex = 31;
+            this.TxtTypeBilling.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // TxtMethodPague
+            // 
+            this.TxtMethodPague.Location = new System.Drawing.Point(922, 31);
+            this.TxtMethodPague.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TxtMethodPague.Name = "TxtMethodPague";
+            this.TxtMethodPague.ReadOnly = true;
+            this.TxtMethodPague.Size = new System.Drawing.Size(349, 30);
+            this.TxtMethodPague.TabIndex = 30;
+            this.TxtMethodPague.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // TxtTotal
+            // 
+            this.TxtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtTotal.Location = new System.Drawing.Point(938, 200);
+            this.TxtTotal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TxtTotal.Name = "TxtTotal";
+            this.TxtTotal.ReadOnly = true;
+            this.TxtTotal.Size = new System.Drawing.Size(349, 41);
+            this.TxtTotal.TabIndex = 29;
+            this.TxtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // TxtUser
             // 
@@ -464,119 +567,17 @@
             this.BtnAddCustomer.UseVisualStyleBackColor = false;
             this.BtnAddCustomer.Click += new System.EventHandler(this.BtnAddCustomer_Click);
             // 
-            // TxtTotal
-            // 
-            this.TxtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtTotal.Location = new System.Drawing.Point(938, 200);
-            this.TxtTotal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.TxtTotal.Name = "TxtTotal";
-            this.TxtTotal.ReadOnly = true;
-            this.TxtTotal.Size = new System.Drawing.Size(349, 41);
-            this.TxtTotal.TabIndex = 29;
-            this.TxtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // CBillingID
-            // 
-            this.CBillingID.DataPropertyName = "BillingID";
-            this.CBillingID.HeaderText = "Cod.Factura";
-            this.CBillingID.MinimumWidth = 6;
-            this.CBillingID.Name = "CBillingID";
-            this.CBillingID.ReadOnly = true;
-            this.CBillingID.Width = 125;
-            // 
-            // CCustomerName
-            // 
-            this.CCustomerName.DataPropertyName = "CustomerName";
-            this.CCustomerName.HeaderText = "Nombre Cliente";
-            this.CCustomerName.MinimumWidth = 6;
-            this.CCustomerName.Name = "CCustomerName";
-            this.CCustomerName.ReadOnly = true;
-            this.CCustomerName.Width = 125;
-            // 
-            // CUserName
-            // 
-            this.CUserName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CUserName.DataPropertyName = "UserName";
-            this.CUserName.HeaderText = "Nombre Usuario";
-            this.CUserName.MinimumWidth = 6;
-            this.CUserName.Name = "CUserName";
-            this.CUserName.ReadOnly = true;
-            // 
-            // CDescription
-            // 
-            this.CDescription.DataPropertyName = "Description";
-            this.CDescription.HeaderText = "Tipo de Factura";
-            this.CDescription.MinimumWidth = 6;
-            this.CDescription.Name = "CDescription";
-            this.CDescription.ReadOnly = true;
-            this.CDescription.Width = 125;
-            // 
-            // CTotalLine
-            // 
-            this.CTotalLine.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CTotalLine.DataPropertyName = "TotalLine";
-            this.CTotalLine.HeaderText = "Total";
-            this.CTotalLine.MinimumWidth = 6;
-            this.CTotalLine.Name = "CTotalLine";
-            this.CTotalLine.ReadOnly = true;
-            // 
-            // CAmount
-            // 
-            this.CAmount.DataPropertyName = "Amount";
-            this.CAmount.HeaderText = "Cant.Productos";
-            this.CAmount.MinimumWidth = 6;
-            this.CAmount.Name = "CAmount";
-            this.CAmount.ReadOnly = true;
-            this.CAmount.Width = 125;
-            // 
-            // CPercentageDiscount
-            // 
-            this.CPercentageDiscount.DataPropertyName = "PercentageDiscount";
-            this.CPercentageDiscount.HeaderText = "Descuento";
-            this.CPercentageDiscount.MinimumWidth = 6;
-            this.CPercentageDiscount.Name = "CPercentageDiscount";
-            this.CPercentageDiscount.ReadOnly = true;
-            this.CPercentageDiscount.Width = 125;
-            // 
-            // CExpr1
-            // 
-            this.CExpr1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CExpr1.DataPropertyName = "Expr1";
-            this.CExpr1.HeaderText = "Metodo de Pago";
-            this.CExpr1.MinimumWidth = 6;
-            this.CExpr1.Name = "CExpr1";
-            this.CExpr1.ReadOnly = true;
-            // 
-            // TxtMethodPague
-            // 
-            this.TxtMethodPague.Location = new System.Drawing.Point(922, 31);
-            this.TxtMethodPague.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.TxtMethodPague.Name = "TxtMethodPague";
-            this.TxtMethodPague.ReadOnly = true;
-            this.TxtMethodPague.Size = new System.Drawing.Size(349, 30);
-            this.TxtMethodPague.TabIndex = 30;
-            this.TxtMethodPague.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // TxtTypeBilling
-            // 
-            this.TxtTypeBilling.Location = new System.Drawing.Point(922, 82);
-            this.TxtTypeBilling.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.TxtTypeBilling.Name = "TxtTypeBilling";
-            this.TxtTypeBilling.ReadOnly = true;
-            this.TxtTypeBilling.Size = new System.Drawing.Size(349, 30);
-            this.TxtTypeBilling.TabIndex = 31;
-            this.TxtTypeBilling.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // FrmNewBilling
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1488, 833);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmNewBilling";
             this.Text = "FrmNewBilling";
             this.Load += new System.EventHandler(this.FrmNewBilling_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FrmNewBilling_KeyUp);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel7.ResumeLayout(false);

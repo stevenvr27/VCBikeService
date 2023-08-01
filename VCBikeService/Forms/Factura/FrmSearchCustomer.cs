@@ -78,5 +78,14 @@ namespace VCBikeService.Forms.Compra
 
             }
         }
+
+        private void FrmSearchCustomer_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                // Cierra el formulario
+                this.Close();
+            }
+        }
     }
 }

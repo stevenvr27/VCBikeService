@@ -54,24 +54,13 @@ namespace VCBikeService.Forms.Compra
 
         }
 
-        
-
-
-        private void BtnSeleccionar_Click(object sender, EventArgs e)
+        private void FrmSupplyerSearch_KeyUp(object sender, KeyEventArgs e)
         {
-            if (DgSupplier.SelectedRows.Count == 1)
+            if (e.KeyCode == Keys.Escape)
             {
-                DataGridViewRow FilaSeleccionada = DgSupplier.SelectedRows[0];
-                int IDSupplyer;
-                IDSupplyer = Convert.ToInt32(FilaSeleccionada.Cells["CSupplierID"].Value);
-
-                Globals.frmSupplierBuy.TxtSupplierD.Text = Convert.ToString(IDSupplyer);
-
-                this.DialogResult = DialogResult.OK;
-
+                // Cierra el formulario
+                this.Close();
             }
         }
-
-        
     }
 }

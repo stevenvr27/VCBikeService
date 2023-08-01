@@ -8,9 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VCBikeService.Forms.Compra;
 using VCBikeService.Forms.Nosotros;
 using VCBikeService.Forms.Productos;
-using VCBikeService.Forms.Reportes; 
+using VCBikeService.Forms.Reportes;
 
 namespace VCBikeService.Forms
 {
@@ -21,47 +22,23 @@ namespace VCBikeService.Forms
             InitializeComponent();
         }
 
-        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if(!Globals.FrmUsers.Visible)
-            {
-                Globals.FrmUsers = new FrmUsers();
-                Globals.FrmUsers.Show();
-            }
-        }
 
 
-        
 
 
-private void Central_FormClosed(object sender, FormClosedEventArgs e)
+
+        private void Central_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
 
-       
 
-       
 
-        private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!Globals.Frmsupplier.Visible)
-            {
-                Globals.Frmsupplier = new Frmsupplier();
-                Globals.Frmsupplier.Show();
-            }
-        }
 
-        public void name()
-        {
-            if (Globals.Principal.Visible) { 
-            
-               NameToolstrip.Visible = true;
-               NameToolstrip.Text = Globals.MyGlobalUser.UserName;
-               labelnameuser.Text = Globals.MyGlobalUser.UserName;
-            
-            }
-        }
+
+
+
+
 
         private void nosotrosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -72,13 +49,13 @@ private void Central_FormClosed(object sender, FormClosedEventArgs e)
             }
         }
 
-       
+
 
         private void listarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!Globals.FrmSearchProduct.Visible)
             {
-                Globals.FrmSearchProduct= new FrmSearchProduct();
+                Globals.FrmSearchProduct = new FrmSearchProduct();
                 Globals.FrmSearchProduct.Show();
             }
         }
@@ -101,14 +78,7 @@ private void Central_FormClosed(object sender, FormClosedEventArgs e)
             }
         }
 
-        private void buscarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!Globals.FrmBillingSearch.Visible)
-            {
-                Globals.FrmBillingSearch = new FrmBillingSearch();
-                Globals.FrmBillingSearch.Show();
-            }
-        }
+       
 
         private void nuevaFacturaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -119,28 +89,24 @@ private void Central_FormClosed(object sender, FormClosedEventArgs e)
             }
         }
 
-        private void modificarOEliminarToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            if (!Globals.FrmEditBilling.Visible)
-            {
-                Globals.FrmEditBilling = new Factura.FrmEditBilling();
-                Globals.FrmEditBilling.Show();
-            }
-        }
+      
 
-        
+
 
         private void Central_Load(object sender, EventArgs e)
         {
-            timer1.Enabled = true;
-            name();
+            LblUsuarioLogueado.Text = Globals.MyGlobalUser.UserName;
+          lblfecha.Text =  DateTime.Now.ToString("hh:mm");
+            LblFechaHora.Text = DateTime.Now.ToLongDateString();
+          
+            
 
             string InfoUsuario = string.Format("{0}-{1}({2})",
                                             Globals.MyGlobalUser.UserName,
                                             Globals.MyGlobalUser.Email,
                                             Globals.MyGlobalUser.MyRol.Description);
 
-             
+
 
             switch (Globals.MyGlobalUser.MyRol.UserRoleID)
             {
@@ -148,67 +114,50 @@ private void Central_FormClosed(object sender, FormClosedEventArgs e)
                     //sería admin, no se oculta nada
                     break;
                 case 2:
-                    //sería usuario normal, se deben ocultar algunas opciones de menú 
-                    usuariosToolStripMenuItem.Visible = false;
-                    productosToolStripMenuItem.Visible = false;
-                    facturasToolStripMenuItem.Visible = false;
-                    cajaToolStripMenuItem.Visible = false;
-                    ReportesToolStripMenuItem.Visible = false;
+                     
+                    Usuario.Visible = false;
+                    MnuUsuariosGestion.Visible = false;
 
                     break;
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void Usuario_Click(object sender, EventArgs e)
         {
-            Hora.Text = DateTime.Now.ToString("hh:mm:ss");
-            Fecha.Text = DateTime.Now.ToLongDateString();
-        }
-
-             
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (!Globals.Frmfactura.Visible)
+            if (!Globals.FrmUsers.Visible)
             {
-                Globals.Frmfactura = new Compra.FrmBuy();
-                Globals.Frmfactura.Show();
+                Globals.FrmUsers = new Forms.FrmUsers();
+                Globals.FrmUsers.Show();
             }
-
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e)
         {
-             if (!Globals.FrmNewBilling.Visible)
+            if (!Globals.Frmsupplier.Visible)
             {
-                Globals.FrmNewBilling = new Factura.FrmNewBilling();
-                Globals.FrmNewBilling.Show();
+                Globals.Frmsupplier = new Frmsupplier();
+                Globals.Frmsupplier.Show();
             }
         }
 
-        private void buscarToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void MnuEmpresaGestion_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            if (!Globals.FrmSearchReport.Visible)
+            if (!Globals.Frmsupplier.Visible)
             {
-                Globals.FrmSearchReport = new FrmSearchReport();
-                Globals.FrmSearchReport.Show();
+                Globals.Frmsupplier = new Frmsupplier();
+                Globals.Frmsupplier.Show();
             }
         }
 
-        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void MnuUsuariosGestion_Click(object sender, EventArgs e)
         {
-            
-                if (!Globals.frmClientes.Visible)
-                {
-                    Globals.frmClientes = new Clientes.FrmClientes();
-                    Globals.frmClientes.Show();
-                }
+
+            if (!Globals.FrmUsers.Visible)
+            {
+                Globals.FrmUsers = new Forms.FrmUsers();
+                Globals.FrmUsers.Show();
             }
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -219,30 +168,7 @@ private void Central_FormClosed(object sender, FormClosedEventArgs e)
             }
         }
 
-        private void productosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!Globals.FrmProductsAdd.Visible)
-            {
-                Globals.FrmProductsAdd = new FrmProductsAdd();
-                Globals.FrmProductsAdd.Show();
-            }
-        }
-
-        private void nosotrosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!Globals.FrmWe.Visible)
-            {
-                Globals.FrmWe = new FrmWe();
-                Globals.FrmWe.Show();
-            }
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void button6_Click(object sender, EventArgs e)
+        private void gestiónDeClientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!Globals.frmClientes.Visible)
             {
@@ -251,7 +177,16 @@ private void Central_FormClosed(object sender, FormClosedEventArgs e)
             }
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (!Globals.FrmProductsAdd.Visible)
+            {
+                Globals.FrmProductsAdd = new FrmProductsAdd();
+                Globals.FrmProductsAdd.Show();
+            }
+        }
+
+        private void MnuProductosGestion_Click(object sender, EventArgs e)
         {
             if (!Globals.FrmProductsAdd.Visible)
             {
@@ -262,12 +197,74 @@ private void Central_FormClosed(object sender, FormClosedEventArgs e)
 
         private void button7_Click(object sender, EventArgs e)
         {
+            if (!Globals.Frmfactura.Visible)
+            {
+                Globals.Frmfactura = new Compra.FrmBuy();
+                Globals.Frmfactura.Show();
+            }
+        }
+
+        private void MnuFacturar_Click(object sender, EventArgs e)
+        {
+            if (!Globals.Frmfactura.Visible)
+            {
+                Globals.Frmfactura = new Compra.FrmBuy();
+                Globals.Frmfactura.Show();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (!Globals.frmSupplierBuy.Visible)
+            {
+                Globals.frmSupplierBuy = new Compra.FrmSupplierBuy ();
+                Globals.frmSupplierBuy.Show();
+            }
+        }
+
+        private void stockToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!Globals.frmSupplierBuy.Visible)
+            {
+                Globals.frmSupplierBuy = new Compra.FrmSupplierBuy();
+                Globals.frmSupplierBuy.Show();
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (!Globals.FrmSearchProduct.Visible)
+            {
+                Globals.FrmSearchProduct = new Productos.FrmSearchProduct();
+                Globals.FrmSearchProduct.Show();
+            }
+        }
+
+        private void buscarProductoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!Globals.FrmSearchProduct.Visible)
+            {
+                Globals.FrmSearchProduct = new Productos.FrmSearchProduct();
+                Globals.FrmSearchProduct.Show();
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
             if (!Globals.FrmNewBilling.Visible)
             {
                 Globals.FrmNewBilling = new Factura.FrmNewBilling();
                 Globals.FrmNewBilling.Show();
             }
+        }
 
+        private void buscarFacturaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!Globals.FrmNewBilling.Visible)
+            {
+                Globals.FrmNewBilling = new Factura.FrmNewBilling();
+                Globals.FrmNewBilling.Show();
+            }
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -279,74 +276,29 @@ private void Central_FormClosed(object sender, FormClosedEventArgs e)
             }
         }
 
-         
-
-        private void button10_Click(object sender, EventArgs e)
+        private void button9_Click(object sender, EventArgs e)
         {
-            if (!Globals.Frmfactura.Visible)
-            {
-                Globals.Frmfactura = new Compra.FrmBuy();
-
-                Globals.Frmfactura.Show();
-            }
+            Close();
         }
 
-        private void button14_Click(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
-            if (!Globals.frmSupplierBuy.Visible)
-            {
-                Globals.frmSupplierBuy = new Compra.FrmSupplierBuy();
-                Globals.frmSupplierBuy.Show();
-            }
 
         }
 
-        private void button11_Click(object sender, EventArgs e)
+        private void Central_KeyUp(object sender, KeyEventArgs e)
         {
-            if (!Globals.FrmSearchProduct.Visible)
+            if (e.KeyCode == Keys.Escape)
             {
-                Globals.FrmSearchProduct = new Productos.FrmSearchProduct();
-                Globals.FrmSearchProduct.Show();
+                // Cierra el formulario
+                this.Close();
             }
         }
+    }
+}
 
-        private void button19_Click(object sender, EventArgs e)
-        {
-            if (!Globals.FrmProductsAdd.Visible)
-            {
-                Globals.FrmProductsAdd = new FrmProductsAdd();
-                Globals.FrmProductsAdd.Show();
-            }
-        }
+       
+
+             
 
         
-
-        private void button15_Click(object sender, EventArgs e)
-        {
-            if (!Globals.Frmsupplier.Visible)
-            {
-                Globals.Frmsupplier = new Frmsupplier();
-                Globals.Frmsupplier.Show();
-            }
-        }
-
-        private void button16_Click(object sender, EventArgs e)
-        {
-            if (!Globals.frmSupplierBuy.Visible)
-            {
-                Globals.frmSupplierBuy = new Compra.FrmSupplierBuy();
-                Globals.frmSupplierBuy.Show();
-            }
-        }
-
-        private void button12_Click(object sender, EventArgs e)
-        {
-            if (!Globals.FrmNewBilling.Visible)
-            {
-                Globals.FrmNewBilling = new Factura.FrmNewBilling();
-                Globals.FrmNewBilling.Show();
-            }
-        }
-    }
-    }
-

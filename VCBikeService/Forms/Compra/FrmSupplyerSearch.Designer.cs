@@ -212,7 +212,6 @@
             this.BtnSeleccionar.TabIndex = 10;
             this.BtnSeleccionar.Text = "Seleccionar";
             this.BtnSeleccionar.UseVisualStyleBackColor = false;
-            this.BtnSeleccionar.Click += new System.EventHandler(this.BtnSeleccionar_Click);
             // 
             // button1
             // 
@@ -255,6 +254,7 @@
             this.Name = "FrmSupplyerSearch";
             this.Text = "FrmSupplyerSearch";
             this.Load += new System.EventHandler(this.FrmSupplyerSearch_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FrmSupplyerSearch_KeyUp);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DgSupplier)).EndInit();

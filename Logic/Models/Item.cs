@@ -115,6 +115,20 @@ namespace Logic.Models
 
             return R;
         }
+
+        public DataTable ListActiveSellPrice(string pFiltroBusqueda)
+        {
+            DataTable R = new DataTable();
+
+            Connection Micnn = new Connection();
+
+            Micnn.parameterlist.Add(new SqlParameter("@VerActivo", true));
+            Micnn.parameterlist.Add(new SqlParameter("@FiltroBusqueda", pFiltroBusqueda));
+            R = Micnn.EjecutarSELECT("SPListItemSellPrice");
+
+            return R;
+        }
+
         public DataTable ListInactive(string pFiltroBusqueda)
         {
             DataTable R = new DataTable();

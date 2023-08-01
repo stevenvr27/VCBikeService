@@ -83,6 +83,14 @@ namespace VCBikeService.Forms.Compra
 
         }
 
+        private void FrmSupplyAddProduct_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                // Cierra el formulario
+                this.Close();
+            }
+        }
     }
     
 }

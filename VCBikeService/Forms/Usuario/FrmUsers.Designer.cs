@@ -51,6 +51,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.DgListUsers = new System.Windows.Forms.DataGridView();
             this.CUserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,6 +72,7 @@
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgListUsers)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -79,7 +81,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(24, 9);
+            this.label1.Location = new System.Drawing.Point(104, 8);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 25);
@@ -89,7 +91,7 @@
             // TxtSearch
             // 
             this.TxtSearch.BackColor = System.Drawing.SystemColors.Window;
-            this.TxtSearch.Location = new System.Drawing.Point(113, 9);
+            this.TxtSearch.Location = new System.Drawing.Point(200, 6);
             this.TxtSearch.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.TxtSearch.Name = "TxtSearch";
             this.TxtSearch.Size = new System.Drawing.Size(883, 30);
@@ -110,13 +112,13 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.DgListUsers, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, -3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 308F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1521, 696);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1521, 702);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
             // groupBox1
@@ -138,7 +140,7 @@
             this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.label19);
-            this.groupBox1.Location = new System.Drawing.Point(5, 392);
+            this.groupBox1.Location = new System.Drawing.Point(5, 398);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -159,14 +161,14 @@
             // 
             this.CbRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CbRol.FormattingEnabled = true;
-            this.CbRol.Location = new System.Drawing.Point(709, 20);
+            this.CbRol.Location = new System.Drawing.Point(807, 20);
             this.CbRol.Name = "CbRol";
-            this.CbRol.Size = new System.Drawing.Size(579, 33);
+            this.CbRol.Size = new System.Drawing.Size(481, 33);
             this.CbRol.TabIndex = 18;
             // 
             // TxtPassword
             // 
-            this.TxtPassword.Location = new System.Drawing.Point(152, 190);
+            this.TxtPassword.Location = new System.Drawing.Point(152, 184);
             this.TxtPassword.Name = "TxtPassword";
             this.TxtPassword.Size = new System.Drawing.Size(513, 30);
             this.TxtPassword.TabIndex = 17;
@@ -175,7 +177,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(16, 190);
+            this.label9.Location = new System.Drawing.Point(16, 184);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(120, 25);
             this.label9.TabIndex = 16;
@@ -184,7 +186,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(646, 28);
+            this.label12.Location = new System.Drawing.Point(704, 28);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(46, 25);
             this.label12.TabIndex = 15;
@@ -208,7 +210,7 @@
             // 
             // TxtCardID
             // 
-            this.TxtCardID.Location = new System.Drawing.Point(132, 142);
+            this.TxtCardID.Location = new System.Drawing.Point(132, 131);
             this.TxtCardID.Name = "TxtCardID";
             this.TxtCardID.Size = new System.Drawing.Size(482, 30);
             this.TxtCardID.TabIndex = 10;
@@ -216,15 +218,16 @@
             // 
             // TxtUserName
             // 
-            this.TxtUserName.Location = new System.Drawing.Point(132, 80);
+            this.TxtUserName.Location = new System.Drawing.Point(132, 71);
             this.TxtUserName.Name = "TxtUserName";
-            this.TxtUserName.Size = new System.Drawing.Size(544, 30);
+            this.TxtUserName.Size = new System.Drawing.Size(514, 30);
             this.TxtUserName.TabIndex = 9;
             this.TxtUserName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtUserName_KeyPress);
             // 
             // TxtUserID
             // 
-            this.TxtUserID.Location = new System.Drawing.Point(218, 38);
+            this.TxtUserID.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.TxtUserID.Location = new System.Drawing.Point(201, 28);
             this.TxtUserID.Name = "TxtUserID";
             this.TxtUserID.ReadOnly = true;
             this.TxtUserID.Size = new System.Drawing.Size(216, 30);
@@ -243,7 +246,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(672, 147);
+            this.label14.Location = new System.Drawing.Point(704, 136);
             this.label14.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(99, 25);
@@ -253,7 +256,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(10, 256);
+            this.label15.Location = new System.Drawing.Point(10, 251);
             this.label15.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(179, 25);
@@ -273,7 +276,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(13, 145);
+            this.label17.Location = new System.Drawing.Point(19, 131);
             this.label17.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(81, 25);
@@ -283,7 +286,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(13, 83);
+            this.label18.Location = new System.Drawing.Point(13, 71);
             this.label18.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(87, 25);
@@ -293,12 +296,21 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(16, 44);
+            this.label19.Location = new System.Drawing.Point(10, 28);
             this.label19.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(153, 25);
             this.label19.TabIndex = 0;
             this.label19.Text = "Codigo Usuario:";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.DgListUsers);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1515, 388);
+            this.panel3.TabIndex = 5;
             // 
             // DgListUsers
             // 
@@ -315,7 +327,7 @@
             this.CPhoneNumber,
             this.CAddress,
             this.CDescription});
-            this.DgListUsers.Location = new System.Drawing.Point(5, 4);
+            this.DgListUsers.Location = new System.Drawing.Point(8, 4);
             this.DgListUsers.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.DgListUsers.MultiSelect = false;
             this.DgListUsers.Name = "DgListUsers";
@@ -324,7 +336,7 @@
             this.DgListUsers.RowHeadersWidth = 62;
             this.DgListUsers.RowTemplate.Height = 28;
             this.DgListUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgListUsers.Size = new System.Drawing.Size(1291, 380);
+            this.DgListUsers.Size = new System.Drawing.Size(1286, 380);
             this.DgListUsers.TabIndex = 3;
             this.DgListUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgListUsers_CellClick);
             // 
@@ -409,7 +421,7 @@
             this.BtnEdit.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BtnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnEdit.ForeColor = System.Drawing.Color.SeaShell;
-            this.BtnEdit.Location = new System.Drawing.Point(521, 22);
+            this.BtnEdit.Location = new System.Drawing.Point(543, 22);
             this.BtnEdit.Name = "BtnEdit";
             this.BtnEdit.Size = new System.Drawing.Size(226, 66);
             this.BtnEdit.TabIndex = 8;
@@ -422,7 +434,7 @@
             this.BtnDelete.BackColor = System.Drawing.Color.Red;
             this.BtnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnDelete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BtnDelete.Location = new System.Drawing.Point(786, 22);
+            this.BtnDelete.Location = new System.Drawing.Point(807, 22);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(226, 66);
             this.BtnDelete.TabIndex = 9;
@@ -461,7 +473,7 @@
             this.CheckUser.AutoSize = true;
             this.CheckUser.Checked = true;
             this.CheckUser.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckUser.Location = new System.Drawing.Point(1029, 9);
+            this.CheckUser.Location = new System.Drawing.Point(1102, 8);
             this.CheckUser.Name = "CheckUser";
             this.CheckUser.Size = new System.Drawing.Size(129, 29);
             this.CheckUser.TabIndex = 12;
@@ -488,7 +500,7 @@
             this.btnActivate.BackColor = System.Drawing.Color.OliveDrab;
             this.btnActivate.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActivate.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnActivate.Location = new System.Drawing.Point(21, 22);
+            this.btnActivate.Location = new System.Drawing.Point(15, 22);
             this.btnActivate.Name = "btnActivate";
             this.btnActivate.Size = new System.Drawing.Size(226, 66);
             this.btnActivate.TabIndex = 21;
@@ -500,6 +512,7 @@
             // btnDeleteForever
             // 
             this.btnDeleteForever.BackColor = System.Drawing.Color.Red;
+            this.btnDeleteForever.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteForever.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteForever.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnDeleteForever.Location = new System.Drawing.Point(268, 22);
@@ -515,6 +528,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1321, 848);
             this.Controls.Add(this.panel2);
@@ -522,16 +536,25 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.TxtSearch);
             this.Controls.Add(this.label1);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1339, 895);
+            this.MinimumSize = new System.Drawing.Size(1339, 895);
             this.Name = "FrmUsers";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestion Usuarios";
             this.Load += new System.EventHandler(this.FrmUsers_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FrmUsers_KeyUp);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DgListUsers)).EndInit();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -580,5 +603,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnActivate;
         private System.Windows.Forms.Button btnDeleteForever;
+        private System.Windows.Forms.Panel panel3;
     }
 }

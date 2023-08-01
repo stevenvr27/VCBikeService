@@ -243,6 +243,7 @@
             this.Name = "FrmSearchCustomer";
             this.Text = "Buscador de Clientes";
             this.Load += new System.EventHandler(this.FrmSearchCustomer_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FrmSearchCustomer_KeyUp);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DgvLista)).EndInit();

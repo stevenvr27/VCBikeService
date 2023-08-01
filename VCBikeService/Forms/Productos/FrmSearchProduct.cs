@@ -63,21 +63,25 @@ namespace VCBikeService.Forms.Productos
             }
 
 
-            if (checkProduct.Checked)
-            {
+            
 
-                ListItem = Myitem.ListActive(searchfilter);
-            }
-            else
-            {
-                ListItem = Myitem.ListInactive(searchfilter);
-            }
+                ListItem = Myitem.ListActiveSellPrice(searchfilter);
+            
             DgProduct.DataSource = ListItem;
         }
 
         private void TxtSearchItem_KeyPress(object sender, KeyPressEventArgs e)
         {
             loadlistproduct();
+        }
+
+        private void FrmSearchProduct_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                // Cierra el formulario
+                this.Close();
+            }
         }
     }
 }

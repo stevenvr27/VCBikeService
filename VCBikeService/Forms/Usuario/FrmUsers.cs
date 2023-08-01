@@ -530,6 +530,15 @@ namespace VCBikeService.Forms
                 MessageBox.Show("Debes de seleccionar un usuario.", "!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void FrmUsers_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                // Cierra el formulario
+                        this.Close();
+            }
+        }
     }
 }
 

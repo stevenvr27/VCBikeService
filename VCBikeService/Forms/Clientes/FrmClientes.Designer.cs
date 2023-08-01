@@ -95,7 +95,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 84.44444F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 182F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1013, 570);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1033, 594);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
@@ -105,7 +105,7 @@
             this.panel1.Location = new System.Drawing.Point(2, 2);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1009, 46);
+            this.panel1.Size = new System.Drawing.Size(1029, 49);
             this.panel1.TabIndex = 0;
             // 
             // panel7
@@ -117,7 +117,7 @@
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Margin = new System.Windows.Forms.Padding(2);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1009, 46);
+            this.panel7.Size = new System.Drawing.Size(1029, 49);
             this.panel7.TabIndex = 0;
             // 
             // CheckCustomer
@@ -161,10 +161,10 @@
             // 
             this.panel2.Controls.Add(this.panel5);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(2, 52);
+            this.panel2.Location = new System.Drawing.Point(2, 55);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1009, 268);
+            this.panel2.Size = new System.Drawing.Size(1029, 289);
             this.panel2.TabIndex = 1;
             // 
             // panel5
@@ -174,7 +174,7 @@
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1009, 268);
+            this.panel5.Size = new System.Drawing.Size(1029, 289);
             this.panel5.TabIndex = 0;
             // 
             // DgCustList
@@ -191,7 +191,7 @@
             this.CCustomerPhone,
             this.CCustomerAdress,
             this.CDescription});
-            this.DgCustList.Location = new System.Drawing.Point(-2, 0);
+            this.DgCustList.Location = new System.Drawing.Point(9, 0);
             this.DgCustList.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.DgCustList.MultiSelect = false;
             this.DgCustList.Name = "DgCustList";
@@ -200,7 +200,7 @@
             this.DgCustList.RowHeadersWidth = 62;
             this.DgCustList.RowTemplate.Height = 28;
             this.DgCustList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgCustList.Size = new System.Drawing.Size(1007, 270);
+            this.DgCustList.Size = new System.Drawing.Size(1019, 289);
             this.DgCustList.TabIndex = 4;
             this.DgCustList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgCustList_CellClick);
             // 
@@ -262,10 +262,10 @@
             // 
             this.panel3.Controls.Add(this.panel6);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(2, 324);
+            this.panel3.Location = new System.Drawing.Point(2, 348);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1009, 178);
+            this.panel3.Size = new System.Drawing.Size(1029, 178);
             this.panel3.TabIndex = 2;
             // 
             // panel6
@@ -275,7 +275,7 @@
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1009, 178);
+            this.panel6.Size = new System.Drawing.Size(1029, 178);
             this.panel6.TabIndex = 0;
             // 
             // groupBox1
@@ -292,7 +292,7 @@
             this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.label19);
             this.groupBox1.Controls.Add(this.TxtCustomerID);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(7, 2);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
@@ -308,7 +308,7 @@
             this.label4.Location = new System.Drawing.Point(585, 128);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 25);
+            this.label4.Size = new System.Drawing.Size(69, 29);
             this.label4.TabIndex = 20;
             this.label4.Text = "Tipo:";
             // 
@@ -318,7 +318,7 @@
             this.label3.Location = new System.Drawing.Point(585, 80);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 25);
+            this.label3.Size = new System.Drawing.Size(94, 29);
             this.label3.TabIndex = 19;
             this.label3.Text = "Correo:";
             // 
@@ -328,7 +328,7 @@
             this.label2.Location = new System.Drawing.Point(585, 25);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 25);
+            this.label2.Size = new System.Drawing.Size(109, 29);
             this.label2.TabIndex = 18;
             this.label2.Text = "Direcion:";
             // 
@@ -338,7 +338,7 @@
             this.label1.Location = new System.Drawing.Point(29, 124);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 25);
+            this.label1.Size = new System.Drawing.Size(116, 29);
             this.label1.TabIndex = 17;
             this.label1.Text = "Telefono:";
             // 
@@ -349,7 +349,7 @@
             this.CbTypeCustomer.Location = new System.Drawing.Point(694, 124);
             this.CbTypeCustomer.Margin = new System.Windows.Forms.Padding(2);
             this.CbTypeCustomer.Name = "CbTypeCustomer";
-            this.CbTypeCustomer.Size = new System.Drawing.Size(294, 33);
+            this.CbTypeCustomer.Size = new System.Drawing.Size(294, 37);
             this.CbTypeCustomer.TabIndex = 16;
             // 
             // TxtCustomerEmail
@@ -357,7 +357,7 @@
             this.TxtCustomerEmail.Location = new System.Drawing.Point(694, 76);
             this.TxtCustomerEmail.Margin = new System.Windows.Forms.Padding(2);
             this.TxtCustomerEmail.Name = "TxtCustomerEmail";
-            this.TxtCustomerEmail.Size = new System.Drawing.Size(294, 30);
+            this.TxtCustomerEmail.Size = new System.Drawing.Size(294, 34);
             this.TxtCustomerEmail.TabIndex = 15;
             // 
             // TxtCustomerAddress
@@ -365,15 +365,15 @@
             this.TxtCustomerAddress.Location = new System.Drawing.Point(694, 23);
             this.TxtCustomerAddress.Margin = new System.Windows.Forms.Padding(2);
             this.TxtCustomerAddress.Name = "TxtCustomerAddress";
-            this.TxtCustomerAddress.Size = new System.Drawing.Size(294, 30);
+            this.TxtCustomerAddress.Size = new System.Drawing.Size(294, 34);
             this.TxtCustomerAddress.TabIndex = 14;
             // 
             // TxtPhonesCustomer
             // 
-            this.TxtPhonesCustomer.Location = new System.Drawing.Point(134, 124);
+            this.TxtPhonesCustomer.Location = new System.Drawing.Point(166, 121);
             this.TxtPhonesCustomer.Margin = new System.Windows.Forms.Padding(2);
             this.TxtPhonesCustomer.Name = "TxtPhonesCustomer";
-            this.TxtPhonesCustomer.Size = new System.Drawing.Size(342, 30);
+            this.TxtPhonesCustomer.Size = new System.Drawing.Size(342, 34);
             this.TxtPhonesCustomer.TabIndex = 13;
             this.TxtPhonesCustomer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtPhonesCustomer_KeyPress);
             // 
@@ -382,9 +382,8 @@
             this.TxtCustomerName.Location = new System.Drawing.Point(134, 77);
             this.TxtCustomerName.Margin = new System.Windows.Forms.Padding(2);
             this.TxtCustomerName.Name = "TxtCustomerName";
-            this.TxtCustomerName.Size = new System.Drawing.Size(342, 30);
+            this.TxtCustomerName.Size = new System.Drawing.Size(342, 34);
             this.TxtCustomerName.TabIndex = 12;
-            this.TxtCustomerName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCustomerName_KeyPress);
             // 
             // label18
             // 
@@ -392,7 +391,7 @@
             this.label18.Location = new System.Drawing.Point(29, 76);
             this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(87, 25);
+            this.label18.Size = new System.Drawing.Size(107, 29);
             this.label18.TabIndex = 11;
             this.label18.Text = "Nombre:";
             // 
@@ -402,17 +401,17 @@
             this.label19.Location = new System.Drawing.Point(29, 36);
             this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(147, 25);
+            this.label19.Size = new System.Drawing.Size(180, 29);
             this.label19.TabIndex = 10;
             this.label19.Text = "Codigo Cliente:";
             // 
             // TxtCustomerID
             // 
-            this.TxtCustomerID.Location = new System.Drawing.Point(169, 33);
+            this.TxtCustomerID.Location = new System.Drawing.Point(215, 31);
             this.TxtCustomerID.Margin = new System.Windows.Forms.Padding(2);
             this.TxtCustomerID.Name = "TxtCustomerID";
             this.TxtCustomerID.ReadOnly = true;
-            this.TxtCustomerID.Size = new System.Drawing.Size(163, 30);
+            this.TxtCustomerID.Size = new System.Drawing.Size(163, 34);
             this.TxtCustomerID.TabIndex = 9;
             this.TxtCustomerID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -426,10 +425,10 @@
             this.panel4.Controls.Add(this.BtnCleanC);
             this.panel4.Controls.Add(this.BtnAddCustomer);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(2, 506);
+            this.panel4.Location = new System.Drawing.Point(2, 530);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1009, 62);
+            this.panel4.Size = new System.Drawing.Size(1029, 62);
             this.panel4.TabIndex = 3;
             // 
             // btnDeleteForever
@@ -536,14 +535,22 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1018, 564);
+            this.ClientSize = new System.Drawing.Size(1034, 594);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1052, 641);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(1052, 641);
             this.Name = "FrmClientes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestion Clientes";
             this.Load += new System.EventHandler(this.FrmClientes_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FrmClientes_KeyUp);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel7.ResumeLayout(false);

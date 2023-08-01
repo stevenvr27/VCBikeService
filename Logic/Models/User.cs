@@ -263,6 +263,7 @@ namespace Logic.Models
 
 
 
+
         public User ValidateUser(string pEmail, string pContrasennia)
         {
             User R = new User();
@@ -299,6 +300,13 @@ namespace Logic.Models
 
                 R.MyRol.UserRoleID = Convert.ToInt32(dr["UserRoleID"]);
                 R.MyRol.Description = Convert.ToString(dr["Description"]);
+
+                // Check if the user is active before returning
+                R.Active = Convert.ToBoolean(dr["Active"]);
+                if (!R.Active)
+                {
+                    R.UserID = -1; // Set a negative value to indicate an inactive user
+                }
 
 
             }
