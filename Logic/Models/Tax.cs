@@ -1,20 +1,15 @@
-﻿using Logic.Services;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 
 namespace Logic.Models
 {
     public class Tax
     {
+        //atributos 
         public int TaxID { get; set; }
         public string TaxName { get; set;}
         public decimal AmountTax { get; set;}
 
+        //datatable lista los impuestos 
         public DataTable List()
         {
             DataTable R = new DataTable();

@@ -22,8 +22,9 @@ namespace VCBikeService.Forms
         public FrmUsers()
         {
             InitializeComponent();
-
+            this.KeyPreview = true;
             MyUser = new Logic.Models.User();
+            this.KeyPreview = true;
             ListUser = new DataTable();
 
         }
@@ -533,13 +534,20 @@ namespace VCBikeService.Forms
 
         private void FrmUsers_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape)
-            {
-                // Cierra el formulario
-                        this.Close();
+            
+                if (e.KeyCode == Keys.Escape)
+                {
+                    // Cierra el formulario si se presiona Escape
+                    this.Close();
+                }
+                else if (e.KeyCode == Keys.Enter)
+                {
+                    // Realiza el clic en el botón "Facturar" si se presiona Enter
+                    BtnAdd.PerformClick();
+                }
             }
         }
     }
-}
+
 
 

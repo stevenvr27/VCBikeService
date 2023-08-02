@@ -1,17 +1,12 @@
 ﻿using Logic.Services;
-using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Logic.Models
 {
     public  class BillingDetail
     {
-        
+        //atributos
         public decimal Amount { get; set; }
         public decimal TotalLine { get; set; }
         public decimal UnitaryPrice { get; set; }
@@ -19,11 +14,16 @@ namespace Logic.Models
         public decimal SubTotalLine { get; set; }
         public decimal ImpuestoLine { get; set; }
 
+        //atributos compuestos 
         public Item MyItem { get; set; }
+
+        //constructor 
         public BillingDetail()
         {
             MyItem = new Item();
         }
+
+        // Datatable lista las facturas segun su activo = true 
 
         public DataTable ListBillingActive(string pFiltroBusqueda)
         {
@@ -41,6 +41,7 @@ namespace Logic.Models
             return R;
         }
 
+        // Datatable lista las facturas segun su activo = false
         public DataTable ListBillingInactive(string pFiltroBusqueda)
         {
             DataTable R = new DataTable();

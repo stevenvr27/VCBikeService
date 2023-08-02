@@ -1,14 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
-using Logic.Models;
 
 namespace VCBikeService.Forms
 {
@@ -17,6 +8,8 @@ namespace VCBikeService.Forms
         public FrmLogin()
         {
             InitializeComponent();
+
+            this.KeyPreview = true;
 
         }
 
@@ -29,13 +22,15 @@ namespace VCBikeService.Forms
 
         private void BtnCancel_Click(object sender, EventArgs e)
         {
-            //to close the form
+            //para cerrar la aplicacion 
             Application.Exit();
         }
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
             {
+                // Primero busca que los campos esten llenos , luego guarda la informacion para validar que existan en la bd y si no su respectiva alerta
+
                 if (!string.IsNullOrEmpty(TxtUserName.Text.Trim()) &&
                     !string.IsNullOrEmpty(TxtPassword.Text.Trim()))
                 {
@@ -74,12 +69,14 @@ namespace VCBikeService.Forms
 
         private void BtnIngresoDirecto_Click(object sender, EventArgs e)
         {
+            //boton para el ingrso directo al formulario principal 
             Globals.Principal.Show();
             this.Hide();
         }
 
         private void BtnVerContrasennia_Click(object sender, EventArgs e)
         {
+            //boton para ver lo digitado en el campo de la contraseña 
             if (!string.IsNullOrEmpty(TxtPassword.Text.Trim()))
             {
                 TxtPassword.UseSystemPasswordChar = false;
@@ -97,49 +94,55 @@ namespace VCBikeService.Forms
 
         private void FrmLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
+            //cierra la aplicacion 
             Application.Exit();
         }
 
+
         private void FrmLogin_KeyUp(object sender, KeyEventArgs e)
         {
-            // Verificar si las teclas "Alt" y "Control" se han presionado al mismo tiempo.
+            // Verificar si las teclas "Alt" + "Control" + M  se han presionado al mismo tiempo y si es afirmativo se muestra un boton
             if (e.Alt && e.Control)
             {
-                // Verificar qué tecla específica se presionó junto con "Alt" y "Control" (por ejemplo, "M" para el menú).
+
+
                 if (e.KeyCode == Keys.M)
                 {
                     BtnIngresoDirecto.Visible = true;
 
                 }
             }
-
-
-            if (e.KeyCode == Keys.Escape)
-            {
-                // Cierra el formulario
-                this.Close();
-            }
-        }
-
-        private void BtnIngresoDirecto_KeyUp(object sender, KeyEventArgs e)
-        {
             if (e.Alt && e.Control)
             {
-                // Verificar qué tecla específica se presionó junto con "Alt" y "Control" (por ejemplo, "M" para el menú).
-                if (e.KeyCode == Keys.M)
+                // Verificar si las teclas "Alt" + "Control" + V  se han presionado al mismo tiempo y si es afirmativo se muestra un boton
+                if (e.KeyCode == Keys.V)
                 {
-                     
+                    Recovery.Visible = true;
+
                 }
             }
 
             if (e.KeyCode == Keys.Escape)
+                if (e.KeyCode == Keys.Escape)
+                {
+                    // Cierra el formulario si se presiona Escape
+                    this.Close();
+                }
+                else if (e.KeyCode == Keys.Enter)
+                {
+                    // Realiza el clic en el botón  si se presiona Enter
+                    BtnLogin.PerformClick();
+                }
+        }
+
+        private void Recovery_Click(object sender, EventArgs e)
+        {
+            //muestra el form respectivo 
+            if (!Globals.recuperar.Visible)
             {
-                // Cierra el formulario
-                this.Close();
+
+                Globals.recuperar.Show();
             }
         }
-    
-    
     }
 }
- 

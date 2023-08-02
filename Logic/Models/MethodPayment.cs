@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 
 namespace Logic.Models
 {
-    public  class MethodPayment
+    public class MethodPayment
     {
-      public   int MethodPaymentID { get; set; }
-      public string Description { get; set; }
+        //atributos 
+        public int MethodPaymentID { get; set; }
+        public string Description { get; set; }
 
-
+        //data table me lista los metodos de pago 
         public DataTable List()
         {
             DataTable R = new DataTable();

@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 
 namespace Logic.Models
 {
     public  class Unit
     {
+        //atributos 
         public int IDUnit { get; set; }
         public string UnitMeasurement { get; set; }
 
-
+        //datatable lista las unidades de medida 
         public DataTable List()
         {
             DataTable R = new DataTable();

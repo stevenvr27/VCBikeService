@@ -1,16 +1,13 @@
 ﻿using Logic.Services;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
 
 namespace Logic.Models
 {
     public class Customer
     {
+        // atributos 
         public int CustomerID { get; set; }
         public string CustomerName { get; set; }
         public string CustomerAdress { get; set; }
@@ -20,13 +17,15 @@ namespace Logic.Models
 
         public bool Active { get; set; }
 
+        //atributos compuestos
         public CustomerType MyTypeCustomer { get; set; }
 
+        //constructor 
         public Customer()
         {
             MyTypeCustomer = new CustomerType(); 
         }
-
+        //metodo agregar y su respectivo llamado al procedimiento almacenado 
         public bool Add()
         {
             bool R = false;
@@ -50,6 +49,7 @@ namespace Logic.Models
             return R;
 
         }
+        //metodo actualizar  y su respectivo llamado al procedimiento almacenado 
         public bool Update()
         {
             bool R = false;
@@ -74,6 +74,7 @@ namespace Logic.Models
 
         public bool Delete()
         {
+            //metodo eliminar cual enrealidad desactiva al cliente  y su respectivo llamado al procedimiento almacenado 
             bool R = false;
             Connection connection = new Connection();
             connection.parameterlist.Add(new SqlParameter("@ID", this.CustomerID));
@@ -87,6 +88,7 @@ namespace Logic.Models
             return R;
 
         }
+        //metodo eliminar para siempre de la bd  y su respectivo llamado al procedimiento almacenado 
         public bool DeleteForEver()
         {
             bool R = false;
@@ -103,6 +105,7 @@ namespace Logic.Models
         }
         public bool Activate()
         {
+            //metodo activar y su respectivo llamado al procedimiento almacenado 
             bool R = false;
             Connection connection = new Connection();
             connection.parameterlist.Add(new SqlParameter("@ID", this.CustomerID));
@@ -118,6 +121,7 @@ namespace Logic.Models
 
         public bool ConsultID()
         {
+            //metodo Consultar por el ID  y su respectivo llamado al procedimiento almacenado 
             bool R = false;
             Connection MiCnn = new Connection();
 
@@ -139,7 +143,8 @@ namespace Logic.Models
         }
         public Customer SearchID(int pIdCliente)
         {
-           Customer R = new Customer();
+            //metodo buscar el Id  y su respectivo llamado al procedimiento almacenado 
+            Customer R = new Customer();
 
             Connection MyCnn = new Connection();
 
@@ -168,6 +173,7 @@ namespace Logic.Models
 
         public bool ConsultEmail()
         {
+            //consultar correo  y su respectivo llamado al procedimiento almacenado 
             bool R = false;
             Connection MiCnn = new Connection();
 
@@ -189,6 +195,7 @@ namespace Logic.Models
         }
         public bool ConsultPhone()
         {
+            //metodo Consultar por numero telefonico y su respectivo llamado al procedimiento almacenado 
             bool R = false;
             Connection MiCnn = new Connection();
 
@@ -209,7 +216,7 @@ namespace Logic.Models
 
 
         }
-
+        //Datatable cual trae la lista de clientes activos si activo =true
         public DataTable ListCustomerActive(  string pFiltroBusqueda)
         {
             DataTable R = new DataTable();
@@ -225,7 +232,7 @@ namespace Logic.Models
 
             return R;
         }
-        public DataTable ListCustomer(  )
+        public DataTable ListCustomer(  ) //Data table me trae las compras que ha echo el cliente 
         {
             DataTable R = new DataTable();
 
@@ -235,7 +242,7 @@ namespace Logic.Models
 
             return R;
         }
-
+        //Datatable cual trae la lista de clientes inactivos si activo =false
         public DataTable ListCustomerInactive(string pFiltroBusqueda)
         {
             DataTable R = new DataTable();
@@ -253,7 +260,7 @@ namespace Logic.Models
 
         public Customer SearchIDReturnCustumer()
         {
-
+            // metodo para buscar el id y que me retorne info del cliente 
             Customer R = new Customer();
             Connection Micnn = new Connection();
             Micnn.parameterlist.Add(new SqlParameter("@ID", this.CustomerID));

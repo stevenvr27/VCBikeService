@@ -1,16 +1,13 @@
 ﻿using Logic.Services;
 using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Logic.Models
 {
     public class Supplier
     {
+        //atributos 
         public int SupplierID { get; set; }
         public int PhoneNumber { get; set; }
         public string SupplierName { get; set; }
@@ -18,22 +15,23 @@ namespace Logic.Models
         public int SupplierCardID { get; set; }
         public string SupplierEmail { get; set; }
 
-        public string Address { get; set;}
+        public string Address { get; set; }
         public SupplierType MyType { get; set; }
 
-
+        //constructor 
         public Supplier()
         {
             MyType = new SupplierType();
         }
 
+        //metodo agregar proveedor y su respectivo llamado al procedimiento almacenado 
         public bool AddSupply()
         {
             bool R = false;
 
             Connection connection = new Connection();
 
-             
+
 
             connection.parameterlist.Add(new SqlParameter("@SupplierName", this.SupplierName));
             connection.parameterlist.Add(new SqlParameter("@PhoneNumber", this.PhoneNumber));
@@ -41,7 +39,7 @@ namespace Logic.Models
             connection.parameterlist.Add(new SqlParameter("@SupplierEmail", this.SupplierEmail));
             connection.parameterlist.Add(new SqlParameter("@Address", this.Address));
             connection.parameterlist.Add(new SqlParameter("@SupplierTypeID", this.MyType.SupplierTypeID));
-             
+
 
             int result = connection.EjecutarInsertUpdateDelete("SPAddSuply");
 
@@ -52,6 +50,7 @@ namespace Logic.Models
             return R;
 
         }
+        //metodo actualizar  proveedor y su respectivo llamado al procedimiento almacenado 
         public bool Update()
         {
             bool R = false;
@@ -71,7 +70,7 @@ namespace Logic.Models
             }
             return R;
         }
-
+        //metodo eliminar  proveedor  cual realmente lo desactiva y su respectivo llamado al procedimiento almacenado 
         public bool Delete()
         {
             bool R = false;
@@ -87,7 +86,7 @@ namespace Logic.Models
             return R;
 
         }
-
+        //datatable lista proveedores activos 
         public DataTable ListActive(string pFiltroBusqueda)
         {
             DataTable R = new DataTable();
@@ -100,6 +99,7 @@ namespace Logic.Models
 
             return R;
         }
+        //datatable lista proveedores inactivos 
         public DataTable ListInactive(string pFiltroBusqueda)
         {
             DataTable R = new DataTable();
@@ -110,7 +110,7 @@ namespace Logic.Models
             R = Micnn.EjecutarSELECT("SPListSupplierActive");
             return R;
         }
-
+        //metodo busca el id y trae cierta info del proveedor
         public Supplier SearchIDReturnSupply()
         {
             Supplier R = new Supplier();
@@ -148,7 +148,7 @@ namespace Logic.Models
             return R;
 
         }
-
+          //metodo activar 
         public bool Activate()
         {
             bool R = false;
@@ -163,7 +163,7 @@ namespace Logic.Models
 
             return R;
         }
-
+        //metodo eliminar para siempre de la bd 
         public bool DeleteForEver()
         {
             bool R = false;
@@ -178,7 +178,7 @@ namespace Logic.Models
 
             return R;
         }
-
+        //metodo consultar por el email 
         public bool ConsultEmail()
         {
             bool R = false;
@@ -201,7 +201,7 @@ namespace Logic.Models
 
 
         }
-        
+        // metodo consultar por el id 
        public bool consultcardid()
         {
             bool R = false;
@@ -224,7 +224,7 @@ namespace Logic.Models
 
 
         }
-
+        //metodo busca el id 
         public Supplier SearchID(int pIdSupply)
         {
            Supplier R = new Supplier();
@@ -253,7 +253,7 @@ namespace Logic.Models
 
             return R;
         }
-
+        //datatable lista los proveedores 
         public DataTable ListSupplier()
         {
             DataTable R = new DataTable();

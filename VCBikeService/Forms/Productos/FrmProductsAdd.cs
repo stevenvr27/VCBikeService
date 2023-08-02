@@ -24,6 +24,7 @@ namespace VCBikeService.Forms
             Myitem = new Logic.Models.Item();
             ListItem = new DataTable();
             Checker();
+            this.KeyPreview = true;
         }
 
        
@@ -598,8 +599,13 @@ namespace VCBikeService.Forms
         {
             if (e.KeyCode == Keys.Escape)
             {
-                // Cierra el formulario
+                // Cierra el formulario si se presiona Escape
                 this.Close();
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                // Realiza el clic en el botón "add" si se presiona Enter
+                BtnAddproduct.PerformClick();
             }
         }
     }

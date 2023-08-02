@@ -21,6 +21,7 @@ namespace VCBikeService.Forms.Compra
 
         public FrmAddSearchProduct()
         {
+            this.KeyPreview = true;
             InitializeComponent();
             listitem = new DataTable();
             MyItem = new Logic.Models.Item();
@@ -219,11 +220,18 @@ namespace VCBikeService.Forms.Compra
 
         private void FrmAddSearchProduct_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape)
-            {
-                // Cierra el formulario
-                this.Close();
-            }
+            
+                if (e.KeyCode == Keys.Escape)
+                {
+                    // Cierra el formulario si se presiona Escape
+                    this.Close();
+                }
+                else if (e.KeyCode == Keys.Enter)
+                {
+                    // Realiza el clic en el botón "Facturar" si se presiona Enter
+                    btnadd.PerformClick();
+                }
+            
         }
     }
 

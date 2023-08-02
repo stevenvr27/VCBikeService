@@ -1,16 +1,13 @@
 ﻿using Logic.Services;
 using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Logic.Models
 {
     public class Item
     {
+        //atributos 
         public int ItemID { get; set; }
         public string ItemName { get; set; }
 
@@ -23,19 +20,21 @@ namespace Logic.Models
 
         public bool Active { get; set; }
 
+        //atributos compuestos 
         public ItemCategory MyType { get; set; }   
         public Tax Tax { get; set; }
         public Unit Unit { get; set; }
 
 
 
-
+        //constructor 
         public Item()
         {
             MyType = new ItemCategory();
             Tax = new Tax();
             Unit = new Unit();
         }
+        // metodo agregar y su respectivo llamado al procedimiento almacenado 
         public bool Add()
         {
             bool R = false;
@@ -63,6 +62,7 @@ namespace Logic.Models
             return R;
 
         }
+        // metodo actualizar y su respectivo llamado al procedimiento almacenado 
         public bool Update()
         {
             bool R = false;
@@ -85,8 +85,8 @@ namespace Logic.Models
             return R;
         }
 
-        
 
+        // metodo eliminar y su respectivo llamado al procedimiento almacenado 
         public bool Delete()
         {
             bool R = false;
@@ -102,7 +102,7 @@ namespace Logic.Models
             return R;
 
         }
-
+        // datatable me trae la lista de items activos mientras activo=true 
         public DataTable ListActive(string pFiltroBusqueda)
         {
             DataTable R = new DataTable();
@@ -115,7 +115,7 @@ namespace Logic.Models
 
             return R;
         }
-
+        // datatable me trae la lista de los precios activos 
         public DataTable ListActiveSellPrice(string pFiltroBusqueda)
         {
             DataTable R = new DataTable();
@@ -128,7 +128,7 @@ namespace Logic.Models
 
             return R;
         }
-
+        // datatable me trae la lista de items inactivos mientras activo=false
         public DataTable ListInactive(string pFiltroBusqueda)
         {
             DataTable R = new DataTable();
@@ -139,6 +139,7 @@ namespace Logic.Models
             R = Micnn.EjecutarSELECT("SPListItemActive");
             return R;
         }
+        // datatable me trae la lista de los precios activos 
         public DataTable ListActiveProduct(string pFiltroBusqueda)
         {
             DataTable R = new DataTable();
@@ -151,6 +152,7 @@ namespace Logic.Models
 
             return R;
         }
+        // datatable me lista el productor seleccionado 
         public DataTable ListarEnBusqueda()
         {
             DataTable R = new DataTable();
@@ -162,7 +164,7 @@ namespace Logic.Models
             return R;
         }
 
-
+        // metodo buscar id y retornar atributos del item
         public Item SearchIDReturnItem()
         {
             Item R = new Item();
@@ -204,7 +206,7 @@ namespace Logic.Models
         }
 
          
-
+        //metodo consultar por ID 
         public Item ConsultarPorID(int pIdProducto)
         {
             Item R = new Item();
@@ -237,7 +239,7 @@ namespace Logic.Models
 
             return R;
         }
-
+        //datatable me busca el ID
         public DataTable SearchID()
         {
             DataTable R = new DataTable();
@@ -248,6 +250,7 @@ namespace Logic.Models
             return R;
 
         } 
+        //datatable me lista el item comprado 
         public DataTable newbuy()
         {
             DataTable R = new DataTable();
@@ -258,6 +261,7 @@ namespace Logic.Models
             return R;
           
         }
+        //metodo activar 
         public bool Activate()
         {
             bool R = false;
@@ -272,7 +276,7 @@ namespace Logic.Models
 
             return R;
         }
-
+        //metodo eliminar para siempre de la bd 
         public bool DeleteForEver()
         {
             bool R = false;
@@ -287,7 +291,7 @@ namespace Logic.Models
 
             return R;
         }
-
+        //metodo consultar por el codigo de barras 
         public bool ConsultBarcode()
         {
             bool R = false;
@@ -310,7 +314,7 @@ namespace Logic.Models
 
 
         }
-
+        //metodo consulta por el ID
         public bool ConsultID()
         {
             bool R = false;

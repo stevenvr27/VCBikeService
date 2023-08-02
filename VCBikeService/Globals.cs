@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Logic;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VCBikeService.Forms.Origen;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace VCBikeService
 {
@@ -18,6 +21,14 @@ namespace VCBikeService
 
             return frmEditBuyItem;
         }
+
+        private static Crypto crypto = new Crypto();
+
+        public static FrmRecoveryPassword recuperar = new FrmRecoveryPassword(crypto);
+
+
+    
+
         public static Forms.Compra.FrmSupplyerSearch FrmSupplyerSearch = new Forms.Compra.FrmSupplyerSearch();
         public static Forms.Compra.FrmSupplyAddProduct FrmSupplyAddProduct = new Forms.Compra.FrmSupplyAddProduct();
         public static Forms.Compra.FrmSupplierBuy frmSupplierBuy = new Forms.Compra.FrmSupplierBuy();
@@ -27,7 +38,6 @@ namespace VCBikeService
         public static Forms.Compra.FrmBuy Frmfactura = new Forms.Compra.FrmBuy();
         public static Forms.Compra.FrmAddSearchProduct FrmAddSearchProduct = new Forms.Compra.FrmAddSearchProduct();
         public static Forms.Clientes.FrmClientes frmClientes = new Forms.Clientes.FrmClientes();
-        public static Forms.l
         public static Forms.FrmProductsAdd FrmProductsAdd = new Forms.FrmProductsAdd();
         public static Forms.Reportes.FrmSearchReport FrmSearchReport = new Forms.Reportes.FrmSearchReport();
         public static Forms.Nosotros.FrmWe FrmWe = new Forms.Nosotros.FrmWe();

@@ -1,13 +1,6 @@
-﻿using Logic.Models;
-using SolrNet.Mapping.Validation.Rules;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace VCBikeService.Forms.Clientes
@@ -19,6 +12,7 @@ namespace VCBikeService.Forms.Clientes
 
         public FrmClientes()
         {
+            this.KeyPreview = true;
             InitializeComponent();
             CustomerList = new DataTable();
             newcustomer = new Logic.Models.Customer();
@@ -33,6 +27,8 @@ namespace VCBikeService.Forms.Clientes
         private void LoadListCustomer()
 
         {
+            // trae la lista de los clientes y especificando si es de tipo activo o inactivo 
+
             CustomerList = new DataTable();
 
             string searchfilter = "";
@@ -57,6 +53,8 @@ namespace VCBikeService.Forms.Clientes
 
         private void LoadTypeCustomer()
         {
+            //trae la lista de los tipos de clientes que tenemos y llena el respectivo combo box 
+
             Logic.Models.CustomerType customerType = new Logic.Models.CustomerType();
             DataTable a = new DataTable();
             a = customerType.ListCustomerType();
@@ -72,6 +70,7 @@ namespace VCBikeService.Forms.Clientes
 
         private void BtnCancelC_Click(object sender, EventArgs e)
         {
+            //cierra el formulario 
             this.Hide();
         }
 
@@ -79,6 +78,7 @@ namespace VCBikeService.Forms.Clientes
 
         private void CleanForm()
         {
+            // codigo para limpiar cada campo o combo box del formulario 
             TxtCustomerAddress.Clear();
             TxtCustomerEmail.Clear();
             TxtCustomerID.Clear();
@@ -92,6 +92,7 @@ namespace VCBikeService.Forms.Clientes
 
         private void DgCustList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            //me permite llenar los campos respecivos para cada uno los atrbutos , si el usuario realiza click en algun cliente 
             if (DgCustList.SelectedRows.Count == 1)
             {
 
@@ -132,6 +133,7 @@ namespace VCBikeService.Forms.Clientes
         }
         private void Checker()
         {
+            // me funciona para jugar con la visibilidad de ciertas cosas del formulario , si el cuadro de check esta activo o inactivo 
             if (CheckCustomer.Checked)
             {
                 BtnAddCustomer.Visible = true;
@@ -154,17 +156,20 @@ namespace VCBikeService.Forms.Clientes
 
         private void CheckCustomer_CheckedChanged(object sender, EventArgs e)
         {
+            //llama a ciertas clases que dependen de si esta el check o no dentro del cuadro 
             LoadListCustomer();
             Checker();
         }
 
         private void BtnCleanC_Click(object sender, EventArgs e)
         {
+            //boton que me limpia el formulario 
             CleanForm();
         }
 
         private void btnactivate_Click(object sender, EventArgs e)
         {
+            // al seleccionar el boton me permita activar a un cliente inactivo
             if (!string.IsNullOrEmpty(TxtPhonesCustomer.Text.Trim())
                && !string.IsNullOrEmpty(TxtCustomerName.Text.Trim()) && CbTypeCustomer.SelectedIndex > -1)
             {
@@ -192,7 +197,7 @@ namespace VCBikeService.Forms.Clientes
 
         private void BtnEditC_Click(object sender, EventArgs e)
         {      
-           
+           // boton al darle click me permite editar la informacion del cliente, respetando ciertos atributos 
                
             bool phoneok;
 
@@ -263,6 +268,7 @@ namespace VCBikeService.Forms.Clientes
 
         private void BtnAddCustomer_Click(object sender, EventArgs e)
         {
+            //boton me permite agregar un nuevo cliente ,validando se llene la mayoria de informacion necesaria y si no alertando en diferentes escenarios 
             if (valedateinsertdates())
             {
                 bool EmailOK;
@@ -331,6 +337,7 @@ namespace VCBikeService.Forms.Clientes
 
         private void BtnDeleteC_Click(object sender, EventArgs e)
         {
+            //me permite desactivar al cliente 
             if (!string.IsNullOrEmpty(TxtPhonesCustomer.Text.Trim())
              && !string.IsNullOrEmpty(TxtCustomerName.Text.Trim()) && CbTypeCustomer.SelectedIndex > -1)
             {
@@ -365,6 +372,7 @@ namespace VCBikeService.Forms.Clientes
 
         private void btnDeleteForever_Click(object sender, EventArgs e)
         {
+            //me permite eliminar por completo al cliente en la bd 
             if ( !string.IsNullOrEmpty(TxtPhonesCustomer.Text.Trim())
             && !string.IsNullOrEmpty(TxtCustomerName.Text.Trim()) && CbTypeCustomer.SelectedIndex > -1)
             {
@@ -396,6 +404,7 @@ namespace VCBikeService.Forms.Clientes
 
         private void TxtPhonesCustomer_KeyPress(object sender, KeyPressEventArgs e)
         {
+            // solo deja incierta numeros en el campo del telefono del cliente 
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
@@ -408,13 +417,12 @@ namespace VCBikeService.Forms.Clientes
 
         private bool valedateinsertdates()
         {
+            // me permite validar datos insertados 
              bool R = false;
             if (!string.IsNullOrEmpty(TxtCustomerName.Text.Trim())    && 
                 !string.IsNullOrEmpty(TxtPhonesCustomer.Text.Trim())  && CbTypeCustomer.SelectedIndex>-1)
             {
-                R = true;
-               
-
+                R = true; 
 
             }
              
@@ -424,10 +432,16 @@ namespace VCBikeService.Forms.Clientes
 
         private void FrmClientes_KeyUp(object sender, KeyEventArgs e)
         {
+
             if (e.KeyCode == Keys.Escape)
             {
-                // Cierra el formulario
+                // Cierra el formulario si se presiona Escape
                 this.Close();
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                // Realiza el clic en el botón "add" si se presiona Enter
+                BtnAddCustomer.PerformClick();
             }
         }
     }

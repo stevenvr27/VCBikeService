@@ -31,7 +31,9 @@ namespace VCBikeService.Forms.Compra
 
         public FrmBuy()
         {
-            InitializeComponent(); 
+            this.KeyPreview = true;
+            InitializeComponent();
+           
 
             MyBilling = new Billing();
             Localdetailist = new DataTable();
@@ -526,6 +528,20 @@ namespace VCBikeService.Forms.Compra
 
                 // Puedes resetear la fecha seleccionada a la fecha actual si lo deseas
                 DtpFechaFactura.Value = fechaActual;
+            }
+        }
+
+        private void FrmBuy_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                // Cierra el formulario si se presiona Escape
+                this.Close();
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                // Realiza el clic en el botón "Facturar" si se presiona Enter
+                Facturar.PerformClick();
             }
         }
     }

@@ -3,14 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Logic.Models
 {
     public class Billing
     { 
+        //atributos 
         public int BillingID { get; set; }
         public DateTime Date { get; set; } 
 
@@ -22,6 +20,7 @@ namespace Logic.Models
         public string Notes { get; set; }
         public bool Active { get; set; }
 
+        //atributos compuestos 
         public Customer MyCustomer { get; set; }
         public User MyUser { get; set; }
         public MethodPayment MYMethodPayment { get; set; }
@@ -32,6 +31,7 @@ namespace Logic.Models
 
          public List<BillingDetail> DetailItems { get; set; }
 
+       //constructor  
         public Billing()
         {
             MyCustomer = new Customer();
@@ -44,6 +44,7 @@ namespace Logic.Models
 
 
         }
+        // metodo agregar y su respecitvo llamado al procedimiento almacenado 
         public bool Add()
         {
             bool R = false;
@@ -102,7 +103,7 @@ namespace Logic.Models
             return R;
         }
 
-
+        // metodo actualizar prodcuto en stock  y su respecitvo llamado al procedimiento almacenado 
         public bool UpdateProductStock()
         {
 
@@ -122,9 +123,9 @@ namespace Logic.Models
             }
             return R;
         }
-             
-                
-            
+
+
+        // metodo eliminar que realmente Desactiva al cliente   y su respecitvo llamado al procedimiento almacenado   
 
         public bool Delete()
         {
@@ -141,6 +142,7 @@ namespace Logic.Models
             return R;
 
         }
+        // metodo eliminar para siempre de la bd  y su respecitvo llamado al procedimiento almacenado 
         public bool DeleteForEver()
         {
             bool R = false;
@@ -155,7 +157,7 @@ namespace Logic.Models
 
             return R;
         }
-
+        // metodo buscar el id retornar factura  y su respecitvo llamado al procedimiento almacenado 
         public Billing SearchIDReturnBilling()
         {
 
@@ -183,7 +185,7 @@ namespace Logic.Models
             return R;
 
         }
-
+        // metodo suma del detalle y su respecitvo llamado al procedimiento almacenado 
         public DataTable Detailsummary()
         {
             DataTable R = new DataTable();

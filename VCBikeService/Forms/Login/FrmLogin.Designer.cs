@@ -33,9 +33,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.TxtUserName = new System.Windows.Forms.TextBox();
             this.TxtPassword = new System.Windows.Forms.TextBox();
-            this.Lblrecoverpassword = new System.Windows.Forms.LinkLabel();
             this.BtnVerContrasennia = new System.Windows.Forms.Button();
             this.BtnIngresoDirecto = new System.Windows.Forms.Button();
+            this.Recovery = new System.Windows.Forms.Button();
             this.BtnLogin = new VCBikeService.Extras.CustomButtons();
             this.BtnCancel = new VCBikeService.Extras.CustomButtons();
             this.customButtons2 = new VCBikeService.Extras.CustomButtons();
@@ -87,21 +87,6 @@
             this.TxtPassword.TabIndex = 5;
             this.TxtPassword.UseSystemPasswordChar = true;
             // 
-            // Lblrecoverpassword
-            // 
-            this.Lblrecoverpassword.AutoSize = true;
-            this.Lblrecoverpassword.BackColor = System.Drawing.Color.Transparent;
-            this.Lblrecoverpassword.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lblrecoverpassword.LinkColor = System.Drawing.Color.Red;
-            this.Lblrecoverpassword.Location = new System.Drawing.Point(255, 306);
-            this.Lblrecoverpassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Lblrecoverpassword.Name = "Lblrecoverpassword";
-            this.Lblrecoverpassword.Size = new System.Drawing.Size(145, 17);
-            this.Lblrecoverpassword.TabIndex = 8;
-            this.Lblrecoverpassword.TabStop = true;
-            this.Lblrecoverpassword.Text = "Recuperar Contraseña";
-            this.Lblrecoverpassword.Visible = false;
-            // 
             // BtnVerContrasennia
             // 
             this.BtnVerContrasennia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -124,7 +109,17 @@
             this.BtnIngresoDirecto.UseVisualStyleBackColor = true;
             this.BtnIngresoDirecto.Visible = false;
             this.BtnIngresoDirecto.Click += new System.EventHandler(this.BtnIngresoDirecto_Click);
-            this.BtnIngresoDirecto.KeyUp += new System.Windows.Forms.KeyEventHandler(this.BtnIngresoDirecto_KeyUp);
+            // 
+            // Recovery
+            // 
+            this.Recovery.Location = new System.Drawing.Point(282, 331);
+            this.Recovery.Name = "Recovery";
+            this.Recovery.Size = new System.Drawing.Size(160, 38);
+            this.Recovery.TabIndex = 11;
+            this.Recovery.Text = "Recuperar Contra";
+            this.Recovery.UseVisualStyleBackColor = true;
+            this.Recovery.Visible = false;
+            this.Recovery.Click += new System.EventHandler(this.Recovery_Click);
             // 
             // BtnLogin
             // 
@@ -221,9 +216,9 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(504, 613);
+            this.Controls.Add(this.Recovery);
             this.Controls.Add(this.BtnIngresoDirecto);
             this.Controls.Add(this.BtnVerContrasennia);
-            this.Controls.Add(this.Lblrecoverpassword);
             this.Controls.Add(this.BtnLogin);
             this.Controls.Add(this.BtnCancel);
             this.Controls.Add(this.TxtPassword);
@@ -255,10 +250,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox TxtUserName;
         private System.Windows.Forms.TextBox TxtPassword;
-        private System.Windows.Forms.LinkLabel Lblrecoverpassword;
         private Extras.CustomButtons BtnLogin;
         private Extras.CustomButtons BtnCancel;
         private System.Windows.Forms.Button BtnVerContrasennia;
         private System.Windows.Forms.Button BtnIngresoDirecto;
+        private System.Windows.Forms.Button Recovery;
     }
 }

@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 
 namespace Logic.Models
 {
     public  class BuyType
     {
+        //Atributos 
         public int BuyTypeID { get; set; }
         public string Description { get; set; }
 
+
+        //datatable trae la lista de los tipos de compras 
         public DataTable list()
         {
             DataTable R = new DataTable();

@@ -2,14 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Logic.Models
 {
     public  class Buy
     {
+        //atributos 
         public int BuyID { get; set; }
 
         public DateTime BuyDate { get; set; } 
@@ -19,17 +17,20 @@ namespace Logic.Models
 
         public bool Active { get; set; }
 
-
+        //Atributos compuestos 
         public User MyUser { get; set; }    
         public Supplier Supplier { get; set; }
         public BuyType BuyType { get; set; }
 
         public MethodPayment methodPayment { get; set; }
 
+        // lista 
+
         public List<BuyDetail> BuyDetail { get; set; }
 
 
-        public Buy()
+       // constructor 
+        public Buy() 
         {
              MyUser = new User();
              Supplier = new Supplier();
@@ -37,6 +38,8 @@ namespace Logic.Models
               BuyDetail = new List<BuyDetail>();
              
         }
+
+        //Datatable trae el esquema detalle 
         public DataTable CargarEsquemaDetalle()
         {
             DataTable R = new DataTable();

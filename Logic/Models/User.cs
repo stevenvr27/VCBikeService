@@ -1,16 +1,13 @@
 ﻿using Logic.Services;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
 
 namespace Logic.Models
 {
     public class User
     {
+        //atributos 
         public int UserID { get; set; }
         public string UserName { get; set; }
         public string UserPassword { get; set; }
@@ -23,14 +20,15 @@ namespace Logic.Models
 
         public bool Active { get; set; }
 
+        //atributos compuestos 
         public UserRole MyRol { get; set; }
 
- 
+        
         public User()
         {
             MyRol = new UserRole();
         }
-
+        //data table lista los usuarios 
         public DataTable List()
         {
             DataTable R = new DataTable();
@@ -38,7 +36,15 @@ namespace Logic.Models
             R = MiCnn.EjecutarSELECT("SPListUSers");
             return R;
         }
-
+        //data table lista los usuarios segun una condicion en especifico 
+        public DataTable ListUser()
+        {
+            DataTable R = new DataTable();
+            Services.Connection MiCnn = new Services.Connection();
+            R = MiCnn.EjecutarSELECT("SPUserListas");
+            return R;
+        }
+        //metodo agregar y su respectivo llamado al procedimiento almacenado 
         public bool AddUser()
         {
             bool R = false;
@@ -65,6 +71,7 @@ namespace Logic.Models
             return R;
 
         }
+        //metodo actualizar y su respectivo llamado al procedimiento almacenado 
         public bool Update()
         {
             bool R = false;
@@ -89,7 +96,52 @@ namespace Logic.Models
             }
             return R;
         }
+        //metodo validad credenciales  y su respectivo llamado al procedimiento almacenado 
+        public bool ValidateUserCredentials(string name, string email, string userCardID)
+        {
+            bool isValid = false;
 
+            Connection connection = new Connection();
+            connection.parameterlist.Add(new SqlParameter("@Name", name));
+            connection.parameterlist.Add(new SqlParameter("@Email", email));
+            connection.parameterlist.Add(new SqlParameter("@UserCardID", userCardID));
+
+            object result = connection.EjecutarSELECTEscalar("SPValidateUserCredentials");
+            if (result != null && result != DBNull.Value)
+            {
+                isValid = Convert.ToInt32(result) == 1;
+            }
+
+            return isValid;
+        }
+        //metodo actualizar contraseña y su respectivo llamado al procedimiento almacenado 
+        public bool UpdatePAssword(string newPassword)
+        {
+            bool R = false;
+            Connection connection = new Connection();
+            Crypto crypto = new Crypto();
+            string Passwordencrypted = crypto.EncriptarEnUnSentido(newPassword);
+
+            connection.parameterlist.Add(new SqlParameter("@UserPassword", Passwordencrypted));
+
+
+            connection.parameterlist.Add(new SqlParameter("@UserID", this.UserID));
+            connection.parameterlist.Add(new SqlParameter("@UserPassword", Passwordencrypted));
+
+            int result = connection.EjecutarInsertUpdateDelete("SPUserUpdatepasword");
+
+            if (result > 0)
+            {
+                R = true;
+            }
+            return R;
+        }
+        // trae la contraseña encryptada  
+        public string GetDecryptedPassword(Crypto crypto)
+        {
+            return crypto.DesEncriptarPassword(this.UserPassword);
+        }
+        //metodo eliminar y su respectivo llamado al procedimiento almacenado 
         public bool Delete()
         {
             bool R = false;
@@ -105,6 +157,7 @@ namespace Logic.Models
             return R;
 
         }
+        //metodo eliminar para siempre y su respectivo llamado al procedimiento almacenado 
         public bool DeleteForEver()
         {
             bool R = false;
@@ -119,6 +172,7 @@ namespace Logic.Models
 
             return R;
         }
+        //metodo activar y su respectivo llamado al procedimiento almacenado 
         public bool Activate()
         {
             bool R = false;
@@ -133,7 +187,7 @@ namespace Logic.Models
 
             return R;
         }
-
+        //metodo consultar por la cedula y su respectivo llamado al procedimiento almacenado 
         public bool ConsultCardID()
         {
             bool R = false;
@@ -157,6 +211,8 @@ namespace Logic.Models
         }
 
 
+
+        //  //metodo consultar por email y su respectivo llamado al procedimiento almacenado 
         public bool ConsultEmail()
         {
             bool R = false;
@@ -181,7 +237,7 @@ namespace Logic.Models
         }
 
 
-
+        // data table lista los usuarios activos 
         public DataTable ListActive(string pFiltroBusqueda)
         {
             DataTable R = new DataTable();
@@ -198,7 +254,7 @@ namespace Logic.Models
             return R;
         }
 
-
+         // datatable lista los usuarios inactivos 
         public DataTable ListInactive(string pFiltroBusqueda)
         {
             DataTable R = new DataTable();
@@ -214,13 +270,7 @@ namespace Logic.Models
             return R;
         }
 
-
-
-        public bool SearchID()
-        {
-            bool R = false;
-            return R;
-        }
+        // //metodo busca la cedula y trae cierta info del usuariocon el  respectivo llamado al procedimiento almacenado  
 
         public User SearchCardIDReturnUser()
         {
@@ -263,7 +313,7 @@ namespace Logic.Models
 
 
 
-
+        //metodo valida que el usuario exita con   su respectivo llamado al procedimiento almacenado 
         public User ValidateUser(string pEmail, string pContrasennia)
         {
             User R = new User();

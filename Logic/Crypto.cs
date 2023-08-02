@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Logic
 {
@@ -37,6 +34,11 @@ namespace Logic
 
         public string EncriptarPassword(string Pass)
         {
+            if (string.IsNullOrEmpty(Pass))
+            {
+                throw new ArgumentException("La contraseña no puede ser nula o vacía.", nameof(Pass));
+            }
+
             String R = string.Empty;
 
             using (TripleDESCryptoServiceProvider tripleDESCryptoService = new TripleDESCryptoServiceProvider())
@@ -51,12 +53,10 @@ namespace Logic
                     Byte[] data = Encoding.UTF8.GetBytes(Pass);
 
                     R = Convert.ToBase64String(tripleDESCryptoService.CreateEncryptor().TransformFinalBlock(data, 0, data.Length));
-
                 }
             }
 
             return R;
-
         }
 
         public string EncriptarEnUnSentido(string Entrada)

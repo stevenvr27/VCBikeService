@@ -21,6 +21,7 @@ namespace VCBikeService.Forms
 
             //LoadListSupplier();
             // LoadSupplierListType();
+            this.KeyPreview = true;
 
             MySupplier = new Logic.Models.Supplier();
             listSupplier = new DataTable();
@@ -439,8 +440,13 @@ namespace VCBikeService.Forms
         {
             if (e.KeyCode == Keys.Escape)
             {
-                // Cierra el formulario
+                // Cierra el formulario si se presiona Escape
                 this.Close();
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                // Realiza el clic en el botón  add  si se presiona Enter
+                BtnAdd.PerformClick();
             }
         }
     }

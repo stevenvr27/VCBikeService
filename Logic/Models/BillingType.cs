@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 
 namespace Logic.Models
 {
-   public  class BillingType
+    public  class BillingType
     {
-
+        //atributos 
         public int BillingTypeID { get; set; }
         public string Description { get; set; }
 
+        // Lista los tipo de facturas que tenemos en la bd 
         public DataTable List()
         {
             DataTable R = new DataTable();

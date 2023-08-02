@@ -20,6 +20,7 @@ namespace VCBikeService.Forms
         public Central()
         {
             InitializeComponent();
+            this.KeyPreview = true;
         }
 
 
