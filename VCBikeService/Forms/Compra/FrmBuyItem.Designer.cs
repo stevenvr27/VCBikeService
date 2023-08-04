@@ -219,6 +219,7 @@
             this.txtUnitaryPrice.TabIndex = 44;
             this.txtUnitaryPrice.Text = "0";
             this.txtUnitaryPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtUnitaryPrice.TextChanged += new System.EventHandler(this.txtUnitaryPrice_TextChanged);
             // 
             // label11
             // 
@@ -395,7 +396,7 @@
             this.TxtPrecioFinal.Size = new System.Drawing.Size(95, 30);
             this.TxtPrecioFinal.TabIndex = 27;
             this.TxtPrecioFinal.Text = "0";
-            this.TxtPrecioFinal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center; 
+            this.TxtPrecioFinal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // TxtCantidad
             // 
@@ -404,6 +405,7 @@
             this.TxtCantidad.Name = "TxtCantidad";
             this.TxtCantidad.Size = new System.Drawing.Size(84, 41);
             this.TxtCantidad.TabIndex = 23;
+            this.TxtCantidad.ValueChanged += new System.EventHandler(this.TxtCantidad_ValueChanged);
             // 
             // label6
             // 
@@ -500,7 +502,7 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // FrmSearchProduct
+            // FrmBuyItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -510,7 +512,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.MaximizeBox = false;
-            this.Name = "FrmSearchProduct";
+            this.Name = "FrmBuyItem";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmSearchProduct";

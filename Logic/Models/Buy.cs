@@ -3,23 +3,25 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Xml.Linq;
 
 namespace Logic.Models
 {
-    public  class Buy
+    public class Buy
     {
         //atributos 
         public int BuyID { get; set; }
 
-        public DateTime BuyDate { get; set; } 
+        public DateTime BuyDate { get; set; }
 
-       
-        public string BuyNotes { get; set;}
+
+        public string BuyNotes { get; set; }
 
         public bool Active { get; set; }
 
         //Atributos compuestos 
-        public User MyUser { get; set; }    
+        public User MyUser { get; set; }
         public Supplier Supplier { get; set; }
         public BuyType MybuyType { get; set; }
 
@@ -30,16 +32,16 @@ namespace Logic.Models
         public List<BuyDetail> BuyDetail { get; set; }
 
 
-       // constructor 
-        public Buy() 
+        // constructor 
+        public Buy()
         {
-             MyUser = new User();
-             Supplier = new Supplier();
+            MyUser = new User();
+            Supplier = new Supplier();
             MybuyType = new BuyType();
-              methodPayment = new MethodPayment();
-              BuyDetail = new List<BuyDetail>();
-             BuyDate= DateTime.Now;
-             
+            methodPayment = new MethodPayment();
+            BuyDetail = new List<BuyDetail>();
+            BuyDate = DateTime.Now;
+
         }
 
         //Datatable trae el esquema detalle 
@@ -73,18 +75,44 @@ namespace Logic.Models
             connection.parameterlist.Add(new SqlParameter("@Supplier", this.Supplier.SupplierID));
             connection.parameterlist.Add(new SqlParameter("@User", this.MyUser.UserID));
 
-            int result = connection.EjecutarInsertUpdateDelete("SPBuyAdd");
+            Object Retorno = connection.EjecutarSELECTEscalar("SPBuyAdd");
 
+            int IDBUY = 0;
 
-            if (result > 0)
+            if (Retorno != null)
             {
+                IDBUY = Convert.ToInt32(Retorno.ToString());
+
+                // Una vez que se tiene el ID de la factura, se pueden agregar los detalles
+                this.BuyID = IDBUY;
+
+                foreach (BuyDetail item in this.BuyDetail)
+                {
+                    // Se hace un insert por cada iteración en detalles
+                    Connection MyCnnDetalle = new Connection();
+
+                    MyCnnDetalle.parameterlist.Add(new SqlParameter("@BuyID", IDBUY));
+                    MyCnnDetalle.parameterlist.Add(new SqlParameter("@ItemID",item.ItemID  ));
+                    MyCnnDetalle.parameterlist.Add(new SqlParameter("@UnitaryPrice ", item.UnitaryPrice));
+                    MyCnnDetalle.parameterlist.Add(new SqlParameter("@total", item.Total));
+
+                    MyCnnDetalle.EjecutarInsertUpdateDelete("SPBuyDetailAdd");
+
+
+
+
+
+                }
+
                 R = true;
             }
+
             return R;
-
         }
-
-
 
     }
 }
+
+
+            
+         

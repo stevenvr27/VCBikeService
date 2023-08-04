@@ -1,5 +1,6 @@
 ﻿using Logic.Models;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -13,9 +14,9 @@ namespace VCBikeService.Forms.Productos
 
         private Logic.Models.Item Myitem { get; set; }
         private Logic.Models.BuyDetail BuyDetail { get; set; }
-        private Logic .Models.Buy Mybuy { get; set; }
+        private Logic.Models.Buy Mybuy { get; set; }
         private DataTable ListItem { get; set; }
- 
+
         public FrmBuyItem()
         {
             InitializeComponent();
@@ -23,7 +24,7 @@ namespace VCBikeService.Forms.Productos
             ListItem = new DataTable();
             Mybuy = new Logic.Models.Buy();
             BuyDetail = new Logic.Models.BuyDetail();
-             
+
         }
 
         private void BtnDeleteproduct_Click(object sender, EventArgs e)
@@ -40,7 +41,7 @@ namespace VCBikeService.Forms.Productos
             TxtSupplier.SelectedIndex = -1;
             TxtCantidad.Text = "0";
             txtUnitaryPrice.Text = "0";
-           
+
             TxtPrecioFinal.Text = "0";
 
 
@@ -61,8 +62,41 @@ namespace VCBikeService.Forms.Productos
                 Myitem.UnitaryCost = Convert.ToDecimal(txtUnitaryPrice.Text.Trim());
                 Myitem.ItemID = Convert.ToInt32(TxtIDProduct.Text.Trim());
                 BuyDetail = new Logic.Models.BuyDetail();
-                BuyDetail.Total = Convert.ToInt32(TxtPrecioFinal.Text.Trim());
+               
                 BuyDetail.UnitaryPrice = Convert.ToDecimal(txtUnitaryPrice.Text.Trim());
+                BuyDetail.Total = Convert.ToDecimal(TxtPrecioFinal.Text.Trim());
+
+
+
+                foreach (DataRow item in ListItem.Rows)
+                {
+                    BuyDetail buyDetail = new BuyDetail();
+                    buyDetail.ItemID = Convert.ToInt32(item["ItemID"]);
+
+                    if (decimal.TryParse(txtUnitaryPrice.Text.Trim(), out decimal unitaryPrice))
+                    {
+                        buyDetail.UnitaryPrice = unitaryPrice;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid Unitary Price input.", "Error", MessageBoxButtons.OK);
+                        return; // Exit the loop or function, since there's an issue.
+                    }
+
+                    if (decimal.TryParse(TxtPrecioFinal.Text.Trim(), out decimal totalPrice))
+                    {
+                        buyDetail.Total = totalPrice;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid Total Price input.", "Error", MessageBoxButtons.OK);
+                        return; // Exit the loop or function, since there's an issue.
+                    }
+
+                    Mybuy.BuyDetail.Add(buyDetail);
+                }
+                 
+
 
                 string msg = string.Format("¿Está seguro que deseas crear la compra ?", Mybuy.BuyID);
 
@@ -78,25 +112,31 @@ namespace VCBikeService.Forms.Productos
                     Myitem.Stock = stockTotal;
                     Myitem.UnitaryCost = Convert.ToDecimal(txtUnitaryPrice.Text.Trim());
 
-                    if (Mybuy.Add() )
+
+
+
+
+
+                    if (Mybuy.Add())
                     {
                         Item item = new Item();  // Crear una instancia de la clase Item
                         if (item.ActualizarStockEnBaseDeDatos(Myitem.ItemID, stockTotal, Myitem.UnitaryCost))
                         {
-                           
+
                             MessageBox.Show("La compra no se pudo crear!", ":/", MessageBoxButtons.OK);
                             clean();
-                           
+
 
 
                         }
                         else
-                        {  
+                        {
+
                             MessageBox.Show("Compra creada correctamente!", ":)", MessageBoxButtons.OK);
                             clean();
-                           loadlistproduct();
+                            loadlistproduct();
 
-                            
+
                         }
                     }
 
@@ -115,7 +155,7 @@ namespace VCBikeService.Forms.Productos
             else
             {
                 MessageBox.Show("Te Faltan Datos que ingresar ", ":/", MessageBoxButtons.OK);
-                 
+
             }
 
 
@@ -123,14 +163,14 @@ namespace VCBikeService.Forms.Productos
 
 
 
-        
+
 
         }
 
 
 
 
-    private void btnfacturacliente_Click(object sender, EventArgs e)
+        private void btnfacturacliente_Click(object sender, EventArgs e)
         {
             if (!Globals.Frmfactura.Visible)
             {
@@ -159,8 +199,8 @@ namespace VCBikeService.Forms.Productos
 
                 searchfilter = TxtSearchItem.Text.Trim();
             }
-                ListItem = Myitem.ListUnitaryCost(searchfilter);
-            
+            ListItem = Myitem.ListUnitaryCost(searchfilter);
+
             DgProduct.DataSource = ListItem;
         }
         private void LoadBuytype()
@@ -212,7 +252,7 @@ namespace VCBikeService.Forms.Productos
         }
 
 
-                private void Date()
+        private void Date()
         {
             TxtDate.Text = DateTime.Now.ToLongDateString();
 
@@ -250,14 +290,41 @@ namespace VCBikeService.Forms.Productos
             {
                 TxtIDProduct.Text = Convert.ToString(Myitem.ItemID);
                 TxtProductName.Text = Myitem.ItemName;
-                txtUnitaryPrice.Text=Myitem.UnitaryCost.ToString();
+                txtUnitaryPrice.Text = Myitem.UnitaryCost.ToString();
 
 
-                
+
             }
         }
 
-        
+        private void TxtCantidad_ValueChanged(object sender, EventArgs e)
+        {
+            calcular();
+        }
+
+        private void txtUnitaryPrice_TextChanged(object sender, EventArgs e)
+        {
+            calcular();
+        }
+
+        private void calcular()
+        {
+           
+
+
+            int stock = Convert.ToInt32(TxtCantidad.Value);
+            decimal valorUnitario;
+
+            if (decimal.TryParse(txtUnitaryPrice.Text.Trim(), out valorUnitario))
+            {
+                decimal total = valorUnitario * stock;
+                TxtPrecioFinal.Text = total.ToString();
+            }
+          
+
+
+
+        }
+
     }
-    
 }
