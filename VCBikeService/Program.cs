@@ -9,14 +9,14 @@ namespace VCBikeService
 {
     internal static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
+        
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            //primer form en ejectutarse 
             Application.Run(new FrmLogin());
         }
         private static void MainForm_Closed(object sender, FormClosedEventArgs e)

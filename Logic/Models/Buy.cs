@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace Logic.Models
 {
@@ -12,7 +13,7 @@ namespace Logic.Models
 
         public DateTime BuyDate { get; set; } 
 
-        public int BuyNumber { get; set; }
+       
         public string BuyNotes { get; set;}
 
         public bool Active { get; set; }
@@ -20,7 +21,7 @@ namespace Logic.Models
         //Atributos compuestos 
         public User MyUser { get; set; }    
         public Supplier Supplier { get; set; }
-        public BuyType BuyType { get; set; }
+        public BuyType MybuyType { get; set; }
 
         public MethodPayment methodPayment { get; set; }
 
@@ -34,8 +35,10 @@ namespace Logic.Models
         {
              MyUser = new User();
              Supplier = new Supplier();
+            MybuyType = new BuyType();
               methodPayment = new MethodPayment();
               BuyDetail = new List<BuyDetail>();
+             BuyDate= DateTime.Now;
              
         }
 
@@ -55,7 +58,31 @@ namespace Logic.Models
             return R;
 
         }
+        public bool Add()
+        {
+            bool R = false;
 
+            Connection connection = new Connection();
+
+
+
+            connection.parameterlist.Add(new SqlParameter("@BuyDate", this.BuyDate));
+            connection.parameterlist.Add(new SqlParameter("@BuyNotes", this.BuyNotes));
+            connection.parameterlist.Add(new SqlParameter("@Type", this.MybuyType.BuyTypeID));
+            connection.parameterlist.Add(new SqlParameter("@Pague", this.methodPayment.MethodPaymentID));
+            connection.parameterlist.Add(new SqlParameter("@Supplier", this.Supplier.SupplierID));
+            connection.parameterlist.Add(new SqlParameter("@User", this.MyUser.UserID));
+
+            int result = connection.EjecutarInsertUpdateDelete("SPBuyAdd");
+
+
+            if (result > 0)
+            {
+                R = true;
+            }
+            return R;
+
+        }
 
 
 

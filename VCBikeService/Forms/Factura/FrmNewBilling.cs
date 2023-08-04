@@ -31,7 +31,7 @@ namespace VCBikeService.Forms.Factura
         {
             if (!Globals.Frmfactura.Visible)
             {
-                Globals.Frmfactura = new Compra.FrmBuy();
+                Globals.Frmfactura = new Compra.FrmFacturar();
 
                 Globals.Frmfactura.Show();
             }
@@ -49,17 +49,11 @@ namespace VCBikeService.Forms.Factura
             }
 
 
-            if (CheckCustomer.Checked)
-            {
+            
 
                 billigs = MybillingDetail.ListBillingActive(searchfilter);
-                BtnDeleteC.Visible = true;
-            }
-            else
-            {
-                billigs = MybillingDetail.ListBillingInactive(searchfilter);
-                BtnDeleteC.Visible = false;
-            }
+                
+            
             DgCustList.DataSource = billigs;
         }
         private void BtnCancelC_Click(object sender, EventArgs e)
@@ -87,8 +81,7 @@ namespace VCBikeService.Forms.Factura
             {
                 if (Mybilling.BillingID > 0)
                 {
-                    if (CheckCustomer.Checked)
-                    {
+                   
 
                         DialogResult r = MessageBox.Show("¿Está seguro de Desactivar esta Factura?",
                                                          "???",
@@ -105,7 +98,7 @@ namespace VCBikeService.Forms.Factura
                             }
 
                         }
-                    }
+                    
                 }
             }
             else

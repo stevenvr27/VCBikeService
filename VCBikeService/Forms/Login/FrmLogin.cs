@@ -112,15 +112,7 @@ namespace VCBikeService.Forms
 
                 }
             }
-            if (e.Alt && e.Control)
-            {
-                // Verificar si las teclas "Alt" + "Control" + V  se han presionado al mismo tiempo y si es afirmativo se muestra un boton
-                if (e.KeyCode == Keys.V)
-                {
-                    Recovery.Visible = true;
-
-                }
-            }
+           
 
             if (e.KeyCode == Keys.Escape)
                 if (e.KeyCode == Keys.Escape)
@@ -135,14 +127,6 @@ namespace VCBikeService.Forms
                 }
         }
 
-        private void Recovery_Click(object sender, EventArgs e)
-        {
-            //muestra el form respectivo 
-            if (!Globals.recuperar.Visible)
-            {
-
-                Globals.recuperar.Show();
-            }
-        }
+       
     }
 }

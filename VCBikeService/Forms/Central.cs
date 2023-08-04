@@ -45,7 +45,7 @@ namespace VCBikeService.Forms
         {
             if (!Globals.Frmfactura.Visible)
             {
-                Globals.Frmfactura = new Compra.FrmBuy();
+                Globals.Frmfactura = new Compra.FrmFacturar();
                 Globals.Frmfactura.Show();
             }
         }
@@ -56,7 +56,7 @@ namespace VCBikeService.Forms
         {
             if (!Globals.FrmSearchProduct.Visible)
             {
-                Globals.FrmSearchProduct = new FrmSearchProduct();
+                Globals.FrmSearchProduct = new FrmBuyItem();
                 Globals.FrmSearchProduct.Show();
             }
         }
@@ -85,7 +85,7 @@ namespace VCBikeService.Forms
         {
             if (!Globals.Frmfactura.Visible)
             {
-                Globals.Frmfactura = new Compra.FrmBuy();
+                Globals.Frmfactura = new Compra.FrmFacturar();
                 Globals.Frmfactura.Show();
             }
         }
@@ -200,7 +200,7 @@ namespace VCBikeService.Forms
         {
             if (!Globals.Frmfactura.Visible)
             {
-                Globals.Frmfactura = new Compra.FrmBuy();
+                Globals.Frmfactura = new Compra.FrmFacturar();
                 Globals.Frmfactura.Show();
             }
         }
@@ -209,34 +209,20 @@ namespace VCBikeService.Forms
         {
             if (!Globals.Frmfactura.Visible)
             {
-                Globals.Frmfactura = new Compra.FrmBuy();
+                Globals.Frmfactura = new Compra.FrmFacturar();
                 Globals.Frmfactura.Show();
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (!Globals.frmSupplierBuy.Visible)
-            {
-                Globals.frmSupplierBuy = new Compra.FrmSupplierBuy ();
-                Globals.frmSupplierBuy.Show();
-            }
-        }
+         
 
-        private void stockToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!Globals.frmSupplierBuy.Visible)
-            {
-                Globals.frmSupplierBuy = new Compra.FrmSupplierBuy();
-                Globals.frmSupplierBuy.Show();
-            }
-        }
+        
 
         private void button4_Click(object sender, EventArgs e)
         {
             if (!Globals.FrmSearchProduct.Visible)
             {
-                Globals.FrmSearchProduct = new Productos.FrmSearchProduct();
+                Globals.FrmSearchProduct = new Productos.FrmBuyItem();
                 Globals.FrmSearchProduct.Show();
             }
         }
@@ -245,7 +231,7 @@ namespace VCBikeService.Forms
         {
             if (!Globals.FrmSearchProduct.Visible)
             {
-                Globals.FrmSearchProduct = new Productos.FrmSearchProduct();
+                Globals.FrmSearchProduct = new Productos.FrmBuyItem();
                 Globals.FrmSearchProduct.Show();
             }
         }
@@ -293,6 +279,15 @@ namespace VCBikeService.Forms
             {
                 // Cierra el formulario
                 this.Close();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (!Globals.FrmBuysearch.Visible)
+            {
+                Globals.FrmBuysearch = new FrmBuysearch();
+                Globals.FrmBuysearch.Show();
             }
         }
     }

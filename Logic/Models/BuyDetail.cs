@@ -11,10 +11,10 @@ namespace Logic.Models
     public  class BuyDetail
     {
         
-        public decimal Amount { get; set; }
+        public decimal Total { get; set; }
         public decimal UnitaryPrice { get; set; }
 
-        
+         
 
 
 

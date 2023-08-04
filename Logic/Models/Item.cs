@@ -21,6 +21,7 @@ namespace Logic.Models
         public bool Active { get; set; }
 
         //atributos compuestos 
+        public Buy Buy { get; set; }
         public ItemCategory MyType { get; set; }   
         public Tax Tax { get; set; }
         public Unit Unit { get; set; }
@@ -33,6 +34,7 @@ namespace Logic.Models
             MyType = new ItemCategory();
             Tax = new Tax();
             Unit = new Unit();
+            Buy = new Buy();
         }
         // metodo agregar y su respectivo llamado al procedimiento almacenado 
         public bool Add()
@@ -73,7 +75,7 @@ namespace Logic.Models
             connection.parameterlist.Add(new SqlParameter("@Stock", this.Stock));
             connection.parameterlist.Add(new SqlParameter("@UnitaryCost", this.UnitaryCost));
             connection.parameterlist.Add(new SqlParameter("@SellPrice", this.SellPrice));
-            connection.parameterlist.Add(new SqlParameter("@ITemID", this.ItemID)); // Correct the parameter name
+            connection.parameterlist.Add(new SqlParameter("@ITemID", this.ItemID));  
             connection.parameterlist.Add(new SqlParameter("@Tax", this.Tax.TaxID));
             connection.parameterlist.Add(new SqlParameter("@Unit", this.Unit.IDUnit));
             int result = connection.EjecutarInsertUpdateDelete("SPItemUpdate");
@@ -115,7 +117,7 @@ namespace Logic.Models
 
             return R;
         }
-        // datatable me trae la lista de los precios activos 
+        // datatable me trae la lista de los item con sus precios  precios  
         public DataTable ListActiveSellPrice(string pFiltroBusqueda)
         {
             DataTable R = new DataTable();
@@ -128,6 +130,22 @@ namespace Logic.Models
 
             return R;
         }
+        // datatable me trae la lista de los item con el precio de costo 
+        public DataTable ListUnitaryCost(string pFiltroBusqueda)
+        {
+            DataTable R = new DataTable();
+
+            Connection Micnn = new Connection();
+
+            Micnn.parameterlist.Add(new SqlParameter("@VerActivo", true));
+            Micnn.parameterlist.Add(new SqlParameter("@FiltroBusqueda", pFiltroBusqueda));
+            R = Micnn.EjecutarSELECT("SPListItemUnitaryCost");
+
+            return R;
+        }
+
+
+
         // datatable me trae la lista de items inactivos mientras activo=false
         public DataTable ListInactive(string pFiltroBusqueda)
         {
@@ -152,6 +170,45 @@ namespace Logic.Models
 
             return R;
         }
+        public  int ObtenerStockDesdeBaseDeDatos(int itemID)
+        {
+            int stock = 0;
+
+            Connection connection = new Connection();
+            connection.parameterlist.Add(new SqlParameter("@ItemID", itemID));
+
+            DataTable dtStock = connection.EjecutarSELECT("SP_ObtenerStockPorItemID");
+
+            if (dtStock.Rows.Count > 0)
+            {
+                stock = Convert.ToInt32(dtStock.Rows[0]["Stock"]);
+            }
+
+            return stock;
+        }
+        public bool ActualizarStockEnBaseDeDatos(int itemID, int nuevoStock, decimal nuevoUnitaryCost)
+        {
+            bool resultado = false;
+
+            Connection connection = new Connection();
+            connection.parameterlist.Add(new SqlParameter("@ItemID", itemID));
+            connection.parameterlist.Add(new SqlParameter("@Stock", nuevoStock));
+            connection.parameterlist.Add(new SqlParameter("@UnitaryCost", nuevoUnitaryCost));
+
+            int result = connection.EjecutarInsertUpdateDelete("SPItemRefresh");
+
+            if (result > 0)
+            {
+                resultado = true;
+            }
+
+            return resultado;
+        }
+
+
+
+
+
         // datatable me lista el productor seleccionado 
         public DataTable ListarEnBusqueda()
         {
@@ -205,7 +262,39 @@ namespace Logic.Models
 
         }
 
-         
+        public Item SearchItemandBuy()
+        {
+            Item R = new Item();
+            Connection Micnn = new Connection();
+
+            Micnn.parameterlist.Add(new SqlParameter("@ID", this.ItemID));
+
+            DataTable dt = new DataTable();
+
+            dt = Micnn.EjecutarSELECT("SPSearchItemandBuy");
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+
+                DataRow dr = dt.Rows[0];
+
+                R.ItemID = Convert.ToInt32(dr["ItemID"]);
+                R.ItemName = Convert.ToString(dr["ItemName"]);
+                R.Stock = Convert.ToInt32(dr["Stock"]);
+                R.UnitaryCost = Convert.ToDecimal(dr["UnitaryCost"]);
+
+                 
+
+            }
+
+
+
+            return R;
+
+        }
+
+
+
         //metodo consultar por ID 
         public Item ConsultarPorID(int pIdProducto)
         {

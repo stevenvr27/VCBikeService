@@ -35,7 +35,6 @@
             this.TxtPassword = new System.Windows.Forms.TextBox();
             this.BtnVerContrasennia = new System.Windows.Forms.Button();
             this.BtnIngresoDirecto = new System.Windows.Forms.Button();
-            this.Recovery = new System.Windows.Forms.Button();
             this.BtnLogin = new VCBikeService.Extras.CustomButtons();
             this.BtnCancel = new VCBikeService.Extras.CustomButtons();
             this.customButtons2 = new VCBikeService.Extras.CustomButtons();
@@ -48,12 +47,12 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.label1.Location = new System.Drawing.Point(109, 127);
+            this.label1.Location = new System.Drawing.Point(197, 128);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(187, 24);
+            this.label1.Size = new System.Drawing.Size(82, 24);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Nombre de Usuario ";
+            this.label1.Text = "Correo: ";
             // 
             // label2
             // 
@@ -109,17 +108,6 @@
             this.BtnIngresoDirecto.UseVisualStyleBackColor = true;
             this.BtnIngresoDirecto.Visible = false;
             this.BtnIngresoDirecto.Click += new System.EventHandler(this.BtnIngresoDirecto_Click);
-            // 
-            // Recovery
-            // 
-            this.Recovery.Location = new System.Drawing.Point(282, 331);
-            this.Recovery.Name = "Recovery";
-            this.Recovery.Size = new System.Drawing.Size(160, 38);
-            this.Recovery.TabIndex = 11;
-            this.Recovery.Text = "Recuperar Contra";
-            this.Recovery.UseVisualStyleBackColor = true;
-            this.Recovery.Visible = false;
-            this.Recovery.Click += new System.EventHandler(this.Recovery_Click);
             // 
             // BtnLogin
             // 
@@ -216,7 +204,6 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(504, 613);
-            this.Controls.Add(this.Recovery);
             this.Controls.Add(this.BtnIngresoDirecto);
             this.Controls.Add(this.BtnVerContrasennia);
             this.Controls.Add(this.BtnLogin);
@@ -254,6 +241,5 @@
         private Extras.CustomButtons BtnCancel;
         private System.Windows.Forms.Button BtnVerContrasennia;
         private System.Windows.Forms.Button BtnIngresoDirecto;
-        private System.Windows.Forms.Button Recovery;
     }
 }

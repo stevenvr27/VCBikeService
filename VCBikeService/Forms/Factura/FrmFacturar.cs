@@ -1,22 +1,12 @@
 ﻿using Logic.Models;
-using Logic.Services;
-using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using VCBikeService.Forms.Productos;
-using VCBikeService.Forms.Reportes;
 
 namespace VCBikeService.Forms.Compra
 {
-    public partial class FrmBuy : Form
+    public partial class FrmFacturar : Form
     {
 
         public Billing MyBilling { get; set; }
@@ -29,7 +19,7 @@ namespace VCBikeService.Forms.Compra
 
 
 
-        public FrmBuy()
+        public FrmFacturar()
         {
             this.KeyPreview = true;
             InitializeComponent();
@@ -39,6 +29,7 @@ namespace VCBikeService.Forms.Compra
             Localdetailist = new DataTable();
 
             Listitems = new DataTable();
+      
              
         }
 
@@ -49,37 +40,7 @@ namespace VCBikeService.Forms.Compra
             TxtUSer.Text = Username;
         }
 
-        private void Totalizar()
-        {
-            if (Localdetailist != null && Localdetailist.Rows.Count > 0)
-            {
-
-                decimal Subt = 0;
-                decimal Descuentos = 0;
-                decimal Impuestos = 0;
-                decimal Total = 0;
-
-
-                foreach (DataRow item in Localdetailist.Rows)
-                {
-
-                    Subt += Convert.ToDecimal(item["Amount"]) * Convert.ToDecimal(item["UnitaryPrice"]);
-
-                    Descuentos += Subt * Convert.ToDecimal(item["PercentageDiscount"]) / 100;
-
-                    Impuestos += Convert.ToDecimal(item["ImpuestoLine"]);
-
-                    Total += Convert.ToDecimal(item["TotalLine"]);
-                }
-
-
-                LblSubTotal.Text = string.Format("{0:C2}", Subt);
-                LblDescuentos.Text = string.Format("{0:C2}", Descuentos);
-                LblImpuestos.Text = string.Format("{0:C2}", Impuestos);
-                LblTotal.Text = string.Format("{0:C2}", Total);
-
-            }
-        }
+        
 
         private void LoadBillingType()
         {
@@ -163,30 +124,7 @@ namespace VCBikeService.Forms.Compra
             LblNombreCliente.Text = "";
         }
 
-        private void LoadListBillingDetail()
-        {
-            // cargar en la composición los detalles a partir del datatable de detalles local
-
-            foreach (DataRow item in Localdetailist.Rows)
-            {
-                Logic.Models.BillingDetail detail = new Logic.Models.BillingDetail();
-
-                detail.Amount = Convert.ToDecimal(item["Amount"]);
-                detail.ImpuestoLine = Convert.ToDecimal(item["ImpuestoLine"]);
-                detail.MyItem.ItemID = Convert.ToInt32(item["ItemItemID"]);
-                detail.PercentageDiscount = Convert.ToDecimal(item["PercentageDiscount"]);
-                detail.UnitaryPrice = Convert.ToDecimal(item["UnitaryPrice"]);
-                detail.SubTotalLine = Convert.ToDecimal(item["SubTotalLine"]);
-                detail.TotalLine = Convert.ToDecimal(item["TotalLine"]);
-
-                // Don't include the identity column (if it exists) in the insert statement
-                // The identity column value will be generated automatically by SQL Server
-                // Remove the line below if there's no identity column in the BillingDetail table
-                // detail.BillingDetailID = 0; // <- Remove this line
-
-                MyBilling.DetailItems.Add(detail);
-            }
-        }
+       
 
         private void BtnClienteBuscar_Click_1(object sender, EventArgs e)
         {
@@ -229,18 +167,7 @@ namespace VCBikeService.Forms.Compra
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form form = new FrmAddSearchProduct();
-
-            DialogResult resp = form.ShowDialog();
-
-            if (resp == DialogResult.OK)
-            {
-                //se ha seleccionado correctamente un item
-
-                DgvListaItems.DataSource = Localdetailist;
-
-                Totalizar();
-            }
+             
         }
 
 
@@ -365,55 +292,14 @@ namespace VCBikeService.Forms.Compra
         }
 
 
-        private void CalcularTotalLine()
-        {
-            decimal valorTotalFactura = 0;
-            decimal valorSubtotalFactura = 0;
-            decimal valorDescuentoFactura = 0;
-            decimal valorImpuestoFactura = 0;
-
-            foreach (DataRow row in Localdetailist.Rows)
-            {
-                int cantidad = Convert.ToInt32(row["CAmount"]);
-                decimal unitaryPrice = Convert.ToDecimal(row["CUnitaryPrice"]);
-                decimal impuestoPorProducto = Convert.ToDecimal(row["CImpuestoLine"]);
-
-                decimal subtotalProducto = unitaryPrice * cantidad;
-                decimal impuestoLinea = impuestoPorProducto * cantidad; // Calculate the tax for each product based on its quantity
-                decimal totalLinea = subtotalProducto + impuestoLinea;
-
-                row["SubTotalLine"] = subtotalProducto;
-                row["ImpuestoLine"] = impuestoLinea;
-                row["TotalLine"] = totalLinea;
-
-                // Update the invoice totals
-                valorTotalFactura += totalLinea;
-                valorSubtotalFactura += subtotalProducto;
-                valorImpuestoFactura += impuestoLinea;
-            }
-
-            // Calculate the discount for the entire invoice based on the subtotal
-            valorDescuentoFactura = valorSubtotalFactura * Convert.ToDecimal(LblDescuentos.Text) / 100;
-
-            // Actualizar los valores en donde corresponda (por ejemplo, en TextBox o Label)
-            LblTotal.Text = valorTotalFactura.ToString();
-            // Actualiza el subtotal, descuento e impuesto de la factura en sus respectivos controles
-            // Ejemplo:
-            LblSubTotal.Text = valorSubtotalFactura.ToString();
-            LblDescuentos.Text = valorDescuentoFactura.ToString();
-            LblImpuestos.Text = valorImpuestoFactura.ToString();
-
-        }
+        
 
         private void Facturar_Click(object sender, EventArgs e)
 
         {
             if (!string.IsNullOrEmpty(TxtCustomerID.Text.Trim()) && Localdetailist != null && Localdetailist.Rows.Count > 0 && CbBuyType.SelectedIndex > -1 && cvMethodp.SelectedIndex > -1)
             {
-                //TO DO: efectuar las validaciones correpondientes ej, que la fecha no sea mayor a la actual y que
-                //se haya seleccionado datos mínimos como cliente, usuario, etc.
-
-                // Obtener los IDs de usuario y cliente antes de entrar al ciclo foreach
+               
 
                 int customerId = MyBilling.MyCustomer.CustomerID;
 

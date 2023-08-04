@@ -34,10 +34,7 @@ namespace Logic
 
         public string EncriptarPassword(string Pass)
         {
-            if (string.IsNullOrEmpty(Pass))
-            {
-                throw new ArgumentException("La contraseña no puede ser nula o vacía.", nameof(Pass));
-            }
+            
 
             String R = string.Empty;
 

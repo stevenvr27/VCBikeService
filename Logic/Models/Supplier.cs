@@ -86,6 +86,16 @@ namespace Logic.Models
             return R;
 
         }
+        //lista los nombres de los proveedores activos 
+        public DataTable list()
+        {
+            DataTable R = new DataTable();
+            Services.Connection connection = new Services.Connection();
+            R = connection.EjecutarSELECT("SPSupplierName");
+            return R;
+        }
+
+
         //datatable lista proveedores activos 
         public DataTable ListActive(string pFiltroBusqueda)
         {

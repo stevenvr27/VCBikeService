@@ -167,14 +167,7 @@ namespace VCBikeService.Forms.Compra
         }
 
        
-        private void CalculateFinalPrice(Logic.Models.Item pProducto, decimal PorcentajeDescuento)
-        {
-            decimal PrecioConDescuento = pProducto.SellPrice - ((pProducto.SellPrice * PorcentajeDescuento) / 100);
-
-            decimal PrecioConImpuesto = PrecioConDescuento + ((PrecioConDescuento * pProducto.Tax.AmountTax) / 100);
-
-            TxtPrecioFinal.Text = PrecioConImpuesto.ToString();
-        }
+        
 
         private void DgvListaItems_CellClick(object sender, DataGridViewCellEventArgs e)
         {

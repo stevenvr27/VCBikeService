@@ -451,7 +451,7 @@
             this.btnactivate.BackColor = System.Drawing.Color.OliveDrab;
             this.btnactivate.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnactivate.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnactivate.Location = new System.Drawing.Point(8, 2);
+            this.btnactivate.Location = new System.Drawing.Point(35, 2);
             this.btnactivate.Margin = new System.Windows.Forms.Padding(2);
             this.btnactivate.Name = "btnactivate";
             this.btnactivate.Size = new System.Drawing.Size(169, 54);
