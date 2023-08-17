@@ -24,10 +24,10 @@ namespace VCBikeService
         public static Forms.Compra.FrmAddSearchProduct FrmAddSearchProduct = new Forms.Compra.FrmAddSearchProduct();
         public static Forms.Clientes.FrmClientes frmClientes = new Forms.Clientes.FrmClientes();
         public static Forms.FrmProductsAdd FrmProductsAdd = new Forms.FrmProductsAdd();
-        public static Forms.Reportes.FrmSearchReport FrmSearchReport = new Forms.Reportes.FrmSearchReport();
         public static Forms.Nosotros.FrmWe FrmWe = new Forms.Nosotros.FrmWe();
         public static Forms.Factura.FrmNewBilling FrmNewBilling = new Forms.Factura.FrmNewBilling();
         public static Forms.FrmUsers FrmUsers = new Forms.FrmUsers();
         public static Logic.Models.User MyGlobalUser = new Logic.Models.User();
+         
     }
 }

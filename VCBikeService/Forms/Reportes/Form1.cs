@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace VCBikeService.Forms.Reportes
 {
-    public partial class FrmSearchReport : Form
+    public partial class Form1 : Form
     {
-        public FrmSearchReport()
+        public Form1()
         {
             InitializeComponent();
         }

@@ -84,7 +84,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.Encabezado.SuspendLayout();
@@ -105,7 +104,6 @@
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.panel8.SuspendLayout();
-            this.panel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -751,7 +749,6 @@
             // 
             // panel9
             // 
-            this.panel9.Controls.Add(this.button2);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(2, 110);
             this.panel9.Margin = new System.Windows.Forms.Padding(2);
@@ -759,21 +756,7 @@
             this.panel9.Size = new System.Drawing.Size(174, 104);
             this.panel9.TabIndex = 1;
             // 
-            // button2
-            // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(0, 0);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(174, 104);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Editar";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // FrmBuy
+            // FrmFacturar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -783,7 +766,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(1053, 676);
-            this.Name = "FrmBuy";
+            this.Name = "FrmFacturar";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro de Compras";
@@ -814,7 +797,6 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
-            this.panel9.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -868,7 +850,6 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Button Facturar;

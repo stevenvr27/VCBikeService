@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using VCBikeService.Forms.Compra;
 using VCBikeService.Forms.Nosotros;
 using VCBikeService.Forms.Productos;
-using VCBikeService.Forms.Reportes;
+ 
 
 namespace VCBikeService.Forms
 {
@@ -61,23 +61,7 @@ namespace VCBikeService.Forms
             }
         }
 
-        private void semanalToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!Globals.FrmWeek.Visible)
-            {
-                Globals.FrmWeek = new FrmWeek();
-                Globals.FrmWeek.Show();
-            }
-        }
-
-        private void mensualToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!Globals.FrmReportBilling.Visible)
-            {
-                Globals.FrmReportBilling = new FrmReportBilling();
-                Globals.FrmReportBilling.Show();
-            }
-        }
+       
 
        
 
@@ -254,14 +238,7 @@ namespace VCBikeService.Forms
             }
         }
 
-        private void button8_Click(object sender, EventArgs e)
-        {
-            if (!Globals.FrmSearchReport.Visible)
-            {
-                Globals.FrmSearchReport = new FrmSearchReport();
-                Globals.FrmSearchReport.Show();
-            }
-        }
+       
 
         private void button9_Click(object sender, EventArgs e)
         {

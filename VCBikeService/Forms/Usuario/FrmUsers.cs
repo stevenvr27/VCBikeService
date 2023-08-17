@@ -465,15 +465,7 @@ namespace VCBikeService.Forms
             }
         }
 
-        private void TxtUserName_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
-            {
-                e.Handled = true;
-                MessageBox.Show("Debes Digitar unicamente letras.", "!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-
-            }
-        }
+      
 
         private void Activate_Click(object sender, EventArgs e)
         {

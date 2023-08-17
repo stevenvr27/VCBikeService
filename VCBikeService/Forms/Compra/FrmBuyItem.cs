@@ -19,6 +19,7 @@ namespace VCBikeService.Forms.Productos
 
         public FrmBuyItem()
         {
+            this.KeyPreview = true;
             InitializeComponent();
             Myitem = new Logic.Models.Item();
             ListItem = new DataTable();
@@ -50,7 +51,7 @@ namespace VCBikeService.Forms.Productos
         {
 
             if (!string.IsNullOrEmpty(TxtIDProduct.Text.Trim()) && !string.IsNullOrEmpty(TxtProductName.Text.Trim())
-                     && txtbuytype.SelectedIndex > -1 && txtmetpag.SelectedIndex > -1 && txtbuytype.SelectedIndex > -1)
+                     && txtbuytype.SelectedIndex > -1 && txtmetpag.SelectedIndex > -1 && txtbuytype.SelectedIndex > -1 && TxtSupplier.SelectedIndex > -1)
             {
                 Mybuy = new Logic.Models.Buy();
                 Mybuy.MybuyType.BuyTypeID = Convert.ToInt32(txtbuytype.SelectedValue);
@@ -70,32 +71,26 @@ namespace VCBikeService.Forms.Productos
 
                 foreach (DataRow item in ListItem.Rows)
                 {
-                    BuyDetail buyDetail = new BuyDetail();
-                    buyDetail.ItemID = Convert.ToInt32(item["ItemID"]);
-
-                    if (decimal.TryParse(txtUnitaryPrice.Text.Trim(), out decimal unitaryPrice))
+                    if (decimal.TryParse(txtUnitaryPrice.Text.Trim(), out decimal unitaryPrice)
+                        && decimal.TryParse(TxtPrecioFinal.Text.Trim(), out decimal totalPrice))
                     {
-                        buyDetail.UnitaryPrice = unitaryPrice;
+                        BuyDetail buyDetail = new BuyDetail
+                        {
+                            ItemID = Convert.ToInt32(item["ItemID"]),
+                            UnitaryPrice = unitaryPrice,
+                            Total = totalPrice
+                        };
+
+                       buyDetail.NuevoArticulos = Convert.ToInt32(TxtCantidad.Value) ;
+
+                        Mybuy.BuyDetail.Add(buyDetail);
                     }
                     else
                     {
-                        MessageBox.Show("Invalid Unitary Price input.", "Error", MessageBoxButtons.OK);
+                        MessageBox.Show("Invalid input for Unitary Price or Total Price.", "Error", MessageBoxButtons.OK);
                         return; // Exit the loop or function, since there's an issue.
                     }
-
-                    if (decimal.TryParse(TxtPrecioFinal.Text.Trim(), out decimal totalPrice))
-                    {
-                        buyDetail.Total = totalPrice;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid Total Price input.", "Error", MessageBoxButtons.OK);
-                        return; // Exit the loop or function, since there's an issue.
-                    }
-
-                    Mybuy.BuyDetail.Add(buyDetail);
                 }
-                 
 
 
                 string msg = string.Format("¿Está seguro que deseas crear la compra ?", Mybuy.BuyID);
@@ -110,12 +105,7 @@ namespace VCBikeService.Forms.Productos
                     int stockTotal = stockActualEnBaseDeDatos + stockNuevo;
 
                     Myitem.Stock = stockTotal;
-                    Myitem.UnitaryCost = Convert.ToDecimal(txtUnitaryPrice.Text.Trim());
-
-
-
-
-
+                    Myitem.UnitaryCost = Convert.ToDecimal(txtUnitaryPrice.Text.Trim()); 
 
                     if (Mybuy.Add())
                     {

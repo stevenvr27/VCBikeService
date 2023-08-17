@@ -222,7 +222,6 @@
             this.TxtUserName.Name = "TxtUserName";
             this.TxtUserName.Size = new System.Drawing.Size(514, 30);
             this.TxtUserName.TabIndex = 9;
-            this.TxtUserName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtUserName_KeyPress);
             // 
             // TxtUserID
             // 
@@ -500,7 +499,7 @@
             this.btnActivate.BackColor = System.Drawing.Color.OliveDrab;
             this.btnActivate.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActivate.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnActivate.Location = new System.Drawing.Point(24, 22);
+            this.btnActivate.Location = new System.Drawing.Point(49, 12);
             this.btnActivate.Name = "btnActivate";
             this.btnActivate.Size = new System.Drawing.Size(226, 66);
             this.btnActivate.TabIndex = 21;

@@ -86,7 +86,20 @@ namespace Logic.Models
             }
             return R;
         }
+        public bool UpdateStock()
+        {
+            bool R = false;
+            Connection connection = new Connection();
+            connection.parameterlist.Add(new SqlParameter("@ITemID", this.ItemID));
+            connection.parameterlist.Add(new SqlParameter("@Stock", this.Stock)); 
+            int result = connection.EjecutarInsertUpdateDelete("SPItemUpdatestock");
 
+            if (result > 0)
+            {
+                R = true;
+            }
+            return R;
+        }
 
         // metodo eliminar y su respectivo llamado al procedimiento almacenado 
         public bool Delete()
@@ -204,7 +217,7 @@ namespace Logic.Models
 
             return resultado;
         }
-
+        
 
 
 

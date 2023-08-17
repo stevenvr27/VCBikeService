@@ -1,7 +1,9 @@
 ﻿using Logic.Models;
+using Logic.Services;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace VCBikeService.Forms.Compra
@@ -14,7 +16,7 @@ namespace VCBikeService.Forms.Compra
         public DataTable Localdetailist { get; set; }
         public DataTable Listitems { get; set; }
 
-   
+
 
 
 
@@ -23,14 +25,14 @@ namespace VCBikeService.Forms.Compra
         {
             this.KeyPreview = true;
             InitializeComponent();
-           
+
 
             MyBilling = new Billing();
             Localdetailist = new DataTable();
 
             Listitems = new DataTable();
-      
-             
+
+
         }
 
 
@@ -40,7 +42,7 @@ namespace VCBikeService.Forms.Compra
             TxtUSer.Text = Username;
         }
 
-        
+
 
         private void LoadBillingType()
         {
@@ -58,6 +60,30 @@ namespace VCBikeService.Forms.Compra
 
             }
         }
+        //public ReportDocument Imprimir(ReportDocument repo)
+        //{
+        //    ReportDocument R = repo;
+
+        //    Crystal ObjCrytal = new Crystal(R);
+
+        //    //contiene la data que se dibujará en el reporte
+        //    DataTable Datos = new DataTable();
+
+        //    Connection MiCnn = new Connection();
+
+        //    MiCnn.parameterlist.Add(new SqlParameter("@ID", this.MyBilling.BillingID));
+
+        //    Datos = MiCnn.DMLSelect("SPCompraReporte");
+
+        //    if (Datos != null && Datos.Rows.Count > 0)
+        //    {
+        //        ObjCrytal.Datos = Datos;
+
+        //        R = ObjCrytal.GenerarReporte();
+        //    }
+
+        //    return R;
+        //}
 
         private void LoadMethodPayment()
         {
@@ -76,7 +102,7 @@ namespace VCBikeService.Forms.Compra
             }
         }
 
-         
+
 
 
         private void FrmBuy_Load(object sender, EventArgs e)
@@ -124,7 +150,7 @@ namespace VCBikeService.Forms.Compra
             LblNombreCliente.Text = "";
         }
 
-       
+
 
         private void BtnClienteBuscar_Click_1(object sender, EventArgs e)
         {
@@ -165,10 +191,7 @@ namespace VCBikeService.Forms.Compra
             Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-             
-        }
+
 
 
 
@@ -217,47 +240,7 @@ namespace VCBikeService.Forms.Compra
             row.Cells["CImpuestoLine"].Value = impuestoLinea;
             row.Cells["CTotalLine"].Value = totalLinea;
         }
-        private void button2_Click(object sender, EventArgs e)
-        {
 
-            if (DgvListaItems.SelectedRows.Count > 0)
-            {
-                int cantidadActual = Convert.ToInt32(DgvListaItems.SelectedRows[0].Cells["CAmount"].Value);
-
-                // Llamar al método GetFrmEditBuyItem en Globals.cs y pasar el DataTable y la cantidad actual
-                Forms.Compra.FrmEditBuyItem frmEditItem = Globals.GetFrmEditBuyItem(Localdetailist, cantidadActual);
-
-                // Mostrar el formulario de edición como un cuadro de diálogo
-
-                DialogResult result = frmEditItem.ShowDialog();
-
-                // Si el usuario hizo clic en el botón "Aceptar" en el formulario de edición, actualizar la cantidad
-                if (result == DialogResult.OK)
-                {
-
-                    int nuevaCantidad = frmEditItem.CantidadEditada;
-
-
-                    // Actualizar la cantidad en el DataGridView
-                    DgvListaItems.SelectedRows[0].Cells["CAmount"].Value = nuevaCantidad;
-
-                    if (cantidadActual > nuevaCantidad)
-                    {
-                        RecalcularLineas(DgvListaItems.SelectedRows[0]);
-
-                    }
-                    else
-                    {
-                        RecalcularLinea(DgvListaItems.SelectedRows[0]);
-
-
-
-                    }
-
-                    RecalcularValorTotalFactura();
-                }
-            }
-        }
         private void RecalcularLinea(DataGridViewRow row)
         {
             {
@@ -292,14 +275,14 @@ namespace VCBikeService.Forms.Compra
         }
 
 
-        
+
 
         private void Facturar_Click(object sender, EventArgs e)
 
         {
             if (!string.IsNullOrEmpty(TxtCustomerID.Text.Trim()) && Localdetailist != null && Localdetailist.Rows.Count > 0 && CbBuyType.SelectedIndex > -1 && cvMethodp.SelectedIndex > -1)
             {
-               
+
 
                 int customerId = MyBilling.MyCustomer.CustomerID;
 
@@ -359,12 +342,29 @@ namespace VCBikeService.Forms.Compra
 
                 // Once all sales and stock updates are done, proceed to add the billing record
 
- 
+
 
                 if (MyBilling.Add())
                 {
                     MessageBox.Show("Factura guardada correctamente", ":)", MessageBoxButtons.OK);
-                    // TO DO: llamado a reporte
+
+                    //ReportDocument MiReporteCompra = new ReportDocument();
+
+                    //MiReporteCompra = new Reportes.RptFactura();
+
+                    //MiReporteCompra = MyBilling.Imprimir(MiReporteCompra);
+
+                    ////se asigna este documento al visulizador de reportes (se usa para TODOS los reportes) 
+                    //MiFormCRV = new FrmVisualizadorReportes();
+
+                    //MiFormCRV.CrvVisualizador.ReportSource = MiReporteCompra;
+
+                    //MiFormCRV.Show();
+
+                    ////para visualizar la página completa
+                    //MiFormCRV.CrvVisualizador.Zoom(1);
+
+
                     MyBilling.UpdateProductStock();
                     Localdetailist.Clear();
                     clean();
@@ -428,6 +428,98 @@ namespace VCBikeService.Forms.Compra
             {
                 // Realiza el clic en el botón "Facturar" si se presiona Enter
                 Facturar.PerformClick();
+            }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            {
+
+                if (DgvListaItems.SelectedRows.Count > 0)
+                {
+                    int cantidadActual = Convert.ToInt32(DgvListaItems.SelectedRows[0].Cells["CAmount"].Value);
+
+                    // Llamar al método GetFrmEditBuyItem en Globals.cs y pasar el DataTable y la cantidad actual
+                    Forms.Compra.FrmEditBuyItem frmEditItem = Globals.GetFrmEditBuyItem(Localdetailist, cantidadActual);
+
+                    // Mostrar el formulario de edición como un cuadro de diálogo
+
+                    DialogResult result = frmEditItem.ShowDialog();
+
+                    // Si el usuario hizo clic en el botón "Aceptar" en el formulario de edición, actualizar la cantidad
+                    if (result == DialogResult.OK)
+                    {
+
+                        int nuevaCantidad = frmEditItem.CantidadEditada;
+
+
+                        // Actualizar la cantidad en el DataGridView
+                        DgvListaItems.SelectedRows[0].Cells["CAmount"].Value = nuevaCantidad;
+
+                        if (cantidadActual > nuevaCantidad)
+                        {
+                            RecalcularLineas(DgvListaItems.SelectedRows[0]);
+
+                        }
+                        else
+                        {
+                            RecalcularLinea(DgvListaItems.SelectedRows[0]);
+
+
+
+                        }
+
+                        RecalcularValorTotalFactura();
+                    }
+                }
+            }
+        }
+
+        private void Totalizar()
+        {
+            if (Localdetailist != null && Localdetailist.Rows.Count > 0)
+            {
+
+                decimal Subt = 0;
+                decimal Descuentos = 0;
+                decimal Impuestos = 0;
+                decimal Total = 0;
+
+
+                foreach (DataRow item in Localdetailist.Rows)
+                {
+
+                    Subt += Convert.ToDecimal(item["Amount"]) * Convert.ToDecimal(item["UnitaryPrice"]);
+
+                    Descuentos += Subt * Convert.ToDecimal(item["PercentageDiscount"]) / 100;
+
+                    Impuestos += Convert.ToDecimal(item["ImpuestoLine"]);
+
+                    Total += Convert.ToDecimal(item["TotalLine"]);
+                }
+
+
+                LblSubTotal.Text = string.Format("{0:C2}", Subt);
+                LblDescuentos.Text = string.Format("{0:C2}", Descuentos);
+                LblImpuestos.Text = string.Format("{0:C2}", Impuestos);
+                LblTotal.Text = string.Format("{0:C2}", Total);
+
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form FormSeleccionDeItem = new FrmAddSearchProduct();
+
+            DialogResult resp = FormSeleccionDeItem.ShowDialog();
+
+            if (resp == DialogResult.OK)
+            {
+                //se ha seleccionado correctamente un item
+
+                DgvListaItems.DataSource = Localdetailist;
+
+                Totalizar();
             }
         }
     }

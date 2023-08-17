@@ -60,6 +60,58 @@ namespace Logic.Models
             return R;
 
         }
+        public DataTable Listbuy(string pFiltroBusqueda)
+        {
+            DataTable R = new DataTable();
+
+            Connection Micnn = new Connection();
+
+            Micnn.parameterlist.Add(new SqlParameter("@VerActivo ", true));
+            Micnn.parameterlist.Add(new SqlParameter("@FiltroBusqueda", pFiltroBusqueda));
+
+            R = Micnn.EjecutarSELECT("SPListaDecompras");
+
+            return R;
+        }
+        public Buy SearchIDReturnbuy()
+        {
+            // metodo para buscar el id y que me retorne info del cliente 
+            Buy R = new Buy();
+
+            Connection Micnn = new Connection();
+            Micnn.parameterlist.Add(new SqlParameter("@ID", this.BuyID));
+            DataTable dt = new DataTable();
+            dt = Micnn.EjecutarSELECT("SPbuysearchid");
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                DataRow dr = dt.Rows[0];
+
+                R.Supplier.SupplierName = Convert.ToString(dr["SupplierName"]);
+                R.MyUser.UserName = Convert.ToString(dr["UserName"]);
+                R.BuyDate = Convert.ToDateTime(dr["BuyDate"]);
+
+
+
+            }
+
+
+
+            return R;
+
+        }
+        public DataTable Listbuyinactive(string pFiltroBusqueda)
+        {
+            DataTable R = new DataTable();
+
+            Connection Micnn = new Connection();
+
+            Micnn.parameterlist.Add(new SqlParameter("@VerActivo ", false));
+            Micnn.parameterlist.Add(new SqlParameter("@FiltroBusqueda", pFiltroBusqueda));
+
+            R = Micnn.EjecutarSELECT("SPListaDecompras");
+
+            return R;
+        }
         public bool Add()
         {
             bool R = false;
@@ -77,39 +129,56 @@ namespace Logic.Models
 
             Object Retorno = connection.EjecutarSELECTEscalar("SPBuyAdd");
 
-            int IDBUY = 0;
+            int IdFacturaRecienCreada = 0;
 
             if (Retorno != null)
             {
-                IDBUY = Convert.ToInt32(Retorno.ToString());
+                IdFacturaRecienCreada = Convert.ToInt32(Retorno.ToString());
 
                 // Una vez que se tiene el ID de la factura, se pueden agregar los detalles
-                this.BuyID = IDBUY;
+                this.BuyID = IdFacturaRecienCreada;
 
                 foreach (BuyDetail item in this.BuyDetail)
                 {
                     // Se hace un insert por cada iteración en detalles
                     Connection MyCnnDetalle = new Connection();
 
-                    MyCnnDetalle.parameterlist.Add(new SqlParameter("@BuyID", IDBUY));
-                    MyCnnDetalle.parameterlist.Add(new SqlParameter("@ItemID",item.ItemID  ));
-                    MyCnnDetalle.parameterlist.Add(new SqlParameter("@UnitaryPrice ", item.UnitaryPrice));
+                    MyCnnDetalle.parameterlist.Add(new SqlParameter("@BuyID", IdFacturaRecienCreada));
+                    MyCnnDetalle.parameterlist.Add(new SqlParameter("@ItemID", item.ItemID));
                     MyCnnDetalle.parameterlist.Add(new SqlParameter("@total", item.Total));
-
+                    MyCnnDetalle.parameterlist.Add(new SqlParameter("@UnitaryPrice ", item.UnitaryPrice));
+                    MyCnnDetalle.parameterlist.Add(new SqlParameter("@NuevoArticulos", item.NuevoArticulos));
                     MyCnnDetalle.EjecutarInsertUpdateDelete("SPBuyDetailAdd");
 
-
-
-
-
                 }
-
-                R = true;
+                  R = true;
+                
             }
 
             return R;
         }
 
+
+
+
+        // metodo eliminar y su respectivo llamado al procedimiento almacenado 
+        public bool Delete()
+        {
+            bool R = false;
+
+            Connection connection = new Connection();
+            connection.parameterlist.Add(new SqlParameter("@ID", this.BuyID));
+            int r = connection.EjecutarInsertUpdateDelete("SPBuyDelete");
+
+            if (r < 0)
+            {
+                R = true;
+            }
+
+            return R;
+
+
+        }
     }
 }
 
