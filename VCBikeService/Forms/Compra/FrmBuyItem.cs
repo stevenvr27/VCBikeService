@@ -81,8 +81,6 @@ namespace VCBikeService.Forms.Productos
                             Total = totalPrice
                         };
 
-                       buyDetail.NuevoArticulos = Convert.ToInt32(TxtCantidad.Value) ;
-
                         Mybuy.BuyDetail.Add(buyDetail);
                     }
                     else
