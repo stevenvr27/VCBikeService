@@ -148,7 +148,12 @@ namespace Logic.Models
                     MyCnnDetalle.parameterlist.Add(new SqlParameter("@total", item.Total));
                     MyCnnDetalle.parameterlist.Add(new SqlParameter("@UnitaryPrice ", item.UnitaryPrice));
                     MyCnnDetalle.parameterlist.Add(new SqlParameter("@NuevoArticulos", item.NuevoArticulos));
+                    
+
                     MyCnnDetalle.EjecutarInsertUpdateDelete("SPBuyDetailAdd");
+                      
+                    
+
 
                 }
                   R = true;

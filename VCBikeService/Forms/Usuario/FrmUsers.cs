@@ -31,6 +31,8 @@ namespace VCBikeService.Forms
 
         private void FrmUsers_Load(object sender, EventArgs e)
         {
+            
+
             CleanForm();
             Checker();
 

@@ -17,6 +17,7 @@ namespace VCBikeService.Forms.Factura
         private DataTable billigs {get;set;}
         private Logic.Models.Billing Mybilling { get; set; }
 
+        private Logic.Models.Item myitem { get; set; }
         private Logic.Models.BillingDetail MybillingDetail { get; set; }
         public FrmNewBilling()
         {
@@ -24,6 +25,7 @@ namespace VCBikeService.Forms.Factura
             billigs = new DataTable();
             MybillingDetail = new BillingDetail();
             Mybilling = new Logic.Models.Billing();
+            myitem = new Logic.Models.Item();
             
         }
 
@@ -130,7 +132,9 @@ namespace VCBikeService.Forms.Factura
 
 
                 int IDBilling = Convert.ToInt32(Mifila.Cells["CBillingID"].Value);
-
+                int cantidad = Convert.ToInt32(Mifila.Cells["CAmount"].Value);
+                int id = Convert.ToInt32(Mifila.Cells["CItemID"].Value);
+                string nombre = Convert.ToString(Mifila.Cells["CItemName"].Value);
                 Mybilling = new Logic.Models.Billing();
 
 
@@ -148,6 +152,9 @@ namespace VCBikeService.Forms.Factura
 
                     TxtDate.Text = Convert.ToString(Mybilling.Date);
                     TxtCustomer.Text = Mybilling.MyCustomer.CustomerName;
+                    txtCantidad.Text = Convert.ToString(cantidad);
+                    txtnameproduct.Text = Convert.ToString(nombre);
+                    txtIDproduct.Text = Convert.ToString(id);
 
                     TxtUser.Text =  Mybilling.MyUser.UserName;
 
@@ -176,12 +183,20 @@ namespace VCBikeService.Forms.Factura
             {
                 if (Mybilling.BillingID > 0  )
                 {
-                    
+                    int cantidad = Convert.ToInt32(txtCantidad.Text.Trim());
+                    DataGridViewRow Mifila = DgCustList.SelectedRows[0];
+                    int stock = Convert.ToInt32(Mifila.Cells["CStock"].Value);
+                    int total = cantidad + stock;
 
+                     myitem.ItemID = Convert.ToInt32( txtIDproduct.Text.Trim());
+                    myitem.Stock = total;
+
+                    if (myitem.UpdateStock())
+                    {
                         DialogResult r = MessageBox.Show("¿Está seguro de Eliminar esta Factura?",
-                                                         "???",
-                                                         MessageBoxButtons.YesNo,
-                                                         MessageBoxIcon.Question);
+                                                                "???",
+                                                                MessageBoxButtons.YesNo,
+                                                                MessageBoxIcon.Question);
 
                         if (r == DialogResult.Yes)
                         {
@@ -193,7 +208,16 @@ namespace VCBikeService.Forms.Factura
                             }
 
                         }
-                    
+                        else
+                        {
+                            MessageBox.Show("la Factura no ha sido eliminado Por favor revisar.", "!!!", MessageBoxButtons.OK);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se actualizo el producto ,Por favor revisar.", "!!!", MessageBoxButtons.OK);
+                    }
+
                 }
             }
             else
@@ -201,6 +225,8 @@ namespace VCBikeService.Forms.Factura
                 MessageBox.Show("Debes de seleccionar una Factura", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+      
 
         private void FrmNewBilling_KeyUp(object sender, KeyEventArgs e)
         {

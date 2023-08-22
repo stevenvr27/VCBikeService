@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography;
@@ -16,6 +17,7 @@ namespace VCBikeService.Forms.Productos
         private Logic.Models.BuyDetail BuyDetail { get; set; }
         private Logic.Models.Buy Mybuy { get; set; }
         private DataTable ListItem { get; set; }
+        public DataTable Localdetailist { get; set; }
 
         public FrmBuyItem()
         {
@@ -63,30 +65,30 @@ namespace VCBikeService.Forms.Productos
                 Myitem.UnitaryCost = Convert.ToDecimal(txtUnitaryPrice.Text.Trim());
                 Myitem.ItemID = Convert.ToInt32(TxtIDProduct.Text.Trim());
                 BuyDetail = new Logic.Models.BuyDetail();
-               
+
                 BuyDetail.UnitaryPrice = Convert.ToDecimal(txtUnitaryPrice.Text.Trim());
                 BuyDetail.Total = Convert.ToDecimal(TxtPrecioFinal.Text.Trim());
 
 
 
+                int itemSeleccionado = Convert.ToInt32(TxtIDProduct.Text);
+
                 foreach (DataRow item in ListItem.Rows)
                 {
-                    if (decimal.TryParse(txtUnitaryPrice.Text.Trim(), out decimal unitaryPrice)
-                        && decimal.TryParse(TxtPrecioFinal.Text.Trim(), out decimal totalPrice))
+                    int itemID = Convert.ToInt32(item["ItemID"]);
+
+                    if (itemID == itemSeleccionado)
                     {
-                        BuyDetail buyDetail = new BuyDetail
-                        {
-                            ItemID = Convert.ToInt32(item["ItemID"]),
-                            UnitaryPrice = unitaryPrice,
-                            Total = totalPrice
-                        };
+                        BuyDetail buyDetail = new BuyDetail();
+                        buyDetail.ItemID = itemID;
+                        buyDetail.UnitaryPrice = Convert.ToDecimal(item["venta"]);
+                        buyDetail.NuevoArticulos = Convert.ToInt32(TxtCantidad.Value);
+                        buyDetail.Total = Convert.ToDecimal(TxtPrecioFinal.Text.Trim());
 
                         Mybuy.BuyDetail.Add(buyDetail);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid input for Unitary Price or Total Price.", "Error", MessageBoxButtons.OK);
-                        return; // Exit the loop or function, since there's an issue.
+
+                        // Si encontraste el artículo seleccionado, puedes salir del bucle
+                        break;
                     }
                 }
 
@@ -103,7 +105,7 @@ namespace VCBikeService.Forms.Productos
                     int stockTotal = stockActualEnBaseDeDatos + stockNuevo;
 
                     Myitem.Stock = stockTotal;
-                    Myitem.UnitaryCost = Convert.ToDecimal(txtUnitaryPrice.Text.Trim()); 
+                    Myitem.UnitaryCost = Convert.ToDecimal(txtUnitaryPrice.Text.Trim());
 
                     if (Mybuy.Add())
                     {
@@ -146,17 +148,12 @@ namespace VCBikeService.Forms.Productos
 
             }
 
-
-
-
-
-
-
-
         }
 
 
 
+
+        
 
         private void btnfacturacliente_Click(object sender, EventArgs e)
         {

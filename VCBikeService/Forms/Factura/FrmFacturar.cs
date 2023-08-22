@@ -17,10 +17,6 @@ namespace VCBikeService.Forms.Compra
         public DataTable Listitems { get; set; }
 
 
-
-
-
-
         public FrmFacturar()
         {
             this.KeyPreview = true;
@@ -282,6 +278,7 @@ namespace VCBikeService.Forms.Compra
         {
             if (!string.IsNullOrEmpty(TxtCustomerID.Text.Trim()) && Localdetailist != null && Localdetailist.Rows.Count > 0 && CbBuyType.SelectedIndex > -1 && cvMethodp.SelectedIndex > -1)
             {
+            
 
 
                 int customerId = MyBilling.MyCustomer.CustomerID;
@@ -297,7 +294,7 @@ namespace VCBikeService.Forms.Compra
 
                     newdetail.MyItem.ItemID = Convert.ToInt32(item["ItemItemID"]);
                     newdetail.MyItem.Description = Convert.ToString(item["DescripcionItem"]);
-                    newdetail.Amount = Convert.ToDecimal(item["Amount"]);
+                    newdetail.Amount = Convert.ToInt32(item["Amount"]);
                     newdetail.UnitaryPrice = Convert.ToDecimal(item["UnitaryPrice"]);
                     newdetail.PercentageDiscount = Convert.ToDecimal(item["PercentageDiscount"]);
                     newdetail.SubTotalLine = Convert.ToDecimal(item["SubTotalLine"]);
@@ -329,20 +326,45 @@ namespace VCBikeService.Forms.Compra
 
                     // Actualizar el stock en la base de datos restando la cantidad facturada
                     producto.Stock -= cantidadFacturar;
-                    producto.Update(); // Este método debe actualizar el stock en la base de datos
+                    producto.Updates(); // Este método debe actualizar el stock en la base de datos
 
                     // Agregar el producto a la lista de productos facturados
                     productosFacturados.Add(producto);
                 }
+                decimal totalValue = 0;
+                decimal subTotalValue = 0;
+                decimal descuentosValue = 0;
+                decimal impuestosValue = 0;
 
+                // Calculate the total value from the Localdetailist DataTable
+                foreach (DataRow item in Localdetailist.Rows)
+                {
+                    decimal itemTotal = Convert.ToDecimal(item["TotalLine"]);
+                    totalValue += itemTotal;
 
+                    decimal itemSubTotal = Convert.ToDecimal(item["SubTotalLine"]);
+                    subTotalValue += itemSubTotal;
 
+                    decimal itemDescuentos = Convert.ToDecimal(item["PercentageDiscount"]);
+                    descuentosValue += (itemSubTotal * itemDescuentos) / 100;
 
+                    decimal itemImpuestos = Convert.ToDecimal(item["ImpuestoLine"]);
+                    impuestosValue += itemImpuestos;
+                }
 
+                LblTotal.Text = totalValue.ToString();
+                MyBilling.Total = Convert.ToDecimal(LblTotal.Text);
 
-                // Once all sales and stock updates are done, proceed to add the billing record
+                LblImpuestos.Text = impuestosValue.ToString();
+                MyBilling.Impuesto = Convert.ToDecimal(LblImpuestos.Text);
 
+                LblSubTotal.Text = subTotalValue.ToString();
+                MyBilling.SubTotal = Convert.ToDecimal(LblSubTotal.Text);
 
+                LblDescuentos.Text = descuentosValue.ToString();
+                MyBilling.Descuentos = Convert.ToDecimal(LblDescuentos.Text);
+
+                MyBilling.Notes = TxtNotas.Text;
 
                 if (MyBilling.Add())
                 {

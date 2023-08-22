@@ -267,6 +267,8 @@ namespace VCBikeService.Forms
                 Globals.FrmBuysearch.Show();
             }
         }
+
+         
     }
 }
 

@@ -5,7 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 
 namespace Logic.Models
-{
+{//si
     public class Billing
     { 
         //atributos 
@@ -14,7 +14,7 @@ namespace Logic.Models
 
         public decimal SubTotal { get; set; }
         public decimal Descuentos { get; set; }
-        public decimal SubTotal2 { get; set; }
+     
         public decimal Impuesto { get; set; }
         public decimal Total { get; set; }
         public string Notes { get; set; }
@@ -51,12 +51,11 @@ namespace Logic.Models
              
             Connection MyCnnEncabezado = new Connection();
 
-            Totalizar();
+             
           
             MyCnnEncabezado.parameterlist.Add(new SqlParameter("@date", this.Date));
             MyCnnEncabezado.parameterlist.Add(new SqlParameter("@subtotal", this.SubTotal));
-            MyCnnEncabezado.parameterlist.Add(new SqlParameter("@descuentos", this.Descuentos));
-            MyCnnEncabezado.parameterlist.Add(new SqlParameter("@subtotal2", this.SubTotal2));
+            MyCnnEncabezado.parameterlist.Add(new SqlParameter("@descuentos", this.Descuentos)); 
             MyCnnEncabezado.parameterlist.Add(new SqlParameter("@Impuestos", this.Impuesto));
             MyCnnEncabezado.parameterlist.Add(new SqlParameter("@total", this.Total));
             MyCnnEncabezado.parameterlist.Add(new SqlParameter("@notas", this.Notes));  
@@ -201,7 +200,7 @@ namespace Logic.Models
         {
             
             this.SubTotal = 0;
-            this.SubTotal2 = 0;
+             
             this.Impuesto = 0;
             this.Total = 0;
 

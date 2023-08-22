@@ -28,6 +28,7 @@ namespace VCBikeService
         public static Forms.Factura.FrmNewBilling FrmNewBilling = new Forms.Factura.FrmNewBilling();
         public static Forms.FrmUsers FrmUsers = new Forms.FrmUsers();
         public static Logic.Models.User MyGlobalUser = new Logic.Models.User();
+       
          
     }
 }
