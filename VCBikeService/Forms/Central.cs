@@ -12,7 +12,6 @@ using VCBikeService.Forms.Compra;
 using VCBikeService.Forms.Nosotros;
 using VCBikeService.Forms.Productos;
  
-
 namespace VCBikeService.Forms
 {
     public partial class Central : Form
@@ -20,7 +19,6 @@ namespace VCBikeService.Forms
         public Central()
         {
             InitializeComponent();
-            this.KeyPreview = true;
         }
 
 
@@ -227,51 +225,4 @@ namespace VCBikeService.Forms
                 Globals.FrmNewBilling = new Factura.FrmNewBilling();
                 Globals.FrmNewBilling.Show();
             }
-        }
-
-        private void buscarFacturaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!Globals.FrmNewBilling.Visible)
-            {
-                Globals.FrmNewBilling = new Factura.FrmNewBilling();
-                Globals.FrmNewBilling.Show();
-            }
-        }
-
-       
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Central_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-            {
-                // Cierra el formulario
-                this.Close();
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (!Globals.FrmBuysearch.Visible)
-            {
-                Globals.FrmBuysearch = new FrmBuysearch();
-                Globals.FrmBuysearch.Show();
-            }
-        }
-    }
-}
-
-       
-
-             
-
         

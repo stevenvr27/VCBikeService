@@ -37,7 +37,6 @@ namespace VCBikeService.Forms
                     string user = TxtUserName.Text.Trim();
                     string password = TxtPassword.Text.Trim();
 
-                    Globals.MyGlobalUser = Globals.MyGlobalUser.ValidateUser(user, password);
 
                     if (Globals.MyGlobalUser.UserID > 0)
                     {
@@ -64,7 +63,6 @@ namespace VCBikeService.Forms
                     MessageBox.Show("Faltan datos requeridos!", "Error de validación", MessageBoxButtons.OK);
                 }
             }
-        }
 
 
         private void BtnIngresoDirecto_Click(object sender, EventArgs e)
@@ -89,7 +87,6 @@ namespace VCBikeService.Forms
                 TxtPassword.UseSystemPasswordChar = true;
                 MessageBox.Show("Debes Escribir una Contraseña!", "Error de validación", MessageBoxButtons.OK);
             }
-
         }
 
         private void FrmLogin_FormClosed(object sender, FormClosedEventArgs e)
@@ -126,7 +123,5 @@ namespace VCBikeService.Forms
                     BtnLogin.PerformClick();
                 }
         }
-
-       
     }
 }
