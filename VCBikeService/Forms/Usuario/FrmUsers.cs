@@ -21,8 +21,7 @@ namespace VCBikeService.Forms
 
         public FrmUsers()
         {
-            InitializeComponent();
-            this.KeyPreview = true;
+            InitializeComponent(); 
             MyUser = new Logic.Models.User();
             this.KeyPreview = true;
             ListUser = new DataTable();
@@ -71,7 +70,7 @@ namespace VCBikeService.Forms
             {
                 BtnAdd.Visible = true;
                 BtnDelete.Visible = true;
-                btnDeleteForever.Visible = false;
+                btnDeleteForever.Visible = true;
                 btnActivate.Visible = false;
                 BtnEdit.Visible = true;
                 BtnClean.Visible = true;
@@ -101,7 +100,7 @@ namespace VCBikeService.Forms
             if (dt != null && dt.Rows.Count > 0)
             {
                 CbRol.ValueMember = "ID";
-                CbRol.DisplayMember = "Descrip";
+                CbRol.DisplayMember = "name";
                 CbRol.DataSource = dt;
                 CbRol.SelectedIndex = -1;
 
@@ -538,7 +537,54 @@ namespace VCBikeService.Forms
                     BtnAdd.PerformClick();
                 }
             }
+
+        
+
+        private void CheckUser_CheckedChanged_1(object sender, EventArgs e)
+        {
+            LoadListUser();
+            Checker();
         }
+
+        private void DgListUsers_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (DgListUsers.SelectedRows.Count == 1)
+            {
+
+                DataGridViewRow Mifila = DgListUsers.SelectedRows[0];
+
+
+                int Idusuario = Convert.ToInt32(Mifila.Cells["CUserID"].Value);
+
+                MyUser = new Logic.Models.User();
+
+
+                MyUser.UserID = Idusuario;
+
+                MyUser = MyUser.SearchCardIDReturnUser();
+
+                if (MyUser != null && MyUser.UserID > 0)
+                {
+
+
+                    TxtUserID.Text = Convert.ToString(MyUser.UserID);
+
+                    TxtEmail.Text = MyUser.Email;
+                    TxtUserName.Text = MyUser.UserName;
+                    TxtCardID.Text = Convert.ToString(MyUser.UserCardID);
+                    TxtPhone.Text = Convert.ToString(MyUser.PhoneNumber);
+
+                    TxtAddress.Text = MyUser.Address;
+
+                    //Combobox
+
+                    CbRol.SelectedValue = MyUser.MyRol.UserRoleID;
+
+
+                }
+            }
+        }
+    }
     }
 
 

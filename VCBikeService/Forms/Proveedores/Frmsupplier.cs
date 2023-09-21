@@ -67,7 +67,7 @@ namespace VCBikeService.Forms
             {
                 BtnAdd.Visible = true;
                 BtnDelete.Visible = true;
-                btnDeleteForEver.Visible = false;
+                btnDeleteForEver.Visible = true;
                 btnactivate.Visible = false;
                 BtnClean.Visible = true;
                 BtnEdit.Visible = true;
@@ -448,6 +448,19 @@ namespace VCBikeService.Forms
                 // Realiza el clic en el botón  add  si se presiona Enter
                 BtnAdd.PerformClick();
             }
+        }
+
+        private void BtnClean_Click_1(object sender, EventArgs e)
+        {
+            CleanForm();
+        }
+
+        
+
+        private void CheckCustomer_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadListsupply();
+            Checker();
         }
     }
 }

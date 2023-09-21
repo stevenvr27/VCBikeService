@@ -2,6 +2,7 @@
 using System;
 using System.Data.SqlClient;
 using System.Data;
+using System.Collections.Generic;
 
 namespace Logic.Models
 {
@@ -25,6 +26,7 @@ namespace Logic.Models
         public ItemCategory MyType { get; set; }   
         public Tax Tax { get; set; }
         public Unit Unit { get; set; }
+        public Ubication Ubication { get; set; }    
 
 
 
@@ -35,6 +37,7 @@ namespace Logic.Models
             Tax = new Tax();
             Unit = new Unit();
             Buy = new Buy();
+            Ubication = new Ubication();
         }
         // metodo agregar y su respectivo llamado al procedimiento almacenado 
         public bool Add()
@@ -54,6 +57,7 @@ namespace Logic.Models
             connection.parameterlist.Add(new SqlParameter("@ItemCategoryID", this.MyType.ItemCategoryID));
             connection.parameterlist.Add(new SqlParameter("@Tax", this.Tax.TaxID));
             connection.parameterlist.Add(new SqlParameter("@Unit", this.Unit.IDUnit));
+            connection.parameterlist.Add(new SqlParameter("@Ubication", this.Ubication.UbicationID));
 
             int result = connection.EjecutarInsertUpdateDelete("SPAddItem");
 
@@ -65,6 +69,27 @@ namespace Logic.Models
 
         }
         // metodo actualizar y su respectivo llamado al procedimiento almacenado 
+        public bool Updates()
+        {
+            bool R = false;
+            Connection connection = new Connection();
+            connection.parameterlist.Add(new SqlParameter("@ItemCategoryID", this.MyType.ItemCategoryID));
+            connection.parameterlist.Add(new SqlParameter("@ItemName", this.ItemName));
+            connection.parameterlist.Add(new SqlParameter("@Barcode", this.Barcode));
+            connection.parameterlist.Add(new SqlParameter("@Stock", this.Stock));
+            connection.parameterlist.Add(new SqlParameter("@SellPrice", this.SellPrice));
+            connection.parameterlist.Add(new SqlParameter("@ITemID", this.ItemID));
+            connection.parameterlist.Add(new SqlParameter("@Tax", this.Tax.TaxID));
+            connection.parameterlist.Add(new SqlParameter("@Unit", this.Unit.IDUnit));
+            connection.parameterlist.Add(new SqlParameter("@Ubication", this.Ubication.UbicationID));
+            int result = connection.EjecutarInsertUpdateDelete("SPItemUpdates");
+
+            if (result > 0)
+            {
+                R = true;
+            }
+            return R;
+        }
         public bool Update()
         {
             bool R = false;
@@ -78,6 +103,7 @@ namespace Logic.Models
             connection.parameterlist.Add(new SqlParameter("@ITemID", this.ItemID));  
             connection.parameterlist.Add(new SqlParameter("@Tax", this.Tax.TaxID));
             connection.parameterlist.Add(new SqlParameter("@Unit", this.Unit.IDUnit));
+            connection.parameterlist.Add(new SqlParameter("@Ubication", this.Ubication.UbicationID));
             int result = connection.EjecutarInsertUpdateDelete("SPItemUpdate");
 
             if (result > 0)
@@ -101,6 +127,32 @@ namespace Logic.Models
             return R;
         }
 
+        public static bool ActualizarStockEnBaseDeDatos(List<ProductoAgregado> productosAgregados)
+        {
+            bool R = false;
+            Connection connection = new Connection();
+
+            foreach (var productoAgregado in productosAgregados)
+            {
+                connection.parameterlist.Clear(); // Limpia los parámetros para el próximo producto
+                connection.parameterlist.Add(new SqlParameter("@ItemID", productoAgregado.Codigo));
+                connection.parameterlist.Add(new SqlParameter("@Stock", productoAgregado.CantidadAgregada));
+
+                int result = connection.EjecutarInsertUpdateDelete("SPactualizarstock");
+
+                if (result > 0)
+                {
+                    R = true; // Si al menos una actualización tiene éxito, establece R en true
+                }
+            }
+
+            return R;
+        }
+
+
+
+
+
         // metodo eliminar y su respectivo llamado al procedimiento almacenado 
         public bool Delete()
         {
@@ -116,6 +168,18 @@ namespace Logic.Models
 
             return R;
 
+        }
+        public DataTable Listar(string pFiltroBusqueda)
+        {
+            DataTable R = new DataTable();
+
+            Connection Micnn = new Connection();
+
+            Micnn.parameterlist.Add(new SqlParameter("@VerActivo", true));
+            Micnn.parameterlist.Add(new SqlParameter("@FiltroBusqueda", pFiltroBusqueda));
+            R = Micnn.EjecutarSELECT("SPListItemlistar");
+
+            return R;
         }
         // datatable me trae la lista de items activos mientras activo=true 
         public DataTable ListActive(string pFiltroBusqueda)
@@ -199,6 +263,27 @@ namespace Logic.Models
 
             return stock;
         }
+
+        public int ObtenerStock(int itemID)
+        {
+            int stock = 0;
+
+            Connection connection = new Connection();
+            connection.parameterlist.Add(new SqlParameter("@ID", itemID));
+            
+
+            DataTable dtStock = connection.EjecutarSELECT("SPSearchItemStock");
+
+            if (dtStock.Rows.Count > 0)
+            {
+                stock = Convert.ToInt32(dtStock.Rows[0]["Stock"]);
+                
+
+            }
+
+            return stock;
+        }
+
         public bool ActualizarStockEnBaseDeDatos(int itemID, int nuevoStock, decimal nuevoUnitaryCost)
         {
             bool resultado = false;
@@ -217,9 +302,25 @@ namespace Logic.Models
 
             return resultado;
         }
-        
 
 
+        public bool ActualizarStock(int itemID, int nuevoStock )
+        {
+            bool resultado = false;
+
+            Connection connection = new Connection();
+            connection.parameterlist.Add(new SqlParameter("@ItemID", itemID));
+            connection.parameterlist.Add(new SqlParameter("@Stock", nuevoStock)); 
+
+            int result = connection.EjecutarInsertUpdateDelete("SPItemactualizarstock");
+
+            if (result > 0)
+            {
+                resultado = true;
+            }
+
+            return resultado;
+        }
 
 
         // datatable me lista el productor seleccionado 
@@ -244,7 +345,7 @@ namespace Logic.Models
 
             DataTable dt = new DataTable();
 
-            dt = Micnn.EjecutarSELECT("SPConsultITemID ");
+            dt = Micnn.EjecutarSELECT("SPConsultITemID");
 
             if (dt != null && dt.Rows.Count > 0)
             {
@@ -263,10 +364,8 @@ namespace Logic.Models
                 R.Tax.TaxID = Convert.ToInt32(dr["TaxID"]);
                 R.Unit.IDUnit = Convert.ToInt32(dr["IDUnit"]);
                 R.MyType.ItemCategoryID = Convert.ToInt32(dr["ItemCategoryID"]);
-             
-
-
-
+                R.Ubication.UbicationID = Convert.ToInt32(dr["UbicationID"]);
+                R.Tax.AmountTax = Convert.ToDecimal(dr["AmountTax"]);
             }
 
 
@@ -305,11 +404,74 @@ namespace Logic.Models
             return R;
 
         }
+        public Item ObtenerStockDesdeLaBaseDeDatos()
+        {
+            Item R = new Item();
+            Connection Micnn = new Connection();
+
+            Micnn.parameterlist.Add(new SqlParameter("@ID", this.ItemID));
+
+            DataTable dt = new DataTable();
+
+            dt = Micnn.EjecutarSELECT("SPSearchItemStock");
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+
+                DataRow dr = dt.Rows[0];
+
+              
+                R.Stock = Convert.ToInt32(dr["Stock"]);
+              
 
 
 
-        //metodo consultar por ID 
-        public Item ConsultarPorID(int pIdProducto)
+            }
+
+
+
+            return R;
+
+        }
+
+        public Item SearchIDReturnitem()
+        {
+            Item R = new Item();
+
+            Connection Micnn = new Connection();
+
+            Micnn.parameterlist.Add(new SqlParameter("@ID", this.ItemID));
+
+            DataTable dt = new DataTable();
+
+            dt = Micnn.EjecutarSELECT("SPItemID");
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                DataRow dr = dt.Rows[0];
+
+                R.ItemID = Convert.ToInt32(dr["ItemID"]);
+                R.ItemName = Convert.ToString(dr["ItemName"]);
+                R.SellPrice = Convert.ToInt32(dr["SellPrice"]);
+              
+
+
+
+            }
+
+
+
+            return R;
+
+        }
+
+        
+
+
+
+
+    //metodo consultar por ID 
+    public Item ConsultarPorID(int pIdProducto)
         {
             Item R = new Item();
             Connection Micnn = new Connection();

@@ -56,6 +56,8 @@ namespace VCBikeService.Forms
             loadlistproduct();
             LoadItemtype();
             LoadTaxes();
+             
+            LoadUbicaction();
             loadunit();
         }
 
@@ -84,6 +86,8 @@ namespace VCBikeService.Forms
                 TxtUnitaryCost.Text = Convert.ToString(Myitem.UnitaryCost);
                 TxtStock.Text = Convert.ToString(Myitem.Stock);
                 TxtDescription.Text = Myitem.Description;
+                txtvalue.Text = Convert.ToString(Myitem.Tax.AmountTax);
+                
 
                 Calculate();
 
@@ -93,9 +97,10 @@ namespace VCBikeService.Forms
                 cbtax.SelectedValue = Myitem.Tax.TaxID;
                 cbUnit.SelectedValue = Myitem.Unit.IDUnit;
                 CbCategory.SelectedValue = Myitem.MyType.ItemCategoryID;
+                cbUbication.SelectedValue = Myitem.Ubication.UbicationID;
             }
         }
-
+        
         private void loadlistproduct()
         {
             ListItem = new DataTable();
@@ -132,6 +137,22 @@ namespace VCBikeService.Forms
                 CbCategory.DisplayMember = "Descrip";
                 CbCategory.DataSource = dt;
                 CbCategory.SelectedIndex = -1;
+
+            }
+        }
+        private void LoadUbicaction()
+        {
+            Logic.Models.Ubication ubi = new Logic.Models.Ubication();
+
+            DataTable dt = new DataTable();
+            dt = ubi.List();
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                cbUbication.ValueMember = "ID";
+                cbUbication.DisplayMember = "Descrip";
+                cbUbication.DataSource = dt;
+                cbUbication.SelectedIndex = -1;
 
             }
         }
@@ -178,6 +199,7 @@ namespace VCBikeService.Forms
             cbtax.SelectedIndex = -1;
             CbCategory.SelectedIndex = -1;
             cbUnit.SelectedIndex = -1;
+            cbUbication.SelectedIndex = -1;
             txtFinalPrice.Clear();
             txt20.Checked = false;
             txt40.Checked = false;
@@ -212,6 +234,7 @@ namespace VCBikeService.Forms
                 Myitem.Stock = Convert.ToInt32(TxtStock.Text.Trim());
                 Myitem.Tax.TaxID = Convert.ToInt32(cbtax.SelectedValue);
                 Myitem.Unit.IDUnit = Convert.ToInt32(cbUnit.SelectedValue);
+                Myitem.Ubication.UbicationID = Convert.ToInt32(cbUbication.SelectedValue);
 
 
                 Myitem.MyType.ItemCategoryID = Convert.ToInt32(CbCategory.SelectedValue);
@@ -431,6 +454,13 @@ namespace VCBikeService.Forms
                 Myitem.Stock = Convert.ToInt32(TxtStock.Text.Trim());
                 Myitem.Description = TxtDescription.Text.Trim();
 
+                Myitem.Tax.TaxID = Convert.ToInt32(cbtax.SelectedValue);
+                Myitem.Unit.IDUnit = Convert.ToInt32(cbUnit.SelectedValue);
+                Myitem.Ubication.UbicationID = Convert.ToInt32(cbUbication.SelectedValue);
+
+
+              
+
 
 
                 Myitem.MyType.ItemCategoryID = Convert.ToInt32(CbCategory.SelectedValue);
@@ -570,18 +600,18 @@ namespace VCBikeService.Forms
                 // Get the value of the 'AmountTax' column
                 if (selectedRow.Row["value"] is decimal impuestoValor)
                 {
-                    textBox1.Text = impuestoValor.ToString("F2"); // Format the value as "18.2" decimal
+                    txtvalue.Text = impuestoValor.ToString("F2"); // Format the value as "18.2" decimal
                 }
                 else
                 {
                     // Handle the case when the value cannot be converted to decimal
-                    textBox1.Text = "0";
+                    txtvalue.Text = "0";
                 }
             }
             else
             {
                 // If no item is selected, you can set the default value for textBox1
-                textBox1.Text = "0";
+                txtvalue.Text = "0";
             }
 
             // Recalculate the price with the new tax value

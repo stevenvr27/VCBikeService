@@ -64,6 +64,7 @@ namespace VCBikeService.Forms.Factura
         private void FrmNewBilling_Load(object sender, EventArgs e)
         {
             LoadListBilling();
+            TxtUser.Text = Globals.MyGlobalUser.UserName;
         }
 
         private void CheckCustomer_CheckedChanged(object sender, EventArgs e)

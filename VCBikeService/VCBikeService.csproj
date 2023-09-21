@@ -124,8 +124,17 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsFormsAero, Version=3.1.1.0, Culture=neutral, PublicKeyToken=1e7518d9b51ece33, processorArchitecture=MSIL">
+      <HintPath>..\packages\Windows-Forms-Aero.3.1.1\lib\net461\WindowsFormsAero.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CrystalReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Extras\CustomButtons.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -183,6 +192,18 @@
     <Compile Include="Forms\Login\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Mantenimiento\FrmListMantenimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mantenimiento\FrmListMantenimiento.Designer.cs">
+      <DependentUpon>FrmListMantenimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Mantenimiento\FrmMantenimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mantenimiento\FrmMantenimiento.Designer.cs">
+      <DependentUpon>FrmMantenimiento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Nosotros\FrmWe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,6 +228,12 @@
     <Compile Include="Forms\Proveedores\Frmsupplier.Designer.cs">
       <DependentUpon>Frmsupplier.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\RecuperarContraseña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RecuperarContraseña.Designer.cs">
+      <DependentUpon>RecuperarContraseña.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Usuario\FrmUsers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -216,6 +243,16 @@
     <Compile Include="Globals.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reportiador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportiador.Designer.cs">
+      <DependentUpon>Reportiador.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CrystalReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Central.resx">
       <DependentUpon>Central.cs</DependentUpon>
     </EmbeddedResource>
@@ -243,6 +280,12 @@
     <EmbeddedResource Include="Forms\Login\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Mantenimiento\FrmListMantenimiento.resx">
+      <DependentUpon>FrmListMantenimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Mantenimiento\FrmMantenimiento.resx">
+      <DependentUpon>FrmMantenimiento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Productos\FrmProductsAdd.resx">
       <DependentUpon>FrmProductsAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -251,6 +294,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Proveedores\Frmsupplier.resx">
       <DependentUpon>Frmsupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RecuperarContraseña.resx">
+      <DependentUpon>RecuperarContraseña.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Usuario\FrmUsers.resx">
       <DependentUpon>FrmUsers.cs</DependentUpon>
@@ -264,6 +310,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Reportiador.resx">
+      <DependentUpon>Reportiador.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="..\.editorconfig">
       <Link>.editorconfig</Link>
     </None>
@@ -290,6 +339,9 @@
   <ItemGroup>
     <Folder Include="Forms\Reportes\" />
     <Folder Include="Reports\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

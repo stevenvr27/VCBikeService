@@ -1,6 +1,7 @@
 ﻿using Logic.Models;
 using Logic.Services;
 using System;
+using CrystalDecisions.CrystalReports.Engine;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -21,10 +22,12 @@ namespace VCBikeService.Forms.Compra
 
 
 
-        public FrmFacturar()
+        public FrmFacturar( )
         {
             this.KeyPreview = true;
+           
             InitializeComponent();
+             
 
 
             MyBilling = new Billing();
@@ -60,30 +63,7 @@ namespace VCBikeService.Forms.Compra
 
             }
         }
-        //public ReportDocument Imprimir(ReportDocument repo)
-        //{
-        //    ReportDocument R = repo;
-
-        //    Crystal ObjCrytal = new Crystal(R);
-
-        //    //contiene la data que se dibujará en el reporte
-        //    DataTable Datos = new DataTable();
-
-        //    Connection MiCnn = new Connection();
-
-        //    MiCnn.parameterlist.Add(new SqlParameter("@ID", this.MyBilling.BillingID));
-
-        //    Datos = MiCnn.DMLSelect("SPCompraReporte");
-
-        //    if (Datos != null && Datos.Rows.Count > 0)
-        //    {
-        //        ObjCrytal.Datos = Datos;
-
-        //        R = ObjCrytal.GenerarReporte();
-        //    }
-
-        //    return R;
-        //}
+       
 
         private void LoadMethodPayment()
         {
@@ -282,10 +262,46 @@ namespace VCBikeService.Forms.Compra
         {
             if (!string.IsNullOrEmpty(TxtCustomerID.Text.Trim()) && Localdetailist != null && Localdetailist.Rows.Count > 0 && CbBuyType.SelectedIndex > -1 && cvMethodp.SelectedIndex > -1)
             {
+                decimal totalValue = 0;
+                decimal subTotalValue = 0;
+                decimal descuentosValue = 0;
+                decimal impuestosValue = 0;
+
+                // Calculate the total value from the Localdetailist DataTable
+                foreach (DataRow item in Localdetailist.Rows)
+                {
+                    decimal itemTotal = Convert.ToDecimal(item["TotalLine"]);
+                    totalValue += itemTotal;
+
+                    decimal itemSubTotal = Convert.ToDecimal(item["SubTotalLine"]);
+                    subTotalValue += itemSubTotal;
+
+                    decimal itemDescuentos = Convert.ToDecimal(item["PercentageDiscount"]);
+                    descuentosValue += (itemSubTotal * itemDescuentos) / 100;
+
+                    decimal itemImpuestos = Convert.ToDecimal(item["ImpuestoLine"]);
+                    impuestosValue += itemImpuestos;
+                }
+
+                LblTotal.Text = totalValue.ToString();
+                MyBilling.Total = Convert.ToDecimal(LblTotal.Text);
+
+                LblImpuestos.Text = impuestosValue.ToString();
+                MyBilling.Impuesto = Convert.ToDecimal(LblImpuestos.Text);
+
+                LblSubTotal.Text = subTotalValue.ToString();
+                MyBilling.SubTotal = Convert.ToDecimal(LblSubTotal.Text);
+
+                LblDescuentos.Text= descuentosValue.ToString();
+                MyBilling.Descuentos = Convert.ToDecimal(LblDescuentos.Text);
 
 
+
+               
                 int customerId = MyBilling.MyCustomer.CustomerID;
 
+                
+                 
                 TxtCustomerID.Text = Convert.ToString(customerId);
                 MyBilling.MyUser.UserID = Globals.MyGlobalUser.UserID;
                 MyBilling.MYMethodPayment.MethodPaymentID = Convert.ToInt32(cvMethodp.SelectedValue);
@@ -325,44 +341,35 @@ namespace VCBikeService.Forms.Compra
                     {
                         MessageBox.Show($"La cantidad a facturar del producto '{producto.ItemName}' excede el stock disponible.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
-                    }
+                    } 
 
                     // Actualizar el stock en la base de datos restando la cantidad facturada
                     producto.Stock -= cantidadFacturar;
-                    producto.Update(); // Este método debe actualizar el stock en la base de datos
+                    producto.Updates(); // Este método debe actualizar el stock en la base de datos
 
                     // Agregar el producto a la lista de productos facturados
                     productosFacturados.Add(producto);
-                }
-
-
-
-
-
-
-                // Once all sales and stock updates are done, proceed to add the billing record
-
-
-
+                } 
                 if (MyBilling.Add())
                 {
                     MessageBox.Show("Factura guardada correctamente", ":)", MessageBoxButtons.OK);
 
-                    //ReportDocument MiReporteCompra = new ReportDocument();
+                    ReportDocument MiReporteCompra = new ReportDocument();
 
-                    //MiReporteCompra = new Reportes.RptFactura();
+                    //se asigna un reporte al documento 
+                    MiReporteCompra = new CrystalReport1();
 
-                    //MiReporteCompra = MyBilling.Imprimir(MiReporteCompra);
+                    MiReporteCompra = MyBilling.Imprimir(MiReporteCompra);
 
-                    ////se asigna este documento al visulizador de reportes (se usa para TODOS los reportes) 
-                    //MiFormCRV = new FrmVisualizadorReportes();
+                    //se asigna este documento al visulizador de reportes (se usa para TODOS los reportes) 
+                    Reportiador MiFormCRV = new Reportiador();
 
-                    //MiFormCRV.CrvVisualizador.ReportSource = MiReporteCompra;
+                    MiFormCRV.crystalReportViewer1.ReportSource = MiReporteCompra;
 
-                    //MiFormCRV.Show();
+                    MiFormCRV.Show();
 
-                    ////para visualizar la página completa
-                    //MiFormCRV.CrvVisualizador.Zoom(1);
+                    //para visualizar la página completa
+                    MiFormCRV.crystalReportViewer1.Zoom(1);
 
 
                     MyBilling.UpdateProductStock();

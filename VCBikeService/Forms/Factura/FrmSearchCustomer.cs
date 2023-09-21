@@ -77,6 +77,17 @@ namespace VCBikeService.Forms.Compra
                 this.DialogResult = DialogResult.OK;
 
             }
+            if (DgvLista.SelectedRows.Count == 1)
+            {
+                DataGridViewRow FilaSeleccionada = DgvLista.SelectedRows[0];
+                int IDCLIENTE;
+                IDCLIENTE = Convert.ToInt32(FilaSeleccionada.Cells["CCustomerID"].Value);
+ 
+                Globals.FrmMantenimiento.TxtCustomerID.Text = Convert.ToString(IDCLIENTE);
+
+                this.DialogResult = DialogResult.OK;
+
+            }
         }
 
         private void FrmSearchCustomer_KeyUp(object sender, KeyEventArgs e)

@@ -116,9 +116,13 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsFormsAero, Version=3.1.1.0, Culture=neutral, PublicKeyToken=1e7518d9b51ece33, processorArchitecture=MSIL">
+      <HintPath>..\packages\Windows-Forms-Aero.3.1.1\lib\net461\WindowsFormsAero.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Crypto.cs" />
+    <Compile Include="Models\BiciType.cs" />
     <Compile Include="Models\Billing.cs" />
     <Compile Include="Models\BillingDetail.cs" />
     <Compile Include="Models\BillingType.cs" />
@@ -129,11 +133,14 @@
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerType.cs" />
     <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\ProductoAgregado.cs" />
     <Compile Include="Models\ItemCategory.cs" />
+    <Compile Include="Models\Maintenance.cs" />
     <Compile Include="Models\MethodPayment.cs" />
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Models\SupplierType.cs" />
     <Compile Include="Models\Tax.cs" />
+    <Compile Include="Models\Ubication.cs" />
     <Compile Include="Models\Unit.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserRole.cs" />

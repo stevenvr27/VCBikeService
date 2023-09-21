@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace Logic.Models
 {
@@ -14,7 +15,7 @@ namespace Logic.Models
 
         public decimal SubTotal { get; set; }
         public decimal Descuentos { get; set; }
-        public decimal SubTotal2 { get; set; }
+     
         public decimal Impuesto { get; set; }
         public decimal Total { get; set; }
         public string Notes { get; set; }
@@ -45,18 +46,43 @@ namespace Logic.Models
 
         }
         // metodo agregar y su respecitvo llamado al procedimiento almacenado 
+
+        public ReportDocument Imprimir(ReportDocument repo)
+        {
+            ReportDocument R = repo;
+
+            Crystal ObjCrytal = new Crystal(R);
+
+            //contiene la data que se dibujará en el reporte
+            DataTable Datos = new DataTable();
+
+            Connection MiCnn = new Connection();
+
+            MiCnn.parameterlist.Add(new SqlParameter("@ID", this.BillingID));
+
+            Datos = MiCnn.EjecutarSELECT("SPBillinggenerate");
+
+            if (Datos != null && Datos.Rows.Count > 0)
+            {
+                ObjCrytal.Datos = Datos;
+
+                R = ObjCrytal.GenerarReporte();
+            }
+
+            return R;
+        }
         public bool Add()
         {
             bool R = false;
              
             Connection MyCnnEncabezado = new Connection();
 
-            Totalizar();
-          
+            
+
             MyCnnEncabezado.parameterlist.Add(new SqlParameter("@date", this.Date));
             MyCnnEncabezado.parameterlist.Add(new SqlParameter("@subtotal", this.SubTotal));
             MyCnnEncabezado.parameterlist.Add(new SqlParameter("@descuentos", this.Descuentos));
-            MyCnnEncabezado.parameterlist.Add(new SqlParameter("@subtotal2", this.SubTotal2));
+ 
             MyCnnEncabezado.parameterlist.Add(new SqlParameter("@Impuestos", this.Impuesto));
             MyCnnEncabezado.parameterlist.Add(new SqlParameter("@total", this.Total));
             MyCnnEncabezado.parameterlist.Add(new SqlParameter("@notas", this.Notes));  
@@ -201,7 +227,7 @@ namespace Logic.Models
         {
             
             this.SubTotal = 0;
-            this.SubTotal2 = 0;
+         
             this.Impuesto = 0;
             this.Total = 0;
 

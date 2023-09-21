@@ -12,7 +12,7 @@ namespace VCBikeService.Forms.Clientes
 
         public FrmClientes()
         {
-            this.KeyPreview = true;
+          //  this.KeyPreview = true;
             InitializeComponent();
             CustomerList = new DataTable();
             newcustomer = new Logic.Models.Customer();
@@ -137,16 +137,16 @@ namespace VCBikeService.Forms.Clientes
             if (CheckCustomer.Checked)
             {
                 BtnAddCustomer.Visible = true;
-                BtnCleanC.Visible = true;
+                 
                 BtnEditC.Visible = true;
                 btnactivate.Visible = false;
                 BtnDeleteC.Visible = true;
-                btnDeleteForever.Visible = false;
+                btnDeleteForever.Visible = true;
             }
             else
             {
                 BtnAddCustomer.Visible = false;
-                BtnCleanC.Visible = false;
+                 
                 BtnEditC.Visible = false;
                 btnactivate.Visible = true;
                 btnDeleteForever.Visible = true;
@@ -443,6 +443,22 @@ namespace VCBikeService.Forms.Clientes
                 // Realiza el clic en el botón "add" si se presiona Enter
                 BtnAddCustomer.PerformClick();
             }
+        }
+
+        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void BtnClean_Click(object sender, EventArgs e)
+        {
+            CleanForm();
+        }
+
+        private void CheckCustomer_CheckedChanged_1(object sender, EventArgs e)
+        {
+            Checker();
+            LoadListCustomer();
         }
     }
 }

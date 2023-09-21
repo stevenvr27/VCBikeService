@@ -244,6 +244,7 @@ namespace VCBikeService.Forms.Productos
 
         private void Date()
         {
+            //cambiar fecha
             TxtDate.Text = DateTime.Now.ToLongDateString();
 
 
@@ -316,5 +317,9 @@ namespace VCBikeService.Forms.Productos
 
         }
 
+        private void BtnCancelC_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
     }
 }

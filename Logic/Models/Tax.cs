@@ -17,6 +17,6 @@ namespace Logic.Models
             R = MiCnn.EjecutarSELECT("SPUTaxList");
             return R;
         }
-       
+        
     }
 }

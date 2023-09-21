@@ -5,45 +5,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using CrystalDecisions.CrystalReports.Engine;
+
 namespace Logic.Models
 {
-    //public  class Crystal
-    //{
-    //    //atributos de la clase
-    //    public CrystalDecisions.CrystalReports.Engine.ReportDocument Reporte { get; set; }
+    public class Crystal
+    {
+        //atributos de la clase
+        public ReportDocument Reporte { get; set; }
 
-    //    public DataTable OrigenDeDatos { get; set; }
+        //contiene la data que se visuliza en el reporte
+        public DataTable Datos { get; set; }
 
-    //    public Crystal()
-    //    {
-    //        //OrigenDeDatos = new DataTable();
-    //    }
+        public Crystal(ReportDocument pRpt)
+        {
+            Reporte = pRpt;
+        }
 
-    //    public Crystal(CrystalDecisions.CrystalReports.Engine.ReportDocument Rpt)
-    //    {
-    //        //Este es un constructor en overload (sobrecarga) que recibe por param
-    //        //un obj de tipo reporte, y alimenta la variable local de reporte
-    //        //OrigenDeDatos = new DataTable();
-    //        //Reporte = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
+        public Crystal()
+        {
 
-    //        Reporte = Rpt;
-    //    }
+        }
 
-    //    public CrystalDecisions.CrystalReports.Engine.ReportDocument GenerarReporte()
-    //    {
-    //        //esta función se encarga de evaluar que el origen de datos tenga info
-    //        // y retorna un objeto tipo reporte con la información ya cargada
-    //        if (OrigenDeDatos.Rows.Count > 0)
-    //        {
-    //            Reporte.SetDataSource(OrigenDeDatos);
+        public ReportDocument GenerarReporte()
+        {
+            if (Datos.Rows.Count > 0)
+            {
+                Reporte.SetDataSource(Datos);
 
-    //            return Reporte;
-    //        }
-    //        else
-    //        {
-    //            return null;
-    //        }
-    //    }
-
-  //  }
+                return Reporte;
+            }
+            else
+            { return null; }
+        }
+    }
 }

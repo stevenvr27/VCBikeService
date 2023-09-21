@@ -15,8 +15,13 @@ namespace VCBikeService
 
             return frmEditBuyItem;
         }
+
+
         // formularios y sus distitos nombres para poder ser ejecutados 
+        public static Forms.FrmLogin login = new Forms.FrmLogin();
+
         public static Forms.Compra.FrmBuysearch FrmBuysearch = new Forms.Compra.FrmBuysearch();
+        public static Forms.Mantenimiento.FrmMantenimiento FrmMantenimiento = new Forms.Mantenimiento.FrmMantenimiento();
         public static Forms.Productos.FrmBuyItem FrmSearchProduct = new Forms.Productos.FrmBuyItem();
         public static Forms.Compra.FrmSearchCustomer CustomerSearch = new Forms.Compra.FrmSearchCustomer();
         public static Forms.Frmsupplier Frmsupplier = new Forms.Frmsupplier();
@@ -28,6 +33,7 @@ namespace VCBikeService
         public static Forms.Factura.FrmNewBilling FrmNewBilling = new Forms.Factura.FrmNewBilling();
         public static Forms.FrmUsers FrmUsers = new Forms.FrmUsers();
         public static Logic.Models.User MyGlobalUser = new Logic.Models.User();
+        public static Reportiador repor = new Reportiador();
          
     }
 }

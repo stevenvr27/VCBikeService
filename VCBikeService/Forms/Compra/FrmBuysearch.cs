@@ -129,11 +129,7 @@ namespace VCBikeService.Forms.Compra
             txtsupplier.Clear();
         }
 
-        private void BtnCleanC_Click(object sender, EventArgs e)
-        {
-            clean();
-        }
-
+       
         private void btnDeleteForever_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(TxtUser.Text.Trim()))
@@ -202,10 +198,10 @@ namespace VCBikeService.Forms.Compra
 
         }
 
-
-
-
-
+        private void BtnClean_Click(object sender, EventArgs e)
+        {
+            clean();
+        }
     }
 
 }

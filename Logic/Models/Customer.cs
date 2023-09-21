@@ -30,7 +30,7 @@ namespace Logic.Models
         {
             bool R = false;
 
-            Connection connection = new Connection();
+             Connection connection = new Connection();
 
              
 
@@ -169,7 +169,13 @@ namespace Logic.Models
 
             return R;
         }
-
+        public DataTable List()
+        {
+            DataTable R = new DataTable();
+            Services.Connection connection = new Services.Connection();
+            R = connection.EjecutarSELECT("SPCustomerList");
+            return R;
+        }
 
         public bool ConsultEmail()
         {
