@@ -84,6 +84,7 @@ namespace VCBikeService.Forms.Compra
 
                     // Actualizar el impuesto para reflejar la nueva cantidad
                     decimal PorcentajeDescuento = Convert.ToDecimal(TxtDescuento.Text.Trim());
+
                     decimal PrecioMenosDescuento = unitaryPrice - ((unitaryPrice * PorcentajeDescuento) / 100);
                     decimal Impuestos = ((PrecioMenosDescuento * MyItem.Tax.AmountTax) / 100) * newQuantity;
                     existingRow["ImpuestoLine"] = Impuestos;

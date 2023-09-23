@@ -133,6 +133,7 @@
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerType.cs" />
     <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\MaintenanceDetail.cs" />
     <Compile Include="Models\ProductoAgregado.cs" />
     <Compile Include="Models\ItemCategory.cs" />
     <Compile Include="Models\Maintenance.cs" />

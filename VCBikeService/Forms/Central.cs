@@ -18,11 +18,30 @@ namespace VCBikeService.Forms
 {
     public partial class Central : Form
     {
+        private int formCount = 0; // Inicializa el contador de formularios abiertos
+        private int maxFormCount = 3; // Establece el límite máximo de formularios abiertos
+
         public Central()
         {
             InitializeComponent();
             this.KeyPreview = true;
 
+        }
+
+        
+
+        private void CerrarFormularioMasAntiguo()
+        {
+            // Encuentra el formulario más antiguo y ciérralo
+            foreach (Form form in this.MdiChildren)
+            {
+                if (!form.Visible)
+                {
+                    // Cierra el formulario desactivado más antiguo
+                    form.Close();
+                    return;
+                }
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -40,6 +59,10 @@ namespace VCBikeService.Forms
 
         private void button7_Click(object sender, EventArgs e)
         {
+            if (formCount >= maxFormCount)
+            {
+                CerrarFormularioMasAntiguo();
+            }
 
             FrmFacturar frmFacturar = new FrmFacturar();
 
@@ -62,6 +85,10 @@ namespace VCBikeService.Forms
 
         private void btnprod_Click(object sender, EventArgs e)
         {
+            if (formCount >= maxFormCount)
+            {
+                CerrarFormularioMasAntiguo();
+            }
             FrmProductsAdd item = new FrmProductsAdd();
 
             // Establecer TopLevel en false para que pueda agregarse como un control
@@ -83,6 +110,10 @@ namespace VCBikeService.Forms
 
         private void button4_Click(object sender, EventArgs e)
         {
+            if (formCount >= maxFormCount)
+            {
+                CerrarFormularioMasAntiguo();
+            }
             Frmsupplier prove = new Frmsupplier();
 
             // Establecer TopLevel en false para que pueda agregarse como un control
@@ -102,6 +133,10 @@ namespace VCBikeService.Forms
 
         private void BtnCustomers_Click(object sender, EventArgs e)
         {
+            if (formCount >= maxFormCount)
+            {
+                CerrarFormularioMasAntiguo();
+            }
             FrmClientes frmClientes = new FrmClientes();
 
             // Establecer TopLevel en false para que pueda agregarse como un control
@@ -122,6 +157,10 @@ namespace VCBikeService.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (formCount >= maxFormCount)
+            {
+                CerrarFormularioMasAntiguo();
+            }
             FrmBuyItem frmBuyItem = new FrmBuyItem();
 
             // Establecer TopLevel en false para que pueda agregarse como un control
@@ -142,6 +181,10 @@ namespace VCBikeService.Forms
 
         private void button9_Click(object sender, EventArgs e)
         {
+            if (formCount >= maxFormCount)
+            {
+                CerrarFormularioMasAntiguo();
+            }
             FrmBuysearch frmSearchBuyItem = new FrmBuysearch();
 
             // Establecer TopLevel en false para que pueda agregarse como un control
@@ -162,6 +205,10 @@ namespace VCBikeService.Forms
 
         private void button6_Click(object sender, EventArgs e)
         {
+            if (formCount >= maxFormCount)
+            {
+                CerrarFormularioMasAntiguo();
+            }
             FrmNewBilling FrmNewBilling = new FrmNewBilling();
 
             // Establecer TopLevel en false para que pueda agregarse como un control
@@ -182,6 +229,10 @@ namespace VCBikeService.Forms
 
         private void button5_Click(object sender, EventArgs e)
         {
+            if (formCount >= maxFormCount)
+            {
+                CerrarFormularioMasAntiguo();
+            }
             FrmProductsAdd ProductsAdd = new FrmProductsAdd();
 
             // Establecer TopLevel en false para que pueda agregarse como un control
@@ -202,6 +253,10 @@ namespace VCBikeService.Forms
 
         private void button4_Click_1(object sender, EventArgs e)
         {
+            if (formCount >= maxFormCount)
+            {
+                CerrarFormularioMasAntiguo();
+            }
             FrmUsers user = new FrmUsers();
 
             // Establecer TopLevel en false para que pueda agregarse como un control
@@ -222,6 +277,10 @@ namespace VCBikeService.Forms
 
         private void button3_Click(object sender, EventArgs e)
         {
+            if (formCount >= maxFormCount)
+            {
+                CerrarFormularioMasAntiguo();
+            }
             Frmsupplier Supply = new Frmsupplier();
 
             // Establecer TopLevel en false para que pueda agregarse como un control
@@ -242,6 +301,10 @@ namespace VCBikeService.Forms
 
         private void buscarFacturaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (formCount >= maxFormCount)
+            {
+                CerrarFormularioMasAntiguo();
+            }
             FrmNewBilling FrmNewBilling = new FrmNewBilling();
 
             // Establecer TopLevel en false para que pueda agregarse como un control
@@ -262,6 +325,10 @@ namespace VCBikeService.Forms
 
         private void buscarCompraToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (formCount >= maxFormCount)
+            {
+                CerrarFormularioMasAntiguo();
+            }
             FrmBuysearch frmSearchBuyItem = new FrmBuysearch();
 
             // Establecer TopLevel en false para que pueda agregarse como un control
@@ -282,6 +349,10 @@ namespace VCBikeService.Forms
 
         private void gestiónDeClientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (formCount >= maxFormCount)
+            {
+                CerrarFormularioMasAntiguo();
+            }
             FrmClientes frmClientes = new FrmClientes();
 
             // Establecer TopLevel en false para que pueda agregarse como un control
@@ -302,6 +373,10 @@ namespace VCBikeService.Forms
 
         private void MnuEmpresaGestion_Click(object sender, EventArgs e)
         {
+            if (formCount >= maxFormCount)
+            {
+                CerrarFormularioMasAntiguo();
+            }
             Frmsupplier Supply = new Frmsupplier();
 
             // Establecer TopLevel en false para que pueda agregarse como un control
@@ -322,6 +397,10 @@ namespace VCBikeService.Forms
 
         private void MnuUsuariosGestion_Click(object sender, EventArgs e)
         {
+            if (formCount >= maxFormCount)
+            {
+                CerrarFormularioMasAntiguo();
+            }
             FrmUsers user = new FrmUsers();
 
             // Establecer TopLevel en false para que pueda agregarse como un control
@@ -342,6 +421,10 @@ namespace VCBikeService.Forms
 
         private void MnuProductosGestion_Click(object sender, EventArgs e)
         {
+            if (formCount >= maxFormCount)
+            {
+                CerrarFormularioMasAntiguo();
+            }
             FrmProductsAdd ProductsAdd = new FrmProductsAdd();
 
             // Establecer TopLevel en false para que pueda agregarse como un control
@@ -362,6 +445,10 @@ namespace VCBikeService.Forms
 
         private void buscarProductoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (formCount >= maxFormCount)
+            {
+                CerrarFormularioMasAntiguo();
+            }
             FrmProductsAdd ProductsAdd = new FrmProductsAdd();
 
             // Establecer TopLevel en false para que pueda agregarse como un control
@@ -383,6 +470,10 @@ namespace VCBikeService.Forms
 
         private void MnuFacturar_Click(object sender, EventArgs e)
         {
+            if (formCount >= maxFormCount)
+            {
+                CerrarFormularioMasAntiguo();
+            }
             FrmFacturar frmFacturar = new FrmFacturar();
 
             // Establecer TopLevel en false para que pueda agregarse como un control
@@ -403,6 +494,10 @@ namespace VCBikeService.Forms
 
         private void stockToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (formCount >= maxFormCount)
+            {
+                CerrarFormularioMasAntiguo();
+            }
             FrmBuyItem frmBuyItem = new FrmBuyItem();
 
             // Establecer TopLevel en false para que pueda agregarse como un control
@@ -423,6 +518,10 @@ namespace VCBikeService.Forms
 
         private void button10_Click(object sender, EventArgs e)
         {
+            if (formCount >= maxFormCount)
+            {
+                CerrarFormularioMasAntiguo();
+            }
             FrmMantenimiento mantenimiento = new FrmMantenimiento();
 
             // Establecer TopLevel en false para que pueda agregarse como un control
@@ -453,8 +552,13 @@ namespace VCBikeService.Forms
 
         private void Central_KeyUp(object sender, KeyEventArgs e)
         {
+             
             if (e.Control && e.KeyCode == Keys.D)
             {
+                if (formCount >= maxFormCount)
+                {
+                    CerrarFormularioMasAntiguo();
+                }
                 FrmFacturar frmFacturar = new FrmFacturar();
 
                 // Establecer TopLevel en false para que pueda agregarse como un control
@@ -476,7 +580,10 @@ namespace VCBikeService.Forms
             }
             if (e.Control && e.KeyCode == Keys.S)
             {
-
+                if (formCount >= maxFormCount)
+                {
+                    CerrarFormularioMasAntiguo();
+                }
                 FrmBuyItem frmBuyItem = new FrmBuyItem();
 
                 // Establecer TopLevel en false para que pueda agregarse como un control
@@ -499,7 +606,10 @@ namespace VCBikeService.Forms
 
             if (e.Control && e.KeyCode == Keys.F)
             {
-
+                if (formCount >= maxFormCount)
+                {
+                    CerrarFormularioMasAntiguo();
+                }
                 FrmMantenimiento mantenimiento = new FrmMantenimiento();
 
                 // Establecer TopLevel en false para que pueda agregarse como un control
@@ -521,6 +631,10 @@ namespace VCBikeService.Forms
             }
             if (e.Control && e.KeyCode == Keys.Q)
             {
+                if (formCount >= maxFormCount)
+                {
+                    CerrarFormularioMasAntiguo();
+                }
                 FrmNewBilling FrmNewBilling = new FrmNewBilling();
 
                 // Establecer TopLevel en false para que pueda agregarse como un control
@@ -540,6 +654,10 @@ namespace VCBikeService.Forms
             }
             if (e.Control && e.KeyCode == Keys.W)
             {
+                if (formCount >= maxFormCount)
+                {
+                    CerrarFormularioMasAntiguo();
+                }
                 FrmBuysearch frmSearchBuyItem = new FrmBuysearch();
 
                 // Establecer TopLevel en false para que pueda agregarse como un control
@@ -560,6 +678,10 @@ namespace VCBikeService.Forms
             }
             if (e.Control && e.KeyCode == Keys.E)
             {
+                if (formCount >= maxFormCount)
+                {
+                    CerrarFormularioMasAntiguo();
+                }
                 FrmProductsAdd ProductsAdd = new FrmProductsAdd();
 
                 // Establecer TopLevel en false para que pueda agregarse como un control
@@ -581,6 +703,10 @@ namespace VCBikeService.Forms
 
         private void button11_Click(object sender, EventArgs e)
         {
+            if (formCount >= maxFormCount)
+            {
+                CerrarFormularioMasAntiguo();
+            }
             FrmListMantenimiento listMantenimiento = new FrmListMantenimiento();
 
             // Establecer TopLevel en false para que pueda agregarse como un control
@@ -597,6 +723,30 @@ namespace VCBikeService.Forms
 
             // Mostrar el formulario dentro del Panel
             listMantenimiento.Show();
+        }
+
+        private void btnlogoInicio_Click(object sender, EventArgs e)
+        {
+            if (formCount >= maxFormCount)
+            {
+                CerrarFormularioMasAntiguo();
+            }
+            Central Centrals = new Central();
+
+            // Establecer TopLevel en false para que pueda agregarse como un control
+            Centrals.TopLevel = false;
+
+            // Establecer el tamaño del formulario para que coincida con el tamaño del Panel
+            Centrals.Size = PanelPrincipal.Size;
+
+            // Limpiar el Panel principal (si es necesario)
+            PanelPrincipal.Controls.Clear();
+
+            // Agregar el formulario FrmBuyItem al Panel principal
+            PanelPrincipal.Controls.Add(Centrals);
+
+            // Mostrar el formulario dentro del Panel
+            Centrals.Show();
         }
     }
 }

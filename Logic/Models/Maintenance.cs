@@ -20,11 +20,14 @@ namespace Logic.Models
         public User Myuser { get; set; }
         public BiciType MybiciType { get; set; }
 
+        public List<MaintenanceDetail> productosAgregados = new List<MaintenanceDetail>();
+
 
         public Maintenance()
         {
                
             MyCustomer = new Customer();
+            productosAgregados = new List<MaintenanceDetail>();
             Myuser = new User();
             MybiciType = new BiciType();
 
@@ -43,16 +46,55 @@ namespace Logic.Models
             connection.parameterlist.Add(new SqlParameter("@Brand", this.Brand));
             connection.parameterlist.Add(new SqlParameter("@Notas", this.Notas));
 
-            int result = connection.EjecutarInsertUpdateDelete("SPMaintenanceAdd");
+            // Agrega el parámetro de salida para capturar el ID del nuevo mantenimiento
+            SqlParameter outputParameter = new SqlParameter("@NewMaintenanceID", SqlDbType.Int);
+            outputParameter.Direction = ParameterDirection.Output;
+            connection.parameterlist.Add(outputParameter);
 
-            if (result > 0)
+            // Ejecuta el procedimiento almacenado para agregar el mantenimiento
+            Object result = connection.EjecutarInsertUpdateDelete("SPMaintenanceAdd");
+
+            int MAntenimientoRecienCreado = 0;
+
+            if (result != null)
             {
+                // Obtiene el ID del nuevo mantenimiento desde el parámetro de salida
+                MAntenimientoRecienCreado = Convert.ToInt32(outputParameter.Value);
+
+                this.ID = MAntenimientoRecienCreado;
+
+                foreach (MaintenanceDetail item in this.productosAgregados)
+                {
+                    // Utiliza la misma instancia de 'connection' para los detalles del mantenimiento
+                    connection.parameterlist.Clear(); // Limpia los parámetros anteriores
+
+                    connection.parameterlist.Add(new SqlParameter("@ID", MAntenimientoRecienCreado));
+                    connection.parameterlist.Add(new SqlParameter("@ItemID", item.Myitem.ItemID));
+                    connection.parameterlist.Add(new SqlParameter("@unitaryprice", item.UnitaryPrice));
+                    connection.parameterlist.Add(new SqlParameter("@Discount", item.Discount));
+
+                    // Ejecuta el comando utilizando 'connection' para agregar detalles del mantenimiento
+                    connection.EjecutarInsertUpdateDelete("SPMaintenanceDetailAdd");
+                }
                 R = true;
             }
             return R;
-
         }
 
+        public DataTable ListMaintenanceActive(string pFiltroBusqueda)
+        {
+            DataTable R = new DataTable();
 
+            Logic.Services.Connection Micnn = new Logic.Services.Connection();
+
+            Micnn.parameterlist.Add(new SqlParameter("@VerActivo ", true));
+            Micnn.parameterlist.Add(new SqlParameter("@FiltroBusqueda", pFiltroBusqueda));
+
+
+
+            R = Micnn.EjecutarSELECT("ListMaintenanceActive");
+
+            return R;
+        }
     }
 }

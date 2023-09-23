@@ -13,6 +13,7 @@ using VCBikeService.Forms.Compra;
 
 namespace VCBikeService.Forms.Mantenimiento
 {
+   
     public partial class FrmMantenimiento : Form
     {
         public Maintenance MyMaintenance { get; set; }
@@ -20,6 +21,9 @@ namespace VCBikeService.Forms.Mantenimiento
         public User MyUser { get; set; }
         public Customer MyCustomer { get; set; }
         private Item MyItem { get; set; }
+        public DataTable Listitems { get; set; }
+        private List<decimal> valoresAdicionales = new List<decimal>();
+
 
         private List<ProductoAgregado> productosAgregados = new List<ProductoAgregado>();
 
@@ -32,6 +36,8 @@ namespace VCBikeService.Forms.Mantenimiento
             MyMaintenance = new Maintenance();
             MyUser = new User();
             MyCustomer = new Customer();
+            ListItem= new DataTable();
+            valoresAdicionales= new List<decimal>();
             
             LoadCustomer();
             Loadbicitype();
@@ -105,6 +111,7 @@ namespace VCBikeService.Forms.Mantenimiento
 
                 MyItem = new Logic.Models.Item();
 
+                
 
                 MyItem.ItemID = IdProduct;
 
@@ -113,6 +120,7 @@ namespace VCBikeService.Forms.Mantenimiento
                 if (MyItem != null && MyItem.ItemID > 0)
                 {
                     TxtPrecioUnitario.Text = Convert.ToString(MyItem.SellPrice);
+                     
 
 
 
@@ -133,13 +141,22 @@ namespace VCBikeService.Forms.Mantenimiento
         }
         private void calcular()
         {
+            decimal descuento = Convert.ToDecimal(TxtDescuento.Value) / 100;
             int stock = Convert.ToInt32(TxtCantidad.Value);
             decimal valorUnitario;
 
             if (decimal.TryParse(TxtPrecioUnitario.Text.Trim(), out valorUnitario))
             {
-                decimal total = valorUnitario * stock;
-                TxtPrecioFinal.Text = total.ToString();
+                decimal Preciounitario = valorUnitario * stock;
+                decimal DescuentoFinal = Preciounitario * descuento;
+                decimal PrecioConDescuento = Preciounitario - DescuentoFinal;
+
+                decimal iva = 13m / 100m;
+                decimal Impuesto = valorUnitario * iva;
+                decimal total = PrecioConDescuento + Impuesto;
+
+                TxtIva.Text = Impuesto.ToString("0.00"); // Ajusta el formato de salida según tus necesidades
+                TxtPrecioFinal.Text = total.ToString("0.00");
             }
 
         }
@@ -164,89 +181,102 @@ namespace VCBikeService.Forms.Mantenimiento
 
         private void btnadd_Click(object sender, EventArgs e)
         {
-                if (decimal.TryParse(TxtPrecioFinal.Text.Trim(), out decimal precioIngresado))
+            if (decimal.TryParse(TxtPrecioFinal.Text.Trim(), out decimal precioIngresado))
+            {
+                if (precioIngresado > 0)
                 {
-                    if (precioIngresado > 0)
+                    if (int.TryParse(TxtCantidad.Text, out int cantidadIngresada))
                     {
-                    
-
-                        if (DgProduct.SelectedRows.Count > 0)
+                        if (cantidadIngresada > 0) // Verificar si la cantidad es mayor que 0
                         {
-                            if (int.TryParse(TxtCantidad.Text, out int cantidadIngresada))
+                            foreach (DataGridViewRow filaSeleccionada in DgProduct.SelectedRows)
                             {
-                                foreach (DataGridViewRow filaSeleccionada in DgProduct.SelectedRows)
+                                int stockProducto = Convert.ToInt32(filaSeleccionada.Cells["CStock"].Value); // Obtiene el stock actual del producto
+
+                                string nombre = filaSeleccionada.Cells["CItemName"].Value.ToString();
+                                int codigo = Convert.ToInt32(filaSeleccionada.Cells["CItemID"].Value.ToString());
+                                decimal PorcentajeDescuento = Convert.ToDecimal(TxtDescuento.Text.Trim());
+                                decimal unitaryPrice = Convert.ToDecimal(TxtPrecioUnitario.Text.Trim());
+
+                                decimal impuesto = Convert.ToDecimal(TxtIva.Text.Trim());
+                                decimal cantidades = (PorcentajeDescuento / 100) * unitaryPrice;
+                                decimal descuento = unitaryPrice - cantidades;
+                                decimal total = Convert.ToDecimal(TxtPrecioFinal.Text.Trim());
+
+                                // Verificar si hay suficiente stock para restar
+                                if (stockProducto >= cantidadIngresada)
                                 {
-                                    int stockProducto = Convert.ToInt32(filaSeleccionada.Cells["CStock"].Value); // Obtiene el stock actual del producto
+                                    // Restar la cantidad ingresada del stock actual del producto
+                                    stockProducto -= cantidadIngresada;
 
-                                    string nombre = filaSeleccionada.Cells["CItemName"].Value.ToString();
-                                    int codigo = Convert.ToInt32( filaSeleccionada.Cells["CItemID"].Value.ToString());
+                                    // Actualizar el valor en la columna "CStock" del DataGridView DgProduct
+                                    filaSeleccionada.Cells["CStock"].Value = stockProducto;
 
-                                    // Verificar si hay suficiente stock para restar
+                                    // Crear una nueva fila en DgLista con los valores obtenidos
+                                    DgLista.Rows.Add(nombre, codigo, cantidadIngresada, cantidades, impuesto, total);
 
-                                    if (stockProducto >= cantidadIngresada)
-                                    {
-                                        // Restar la cantidad ingresada del stock actual del producto
-                                        stockProducto -= cantidadIngresada;
+                                    // Agregar el producto a la lista de productos agregados
+                                    productosAgregados.Add(new ProductoAgregado { Codigo = codigo, CantidadAgregada = cantidadIngresada, Descuento = cantidades, Impuesto = impuesto });
 
-                                        // Actualizar el valor en la columna "CStock" del DataGridView DgProduct
-                                        filaSeleccionada.Cells["CStock"].Value = stockProducto;
-
-                                        // Crear una nueva fila en DgLista con los valores obtenidos
-                                        DgLista.Rows.Add(nombre, codigo, cantidadIngresada, precioIngresado);
-
-                                        // Agregar el producto a la lista de productos agregados
-                                        productosAgregados.Add(new ProductoAgregado { Codigo=codigo , CantidadAgregada = cantidadIngresada });
-
-                                        TxtPrecioUnitario.Clear();
-                                        TxtPrecioFinal.Clear();
-                                        ActualizarSubtotal();
-                                        TxtCantidad.Value = 0;
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("No hay suficiente stock para realizar esta operación.");
-                                    }
+                                    TxtPrecioUnitario.Clear();
+                                    TxtIva.Clear();
+                                    TxtPrecioFinal.Clear();
+                                    ActualizarSubtotal();
+                                    TxtDescuento.Value = 0;
+                                    TxtCantidad.Value = 0;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No hay suficiente stock para realizar esta operación.");
                                 }
                             }
-                            else
-                            {
-                                MessageBox.Show("Por favor, ingrese una cantidad válida.");
-                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("La cantidad debe ser mayor que 0.");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Por favor, seleccione un producto y una cantidad m .");
+                        MessageBox.Show("Por favor, ingrese una cantidad válida.");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Por favor, ingrese un precio válido.");
+                    MessageBox.Show("Por favor, seleccione un producto y una cantidad.");
                 }
-            
-             
-
-
-
+            }
+            else
+            {
+                MessageBox.Show("Por favor, ingrese un precio válido.");
+            }
         }
-       
 
 
 
-        private void cleaner(){
+    
+
+
+
+
+        private void cleaner() {
             txtCustomer.SelectedIndex = -1;
             TxtCustomerID.Clear();
+            txtvalue.Clear();
+            Txtvaluefinal.Clear();
             txtbrand.Clear();
             txttipo.SelectedIndex = -1;
             txtvalue.Clear();
+            TxtIva.Clear();
             Txtnotes.Clear(); 
             TxtCantidad.Value = 0;
-            TxtDescuento.Clear();
+            TxtDescuento.Value = 0;
             TxtPrecioFinal.Clear();
             TxtPrecioUnitario.Clear();
             txttotal.Clear();
             DtpFechaFactura.Value = DateTime.Now;
-         
+            Txtvaluefinal.Clear();
+            TxtSearchItem.Clear();
             DgLista.Rows.Clear();
             
 
@@ -254,57 +284,72 @@ namespace VCBikeService.Forms.Mantenimiento
 
         
 
-        private void BtnClean_Click(object sender, EventArgs e)
+         
+
+        private void ActualizarTxtValueFinal()
         {
-            cleaner();
+            decimal valorFinal = valoresAdicionales.Sum();
+            Txtvaluefinal.Text = valorFinal.ToString();
         }
 
- 
+        private void ActualizarTxtTotal()
+        {
+            if (decimal.TryParse(txttotal.Text.Trim(), out decimal totalActual))
+            {
+                decimal total = valoresAdicionales.Sum() + totalActual;
+                txttotal.Text = total.ToString();
+            }
+           
+        }
 
         private void buttonaddvalue_Click_1(object sender, EventArgs e)
         {
-            // Obtener el valor del TextBox txtValue
-            string inputValue = txtvalue.Text;
-
-            // Verificar si el valor es un número válido (entero o decimal)
-            if (decimal.TryParse(inputValue, out decimal valueToAdd))
+            if (decimal.TryParse(txtvalue.Text.Trim(), out decimal valorIngresado))
             {
-                // Agregar el valor como una nueva fila al DataGridView
-                DgLista.Rows.Add("Extras",0,1, valueToAdd);
-                ActualizarSubtotal();
-
-                // Limpiar el contenido del TextBox
+                valoresAdicionales.Add(valorIngresado);
+                ActualizarTxtValueFinal();
+                ActualizarTxtTotal();
                 txtvalue.Clear();
             }
             else
             {
-                MessageBox.Show("Por favor, ingrese un número válido.");
+                MessageBox.Show("Por favor, ingrese un valor válido.");
             }
         }
+    
+        
 
         private void btnDeleteForever_Click(object sender, EventArgs e)
         {
             if (DgLista.SelectedRows.Count == 1)
             {
                 DataGridViewRow filaSeleccionada = DgLista.SelectedRows[0];
-                string codigo = filaSeleccionada.Cells["ItemName"].Value.ToString();
+                string codigo = filaSeleccionada.Cells["ItemID"].Value.ToString();
                 int cantidad = Convert.ToInt32(filaSeleccionada.Cells["Cantidad"].Value);
 
+                // Busca el producto en el DgProduct por su código
                 foreach (DataGridViewRow filaProducto in DgProduct.Rows)
                 {
-                    if (filaProducto.Cells["CItemID"].Value.ToString() == codigo)
-                    {
+                    int codigoProductoEnProduct = Convert.ToInt32(filaProducto.Cells["CItemID"].Value);
+
+                    if (codigoProductoEnProduct == int.Parse(codigo))
+                        {
                         int stockProducto = Convert.ToInt32(filaProducto.Cells["CStock"].Value);
+
+                        // Restaura la cantidad eliminada al stock
                         stockProducto += cantidad;
+
+                        // Actualiza la fila correspondiente en el DgProduct
                         filaProducto.Cells["CStock"].Value = stockProducto;
+
                         break; // Salir del bucle una vez que se haya encontrado el producto.
                     }
                 }
 
-                 
+                // Elimina la fila seleccionada en DgLista
                 DgLista.Rows.Remove(filaSeleccionada);
 
-                // Recalcular el precio total
+                // Recalcula el precio total
                 ActualizarSubtotal();
             }
             else
@@ -369,6 +414,22 @@ namespace VCBikeService.Forms.Mantenimiento
                     }
 
 
+                    foreach (DataGridViewRow fila in DgLista.Rows)
+                    {
+                        MaintenanceDetail newdetail = new MaintenanceDetail();
+                        newdetail.Myitem = new Item();
+                        if (fila.Cells["ItemID"].Value != null && fila.Cells["precioFinal"].Value != null && fila.Cells["Discount"].Value != null)
+                        {
+                            newdetail.Myitem.ItemID = Convert.ToInt32(fila.Cells["ItemID"].Value);
+                            newdetail.UnitaryPrice = Convert.ToDecimal(fila.Cells["precioFinal"].Value);
+                            newdetail.Discount = Convert.ToDecimal(fila.Cells["Discount"].Value);
+
+                            MyMaintenance.productosAgregados.Add(newdetail);
+                        }
+                    }
+
+
+
                     if (MyMaintenance.Add())
                     {
                         MessageBox.Show("El Mantenimiento se creó correctamente", ":)", MessageBoxButtons.OK);
@@ -388,6 +449,27 @@ namespace VCBikeService.Forms.Mantenimiento
                 else
                 {
                     MessageBox.Show("El Mantenimiento no se realizo", ":)", MessageBoxButtons.OK);
+                    DataGridViewRow filaSeleccionada = DgLista.SelectedRows[0];
+                    string codigo = filaSeleccionada.Cells["ItemID"].Value.ToString();
+                    int cantidad = Convert.ToInt32(filaSeleccionada.Cells["Cantidad"].Value);
+                    foreach (DataGridViewRow filaProducto in DgProduct.Rows)
+                    {
+                        int codigoProductoEnProduct = Convert.ToInt32(filaProducto.Cells["CItemID"].Value);
+
+                        if (codigoProductoEnProduct == int.Parse(codigo))
+                        {
+                            int stockProducto = Convert.ToInt32(filaProducto.Cells["CStock"].Value);
+
+                            // Restaura la cantidad eliminada al stock
+                            stockProducto += cantidad;
+
+                            // Actualiza la fila correspondiente en el DgProduct
+                            filaProducto.Cells["CStock"].Value = stockProducto;
+
+                            break; // Salir del bucle una vez que se haya encontrado el producto.
+                        }
+                    }
+
                     cleaner();
                 }
 
@@ -397,6 +479,90 @@ namespace VCBikeService.Forms.Mantenimiento
             {
                 MessageBox.Show("Faltan Datos , llenalos y vuelve a intentarlo");
 
+            }
+        }
+
+        private void btnEliminarExtra_Click(object sender, EventArgs e)
+        {
+            if (valoresAdicionales.Count > 0)
+            {
+                // Resta el último valor adicional del total
+                decimal valorEliminado = valoresAdicionales[valoresAdicionales.Count - 1];
+                valoresAdicionales.RemoveAt(valoresAdicionales.Count - 1);
+                ActualizarTxtValueFinal();
+
+                // Calcula el nuevo total teniendo en cuenta los productos en DgLista
+                decimal nuevoTotal = CalcularTotalConProductos();
+
+                // Actualiza el campo de total
+                txttotal.Text = nuevoTotal.ToString();
+            }
+            else
+            {
+                MessageBox.Show("No hay valores adicionales para eliminar.");
+            }
+
+        }
+        private decimal CalcularTotalConProductos()
+        {
+            decimal total = 0;
+
+            // Suma los valores de los productos en DgLista al total
+            foreach (DataGridViewRow fila in DgLista.Rows)
+            {
+                if (fila.Cells["precioFinal"].Value != null)
+                {
+                    decimal valorProducto = decimal.Parse(fila.Cells["precioFinal"].Value.ToString());
+                    total += valorProducto;
+                }
+            }
+
+            return total;
+        }
+
+        private void TxtDescuento_ValueChanged(object sender, EventArgs e)
+        {
+            calcular();
+        }
+
+        private void BtnClean_Click(object sender, EventArgs e)
+        {
+            if (DgLista.Rows.Count > 0)
+            {
+                foreach (DataGridViewRow filaLista in DgLista.Rows)
+                {
+                    int codigoProducto = Convert.ToInt32(filaLista.Cells["ItemID"].Value);
+                    int cantidadSeleccionada = Convert.ToInt32(filaLista.Cells["Cantidad"].Value);
+
+                    // Busca el producto en el DgProduct por su código
+                    foreach (DataGridViewRow filaProducto in DgProduct.Rows)
+                    {
+                        int codigoProductoEnProduct = Convert.ToInt32(filaProducto.Cells["CItemID"].Value);
+
+                        if (codigoProductoEnProduct == codigoProducto)
+                        {
+                            int stockActual = Convert.ToInt32(filaProducto.Cells["CStock"].Value);
+
+                            // Restaura la cantidad en stock
+                            stockActual += cantidadSeleccionada;
+
+                            // Actualiza la fila correspondiente en el DgProduct
+                            filaProducto.Cells["CStock"].Value = stockActual;
+
+                            break; // Salir del bucle una vez que se haya encontrado el producto.
+                        }
+                    }
+                }
+                cleaner();
+                 
+                 
+
+                // Recalcula el precio total
+                ActualizarSubtotal();
+            }
+            else
+            {
+                MessageBox.Show("No hay productos en el mantenimiento para limpiar.");
             }
         }
     }

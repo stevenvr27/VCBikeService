@@ -34,11 +34,15 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnEliminarExtra = new System.Windows.Forms.Button();
+            this.Txtvaluefinal = new System.Windows.Forms.TextBox();
             this.buttonaddvalue = new System.Windows.Forms.Button();
             this.DgLista = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Impuesto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precioFinal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Txtnotes = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -52,10 +56,10 @@
             this.txttotal = new WindowsFormsAero.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.BtnClean = new System.Windows.Forms.Button();
             this.btnDeleteForever = new System.Windows.Forms.Button();
             this.BtnCrear = new WindowsFormsAero.Button();
             this.BtnCancel = new System.Windows.Forms.Button();
-            this.BtnClean = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -70,17 +74,18 @@
             this.CStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CSellPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.TxtIva = new System.Windows.Forms.TextBox();
+            this.IVA = new System.Windows.Forms.Label();
+            this.TxtDescuento = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.TxtPrecioFinal = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.TxtCantidad = new System.Windows.Forms.NumericUpDown();
-            this.TxtDescuento = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.TxtPrecioUnitario = new System.Windows.Forms.TextBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.btnadd = new System.Windows.Forms.Button();
-            this.checkBoxAgregarMasCantidad = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txttipo = new WindowsFormsAero.ComboBox();
@@ -109,6 +114,7 @@
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgProduct)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtDescuento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtCantidad)).BeginInit();
             this.panel6.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -161,11 +167,13 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(613, 517);
+            this.panel7.Size = new System.Drawing.Size(613, 538);
             this.panel7.TabIndex = 1;
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btnEliminarExtra);
+            this.groupBox4.Controls.Add(this.Txtvaluefinal);
             this.groupBox4.Controls.Add(this.buttonaddvalue);
             this.groupBox4.Controls.Add(this.DgLista);
             this.groupBox4.Controls.Add(this.Txtnotes);
@@ -178,17 +186,40 @@
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(0, 0);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(613, 517);
+            this.groupBox4.Size = new System.Drawing.Size(613, 538);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Detalle del mantenimiento";
+            // 
+            // btnEliminarExtra
+            // 
+            this.btnEliminarExtra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnEliminarExtra.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarExtra.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnEliminarExtra.Location = new System.Drawing.Point(504, 124);
+            this.btnEliminarExtra.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEliminarExtra.Name = "btnEliminarExtra";
+            this.btnEliminarExtra.Size = new System.Drawing.Size(104, 38);
+            this.btnEliminarExtra.TabIndex = 27;
+            this.btnEliminarExtra.Text = "Eliminar ";
+            this.btnEliminarExtra.UseVisualStyleBackColor = false;
+            this.btnEliminarExtra.Click += new System.EventHandler(this.btnEliminarExtra_Click);
+            // 
+            // Txtvaluefinal
+            // 
+            this.Txtvaluefinal.Location = new System.Drawing.Point(156, 136);
+            this.Txtvaluefinal.Name = "Txtvaluefinal";
+            this.Txtvaluefinal.ReadOnly = true;
+            this.Txtvaluefinal.Size = new System.Drawing.Size(335, 26);
+            this.Txtvaluefinal.TabIndex = 26;
+            this.Txtvaluefinal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // buttonaddvalue
             // 
             this.buttonaddvalue.BackColor = System.Drawing.Color.OliveDrab;
             this.buttonaddvalue.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonaddvalue.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.buttonaddvalue.Location = new System.Drawing.Point(472, 77);
+            this.buttonaddvalue.Location = new System.Drawing.Point(504, 73);
             this.buttonaddvalue.Margin = new System.Windows.Forms.Padding(2);
             this.buttonaddvalue.Name = "buttonaddvalue";
             this.buttonaddvalue.Size = new System.Drawing.Size(104, 38);
@@ -204,37 +235,37 @@
             this.DgLista.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.DgLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgLista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
             this.ItemName,
+            this.ItemID,
             this.Cantidad,
+            this.Discount,
+            this.Impuesto,
             this.precioFinal});
             this.DgLista.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.DgLista.Location = new System.Drawing.Point(3, 212);
+            this.DgLista.Location = new System.Drawing.Point(3, 272);
             this.DgLista.MultiSelect = false;
             this.DgLista.Name = "DgLista";
             this.DgLista.ReadOnly = true;
             this.DgLista.RowHeadersVisible = false;
             this.DgLista.RowHeadersWidth = 51;
             this.DgLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgLista.Size = new System.Drawing.Size(607, 302);
+            this.DgLista.Size = new System.Drawing.Size(607, 263);
             this.DgLista.TabIndex = 20;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "ItemID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Nombre";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // ItemName
             // 
-            this.ItemName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ItemName.DataPropertyName = "ItemName";
-            this.ItemName.HeaderText = "Codigo";
+            this.ItemName.HeaderText = "Nombre  ";
             this.ItemName.Name = "ItemName";
             this.ItemName.ReadOnly = true;
+            // 
+            // ItemID
+            // 
+            this.ItemID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ItemID.DataPropertyName = "ItemID";
+            this.ItemID.HeaderText = "Codigo";
+            this.ItemID.Name = "ItemID";
+            this.ItemID.ReadOnly = true;
             // 
             // Cantidad
             // 
@@ -243,6 +274,20 @@
             this.Cantidad.HeaderText = "Cantidad";
             this.Cantidad.Name = "Cantidad";
             this.Cantidad.ReadOnly = true;
+            // 
+            // Discount
+            // 
+            this.Discount.DataPropertyName = "Discount";
+            this.Discount.HeaderText = "Descuento";
+            this.Discount.Name = "Discount";
+            this.Discount.ReadOnly = true;
+            // 
+            // Impuesto
+            // 
+            this.Impuesto.DataPropertyName = "Impuesto";
+            this.Impuesto.HeaderText = "Impuesto";
+            this.Impuesto.Name = "Impuesto";
+            this.Impuesto.ReadOnly = true;
             // 
             // precioFinal
             // 
@@ -254,18 +299,18 @@
             // 
             // Txtnotes
             // 
-            this.Txtnotes.Location = new System.Drawing.Point(156, 120);
+            this.Txtnotes.Location = new System.Drawing.Point(156, 186);
             this.Txtnotes.Multiline = true;
             this.Txtnotes.Name = "Txtnotes";
             this.Txtnotes.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.Txtnotes.Size = new System.Drawing.Size(349, 71);
+            this.Txtnotes.Size = new System.Drawing.Size(335, 71);
             this.Txtnotes.TabIndex = 19;
             this.Txtnotes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(55, 140);
+            this.label11.Location = new System.Drawing.Point(55, 197);
             this.label11.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(55, 20);
@@ -305,7 +350,7 @@
             // 
             this.txtvalue.Location = new System.Drawing.Point(156, 88);
             this.txtvalue.Name = "txtvalue";
-            this.txtvalue.Size = new System.Drawing.Size(286, 26);
+            this.txtvalue.Size = new System.Drawing.Size(335, 26);
             this.txtvalue.TabIndex = 12;
             this.txtvalue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -314,9 +359,9 @@
             this.groupBox5.Controls.Add(this.panel8);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(0, 517);
+            this.groupBox5.Location = new System.Drawing.Point(0, 538);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(613, 150);
+            this.groupBox5.Size = new System.Drawing.Size(613, 129);
             this.groupBox5.TabIndex = 0;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Totales";
@@ -327,7 +372,7 @@
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(3, 22);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(607, 125);
+            this.panel8.Size = new System.Drawing.Size(607, 104);
             this.panel8.TabIndex = 0;
             // 
             // panel9
@@ -338,7 +383,7 @@
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(0, 0);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(607, 125);
+            this.panel9.Size = new System.Drawing.Size(607, 104);
             this.panel9.TabIndex = 10;
             // 
             // txttotal
@@ -363,15 +408,31 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.BtnClean);
             this.panel3.Controls.Add(this.btnDeleteForever);
             this.panel3.Controls.Add(this.BtnCrear);
             this.panel3.Controls.Add(this.BtnCancel);
-            this.panel3.Controls.Add(this.BtnClean);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 676);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(613, 69);
             this.panel3.TabIndex = 1;
+            // 
+            // BtnClean
+            // 
+            this.BtnClean.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BtnClean.Dock = System.Windows.Forms.DockStyle.Right;
+            this.BtnClean.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnClean.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.BtnClean.Image = ((System.Drawing.Image)(resources.GetObject("BtnClean.Image")));
+            this.BtnClean.Location = new System.Drawing.Point(169, 0);
+            this.BtnClean.Name = "BtnClean";
+            this.BtnClean.Size = new System.Drawing.Size(171, 69);
+            this.BtnClean.TabIndex = 22;
+            this.BtnClean.Text = "Limpiar";
+            this.BtnClean.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.BtnClean.UseVisualStyleBackColor = false;
+            this.BtnClean.Click += new System.EventHandler(this.BtnClean_Click);
             // 
             // btnDeleteForever
             // 
@@ -382,7 +443,7 @@
             this.btnDeleteForever.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnDeleteForever.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteForever.Image")));
             this.btnDeleteForever.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDeleteForever.Location = new System.Drawing.Point(169, 0);
+            this.btnDeleteForever.Location = new System.Drawing.Point(340, 0);
             this.btnDeleteForever.Name = "btnDeleteForever";
             this.btnDeleteForever.Size = new System.Drawing.Size(151, 69);
             this.btnDeleteForever.TabIndex = 21;
@@ -399,7 +460,7 @@
             this.BtnCrear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCrear.Location = new System.Drawing.Point(0, 0);
             this.BtnCrear.Name = "BtnCrear";
-            this.BtnCrear.Size = new System.Drawing.Size(163, 69);
+            this.BtnCrear.Size = new System.Drawing.Size(272, 69);
             this.BtnCrear.TabIndex = 14;
             this.BtnCrear.Text = "Crear ";
             this.BtnCrear.UseVisualStyleBackColor = false;
@@ -411,28 +472,12 @@
             this.BtnCancel.Dock = System.Windows.Forms.DockStyle.Right;
             this.BtnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BtnCancel.Location = new System.Drawing.Point(320, 0);
+            this.BtnCancel.Location = new System.Drawing.Point(491, 0);
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.Size = new System.Drawing.Size(122, 69);
             this.BtnCancel.TabIndex = 13;
             this.BtnCancel.Text = "Cancel";
             this.BtnCancel.UseVisualStyleBackColor = false;
-            // 
-            // BtnClean
-            // 
-            this.BtnClean.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.BtnClean.Dock = System.Windows.Forms.DockStyle.Right;
-            this.BtnClean.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnClean.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.BtnClean.Image = ((System.Drawing.Image)(resources.GetObject("BtnClean.Image")));
-            this.BtnClean.Location = new System.Drawing.Point(442, 0);
-            this.BtnClean.Name = "BtnClean";
-            this.BtnClean.Size = new System.Drawing.Size(171, 69);
-            this.BtnClean.TabIndex = 12;
-            this.BtnClean.Text = "Limpiar";
-            this.BtnClean.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.BtnClean.UseVisualStyleBackColor = false;
-            this.BtnClean.Click += new System.EventHandler(this.BtnClean_Click);
             // 
             // panel1
             // 
@@ -583,12 +628,14 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.TxtIva);
+            this.groupBox3.Controls.Add(this.IVA);
+            this.groupBox3.Controls.Add(this.TxtDescuento);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.TxtPrecioFinal);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.TxtCantidad);
-            this.groupBox3.Controls.Add(this.TxtDescuento);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.TxtPrecioUnitario);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -600,10 +647,39 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Detalle del Producto";
             // 
+            // TxtIva
+            // 
+            this.TxtIva.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtIva.Location = new System.Drawing.Point(343, 62);
+            this.TxtIva.Name = "TxtIva";
+            this.TxtIva.ReadOnly = true;
+            this.TxtIva.Size = new System.Drawing.Size(95, 26);
+            this.TxtIva.TabIndex = 23;
+            this.TxtIva.Text = "0";
+            this.TxtIva.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // IVA
+            // 
+            this.IVA.AutoSize = true;
+            this.IVA.Location = new System.Drawing.Point(374, 23);
+            this.IVA.Name = "IVA";
+            this.IVA.Size = new System.Drawing.Size(36, 20);
+            this.IVA.TabIndex = 22;
+            this.IVA.Text = "IVA";
+            // 
+            // TxtDescuento
+            // 
+            this.TxtDescuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtDescuento.Location = new System.Drawing.Point(131, 64);
+            this.TxtDescuento.Name = "TxtDescuento";
+            this.TxtDescuento.Size = new System.Drawing.Size(66, 26);
+            this.TxtDescuento.TabIndex = 21;
+            this.TxtDescuento.ValueChanged += new System.EventHandler(this.TxtDescuento_ValueChanged);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(381, 22);
+            this.label5.Location = new System.Drawing.Point(459, 22);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(91, 20);
             this.label5.TabIndex = 20;
@@ -621,7 +697,7 @@
             // TxtPrecioFinal
             // 
             this.TxtPrecioFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtPrecioFinal.Location = new System.Drawing.Point(385, 63);
+            this.TxtPrecioFinal.Location = new System.Drawing.Point(455, 62);
             this.TxtPrecioFinal.Name = "TxtPrecioFinal";
             this.TxtPrecioFinal.ReadOnly = true;
             this.TxtPrecioFinal.Size = new System.Drawing.Size(95, 26);
@@ -647,16 +723,6 @@
             this.TxtCantidad.TabIndex = 12;
             this.TxtCantidad.ValueChanged += new System.EventHandler(this.TxtCantidad_ValueChanged);
             // 
-            // TxtDescuento
-            // 
-            this.TxtDescuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtDescuento.Location = new System.Drawing.Point(119, 63);
-            this.TxtDescuento.Name = "TxtDescuento";
-            this.TxtDescuento.Size = new System.Drawing.Size(80, 26);
-            this.TxtDescuento.TabIndex = 14;
-            this.TxtDescuento.Text = "0";
-            this.TxtDescuento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -669,7 +735,7 @@
             // TxtPrecioUnitario
             // 
             this.TxtPrecioUnitario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtPrecioUnitario.Location = new System.Drawing.Point(223, 62);
+            this.TxtPrecioUnitario.Location = new System.Drawing.Point(233, 63);
             this.TxtPrecioUnitario.Name = "TxtPrecioUnitario";
             this.TxtPrecioUnitario.ReadOnly = true;
             this.TxtPrecioUnitario.Size = new System.Drawing.Size(95, 26);
@@ -681,7 +747,6 @@
             // panel6
             // 
             this.panel6.Controls.Add(this.btnadd);
-            this.panel6.Controls.Add(this.checkBoxAgregarMasCantidad);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(3, 445);
             this.panel6.Name = "panel6";
@@ -693,7 +758,7 @@
             this.btnadd.BackColor = System.Drawing.Color.OliveDrab;
             this.btnadd.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnadd.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnadd.Location = new System.Drawing.Point(286, 9);
+            this.btnadd.Location = new System.Drawing.Point(201, 9);
             this.btnadd.Margin = new System.Windows.Forms.Padding(2);
             this.btnadd.Name = "btnadd";
             this.btnadd.Size = new System.Drawing.Size(166, 46);
@@ -701,16 +766,6 @@
             this.btnadd.Text = "Agregar";
             this.btnadd.UseVisualStyleBackColor = false;
             this.btnadd.Click += new System.EventHandler(this.btnadd_Click);
-            // 
-            // checkBoxAgregarMasCantidad
-            // 
-            this.checkBoxAgregarMasCantidad.AutoSize = true;
-            this.checkBoxAgregarMasCantidad.Location = new System.Drawing.Point(20, 28);
-            this.checkBoxAgregarMasCantidad.Name = "checkBoxAgregarMasCantidad";
-            this.checkBoxAgregarMasCantidad.Size = new System.Drawing.Size(240, 17);
-            this.checkBoxAgregarMasCantidad.TabIndex = 12;
-            this.checkBoxAgregarMasCantidad.Text = "Sumar Cantidad si producto ya está en la lista";
-            this.checkBoxAgregarMasCantidad.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -873,9 +928,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.DgProduct)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TxtDescuento)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TxtCantidad)).EndInit();
             this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -892,7 +947,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button BtnCancel;
-        private System.Windows.Forms.Button BtnClean;
         private WindowsFormsAero.Button BtnCrear;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox TxtUserName;
@@ -914,10 +968,8 @@
         private System.Windows.Forms.TextBox TxtPrecioFinal;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown TxtCantidad;
-        private System.Windows.Forms.TextBox TxtDescuento;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox TxtPrecioUnitario;
-        private System.Windows.Forms.CheckBox checkBoxAgregarMasCantidad;
         private System.Windows.Forms.Button btnadd;
         private System.Windows.Forms.DataGridView DgProduct;
         private System.Windows.Forms.GroupBox groupBox5;
@@ -943,12 +995,20 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CSellPrice;
         private System.Windows.Forms.DataGridView DgLista;
         private WindowsFormsAero.TextBox txttotal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precioFinal;
         private System.Windows.Forms.Button buttonaddvalue;
         private System.Windows.Forms.Button btnDeleteForever;
         public System.Windows.Forms.TextBox TxtUSerID;
+        private System.Windows.Forms.TextBox Txtvaluefinal;
+        private System.Windows.Forms.Button btnEliminarExtra;
+        private System.Windows.Forms.NumericUpDown TxtDescuento;
+        private System.Windows.Forms.TextBox TxtIva;
+        private System.Windows.Forms.Label IVA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Discount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Impuesto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precioFinal;
+        private System.Windows.Forms.Button BtnClean;
     }
 }

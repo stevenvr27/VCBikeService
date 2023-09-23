@@ -10,5 +10,8 @@ namespace Logic.Models
     {
         public int Codigo { get; set; }
         public int CantidadAgregada { get; set; }
+        public decimal Impuesto { get; set; }
+
+        public decimal Descuento { get; set; }
     }
 }
