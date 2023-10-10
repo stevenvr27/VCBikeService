@@ -54,8 +54,7 @@ namespace Logic.Models
             connection.parameterlist.Add(new SqlParameter("@Stock", this.Stock));
             connection.parameterlist.Add(new SqlParameter("@UnitaryCost", this.UnitaryCost));
             connection.parameterlist.Add(new SqlParameter("@SellPrice", this.SellPrice));
-            connection.parameterlist.Add(new SqlParameter("@ItemCategoryID", this.MyType.ItemCategoryID));
-            connection.parameterlist.Add(new SqlParameter("@Tax", this.Tax.TaxID));
+            connection.parameterlist.Add(new SqlParameter("@ItemCategoryID", this.MyType.ItemCategoryID)); 
             connection.parameterlist.Add(new SqlParameter("@Unit", this.Unit.IDUnit));
             connection.parameterlist.Add(new SqlParameter("@Ubication", this.Ubication.UbicationID));
 
@@ -78,8 +77,7 @@ namespace Logic.Models
             connection.parameterlist.Add(new SqlParameter("@Barcode", this.Barcode));
             connection.parameterlist.Add(new SqlParameter("@Stock", this.Stock));
             connection.parameterlist.Add(new SqlParameter("@SellPrice", this.SellPrice));
-            connection.parameterlist.Add(new SqlParameter("@ITemID", this.ItemID));
-            connection.parameterlist.Add(new SqlParameter("@Tax", this.Tax.TaxID));
+            connection.parameterlist.Add(new SqlParameter("@ITemID", this.ItemID)); 
             connection.parameterlist.Add(new SqlParameter("@Unit", this.Unit.IDUnit));
             connection.parameterlist.Add(new SqlParameter("@Ubication", this.Ubication.UbicationID));
             int result = connection.EjecutarInsertUpdateDelete("SPItemUpdates");
@@ -101,7 +99,6 @@ namespace Logic.Models
             connection.parameterlist.Add(new SqlParameter("@UnitaryCost", this.UnitaryCost));
             connection.parameterlist.Add(new SqlParameter("@SellPrice", this.SellPrice));
             connection.parameterlist.Add(new SqlParameter("@ITemID", this.ItemID));  
-            connection.parameterlist.Add(new SqlParameter("@Tax", this.Tax.TaxID));
             connection.parameterlist.Add(new SqlParameter("@Unit", this.Unit.IDUnit));
             connection.parameterlist.Add(new SqlParameter("@Ubication", this.Ubication.UbicationID));
             int result = connection.EjecutarInsertUpdateDelete("SPItemUpdate");
@@ -361,11 +358,11 @@ namespace Logic.Models
                 R.SellPrice = Convert.ToDecimal(dr["SellPrice"]);
                 R.Description = Convert.ToString(dr["Description"]);
 
-                R.Tax.TaxID = Convert.ToInt32(dr["TaxID"]);
+                 
                 R.Unit.IDUnit = Convert.ToInt32(dr["IDUnit"]);
                 R.MyType.ItemCategoryID = Convert.ToInt32(dr["ItemCategoryID"]);
                 R.Ubication.UbicationID = Convert.ToInt32(dr["UbicationID"]);
-                R.Tax.AmountTax = Convert.ToDecimal(dr["AmountTax"]);
+                
             }
 
 
@@ -480,7 +477,7 @@ namespace Logic.Models
 
             DataTable dt = new DataTable();
 
-            dt = Micnn.EjecutarSELECT("SPTemIDConsultI");
+            dt = Micnn.EjecutarSELECT("SPItemIDConsult");
 
             if (dt != null && dt.Rows.Count > 0)
             {
@@ -490,15 +487,14 @@ namespace Logic.Models
                 R.ItemName = Convert.ToString(MisDatos["ItemName"]);
                 R.Stock = Convert.ToInt32(MisDatos["Stock"]);
                 R.SellPrice = Convert.ToDecimal(MisDatos["SellPrice"]);
-                R.Tax.TaxID = Convert.ToInt32(MisDatos["TaxID"]);
+                 
                 R.MyType.ItemCategoryID = Convert.ToInt32(MisDatos["ItemCategoryID"]);
                 R.MyType.Description = Convert.ToString(MisDatos["Description"]);
                 R.Unit.IDUnit = Convert.ToInt32(MisDatos["IDUnit"]);
                 R.Barcode = Convert.ToString(MisDatos["Barcode"]);
                 R.Unit.UnitMeasurement = Convert.ToString(MisDatos["UnitMeasurement"]);
-                R.Tax.TaxID = Convert.ToInt32(MisDatos["TaxID"]);
-                R.Tax.TaxName = Convert.ToString(MisDatos["TaxName"]);
-                R.Tax.AmountTax = Convert.ToDecimal(MisDatos["AmountTax"]);
+               
+            
             }
 
             return R;

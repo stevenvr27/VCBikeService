@@ -121,7 +121,7 @@
   <data name="BtnAdd.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vwAADr8BOAVTJAAABTlJREFUaEPVmktvHEUQx5dXDpx4HHgaAuKlIKGcgJuPQX7bsskNDka+JbEIJ4zk
+        vgAADr4B6kKxwAAABTlJREFUaEPVmktvHEUQx5dXDpx4HHgaAuKlIKGcgJuPQX7bsskNDka+JbEIJ4zk
         TwAcknAhKHyFcIVExBKP+BDF4SsEOCUYiEnAJPD/laqG2tGOd3fWRjsllbqnu+pfVd3VPT3b2+qXVldX
         7x4dHb3XH43Gx8efn56eXhR/Jl6fmpr6SfyH6ndg6rR53xmV76Dj6kZggu2Pe0J3LSws3EPJw+Tk5CNy
         5pj4Gzl0U/xPiXH8b5h6qQ++6brLY2Njj4IparOxa8TIOHBLBkdk+JT49+QMDt4Sb6e2KkbmlvRvRxtY
@@ -149,7 +149,7 @@
   <data name="BtnClean.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vwAADr8BOAVTJAAABSpJREFUaEPtmVvIFkUYx7dMkzyL1o2JQggSeNFFCAqZaRd2oLtuRPTGm0CRUi8S
+        vgAADr4B6kKxwAAABSpJREFUaEPtmVvIFkUYx7dMkzyL1o2JQggSeNFFCAqZaRd2oLtuRPTGm0CRUi8S
         OnhKQymvtCDoRFIWeCGpIHgqPFYYqJEhVBRhlHaygx3+v9n9f998y7777nvYz++D/vDj3ZnZZ555Zmdm
         Z+dNatCQjBtLoPx/dVv0LFouTosT4lTEIXFQULZd3CAGlBwAjfxXfChOZhwTv4ofxbfiJzFWoAETiAOg
         sYA85hE9v0esFAQ4SqABF4B7HQ3NQB+LvWK1GDQBeEVCBPC+WCUGTQDxEBqUAQyoJ0BDbhLu1TyUoTiA
@@ -177,7 +177,7 @@
   <data name="btnDeleteForever.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACMAAAAwCAYAAACbm8NsAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vwAADr8BOAVTJAAAAT1JREFUWEft2K1LQ2EUgPGr4LLCmouzqUnYtAyjqEH8EzRtCoosi80lUSzaBJtg
+        vgAADr4B6kKxwAAAAT1JREFUWEft2K1LQ2EUgPGr4LLCmouzqUnYtAyjqEH8EzRtCoosi80lUSzaBJtg
         NYhYjBbBIliMBpNM2MCP5yjCy8v7XrmfbHge+MF24F4O9142tkDT/ltDGEXJYRi5NYNnfODT4R2HyKUr
         3GMecw47kEXHkXl3OP156WwCcoVq3+8SVsA0Zj0ecWnNTCuQZeqoOlRQxJ+NQG6B+Qxk4Q3LCG0droOz
         8IDQtuE6MAsvCE2ela2cNNCfTWIxZfLZNIDIHcN1r5PoQL5KItfTyzxhF11jJm5xZM3EBc6tWWrLXENq
@@ -185,27 +185,6 @@
         T5SGVwwiclOwb0lSe4jdGNawmdAGFhDrd7am+QuCL0hadGavKlDXAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="CUserID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="CUserName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="CUserCardID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="CEmail.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="CPhoneNumber.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="CAddress.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="CDescription.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="CUserID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

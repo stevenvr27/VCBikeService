@@ -29,11 +29,11 @@ namespace VCBikeService.Forms.Factura
 
         private void BtnAddCustomer_Click(object sender, EventArgs e)
         {
-            if (!Globals.Frmfactura.Visible)
+            if (!Globals.frmBilling.Visible)
             {
-                Globals.Frmfactura = new Compra.FrmFacturar();
+                Globals.frmBilling = new Factura.FrmBilling();
 
-                Globals.Frmfactura.Show();
+                Globals.frmBilling.Show();
             }
         }
         private void LoadListBilling()

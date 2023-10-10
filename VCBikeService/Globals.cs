@@ -1,7 +1,7 @@
 ﻿using Logic;
 using System.Data;
 using System.Windows.Forms;
- 
+using VCBikeService.Forms.Factura;
 
 namespace VCBikeService
 {
@@ -24,8 +24,8 @@ namespace VCBikeService
         public static Forms.Mantenimiento.FrmMantenimiento FrmMantenimiento = new Forms.Mantenimiento.FrmMantenimiento();
         public static Forms.Productos.FrmBuyItem FrmSearchProduct = new Forms.Productos.FrmBuyItem();
         public static Forms.Compra.FrmSearchCustomer CustomerSearch = new Forms.Compra.FrmSearchCustomer();
-        public static Forms.Frmsupplier Frmsupplier = new Forms.Frmsupplier();
-        public static Forms.Compra.FrmFacturar Frmfactura = new Forms.Compra.FrmFacturar();
+        public static Forms.Frmsupplier Frmsupplier = new Forms.Frmsupplier(); 
+        public static FrmBilling frmBilling = new FrmBilling();
         public static Forms.Compra.FrmAddSearchProduct FrmAddSearchProduct = new Forms.Compra.FrmAddSearchProduct();
         public static Forms.Clientes.FrmClientes frmClientes = new Forms.Clientes.FrmClientes();
         public static Forms.FrmProductsAdd FrmProductsAdd = new Forms.FrmProductsAdd();

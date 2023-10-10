@@ -64,7 +64,7 @@ namespace VCBikeService.Forms
                 CerrarFormularioMasAntiguo();
             }
 
-            FrmFacturar frmFacturar = new FrmFacturar();
+           FrmBilling frmFacturar = new FrmBilling();
 
             // Establecer TopLevel en false para que pueda agregarse como un control
             frmFacturar.TopLevel = false;
@@ -474,7 +474,7 @@ namespace VCBikeService.Forms
             {
                 CerrarFormularioMasAntiguo();
             }
-            FrmFacturar frmFacturar = new FrmFacturar();
+            FrmBilling frmFacturar = new FrmBilling();
 
             // Establecer TopLevel en false para que pueda agregarse como un control
             frmFacturar.TopLevel = false;
@@ -539,166 +539,42 @@ namespace VCBikeService.Forms
             // Mostrar el formulario dentro del Panel
             mantenimiento.Show();
         }
+        private Timer timer;
 
         private void Central_Load(object sender, EventArgs e)
         {
-            Fecha1.Text = DateTime.Now.ToString("hh:mm tt");
+            
+            lbluser.Text = Globals.MyGlobalUser.UserName;
+            lblusuario.Text = Globals.MyGlobalUser.MyRol.Description;
             Fecha.Text = DateTime.Now.ToLongDateString();
             lbluser.Text = Globals.MyGlobalUser.UserName;
             lblusuario.Text = Globals.MyGlobalUser.MyRol.Description;
 
-           
+            // Configura el temporizador
+            timer = new Timer();
+            timer.Interval = 60000; // Intervalo en milisegundos (1 minuto = 60000 ms)
+            timer.Tick += new EventHandler(Timer_Tick);
+            timer.Start();
+
+            // Actualiza la etiqueta Fecha1 al cargar el formulario
+            ActualizarFecha1();
+
+
+        }
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            // Llama a la función para actualizar Fecha1 cada vez que el temporizador hace tick
+            ActualizarFecha1();
+        }
+
+        private void ActualizarFecha1()
+        {
+            Fecha1.Text = DateTime.Now.ToString("hh:mm tt");
         }
 
         private void Central_KeyUp(object sender, KeyEventArgs e)
         {
-             
-            if (e.Control && e.KeyCode == Keys.D)
-            {
-                if (formCount >= maxFormCount)
-                {
-                    CerrarFormularioMasAntiguo();
-                }
-                FrmFacturar frmFacturar = new FrmFacturar();
 
-                // Establecer TopLevel en false para que pueda agregarse como un control
-                frmFacturar.TopLevel = false;
-
-                // Establecer el tamaño del formulario para que coincida con el tamaño del Panel
-                frmFacturar.Size = PanelPrincipal.Size;
-
-                // Limpiar el Panel principal (si es necesario)
-                PanelPrincipal.Controls.Clear();
-
-                // Agregar el formulario FrmFacturar al Panel principal
-                PanelPrincipal.Controls.Add(frmFacturar);
-
-                // Mostrar el formulario dentro del Panel
-                frmFacturar.Show();
-
-
-            }
-            if (e.Control && e.KeyCode == Keys.S)
-            {
-                if (formCount >= maxFormCount)
-                {
-                    CerrarFormularioMasAntiguo();
-                }
-                FrmBuyItem frmBuyItem = new FrmBuyItem();
-
-                // Establecer TopLevel en false para que pueda agregarse como un control
-                frmBuyItem.TopLevel = false;
-
-                // Establecer el tamaño del formulario para que coincida con el tamaño del Panel
-                frmBuyItem.Size = PanelPrincipal.Size;
-
-                // Limpiar el Panel principal (si es necesario)
-                PanelPrincipal.Controls.Clear();
-
-                // Agregar el formulario FrmBuyItem al Panel principal
-                PanelPrincipal.Controls.Add(frmBuyItem);
-
-                // Mostrar el formulario dentro del Panel
-                frmBuyItem.Show();
-
-
-            }
-
-            if (e.Control && e.KeyCode == Keys.F)
-            {
-                if (formCount >= maxFormCount)
-                {
-                    CerrarFormularioMasAntiguo();
-                }
-                FrmMantenimiento mantenimiento = new FrmMantenimiento();
-
-                // Establecer TopLevel en false para que pueda agregarse como un control
-                mantenimiento.TopLevel = false;
-
-                // Establecer el tamaño del formulario para que coincida con el tamaño del Panel
-                mantenimiento.Size = PanelPrincipal.Size;
-
-                // Limpiar el Panel principal (si es necesario)
-                PanelPrincipal.Controls.Clear();
-
-                // Agregar el formulario FrmBuyItem al Panel principal
-                PanelPrincipal.Controls.Add(mantenimiento);
-
-                // Mostrar el formulario dentro del Panel
-                mantenimiento.Show();
-
-
-            }
-            if (e.Control && e.KeyCode == Keys.Q)
-            {
-                if (formCount >= maxFormCount)
-                {
-                    CerrarFormularioMasAntiguo();
-                }
-                FrmNewBilling FrmNewBilling = new FrmNewBilling();
-
-                // Establecer TopLevel en false para que pueda agregarse como un control
-                FrmNewBilling.TopLevel = false;
-
-                // Establecer el tamaño del formulario para que coincida con el tamaño del Panel
-                FrmNewBilling.Size = PanelPrincipal.Size;
-
-                // Limpiar el Panel principal (si es necesario)
-                PanelPrincipal.Controls.Clear();
-
-                // Agregar el formulario FrmBuyItem al Panel principal
-                PanelPrincipal.Controls.Add(FrmNewBilling);
-
-                // Mostrar el formulario dentro del Panel
-                FrmNewBilling.Show();
-            }
-            if (e.Control && e.KeyCode == Keys.W)
-            {
-                if (formCount >= maxFormCount)
-                {
-                    CerrarFormularioMasAntiguo();
-                }
-                FrmBuysearch frmSearchBuyItem = new FrmBuysearch();
-
-                // Establecer TopLevel en false para que pueda agregarse como un control
-                frmSearchBuyItem.TopLevel = false;
-
-                // Establecer el tamaño del formulario para que coincida con el tamaño del Panel
-                frmSearchBuyItem.Size = PanelPrincipal.Size;
-
-                // Limpiar el Panel principal (si es necesario)
-                PanelPrincipal.Controls.Clear();
-
-                // Agregar el formulario FrmBuyItem al Panel principal
-                PanelPrincipal.Controls.Add(frmSearchBuyItem);
-
-                // Mostrar el formulario dentro del Panel
-                frmSearchBuyItem.Show();
-
-            }
-            if (e.Control && e.KeyCode == Keys.E)
-            {
-                if (formCount >= maxFormCount)
-                {
-                    CerrarFormularioMasAntiguo();
-                }
-                FrmProductsAdd ProductsAdd = new FrmProductsAdd();
-
-                // Establecer TopLevel en false para que pueda agregarse como un control
-                ProductsAdd.TopLevel = false;
-
-                // Establecer el tamaño del formulario para que coincida con el tamaño del Panel
-                ProductsAdd.Size = PanelPrincipal.Size;
-
-                // Limpiar el Panel principal (si es necesario)
-                PanelPrincipal.Controls.Clear();
-
-                // Agregar el formulario FrmBuyItem al Panel principal
-                PanelPrincipal.Controls.Add(ProductsAdd);
-
-                // Mostrar el formulario dentro del Panel
-                ProductsAdd.Show();
-            }
         }
 
         private void button11_Click(object sender, EventArgs e)

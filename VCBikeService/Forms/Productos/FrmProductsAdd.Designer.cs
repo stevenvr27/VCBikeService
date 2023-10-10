@@ -55,8 +55,12 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtstocktotal = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.TxtStock = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.TxtStock = new System.Windows.Forms.NumericUpDown();
+            this.Txtaddstock = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
             this.txtFinalPrice = new System.Windows.Forms.TextBox();
             this.txt140 = new System.Windows.Forms.RadioButton();
@@ -71,9 +75,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.TxtUnitaryCost = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtvalue = new System.Windows.Forms.TextBox();
-            this.label = new System.Windows.Forms.Label();
-            this.cbtax = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
             this.cbUbication = new System.Windows.Forms.ComboBox();
@@ -98,7 +99,7 @@
             this.panel5.SuspendLayout();
             this.panel7.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtStock)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txtaddstock)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.SuspendLayout();
@@ -256,12 +257,11 @@
             this.BtnDeleteForEver.TabIndex = 14;
             this.BtnDeleteForEver.Text = "Eliminar";
             this.BtnDeleteForEver.UseVisualStyleBackColor = false;
-            this.BtnDeleteForEver.Visible = false;
             this.BtnDeleteForEver.Click += new System.EventHandler(this.BtnDeleteForEver_Click);
             // 
             // BtnCancelproduct
             // 
-            this.BtnCancelproduct.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BtnCancelproduct.BackColor = System.Drawing.Color.Salmon;
             this.BtnCancelproduct.Dock = System.Windows.Forms.DockStyle.Right;
             this.BtnCancelproduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancelproduct.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -270,7 +270,7 @@
             this.BtnCancelproduct.Name = "BtnCancelproduct";
             this.BtnCancelproduct.Size = new System.Drawing.Size(170, 51);
             this.BtnCancelproduct.TabIndex = 13;
-            this.BtnCancelproduct.Text = "Cancel";
+            this.BtnCancelproduct.Text = "Cerrar";
             this.BtnCancelproduct.UseVisualStyleBackColor = false;
             this.BtnCancelproduct.Click += new System.EventHandler(this.BtnCancelproduct_Click);
             // 
@@ -330,7 +330,7 @@
             this.BtnDeleteproduct.Name = "BtnDeleteproduct";
             this.BtnDeleteproduct.Size = new System.Drawing.Size(170, 51);
             this.BtnDeleteproduct.TabIndex = 11;
-            this.BtnDeleteproduct.Text = "Eliminar";
+            this.BtnDeleteproduct.Text = "Inactivar";
             this.BtnDeleteproduct.UseVisualStyleBackColor = false;
             this.BtnDeleteproduct.Click += new System.EventHandler(this.BtnDeleteproduct_Click);
             // 
@@ -425,8 +425,12 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label12);
+            this.groupBox2.Controls.Add(this.label15);
+            this.groupBox2.Controls.Add(this.txtstocktotal);
+            this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.TxtStock);
+            this.groupBox2.Controls.Add(this.label12);
+            this.groupBox2.Controls.Add(this.Txtaddstock);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.txtFinalPrice);
             this.groupBox2.Controls.Add(this.txt140);
@@ -441,9 +445,6 @@
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.TxtUnitaryCost);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.txtvalue);
-            this.groupBox2.Controls.Add(this.label);
-            this.groupBox2.Controls.Add(this.cbtax);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(0, 337);
@@ -453,24 +454,72 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalle Numerico";
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(414, 234);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(107, 24);
+            this.label15.TabIndex = 58;
+            this.label15.Text = "Stock Total:";
+            // 
+            // txtstocktotal
+            // 
+            this.txtstocktotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtstocktotal.Location = new System.Drawing.Point(397, 274);
+            this.txtstocktotal.Margin = new System.Windows.Forms.Padding(2);
+            this.txtstocktotal.Name = "txtstocktotal";
+            this.txtstocktotal.ReadOnly = true;
+            this.txtstocktotal.Size = new System.Drawing.Size(154, 29);
+            this.txtstocktotal.TabIndex = 57;
+            this.txtstocktotal.Text = "0";
+            this.txtstocktotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(207, 234);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(174, 24);
+            this.label14.TabIndex = 56;
+            this.label14.Text = "Cantidad a agregar:";
+            // 
+            // TxtStock
+            // 
+            this.TxtStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtStock.Location = new System.Drawing.Point(20, 271);
+            this.TxtStock.Margin = new System.Windows.Forms.Padding(2);
+            this.TxtStock.Name = "TxtStock";
+            this.TxtStock.ReadOnly = true;
+            this.TxtStock.Size = new System.Drawing.Size(159, 29);
+            this.TxtStock.TabIndex = 55;
+            this.TxtStock.Text = "0";
+            this.TxtStock.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(114, 262);
+            this.label12.Location = new System.Drawing.Point(37, 234);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(89, 24);
+            this.label12.Size = new System.Drawing.Size(118, 24);
             this.label12.TabIndex = 54;
-            this.label12.Text = "Cantidad:";
+            this.label12.Text = "Stock Actual:";
             // 
-            // TxtStock
+            // Txtaddstock
             // 
-            this.TxtStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtStock.Location = new System.Drawing.Point(287, 255);
-            this.TxtStock.Name = "TxtStock";
-            this.TxtStock.Size = new System.Drawing.Size(183, 35);
-            this.TxtStock.TabIndex = 53;
+            this.Txtaddstock.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Txtaddstock.Location = new System.Drawing.Point(210, 271);
+            this.Txtaddstock.Name = "Txtaddstock";
+            this.Txtaddstock.Size = new System.Drawing.Size(171, 35);
+            this.Txtaddstock.TabIndex = 53;
+            this.Txtaddstock.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Txtaddstock.ValueChanged += new System.EventHandler(this.Txtaddstock_ValueChanged_1);
             // 
             // label11
             // 
@@ -486,94 +535,104 @@
             // txtFinalPrice
             // 
             this.txtFinalPrice.BackColor = System.Drawing.Color.YellowGreen;
+            this.txtFinalPrice.Cursor = System.Windows.Forms.Cursors.No;
             this.txtFinalPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFinalPrice.Location = new System.Drawing.Point(220, 325);
             this.txtFinalPrice.Margin = new System.Windows.Forms.Padding(2);
             this.txtFinalPrice.Name = "txtFinalPrice";
+            this.txtFinalPrice.ReadOnly = true;
             this.txtFinalPrice.Size = new System.Drawing.Size(328, 37);
             this.txtFinalPrice.TabIndex = 51;
+            this.txtFinalPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txt140
             // 
             this.txt140.AutoSize = true;
-            this.txt140.Location = new System.Drawing.Point(487, 201);
+            this.txt140.Location = new System.Drawing.Point(487, 160);
             this.txt140.Name = "txt140";
             this.txt140.Size = new System.Drawing.Size(58, 20);
             this.txt140.TabIndex = 50;
             this.txt140.TabStop = true;
             this.txt140.Text = "140%";
             this.txt140.UseVisualStyleBackColor = true;
+            this.txt140.CheckedChanged += new System.EventHandler(this.txt140_CheckedChanged);
             // 
             // txt120
             // 
             this.txt120.AutoSize = true;
-            this.txt120.Location = new System.Drawing.Point(409, 201);
+            this.txt120.Location = new System.Drawing.Point(409, 160);
             this.txt120.Name = "txt120";
             this.txt120.Size = new System.Drawing.Size(58, 20);
             this.txt120.TabIndex = 49;
             this.txt120.TabStop = true;
             this.txt120.Text = "120%";
             this.txt120.UseVisualStyleBackColor = true;
+            this.txt120.CheckedChanged += new System.EventHandler(this.txt120_CheckedChanged);
             // 
             // txt100
             // 
             this.txt100.AutoSize = true;
-            this.txt100.Location = new System.Drawing.Point(343, 201);
+            this.txt100.Location = new System.Drawing.Point(343, 160);
             this.txt100.Name = "txt100";
             this.txt100.Size = new System.Drawing.Size(58, 20);
             this.txt100.TabIndex = 48;
             this.txt100.TabStop = true;
             this.txt100.Text = "100%";
             this.txt100.UseVisualStyleBackColor = true;
+            this.txt100.CheckedChanged += new System.EventHandler(this.txt100_CheckedChanged);
             // 
             // txt80
             // 
             this.txt80.AutoSize = true;
-            this.txt80.Location = new System.Drawing.Point(257, 201);
+            this.txt80.Location = new System.Drawing.Point(257, 160);
             this.txt80.Name = "txt80";
             this.txt80.Size = new System.Drawing.Size(51, 20);
             this.txt80.TabIndex = 47;
             this.txt80.TabStop = true;
             this.txt80.Text = "80%";
             this.txt80.UseVisualStyleBackColor = true;
+            this.txt80.CheckedChanged += new System.EventHandler(this.txt80_CheckedChanged);
             // 
             // txt60
             // 
             this.txt60.AutoSize = true;
-            this.txt60.Location = new System.Drawing.Point(181, 201);
+            this.txt60.Location = new System.Drawing.Point(181, 160);
             this.txt60.Name = "txt60";
             this.txt60.Size = new System.Drawing.Size(51, 20);
             this.txt60.TabIndex = 46;
             this.txt60.TabStop = true;
             this.txt60.Text = "60%";
             this.txt60.UseVisualStyleBackColor = true;
+            this.txt60.CheckedChanged += new System.EventHandler(this.txt60_CheckedChanged);
             // 
             // txt40
             // 
             this.txt40.AutoSize = true;
-            this.txt40.Location = new System.Drawing.Point(110, 201);
+            this.txt40.Location = new System.Drawing.Point(110, 160);
             this.txt40.Name = "txt40";
             this.txt40.Size = new System.Drawing.Size(51, 20);
             this.txt40.TabIndex = 45;
             this.txt40.TabStop = true;
             this.txt40.Text = "40%";
             this.txt40.UseVisualStyleBackColor = true;
+            this.txt40.CheckedChanged += new System.EventHandler(this.txt40_CheckedChanged);
             // 
             // txt20
             // 
             this.txt20.AutoSize = true;
-            this.txt20.Location = new System.Drawing.Point(41, 201);
+            this.txt20.Location = new System.Drawing.Point(41, 160);
             this.txt20.Name = "txt20";
             this.txt20.Size = new System.Drawing.Size(51, 20);
             this.txt20.TabIndex = 44;
             this.txt20.TabStop = true;
             this.txt20.Text = "20%";
             this.txt20.UseVisualStyleBackColor = true;
+            this.txt20.CheckedChanged += new System.EventHandler(this.txt20_CheckedChanged);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(89, 166);
+            this.label9.Location = new System.Drawing.Point(71, 105);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(90, 16);
             this.label9.TabIndex = 43;
@@ -581,16 +640,20 @@
             // 
             // TxtSellPrice
             // 
-            this.TxtSellPrice.Location = new System.Drawing.Point(220, 160);
+            this.TxtSellPrice.Location = new System.Drawing.Point(202, 99);
             this.TxtSellPrice.Margin = new System.Windows.Forms.Padding(2);
             this.TxtSellPrice.Name = "TxtSellPrice";
             this.TxtSellPrice.Size = new System.Drawing.Size(308, 22);
             this.TxtSellPrice.TabIndex = 42;
+            this.TxtSellPrice.Text = " ";
+            this.TxtSellPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TxtSellPrice.TextChanged += new System.EventHandler(this.TxtSellPrice_TextChanged);
+            this.TxtSellPrice.Leave += new System.EventHandler(this.TxtSellPrice_Leave);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(87, 150);
+            this.label6.Location = new System.Drawing.Point(69, 89);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(104, 16);
@@ -599,51 +662,24 @@
             // 
             // TxtUnitaryCost
             // 
-            this.TxtUnitaryCost.Location = new System.Drawing.Point(220, 104);
+            this.TxtUnitaryCost.Location = new System.Drawing.Point(202, 43);
             this.TxtUnitaryCost.Margin = new System.Windows.Forms.Padding(2);
             this.TxtUnitaryCost.Name = "TxtUnitaryCost";
             this.TxtUnitaryCost.Size = new System.Drawing.Size(308, 22);
             this.TxtUnitaryCost.TabIndex = 40;
+            this.TxtUnitaryCost.Text = " ";
+            this.TxtUnitaryCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TxtUnitaryCost.Leave += new System.EventHandler(this.TxtUnitaryCost_Leave);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(88, 110);
+            this.label5.Location = new System.Drawing.Point(70, 49);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(91, 16);
             this.label5.TabIndex = 39;
             this.label5.Text = "Costo unitario:";
-            // 
-            // txtvalue
-            // 
-            this.txtvalue.Location = new System.Drawing.Point(287, 48);
-            this.txtvalue.Margin = new System.Windows.Forms.Padding(2);
-            this.txtvalue.Name = "txtvalue";
-            this.txtvalue.ReadOnly = true;
-            this.txtvalue.Size = new System.Drawing.Size(183, 22);
-            this.txtvalue.TabIndex = 38;
-            this.txtvalue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label
-            // 
-            this.label.AutoSize = true;
-            this.label.Location = new System.Drawing.Point(88, 28);
-            this.label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(65, 16);
-            this.label.TabIndex = 37;
-            this.label.Text = "Impuesto:";
-            // 
-            // cbtax
-            // 
-            this.cbtax.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbtax.FormattingEnabled = true;
-            this.cbtax.Location = new System.Drawing.Point(220, 20);
-            this.cbtax.Margin = new System.Windows.Forms.Padding(2);
-            this.cbtax.Name = "cbtax";
-            this.cbtax.Size = new System.Drawing.Size(301, 24);
-            this.cbtax.TabIndex = 36;
             // 
             // groupBox1
             // 
@@ -849,7 +885,7 @@
             this.panel7.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtStock)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Txtaddstock)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel6.ResumeLayout(false);
@@ -891,9 +927,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox TxtUnitaryCost;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtvalue;
-        private System.Windows.Forms.Label label;
-        private System.Windows.Forms.ComboBox cbtax;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cbUnit;
         private System.Windows.Forms.ComboBox CbCategory;
@@ -917,8 +950,12 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtFinalPrice;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.NumericUpDown TxtStock;
+        private System.Windows.Forms.NumericUpDown Txtaddstock;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox cbUbication;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox TxtStock;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtstocktotal;
     }
 }

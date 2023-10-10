@@ -111,21 +111,14 @@ namespace VCBikeService.Forms.Mantenimiento
 
                 MyItem = new Logic.Models.Item();
 
-                
-
                 MyItem.ItemID = IdProduct;
 
                 MyItem = MyItem.SearchIDReturnitem();
 
                 if (MyItem != null && MyItem.ItemID > 0)
                 {
-                    TxtPrecioUnitario.Text = Convert.ToString(MyItem.SellPrice);
+                    TxtPrecioUnitario.Text = Convert.ToString(MyItem.SellPrice.ToString("0.00"));
                      
-
-
-
-
-
                 }
             }
         }
@@ -144,22 +137,30 @@ namespace VCBikeService.Forms.Mantenimiento
             decimal descuento = Convert.ToDecimal(TxtDescuento.Value) / 100;
             int stock = Convert.ToInt32(TxtCantidad.Value);
             decimal valorUnitario;
+            decimal iva = 13m / 100m;
 
             if (decimal.TryParse(TxtPrecioUnitario.Text.Trim(), out valorUnitario))
             {
-                decimal Preciounitario = valorUnitario * stock;
-                decimal DescuentoFinal = Preciounitario * descuento;
-                decimal PrecioConDescuento = Preciounitario - DescuentoFinal;
+                decimal Precioporcantidad = valorUnitario * stock;
+                decimal Impuesto = Precioporcantidad * iva;
+                decimal Preciosindescuento = Precioporcantidad + Impuesto;
 
-                decimal iva = 13m / 100m;
-                decimal Impuesto = valorUnitario * iva;
-                decimal total = PrecioConDescuento + Impuesto;
+                TxtIva.Text = Impuesto.ToString("0.00");
 
-                TxtIva.Text = Impuesto.ToString("0.00"); // Ajusta el formato de salida según tus necesidades
-                TxtPrecioFinal.Text = total.ToString("0.00");
+                if (descuento > 0)
+                {
+                    decimal DescuentoGlobal = Preciosindescuento * descuento;
+                    decimal PrecioConDescuento = Preciosindescuento - DescuentoGlobal;
+
+                    TxtPrecioFinal.Text = PrecioConDescuento.ToString("0.00");
+                }
+                else
+                {
+                    TxtPrecioFinal.Text = Preciosindescuento.ToString("0.00");
+                }
             }
-
         }
+
 
         private void ActualizarSubtotal()
         {
@@ -251,13 +252,6 @@ namespace VCBikeService.Forms.Mantenimiento
                 MessageBox.Show("Por favor, ingrese un precio válido.");
             }
         }
-
-
-
-    
-
-
-
 
         private void cleaner() {
             txtCustomer.SelectedIndex = -1;
@@ -437,6 +431,17 @@ namespace VCBikeService.Forms.Mantenimiento
                         // Limpiar la lista de productos agregados
                         productosAgregados.Clear();
 
+
+
+
+
+
+
+
+
+
+
+
                         cleaner();
                         //crear factura mantenimiento 
                     }
@@ -564,6 +569,11 @@ namespace VCBikeService.Forms.Mantenimiento
             {
                 MessageBox.Show("No hay productos en el mantenimiento para limpiar.");
             }
+        }
+
+        private void BtnCancel_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 

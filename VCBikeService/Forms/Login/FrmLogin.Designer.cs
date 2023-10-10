@@ -69,8 +69,9 @@
             this.TxtPassword.Name = "TxtPassword";
             this.TxtPassword.Size = new System.Drawing.Size(387, 40);
             this.TxtPassword.TabIndex = 5;
+            this.TxtPassword.Text = "Contraseña";
             this.TxtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TxtPassword.UseSystemPasswordChar = true;
+            this.TxtPassword.Click += new System.EventHandler(this.TxtPassword_Click);
             // 
             // BtnIngresoDirecto
             // 

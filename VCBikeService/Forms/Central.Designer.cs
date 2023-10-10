@@ -309,7 +309,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(215, 90);
             this.button2.TabIndex = 1;
-            this.button2.Text = "+ Compra del negocio";
+            this.button2.Text = "+ Stock";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -745,7 +745,6 @@
             this.Text = "Central";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Central_Load);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Central_KeyUp);
             this.MenuVertical.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);

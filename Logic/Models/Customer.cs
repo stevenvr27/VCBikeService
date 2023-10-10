@@ -12,6 +12,8 @@ namespace Logic.Models
         public string CustomerName { get; set; }
         public string CustomerAdress { get; set; }
 
+        
+
         public int CustomerPhone { get; set; }
         public string CustomerEmail { get; set; }
 

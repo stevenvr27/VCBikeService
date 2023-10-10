@@ -23,7 +23,7 @@ namespace VCBikeService.Forms
             InitializeComponent();
             Myitem = new Logic.Models.Item();
             ListItem = new DataTable();
-            Checker();
+            
             this.KeyPreview = true;
         }
 
@@ -55,7 +55,7 @@ namespace VCBikeService.Forms
             FrmProductsAdd frmProductsAdd = new FrmProductsAdd();
             loadlistproduct();
             LoadItemtype();
-            LoadTaxes();
+           
              
             LoadUbicaction();
             loadunit();
@@ -86,15 +86,15 @@ namespace VCBikeService.Forms
                 TxtUnitaryCost.Text = Convert.ToString(Myitem.UnitaryCost);
                 TxtStock.Text = Convert.ToString(Myitem.Stock);
                 TxtDescription.Text = Myitem.Description;
-                txtvalue.Text = Convert.ToString(Myitem.Tax.AmountTax);
+            
                 
 
-                Calculate();
+                 
 
 
 
                 //Combobox
-                cbtax.SelectedValue = Myitem.Tax.TaxID;
+               
                 cbUnit.SelectedValue = Myitem.Unit.IDUnit;
                 CbCategory.SelectedValue = Myitem.MyType.ItemCategoryID;
                 cbUbication.SelectedValue = Myitem.Ubication.UbicationID;
@@ -172,35 +172,25 @@ namespace VCBikeService.Forms
 
             }
         }
-        private void LoadTaxes()
-        {
-            Logic.Models.Tax tax = new Logic.Models.Tax();
-
-            DataTable dt = new DataTable();
-            dt = tax.List();
-
-            if (dt != null && dt.Rows.Count > 0)
-            {
-                cbtax.ValueMember = "ID";
-                cbtax.DisplayMember = "Descrip";
-                cbtax.DataSource = dt;
-                cbtax.SelectedIndex = -1;
-            }
-        }
+        
         private void CleanForm()
         {
             TxtBarcode.Clear();
             TxtDescription.Clear();
             TxtIDProduct.Clear();
             TxtProductName.Clear();
-            TxtStock.Value = 0;
+            Txtaddstock.Value = 0;
             TxtSellPrice.Clear();
             TxtUnitaryCost.Clear();
-            cbtax.SelectedIndex = -1;
+        
             CbCategory.SelectedIndex = -1;
             cbUnit.SelectedIndex = -1;
             cbUbication.SelectedIndex = -1;
+            txtstocktotal.Clear();
+            TxtStock.Text = 0.ToString();
+            txtstocktotal.Text = 0.ToString();
             txtFinalPrice.Clear();
+            
             txt20.Checked = false;
             txt40.Checked = false;
             txt60.Checked = false;
@@ -216,91 +206,103 @@ namespace VCBikeService.Forms
 
         private void BtnAddproduct_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(TxtProductName.Text.Trim()) && !string.IsNullOrEmpty(TxtBarcode.Text.Trim())
+            int stockTotal;
+            if (int.TryParse(txtstocktotal.Text.Trim(), out stockTotal) && stockTotal > 0)
+            { 
+
+                if (!string.IsNullOrEmpty(TxtProductName.Text.Trim()) && !string.IsNullOrEmpty(TxtBarcode.Text.Trim())
                 && !string.IsNullOrEmpty(TxtUnitaryCost.Text.Trim()) && !string.IsNullOrEmpty(TxtSellPrice.Text.Trim()))
-            {
-                bool IDOK;
-                bool BarcodeOk;
-
-
-
-                Myitem = new Logic.Models.Item();
-
-                Myitem.ItemName = TxtProductName.Text.Trim();
-                Myitem.UnitaryCost = Convert.ToDecimal(TxtUnitaryCost.Text.Trim());
-                Myitem.SellPrice = Convert.ToDecimal(TxtSellPrice.Text.Trim());
-                Myitem.Description = TxtDescription.Text.Trim();
-                Myitem.Barcode = TxtBarcode.Text.Trim();
-                Myitem.Stock = Convert.ToInt32(TxtStock.Text.Trim());
-                Myitem.Tax.TaxID = Convert.ToInt32(cbtax.SelectedValue);
-                Myitem.Unit.IDUnit = Convert.ToInt32(cbUnit.SelectedValue);
-                Myitem.Ubication.UbicationID = Convert.ToInt32(cbUbication.SelectedValue);
-
-
-                Myitem.MyType.ItemCategoryID = Convert.ToInt32(CbCategory.SelectedValue);
-
-
-
-                IDOK = Myitem.ConsultID();
-                BarcodeOk = Myitem.ConsultBarcode();
-                if (IDOK == false && BarcodeOk == false)
                 {
+                    bool IDOK;
+                    bool BarcodeOk;
 
 
-                    string msg = string.Format("¿Está seguro que desea agregar este producto {0}?", Myitem.ItemName);
 
-                    DialogResult respuesta = MessageBox.Show(msg, "???", MessageBoxButtons.YesNo);
+                    Myitem = new Logic.Models.Item();
 
-                    if (respuesta == DialogResult.Yes)
+                    Myitem.ItemName = TxtProductName.Text.Trim();
+                    Myitem.UnitaryCost = Convert.ToDecimal(TxtUnitaryCost.Text.Trim());
+                    Myitem.SellPrice = Convert.ToDecimal(TxtSellPrice.Text.Trim());
+                    Myitem.Description = TxtDescription.Text.Trim();
+                    Myitem.Barcode = TxtBarcode.Text.Trim();
+                    Myitem.Stock = Convert.ToInt32(txtstocktotal.Text.Trim());
+                    //Myitem.Tax.TaxID = Convert.ToInt32(cbtax.SelectedValue);
+                    Myitem.Unit.IDUnit = Convert.ToInt32(cbUnit.SelectedValue);
+                    Myitem.Ubication.UbicationID = Convert.ToInt32(cbUbication.SelectedValue);
+
+
+                    Myitem.MyType.ItemCategoryID = Convert.ToInt32(CbCategory.SelectedValue);
+
+
+
+                    IDOK = Myitem.ConsultID();
+                    BarcodeOk = Myitem.ConsultBarcode();
+                    if (IDOK == false && BarcodeOk == false)
                     {
 
-                        bool ok = Myitem.Add();
 
-                        if (ok)
+                        string msg = string.Format("¿Está seguro que desea agregar este producto {0}?", Myitem.ItemName);
+
+                        DialogResult respuesta = MessageBox.Show(msg, "???", MessageBoxButtons.YesNo);
+
+                        if (respuesta == DialogResult.Yes)
                         {
-                            MessageBox.Show("Producto guardado correctamente!", ":)", MessageBoxButtons.OK);
 
-                            CleanForm();
+                            bool ok = Myitem.Add();
 
-                            loadlistproduct();
+                            if (ok)
+                            {
+                                MessageBox.Show("Producto guardado correctamente!", ":)", MessageBoxButtons.OK);
+
+                                 CleanForm();
+
+                                loadlistproduct();
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("El producto no se pudo guardar!", ":/", MessageBoxButtons.OK);
+                            }
+
+
 
                         }
-                        else
-                        {
-                            MessageBox.Show("El producto no se pudo guardar!", ":/", MessageBoxButtons.OK);
-                        }
 
+
+                    }
+                    else
+                    {
+
+
+                        if (IDOK)
+                        {
+                            MessageBox.Show("Ya existe un producto con el Mismo ID", "Error de Validación", MessageBoxButtons.OK);
+                            return;
+                        }
+                        if (BarcodeOk)
+                        {
+                            MessageBox.Show("Ya existe un producto con el Mismo Codigo de Barras", "Error de Validación", MessageBoxButtons.OK);
+                            return;
+                        }
 
 
                     }
 
-
                 }
+
                 else
                 {
-
-
-                    if (IDOK)
-                    {
-                        MessageBox.Show("Ya existe un producto con el Mismo ID", "Error de Validación", MessageBoxButtons.OK);
-                        return;
-                    }
-                    if (BarcodeOk)
-                    {
-                        MessageBox.Show("Ya existe un producto con el Mismo Codigo de Barras", "Error de Validación", MessageBoxButtons.OK);
-                        return;
-                    }
-
+                    MessageBox.Show("Datos faltantes", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 }
 
             }
-
             else
             {
-                MessageBox.Show("Datos faltantes", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Por favor, ingrese un número entero válido mayor que 0 en el campo de stock total.");
 
             }
+
         }
 
         private void BtnCleanproduct_Click(object sender, EventArgs e)
@@ -312,27 +314,7 @@ namespace VCBikeService.Forms
         {
             this.Hide();
         }
-        private void Checker()
-        {
-            if (checkProduct.Checked)
-            {
-                BtnDeleteproduct.Visible = true;
-                btnactivate.Visible = false;
-                BtnDeleteForEver.Visible = false;
-                BtnAddproduct.Visible = true;
-                BtnEditproduct.Visible = true;
-                BtnCleanproduct.Visible = true;
-            }
-            else
-            {
-                btnactivate.Visible = true;
-                BtnDeleteForEver.Visible = true;
-                BtnAddproduct.Visible = false;
-                BtnEditproduct.Visible = false;
-                BtnCleanproduct.Visible = false;
-                BtnDeleteproduct.Visible = false;
-            }
-        }
+       
 
         private void BtnDeleteproduct_Click(object sender, EventArgs e)
         {
@@ -407,8 +389,10 @@ namespace VCBikeService.Forms
 
         private void checkProduct_CheckedChanged(object sender, EventArgs e)
         {
+          
             loadlistproduct();
-            Checker();
+
+
         }
 
         private void btnactivate_Click(object sender, EventArgs e)
@@ -451,10 +435,10 @@ namespace VCBikeService.Forms
                 Myitem.Barcode = TxtBarcode.Text.Trim();
                 Myitem.UnitaryCost = Convert.ToDecimal(TxtUnitaryCost.Text.Trim());
                 Myitem.SellPrice = Convert.ToDecimal(TxtSellPrice.Text.Trim());
-                Myitem.Stock = Convert.ToInt32(TxtStock.Text.Trim());
+                Myitem.Stock = Convert.ToInt32(Txtaddstock.Text.Trim());
                 Myitem.Description = TxtDescription.Text.Trim();
 
-                Myitem.Tax.TaxID = Convert.ToInt32(cbtax.SelectedValue);
+         
                 Myitem.Unit.IDUnit = Convert.ToInt32(cbUnit.SelectedValue);
                 Myitem.Ubication.UbicationID = Convert.ToInt32(cbUbication.SelectedValue);
 
@@ -533,12 +517,13 @@ namespace VCBikeService.Forms
                  
                 total = Math.Round(total, 2);
                 TxtSellPrice.Text = total.ToString();
-                Calculate();
+               
+                
             }
             else
             {
-                MessageBox.Show("Primero debes agregar un costo unitario", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                CleanForm();
+                MessageBox.Show("Debes agregar un precio de costo");
+               
             }
         }
 
@@ -576,54 +561,9 @@ namespace VCBikeService.Forms
         {
             CalculatePercentage(1.40m);
         }
-        private void Calculate()
-        {
-            if (!string.IsNullOrEmpty(TxtSellPrice.Text.Trim()) && cbtax.SelectedIndex >-1)
-            {
-                decimal impuesto = (0.13m);
-                decimal TotalEntero = Convert.ToDecimal(TxtSellPrice.Text.Trim());
-                decimal total = TotalEntero + (TotalEntero*impuesto);
-                total = Math.Round(total, 2);
-                txtFinalPrice.Text = total.ToString();
-
-            }
-             
-        }
-
-        private void cbtax_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbtax.SelectedIndex > -1)
-            {
-                // Get the selected DataRowView
-                DataRowView selectedRow = (DataRowView)cbtax.SelectedItem;
-
-                // Get the value of the 'AmountTax' column
-                if (selectedRow.Row["value"] is decimal impuestoValor)
-                {
-                    txtvalue.Text = impuestoValor.ToString("F2"); // Format the value as "18.2" decimal
-                }
-                else
-                {
-                    // Handle the case when the value cannot be converted to decimal
-                    txtvalue.Text = "0";
-                }
-            }
-            else
-            {
-                // If no item is selected, you can set the default value for textBox1
-                txtvalue.Text = "0";
-            }
-
-            // Recalculate the price with the new tax value
-            Calculate();
-        }
-
-        private void checkProduct_CheckedChanged_1(object sender, EventArgs e)
-        {
-            Checker();
-            loadlistproduct();
-            
-        }
+        
+         
+ 
 
         private void FrmProductsAdd_KeyUp(object sender, KeyEventArgs e)
         {
@@ -637,6 +577,95 @@ namespace VCBikeService.Forms
                 // Realiza el clic en el botón "add" si se presiona Enter
                 BtnAddproduct.PerformClick();
             }
+        }
+
+        private void checkProduct_CheckedChanged_1(object sender, EventArgs e)
+        {
+            CleanForm();
+            if (checkProduct.Checked)
+            {
+                BtnDeleteproduct.Visible = true;
+                btnactivate.Visible = false;
+                BtnAddproduct.Visible = true;
+
+            }
+            else
+            {
+                BtnDeleteproduct.Visible = false;
+                btnactivate.Visible = true;
+                BtnAddproduct.Visible = false;
+
+            }
+            loadlistproduct();
+        }
+
+        private void Txtaddstock_ValueChanged(object sender, EventArgs e)
+        {
+             
+            Calcular();
+        }
+        private void Calcular()
+        {
+            // Attempt to parse TxtStock.Text and Txtaddstock.Value to integers
+            if (int.TryParse(TxtStock.Text, out int stock) && int.TryParse(Txtaddstock.Value.ToString(), out int nuevostock))
+            {
+                // Successfully parsed both inputs as integers
+                int stocktotal = stock + nuevostock;
+                txtstocktotal.Text = stocktotal.ToString();
+            }
+            
+        }
+
+       
+
+        private void TxtUnitaryCost_TextChanged(object sender, EventArgs e)
+        {
+            Calculate();
+        }
+        private void Calculate()
+        {
+            decimal valorUnitario;
+
+            if (decimal.TryParse(TxtSellPrice.Text.Trim(), out valorUnitario))
+            {
+
+                decimal iva = 13m / 100m;
+                decimal Impuesto = valorUnitario * iva;
+                decimal total = valorUnitario + Impuesto;
+                txtFinalPrice.Text = total.ToString("0.00");
+            }
+
+        }
+
+         
+
+        private void TxtUnitaryCost_Leave(object sender, EventArgs e)
+        {
+            if (decimal.TryParse(TxtUnitaryCost.Text, out decimal numero))
+            {
+                // El texto ingresado es un número decimal válido
+                TxtUnitaryCost.Text = numero.ToString("0.00");
+            }
+        }
+
+        private void TxtSellPrice_Leave(object sender, EventArgs e)
+        {
+            if (decimal.TryParse(TxtSellPrice.Text, out decimal numero))
+            {
+                // El texto ingresado es un número decimal válido
+                TxtSellPrice.Text = numero.ToString("0.00");
+                 
+            }
+        }
+
+        private void TxtSellPrice_TextChanged(object sender, EventArgs e)
+        {
+            Calculate();
+        }
+
+        private void Txtaddstock_ValueChanged_1(object sender, EventArgs e)
+        {
+            Calcular();
         }
     }
     }

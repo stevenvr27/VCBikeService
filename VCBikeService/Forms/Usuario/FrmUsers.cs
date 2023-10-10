@@ -66,6 +66,7 @@ namespace VCBikeService.Forms
 
         private void Checker()
         {
+            CleanForm();
             if (CheckUser.Checked)
             {
                 BtnAdd.Visible = true;
@@ -100,7 +101,7 @@ namespace VCBikeService.Forms
             if (dt != null && dt.Rows.Count > 0)
             {
                 CbRol.ValueMember = "ID";
-                CbRol.DisplayMember = "name";
+                CbRol.DisplayMember = "Descrip";
                 CbRol.DataSource = dt;
                 CbRol.SelectedIndex = -1;
 

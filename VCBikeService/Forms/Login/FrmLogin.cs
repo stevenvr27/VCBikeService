@@ -69,22 +69,13 @@ namespace VCBikeService.Forms
                     BtnLogin.PerformClick();
                 }
         }
-
+        private bool passwordVisible = false;
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            //boton para ver lo digitado en el campo de la contraseña 
-            if (!string.IsNullOrEmpty(TxtPassword.Text.Trim()))
-            {
-                TxtPassword.UseSystemPasswordChar = false;
-                return;
+            passwordVisible = !passwordVisible;
 
-            }
-            else
-            {
-
-                TxtPassword.UseSystemPasswordChar = true;
-                MessageBox.Show("Debes Escribir una Contraseña!", "Error de validación", MessageBoxButtons.OK);
-            }
+            // Mostrar la contraseña desencriptada si passwordVisible es true, de lo contrario, mostrarla encriptada
+            TxtPassword.UseSystemPasswordChar = !passwordVisible;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -149,6 +140,14 @@ namespace VCBikeService.Forms
         {
             this.Hide(); // Oculta el formulario padre
             MostrarFormularioHijo();
+        }
+
+       
+
+        private void TxtPassword_Click(object sender, EventArgs e)
+        {
+            TxtPassword.Text = "";
+            TxtPassword.UseSystemPasswordChar = true;
         }
     }
 }

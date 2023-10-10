@@ -72,7 +72,7 @@ namespace VCBikeService.Forms.Compra
                 int IDCLIENTE;
                 IDCLIENTE = Convert.ToInt32(FilaSeleccionada.Cells["CCustomerID"].Value);
 
-                Globals.Frmfactura.TxtCustomerID.Text = Convert.ToString(IDCLIENTE);
+                Globals.frmBilling.TxtCustomerID.Text = Convert.ToString(IDCLIENTE);
 
                 this.DialogResult = DialogResult.OK;
 

@@ -96,6 +96,25 @@ namespace Logic.Models
             }
             return R;
         }
+
+        public bool ValidateCredentials()
+        {
+            bool isValid = false;
+
+            Connection connection = new Connection();
+            connection.parameterlist.Add(new SqlParameter("@Name", this.UserName));
+            connection.parameterlist.Add(new SqlParameter("@Email", this.Email)); 
+
+            object result = connection.EjecutarSELECTEscalar("SPValidateCredentials");
+
+            if (result != null && result != DBNull.Value)
+            {
+                isValid = Convert.ToInt32(result) == 1;
+            }
+
+            return isValid;
+        }
+
         //metodo validad credenciales  y su respectivo llamado al procedimiento almacenado 
         public bool ValidateUserCredentials(string name, string email, string userCardID)
         {
@@ -313,7 +332,7 @@ namespace Logic.Models
 
 
 
-        //metodo valida que el usuario exita con   su respectivo llamado al procedimiento almacenado 
+        //metodo valida que el usuario exista con   su respectivo llamado al procedimiento almacenado 
         public User ValidateUser(string pEmail, string pContrasennia)
         {
             User R = new User();

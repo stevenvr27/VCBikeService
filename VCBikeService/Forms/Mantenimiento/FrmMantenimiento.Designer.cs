@@ -33,10 +33,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.btnEliminarExtra = new System.Windows.Forms.Button();
-            this.Txtvaluefinal = new System.Windows.Forms.TextBox();
-            this.buttonaddvalue = new System.Windows.Forms.Button();
+            this.panel10 = new System.Windows.Forms.Panel();
             this.DgLista = new System.Windows.Forms.DataGridView();
             this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,6 +41,10 @@
             this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Impuesto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precioFinal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnEliminarExtra = new System.Windows.Forms.Button();
+            this.Txtvaluefinal = new System.Windows.Forms.TextBox();
+            this.buttonaddvalue = new System.Windows.Forms.Button();
             this.Txtnotes = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -102,8 +103,9 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgLista)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -163,70 +165,22 @@
             // 
             // panel7
             // 
+            this.panel7.Controls.Add(this.panel10);
             this.panel7.Controls.Add(this.groupBox4);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(613, 538);
+            this.panel7.Size = new System.Drawing.Size(613, 575);
             this.panel7.TabIndex = 1;
             // 
-            // groupBox4
+            // panel10
             // 
-            this.groupBox4.Controls.Add(this.btnEliminarExtra);
-            this.groupBox4.Controls.Add(this.Txtvaluefinal);
-            this.groupBox4.Controls.Add(this.buttonaddvalue);
-            this.groupBox4.Controls.Add(this.DgLista);
-            this.groupBox4.Controls.Add(this.Txtnotes);
-            this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Controls.Add(this.label10);
-            this.groupBox4.Controls.Add(this.label9);
-            this.groupBox4.Controls.Add(this.DtpFechaFactura);
-            this.groupBox4.Controls.Add(this.txtvalue);
-            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(0, 0);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(613, 538);
-            this.groupBox4.TabIndex = 0;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Detalle del mantenimiento";
-            // 
-            // btnEliminarExtra
-            // 
-            this.btnEliminarExtra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnEliminarExtra.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminarExtra.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnEliminarExtra.Location = new System.Drawing.Point(504, 124);
-            this.btnEliminarExtra.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEliminarExtra.Name = "btnEliminarExtra";
-            this.btnEliminarExtra.Size = new System.Drawing.Size(104, 38);
-            this.btnEliminarExtra.TabIndex = 27;
-            this.btnEliminarExtra.Text = "Eliminar ";
-            this.btnEliminarExtra.UseVisualStyleBackColor = false;
-            this.btnEliminarExtra.Click += new System.EventHandler(this.btnEliminarExtra_Click);
-            // 
-            // Txtvaluefinal
-            // 
-            this.Txtvaluefinal.Location = new System.Drawing.Point(156, 136);
-            this.Txtvaluefinal.Name = "Txtvaluefinal";
-            this.Txtvaluefinal.ReadOnly = true;
-            this.Txtvaluefinal.Size = new System.Drawing.Size(335, 26);
-            this.Txtvaluefinal.TabIndex = 26;
-            this.Txtvaluefinal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // buttonaddvalue
-            // 
-            this.buttonaddvalue.BackColor = System.Drawing.Color.OliveDrab;
-            this.buttonaddvalue.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonaddvalue.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.buttonaddvalue.Location = new System.Drawing.Point(504, 73);
-            this.buttonaddvalue.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonaddvalue.Name = "buttonaddvalue";
-            this.buttonaddvalue.Size = new System.Drawing.Size(104, 38);
-            this.buttonaddvalue.TabIndex = 24;
-            this.buttonaddvalue.Text = "Agregar";
-            this.buttonaddvalue.UseVisualStyleBackColor = false;
-            this.buttonaddvalue.Click += new System.EventHandler(this.buttonaddvalue_Click_1);
+            this.panel10.Controls.Add(this.DgLista);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel10.Location = new System.Drawing.Point(0, 266);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(613, 309);
+            this.panel10.TabIndex = 1;
             // 
             // DgLista
             // 
@@ -241,15 +195,15 @@
             this.Discount,
             this.Impuesto,
             this.precioFinal});
-            this.DgLista.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.DgLista.Location = new System.Drawing.Point(3, 272);
+            this.DgLista.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DgLista.Location = new System.Drawing.Point(0, 0);
             this.DgLista.MultiSelect = false;
             this.DgLista.Name = "DgLista";
             this.DgLista.ReadOnly = true;
             this.DgLista.RowHeadersVisible = false;
             this.DgLista.RowHeadersWidth = 51;
             this.DgLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgLista.Size = new System.Drawing.Size(607, 263);
+            this.DgLista.Size = new System.Drawing.Size(613, 309);
             this.DgLista.TabIndex = 20;
             // 
             // ItemName
@@ -296,6 +250,63 @@
             this.precioFinal.HeaderText = "Precio";
             this.precioFinal.Name = "precioFinal";
             this.precioFinal.ReadOnly = true;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.btnEliminarExtra);
+            this.groupBox4.Controls.Add(this.Txtvaluefinal);
+            this.groupBox4.Controls.Add(this.buttonaddvalue);
+            this.groupBox4.Controls.Add(this.Txtnotes);
+            this.groupBox4.Controls.Add(this.label11);
+            this.groupBox4.Controls.Add(this.label10);
+            this.groupBox4.Controls.Add(this.label9);
+            this.groupBox4.Controls.Add(this.DtpFechaFactura);
+            this.groupBox4.Controls.Add(this.txtvalue);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(0, 0);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(613, 266);
+            this.groupBox4.TabIndex = 0;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Detalle del mantenimiento";
+            // 
+            // btnEliminarExtra
+            // 
+            this.btnEliminarExtra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnEliminarExtra.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarExtra.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnEliminarExtra.Location = new System.Drawing.Point(504, 124);
+            this.btnEliminarExtra.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEliminarExtra.Name = "btnEliminarExtra";
+            this.btnEliminarExtra.Size = new System.Drawing.Size(104, 38);
+            this.btnEliminarExtra.TabIndex = 27;
+            this.btnEliminarExtra.Text = "Eliminar ";
+            this.btnEliminarExtra.UseVisualStyleBackColor = false;
+            this.btnEliminarExtra.Click += new System.EventHandler(this.btnEliminarExtra_Click);
+            // 
+            // Txtvaluefinal
+            // 
+            this.Txtvaluefinal.Location = new System.Drawing.Point(156, 136);
+            this.Txtvaluefinal.Name = "Txtvaluefinal";
+            this.Txtvaluefinal.ReadOnly = true;
+            this.Txtvaluefinal.Size = new System.Drawing.Size(335, 26);
+            this.Txtvaluefinal.TabIndex = 26;
+            this.Txtvaluefinal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonaddvalue
+            // 
+            this.buttonaddvalue.BackColor = System.Drawing.Color.OliveDrab;
+            this.buttonaddvalue.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonaddvalue.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonaddvalue.Location = new System.Drawing.Point(504, 73);
+            this.buttonaddvalue.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonaddvalue.Name = "buttonaddvalue";
+            this.buttonaddvalue.Size = new System.Drawing.Size(104, 38);
+            this.buttonaddvalue.TabIndex = 24;
+            this.buttonaddvalue.Text = "Agregar";
+            this.buttonaddvalue.UseVisualStyleBackColor = false;
+            this.buttonaddvalue.Click += new System.EventHandler(this.buttonaddvalue_Click_1);
             // 
             // Txtnotes
             // 
@@ -359,9 +370,9 @@
             this.groupBox5.Controls.Add(this.panel8);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(0, 538);
+            this.groupBox5.Location = new System.Drawing.Point(0, 575);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(613, 129);
+            this.groupBox5.Size = new System.Drawing.Size(613, 92);
             this.groupBox5.TabIndex = 0;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Totales";
@@ -372,7 +383,7 @@
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(3, 22);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(607, 104);
+            this.panel8.Size = new System.Drawing.Size(607, 67);
             this.panel8.TabIndex = 0;
             // 
             // panel9
@@ -383,7 +394,7 @@
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(0, 0);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(607, 104);
+            this.panel9.Size = new System.Drawing.Size(607, 67);
             this.panel9.TabIndex = 10;
             // 
             // txttotal
@@ -476,8 +487,9 @@
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.Size = new System.Drawing.Size(122, 69);
             this.BtnCancel.TabIndex = 13;
-            this.BtnCancel.Text = "Cancel";
+            this.BtnCancel.Text = "Cerrar";
             this.BtnCancel.UseVisualStyleBackColor = false;
+            this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
             // panel1
             // 
@@ -504,7 +516,7 @@
             this.tableLayoutPanel3.RowCount = 4;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.45833F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.54166F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 140F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(575, 515);
             this.tableLayoutPanel3.TabIndex = 2;
@@ -516,7 +528,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(3, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(569, 33);
+            this.panel4.Size = new System.Drawing.Size(569, 28);
             this.panel4.TabIndex = 0;
             // 
             // TxtSearchItem
@@ -544,9 +556,9 @@
             // 
             this.panel5.Controls.Add(this.DgProduct);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(3, 42);
+            this.panel5.Location = new System.Drawing.Point(3, 37);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(569, 297);
+            this.panel5.Size = new System.Drawing.Size(569, 262);
             this.panel5.TabIndex = 1;
             // 
             // DgProduct
@@ -570,7 +582,7 @@
             this.DgProduct.RowHeadersVisible = false;
             this.DgProduct.RowHeadersWidth = 51;
             this.DgProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgProduct.Size = new System.Drawing.Size(569, 297);
+            this.DgProduct.Size = new System.Drawing.Size(569, 262);
             this.DgProduct.TabIndex = 9;
             this.DgProduct.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgProduct_CellClick);
             // 
@@ -640,9 +652,9 @@
             this.groupBox3.Controls.Add(this.TxtPrecioUnitario);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(3, 345);
+            this.groupBox3.Location = new System.Drawing.Point(3, 305);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(569, 94);
+            this.groupBox3.Size = new System.Drawing.Size(569, 134);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Detalle del Producto";
@@ -884,6 +896,7 @@
             // 
             this.TxtUserName.Location = new System.Drawing.Point(260, 25);
             this.TxtUserName.Name = "TxtUserName";
+            this.TxtUserName.ReadOnly = true;
             this.TxtUserName.Size = new System.Drawing.Size(266, 26);
             this.TxtUserName.TabIndex = 11;
             this.TxtUserName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -912,9 +925,10 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DgLista)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgLista)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
@@ -1010,5 +1024,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Impuesto;
         private System.Windows.Forms.DataGridViewTextBoxColumn precioFinal;
         private System.Windows.Forms.Button BtnClean;
+        private System.Windows.Forms.Panel panel10;
     }
 }

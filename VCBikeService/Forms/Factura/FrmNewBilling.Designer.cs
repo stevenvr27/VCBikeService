@@ -297,8 +297,7 @@
             this.BtnAddCustomer.Size = new System.Drawing.Size(169, 54);
             this.BtnAddCustomer.TabIndex = 8;
             this.BtnAddCustomer.Text = "Agregar";
-            this.BtnAddCustomer.UseVisualStyleBackColor = false;
-            this.BtnAddCustomer.Click += new System.EventHandler(this.BtnAddCustomer_Click);
+            this.BtnAddCustomer.UseVisualStyleBackColor = false; 
             // 
             // tableLayoutPanel2
             // 

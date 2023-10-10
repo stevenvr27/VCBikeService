@@ -66,7 +66,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.CheckCustomer = new System.Windows.Forms.CheckBox();
+            this.CheckSupply = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.TxtSearchSupplier = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -128,7 +128,6 @@
             this.btnDeleteForEver.TabIndex = 23;
             this.btnDeleteForEver.Text = "Eliminar";
             this.btnDeleteForEver.UseVisualStyleBackColor = false;
-            this.btnDeleteForEver.Visible = false;
             this.btnDeleteForEver.Click += new System.EventHandler(this.btnDeleteForEver_Click);
             // 
             // btnactivate
@@ -149,7 +148,7 @@
             // 
             // BtnCancel
             // 
-            this.BtnCancel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BtnCancel.BackColor = System.Drawing.Color.Salmon;
             this.BtnCancel.Dock = System.Windows.Forms.DockStyle.Right;
             this.BtnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -158,7 +157,7 @@
             this.BtnCancel.Name = "BtnCancel";
             this.BtnCancel.Size = new System.Drawing.Size(170, 69);
             this.BtnCancel.TabIndex = 12;
-            this.BtnCancel.Text = "Cancel";
+            this.BtnCancel.Text = "Cerrar";
             this.BtnCancel.UseVisualStyleBackColor = false;
             this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
@@ -526,7 +525,7 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.CheckCustomer);
+            this.panel4.Controls.Add(this.CheckSupply);
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.TxtSearchSupplier);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
@@ -535,20 +534,20 @@
             this.panel4.Size = new System.Drawing.Size(406, 63);
             this.panel4.TabIndex = 0;
             // 
-            // CheckCustomer
+            // CheckSupply
             // 
-            this.CheckCustomer.AutoSize = true;
-            this.CheckCustomer.Checked = true;
-            this.CheckCustomer.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CheckCustomer.Location = new System.Drawing.Point(395, 16);
-            this.CheckCustomer.Margin = new System.Windows.Forms.Padding(2);
-            this.CheckCustomer.Name = "CheckCustomer";
-            this.CheckCustomer.Size = new System.Drawing.Size(71, 24);
-            this.CheckCustomer.TabIndex = 14;
-            this.CheckCustomer.Text = "Activo";
-            this.CheckCustomer.UseVisualStyleBackColor = true;
-            this.CheckCustomer.CheckedChanged += new System.EventHandler(this.CheckCustomer_CheckedChanged);
+            this.CheckSupply.AutoSize = true;
+            this.CheckSupply.Checked = true;
+            this.CheckSupply.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckSupply.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CheckSupply.Location = new System.Drawing.Point(395, 16);
+            this.CheckSupply.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckSupply.Name = "CheckSupply";
+            this.CheckSupply.Size = new System.Drawing.Size(71, 24);
+            this.CheckSupply.TabIndex = 14;
+            this.CheckSupply.Text = "Activo";
+            this.CheckSupply.UseVisualStyleBackColor = true;
+            this.CheckSupply.CheckedChanged += new System.EventHandler(this.CheckSupply_CheckedChanged);
             // 
             // label1
             // 
@@ -661,6 +660,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.CheckBox CheckCustomer;
+        private System.Windows.Forms.CheckBox CheckSupply;
     }
 }

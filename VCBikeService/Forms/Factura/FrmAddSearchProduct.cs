@@ -60,7 +60,7 @@ namespace VCBikeService.Forms.Compra
                 int newQuantity = Convert.ToInt32(TxtCantidad.Value);
 
                 // Verificar si el producto ya existe en la factura
-                foreach (DataRow row in Globals.Frmfactura.Localdetailist.Rows)
+                foreach (DataRow row in Globals.frmBilling.Localdetailist.Rows)
                 {
                     if (row["ItemItemID"].ToString() == MyItem.ItemID.ToString())
                     {
@@ -92,7 +92,7 @@ namespace VCBikeService.Forms.Compra
                 else
                 {
 
-                    DataRow NuevaLineaDetalleEnFacturacion = Globals.Frmfactura.Localdetailist.NewRow();
+                    DataRow NuevaLineaDetalleEnFacturacion = Globals.frmBilling.Localdetailist.NewRow();
 
                     NuevaLineaDetalleEnFacturacion["ItemItemID"] = MyItem.ItemID;
 
@@ -123,7 +123,7 @@ namespace VCBikeService.Forms.Compra
 
                     //una vez que se han alimentado los datos para la línea, se procede a adjuntar al datatable en detalles
                     //del form de facturación
-                    Globals.Frmfactura.Localdetailist.Rows.Add(NuevaLineaDetalleEnFacturacion);
+                    Globals.frmBilling.Localdetailist.Rows.Add(NuevaLineaDetalleEnFacturacion);
                 }
                 //Retornamos ok como respuesta al form de facturación
                 DialogResult = DialogResult.OK;
@@ -188,7 +188,7 @@ namespace VCBikeService.Forms.Compra
 
                 if (MyItem != null && MyItem.ItemID > 0)
                 {
-                    TxtIVA.Text = MyItem.Tax.AmountTax.ToString();
+                    
                     TxtPrecioUnitario.Text = MyItem.SellPrice.ToString();
 
                     //calcular el monto del precio final (tomando en cuenta el % de descuento)

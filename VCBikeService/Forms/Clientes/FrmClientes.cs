@@ -85,6 +85,7 @@ namespace VCBikeService.Forms.Clientes
             TxtCustomerName.Clear();
             TxtPhonesCustomer.Clear();
             TxtSearchCustomer.Clear();
+            
             CbTypeCustomer.SelectedIndex = -1;
         }
 
@@ -122,6 +123,7 @@ namespace VCBikeService.Forms.Clientes
                     TxtPhonesCustomer.Text = Convert.ToString(newcustomer.CustomerPhone);
 
                     TxtCustomerAddress.Text = newcustomer.CustomerAdress;
+                
 
                     //Combobox
 
@@ -131,34 +133,13 @@ namespace VCBikeService.Forms.Clientes
                 }
             }
         }
-        private void Checker()
-        {
-            // me funciona para jugar con la visibilidad de ciertas cosas del formulario , si el cuadro de check esta activo o inactivo 
-            if (CheckCustomer.Checked)
-            {
-                BtnAddCustomer.Visible = true;
-                 
-                BtnEditC.Visible = true;
-                btnactivate.Visible = false;
-                BtnDeleteC.Visible = true;
-                btnDeleteForever.Visible = true;
-            }
-            else
-            {
-                BtnAddCustomer.Visible = false;
-                 
-                BtnEditC.Visible = false;
-                btnactivate.Visible = true;
-                btnDeleteForever.Visible = true;
-                BtnDeleteC.Visible = false;
-            }
-        }
+         
 
         private void CheckCustomer_CheckedChanged(object sender, EventArgs e)
         {
             //llama a ciertas clases que dependen de si esta el check o no dentro del cuadro 
             LoadListCustomer();
-            Checker();
+             CleanForm();
         }
 
         private void BtnCleanC_Click(object sender, EventArgs e)
@@ -457,8 +438,72 @@ namespace VCBikeService.Forms.Clientes
 
         private void CheckCustomer_CheckedChanged_1(object sender, EventArgs e)
         {
-            Checker();
+            CleanForm();
+            if (CheckCustomer.Checked)
+            {
+                BtnDeleteC.Visible = true;
+                btnactivate.Visible = false;
+
+            }
+            else
+            {
+                BtnDeleteC.Visible= false;
+                btnactivate.Visible = true;
+
+            }
             LoadListCustomer();
+        }
+
+        private void DgCustList_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (DgCustList.SelectedRows.Count == 1)
+            {
+
+                DataGridViewRow Mifila = DgCustList.SelectedRows[0];
+
+
+                int IdCustomer = Convert.ToInt32(Mifila.Cells["CCustomerID"].Value);
+
+                newcustomer = new Logic.Models.Customer();
+
+
+                newcustomer.CustomerID = IdCustomer;
+
+
+
+                newcustomer = newcustomer.SearchIDReturnCustumer();
+
+                if (newcustomer != null && newcustomer.CustomerID > 0)
+                {
+
+
+                    TxtCustomerID.Text = Convert.ToString(newcustomer.CustomerID);
+
+                    TxtCustomerEmail.Text = newcustomer.CustomerEmail;
+                    TxtCustomerName.Text = newcustomer.CustomerName;
+
+                    TxtPhonesCustomer.Text = Convert.ToString(newcustomer.CustomerPhone);
+
+                    TxtCustomerAddress.Text = newcustomer.CustomerAdress;
+
+                    //Combobox
+
+                    CbTypeCustomer.SelectedValue = newcustomer.MyTypeCustomer.CustomerTypeID;
+
+
+                }
+            }
+        }
+
+        private void TxtPhonesCustomer_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            // solo deja incierta numeros en el campo del telefono del cliente 
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+                MessageBox.Show("Debes Digitar unicamente numeros.", "!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+
+            }
         }
     }
 }

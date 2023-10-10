@@ -61,27 +61,7 @@ namespace VCBikeService.Forms
             DgSupplier.DataSource = listSupplier;
         }
 
-        private void Checker()
-        {
-            if (checkBSupplier.Checked)
-            {
-                BtnAdd.Visible = true;
-                BtnDelete.Visible = true;
-                btnDeleteForEver.Visible = true;
-                btnactivate.Visible = false;
-                BtnClean.Visible = true;
-                BtnEdit.Visible = true;
-            }
-            else
-            {
-                BtnAdd.Visible = false;
-                BtnDelete.Visible = false;
-                btnDeleteForEver.Visible = true;
-                btnactivate.Visible = true;
-                BtnClean.Visible = false;
-                BtnEdit.Visible = false;
-            }
-        }
+        
         private void LoadSupplytype()
         {
             Logic.Models.SupplierType Rol = new Logic.Models.SupplierType();
@@ -116,7 +96,7 @@ namespace VCBikeService.Forms
         private void checkBSupplier_CheckedChanged(object sender, EventArgs e)
         {
             LoadListsupply();
-            Checker();
+          
 
         }
 
@@ -455,12 +435,20 @@ namespace VCBikeService.Forms
             CleanForm();
         }
 
-        
-
-        private void CheckCustomer_CheckedChanged(object sender, EventArgs e)
+        private void CheckSupply_CheckedChanged(object sender, EventArgs e)
         {
+            CleanForm();
+            if (CheckSupply.Checked)
+            {
+                btnactivate.Visible = false;
+                BtnDelete.Visible = true;
+            }
+            else
+            {
+                btnactivate.Visible = true;
+                BtnDelete.Visible = false;
+            }
             LoadListsupply();
-            Checker();
         }
     }
 }
