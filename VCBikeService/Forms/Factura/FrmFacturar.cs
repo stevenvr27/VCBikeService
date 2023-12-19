@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Net;
+using System.Net.Mail;
+using System.Text;
 
 namespace VCBikeService.Forms.Compra
 {
@@ -38,7 +41,34 @@ namespace VCBikeService.Forms.Compra
             TxtUSer.Text = Username;
         }
 
+        private void EnviarCorreoElectronico(string destinatario, string asunto, string cuerpo)
+        {
+            try
+            {
+                string remitente = "stevenvr2017@gmail.com";
+                string contraseña = "Yesi_2727";
 
+                using (SmtpClient clienteSmtp = new SmtpClient("smtp.gmail.com"))
+                {
+                    clienteSmtp.Port = 587;
+                    clienteSmtp.Credentials = new NetworkCredential(remitente, contraseña);
+                    clienteSmtp.EnableSsl = true;
+
+                    using (MailMessage mensaje = new MailMessage(remitente, destinatario, asunto, cuerpo))
+                    {
+                        mensaje.IsBodyHtml = true; 
+
+                        clienteSmtp.Send(mensaje);
+                    }
+                }
+
+                MessageBox.Show("Correo electrónico enviado con éxito.", "Éxito", MessageBoxButtons.OK);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al enviar el correo electrónico: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private void LoadBillingType()
         {
@@ -229,7 +259,7 @@ namespace VCBikeService.Forms.Compra
             decimal impuestoPorProducto = Convert.ToDecimal(row.Cells["CImpuestoLine"].Value);
 
             decimal subtotalProducto = unitaryPrice * cantidad;
-            decimal impuestoLinea = impuestoPorProducto * (cantidad - cantidadInicial); // Calculate the tax adjustment based on the difference in quantity
+            decimal impuestoLinea = impuestoPorProducto * (cantidad - cantidadInicial); 
             decimal totalLinea = subtotalProducto + impuestoLinea;
 
             row.Cells["CSubTotalLine"].Value = subtotalProducto;
@@ -245,7 +275,7 @@ namespace VCBikeService.Forms.Compra
                 decimal impuestoPorProducto = Convert.ToDecimal(row.Cells["CImpuestoLine"].Value);
 
                 decimal subtotalProducto = unitaryPrice * cantidad;
-                decimal impuestoLinea = impuestoPorProducto * cantidad; // Calculate the tax adjustment based on the difference in quantity
+                decimal impuestoLinea = impuestoPorProducto * cantidad;
                 decimal totalLinea = subtotalProducto + impuestoLinea;
 
                 row.Cells["CSubTotalLine"].Value = subtotalProducto;
@@ -261,7 +291,7 @@ namespace VCBikeService.Forms.Compra
                 decimal impuestoPorProducto = Convert.ToDecimal(row.Cells["CImpuestoLine"].Value);
 
                 decimal subtotalProducto = unitaryPrice * cantidad;
-                decimal impuestoLinea = impuestoPorProducto * cantidad; // Calculate the tax adjustment based on the difference in quantity
+                decimal impuestoLinea = impuestoPorProducto * cantidad; 
                 decimal totalLinea = subtotalProducto + impuestoLinea;
 
                 row.Cells["CSubTotalLine"].Value = subtotalProducto;
@@ -365,26 +395,19 @@ namespace VCBikeService.Forms.Compra
                 MyBilling.Descuentos = Convert.ToDecimal(LblDescuentos.Text);
 
                 MyBilling.Notes = TxtNotas.Text;
+ 
 
                 if (MyBilling.Add())
                 {
                     MessageBox.Show("Factura guardada correctamente", ":)", MessageBoxButtons.OK);
 
-                    //ReportDocument MiReporteCompra = new ReportDocument();
+                    string correoCliente = MyBilling.MyCustomer.CustomerEmail;
+                    string asunto = "Factura de tu compra";
+                    string cuerpo = ConstruirCuerpoCorreo();
 
-                    //MiReporteCompra = new Reportes.RptFactura();
+                    EnviarCorreoElectronico(correoCliente, asunto, cuerpo);
+                     
 
-                    //MiReporteCompra = MyBilling.Imprimir(MiReporteCompra);
-
-                    ////se asigna este documento al visulizador de reportes (se usa para TODOS los reportes) 
-                    //MiFormCRV = new FrmVisualizadorReportes();
-
-                    //MiFormCRV.CrvVisualizador.ReportSource = MiReporteCompra;
-
-                    //MiFormCRV.Show();
-
-                    ////para visualizar la página completa
-                    //MiFormCRV.CrvVisualizador.Zoom(1);
 
 
                     MyBilling.UpdateProductStock();
@@ -396,6 +419,31 @@ namespace VCBikeService.Forms.Compra
             {
                 MessageBox.Show("Faltan Datos", ":C", MessageBoxButtons.OK);
             }
+        }
+
+        private string ConstruirCuerpoCorreo()
+        {
+            StringBuilder cuerpo = new StringBuilder();
+            cuerpo.AppendLine("Gracias por tu compra. Adjuntamos la factura correspondiente.");
+            cuerpo.AppendLine();
+            cuerpo.AppendLine("Detalles de la factura:");
+
+            foreach (DataRow item in Localdetailist.Rows)
+            {
+                string nombreProducto = Convert.ToString(item["DescripcionItem"]);
+                int cantidadProducto = Convert.ToInt32(item["Amount"]);
+                decimal precioTotalProducto = Convert.ToDecimal(item["TotalLine"]);
+
+                cuerpo.AppendLine($"{nombreProducto} - Cantidad: {cantidadProducto} - Precio Total: {precioTotalProducto:C}");
+            }
+
+            cuerpo.AppendLine();
+            cuerpo.AppendLine($"Subtotal: {LblSubTotal.Text}");
+            cuerpo.AppendLine($"Descuentos: {LblDescuentos.Text}");
+            cuerpo.AppendLine($"Impuestos: {LblImpuestos.Text}");
+            cuerpo.AppendLine($"Total: {LblTotal.Text}");
+
+            return cuerpo.ToString();
         }
 
         private void button4_Click(object sender, EventArgs e)
